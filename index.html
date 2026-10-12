@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Streaming HUB</title>
+    <style>
+        body {
+            background-color: #080c14; /* Dyp mørkeblå stuebakgrunn */
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            color: #f8fafc;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 210px);
+            gap: 20px;
+            max-width: 960px;
+        }
+        .card {
+            background-color: #111827; /* Mørkeblå boksfarge */
+            border: 2px solid #1f293d;
+            border-radius: 16px;
+            text-align: center;
+            padding: 26px 15px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            background-color: #1b263b;
+            border-color: #3b82f6;
+            transform: scale(1.05);
+            box-shadow: 0 10px 22px rgba(59, 130, 246, 0.4);
+        }
+        .card img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 14px;
+            border-radius: 8px;
+        }
+        .card span {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Streaming HUB</h1>
+
+    <div class="grid">
+        <!-- Spotify -->
+        <a href="spotify:" class="card">
+            <img src="Images/spotify.png" alt="Spotify">
+            <span>Spotify</span>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com" class="card">
+            <img src="Images/youtube.png" alt="YouTube">
+            <span>YouTube</span>
+        </a>
+
+        <!-- Twitch -->
+        <a href="https://www.twitch.tv" class="card">
+            <img src="Images/twitch.png" alt="Twitch">
+            <span>Twitch</span>
+        </a>
+
+        <!-- Netflix -->
+        <a href="https://www.netflix.com" class="card">
+            <img src="Images/netflix.png" alt="Netflix">
+            <span>Netflix</span>
+        </a>
+
+        <!-- Max -->
+        <a href="https://www.max.com" class="card">
+            <img src="Images/max.png" alt="Max">
+            <span>Max (HBO)</span>
+        </a>
+
+        <!-- Disney+ -->
+        <a href="https://www.disneyplus.com" class="card">
+            <img src="Images/disneypluss.png" alt="Disney+">
+            <span>Disney+</span>
+        </a>
+
+        <!-- Prime Video -->
+        <a href="https://www.primevideo.com" class="card">
+            <img src="Images/prime.png" alt="Prime Video">
+            <span>Prime Video</span>
+        </a>
+
+        <!-- NRK TV -->
+        <a href="https://tv.nrk.no" class="card">
+            <img src="Images/nrk.png" alt="NRK TV">
+            <span>NRK TV</span>
+        </a>
+
+        <!-- TV 2 Play -->
+        <a href="https://play.tv2.no" class="card">
+            <img src="Images/tv2.png" alt="TV 2 Play">
+            <span>TV 2 Play</span>
+        </a>
+
+        <!-- Viaplay -->
+        <a href="https://www.viaplay.no" class="card">
+            <img src="Images/viaplay.png" alt="Viaplay">
+            <span>Viaplay</span>
+        </a>
+
+        <!-- Strim -->
+        <a href="https://www.strim.no" class="card">
+            <img src="Images/strim.png" alt="Strim">
+            <span>Strim</span>
+        </a>
+
+        <!-- Været -->
+        <a href="https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/10-996070/Norge/Oslo/Oslo/Gjerdrums%20vei" class="card yr-card">
+        <img src="Images/yr.png" alt="Været">
+        <span>Været</span>
+    </a>
+
+    </div>
+
+</body>
+</html>
