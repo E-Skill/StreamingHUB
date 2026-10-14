@@ -451,9 +451,7 @@
         };
 
         const WEATHER_INTERVAL = 5 * 60 * 1000;
-        // Sett inn URL-en til Cloudflare Worker etter at den er publisert.
-        // Eksempel: https://streaminghub-news.DITT-NAVN.workers.dev/news
-        const NEWS_API_URL = "https://streaminghub-news.eskil-sundby.workers.dev/";
+        const NEWS_API_URL = "https://streaminghub-news.eskil-sundby.workers.dev/news";
 
         const NEWS_INTERVAL = 15 * 60 * 1000;
         const MAX_NEWS_ARTICLES = 3;
@@ -565,10 +563,6 @@
             const updatedElement = document.getElementById("news-updated");
 
             try {
-                if (NEWS_API_URL.includes("https://streaminghub-news.eskil-sundby.workers.dev/")) {
-                    throw new Error("Nyhetsserveren er ikke konfigurert ennå. Se README.txt i oppdateringspakken.");
-                }
-
                 const endpoint = forceFresh
                     ? `${NEWS_API_URL}?refresh=1&t=${Date.now()}`
                     : `${NEWS_API_URL}?t=${Date.now()}`;
