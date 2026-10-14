@@ -1,71 +1,460 @@
 <!DOCTYPE html>
 <html lang="no">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Streaming HUB</title>
+
+    <meta name="theme-color" content="#080c14">
+    <meta name="description" content="Streaming HUB med strømmetjenester, vær og siste nyheter fra VG.">
+
     <style>
+        /* ==============================
+           GRUNNLEGGENDE DESIGN
+        ============================== */
+
+        :root {
+            --background: #080c14;
+            --panel: #111827;
+            --panel-hover: #1b263b;
+            --border: #1f293d;
+            --accent: #3b82f6;
+            --text: #ffffff;
+            --muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #080c14; /* Dyp mørkeblå stuebakgrunn */
-            color: #ffffff;
+            background-color: var(--background);
+            color: var(--text);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+
             min-height: 100vh;
             margin: 0;
+            padding: 30px 16px;
         }
+
         h1 {
-            margin-bottom: 30px;
+            margin: 10px 0 30px;
             font-size: 2.8rem;
             letter-spacing: 2px;
+            text-align: center;
             color: #f8fafc;
         }
+
+        /* ==============================
+           DASHBOARD
+        ============================== */
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+
+            width: 100%;
+            max-width: 920px;
+
+            margin-bottom: 30px;
+        }
+
+        .panel {
+            background-color: var(--panel);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+
+            padding: 22px;
+
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+
+            min-width: 0;
+        }
+
+        .panel h2 {
+            font-size: 1.3rem;
+            margin: 0 0 18px;
+            color: #f8fafc;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .panel-status {
+            color: var(--muted);
+            font-size: 0.78rem;
+            margin-top: 16px;
+        }
+
+        /* ==============================
+           VÆRPANEL
+        ============================== */
+
+        .weather-main {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .weather-icon {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .weather-temperature {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .weather-description {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+
+            margin-top: 20px;
+        }
+
+        .weather-detail {
+            background: #0b1220;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .detail-label {
+            color: var(--muted);
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* ==============================
+           VG NYHETER
+        ============================== */
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .news-item {
+            display: block;
+            color: var(--text);
+            text-decoration: none;
+
+            padding: 13px 0;
+            border-bottom: 1px solid var(--border);
+
+            transition: color 0.2s ease;
+        }
+
+        .news-item:first-child {
+            padding-top: 0;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .news-item:hover {
+            color: #60a5fa;
+        }
+
+        .news-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .news-time {
+            display: block;
+            color: var(--muted);
+            font-size: 0.75rem;
+            margin-top: 5px;
+        }
+
+        .news-message {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .news-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .refresh-button {
+            color: #93c5fd;
+            background: #172554;
+            border: 1px solid #1d4ed8;
+            border-radius: 8px;
+
+            padding: 8px 12px;
+            font: inherit;
+            font-size: 0.8rem;
+
+            cursor: pointer;
+        }
+
+        .refresh-button:hover {
+            background: #1e3a8a;
+        }
+
+        /* ==============================
+           STRØMMETJENESTER
+        ============================== */
+
+        .section-title {
+            width: 100%;
+            max-width: 920px;
+
+            font-size: 1.1rem;
+            color: #cbd5e1;
+
+            margin: 0 0 16px;
+        }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(4, 210px);
+
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 20px;
-            max-width: 960px;
+
+            width: 100%;
+            max-width: 920px;
         }
+
         .card {
-            background-color: #111827; /* Mørkeblå boksfarge */
-            border: 2px solid #1f293d;
+            background-color: var(--panel);
+            border: 2px solid var(--border);
             border-radius: 16px;
+
             text-align: center;
             padding: 26px 15px;
+
             text-decoration: none;
-            color: white;
+            color: var(--text);
+
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+
+            min-width: 0;
+            min-height: 135px;
+
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
-            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+            transition:
+                transform 0.2s ease,
+                background-color 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
         }
+
         .card:hover {
-            background-color: #1b263b;
-            border-color: #3b82f6;
-            transform: scale(1.05);
-            box-shadow: 0 10px 22px rgba(59, 130, 246, 0.4);
+            background-color: var(--panel-hover);
+            border-color: var(--accent);
+            transform: scale(1.04);
+
+            box-shadow: 0 10px 22px rgba(59, 130, 246, 0.3);
         }
+
         .card img {
             width: 60px;
             height: 60px;
+
             object-fit: contain;
             margin-bottom: 14px;
             border-radius: 8px;
         }
+
         .card span {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 600;
+        }
+
+        /* ==============================
+           RESPONSIVT DESIGN
+        ============================== */
+
+        @media (max-width: 700px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .card {
+                padding: 20px 8px;
+                min-height: 120px;
+            }
+
+            .card img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .card span {
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2.1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .panel {
+                padding: 17px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <h1>Streaming HUB</h1>
 
+    <!-- ==============================
+         VÆR OG NYHETER
+    ============================== -->
+
+    <div class="dashboard">
+
+        <!-- VÆR -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+                <h2 id="weather-location">Været i Oslo</h2>
+            </div>
+
+            <div class="weather-main">
+
+                <div class="weather-icon" id="weather-icon">
+                    ☁️
+                </div>
+
+                <div>
+                    <div class="weather-temperature" id="temperature">
+                        -- °C
+                    </div>
+
+                    <div class="weather-description" id="weather-description">
+                        Henter værdata...
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="weather-details">
+
+                <div class="weather-detail">
+                    <div class="detail-label">Vind</div>
+                    <div class="detail-value" id="wind">
+                        -- km/t
+                    </div>
+                </div>
+
+                <div class="weather-detail">
+                    <div class="detail-label">Luftfuktighet</div>
+                    <div class="detail-value" id="humidity">
+                        -- %
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel-status" id="weather-updated">
+                Venter på værdata...
+            </div>
+
+        </section>
+
+
+        <!-- VG NYHETER -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+                <h2>VG Nyheter</h2>
+
+                <span aria-hidden="true">📰</span>
+            </div>
+
+            <div class="news-list" id="vg-news" aria-live="polite">
+
+                <div class="news-message">
+                    Henter de siste nyhetene fra VG...
+                </div>
+
+            </div>
+
+            <div class="news-footer">
+
+                <div class="panel-status" id="news-updated">
+                    Venter på nyheter...
+                </div>
+
+                <button
+                    type="button"
+                    class="refresh-button"
+                    id="refresh-news">
+                    Oppdater
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- ==============================
+         STRØMMETJENESTER
+    ============================== -->
+
+    <h2 class="section-title">Strømmetjenester</h2>
+
     <div class="grid">
+
         <!-- Spotify -->
         <a href="spotify:" class="card">
             <img src="Images/spotify.png" alt="Spotify">
@@ -132,19 +521,376 @@
             <span>Strim</span>
         </a>
 
-        <!-- Været -->
-        <a href="https://www.yr.no" class="card yr-card">
-        <img src="Images/yr.png" alt="Været">
-        <span>Været</span>
-    </a>
+        <!-- Yr -->
+        <a href="https://www.yr.no" class="card">
+            <img src="Images/yr.png" alt="Været">
+            <span>Yr</span>
+        </a>
 
         <!-- VG -->
-        <a href="https://www.vg.no" class="card vg-card">
-        <img src="Images/vg.png" alt="VG">
-        <span>VG</span>
-    </a>
+        <a href="https://www.vg.no" class="card">
+            <img src="Images/vg.png" alt="VG">
+            <span>VG</span>
+        </a>
 
     </div>
 
+
+    <!-- ==============================
+         JAVASCRIPT
+    ============================== -->
+
+    <script>
+
+        /* =================================
+           INNSTILLINGER
+        ================================= */
+
+        // Standardsted for værdata.
+        // Oslo: 59.9139, 10.7522
+
+        const WEATHER = {
+            city: "Oslo",
+            latitude: 59.9139,
+            longitude: 10.7522
+        };
+
+        // Oppdateringsintervaller.
+
+        const WEATHER_INTERVAL = 5 * 60 * 1000;
+        const NEWS_INTERVAL = 60 * 1000;
+
+
+        /* =================================
+           VÆR
+        ================================= */
+
+        async function updateWeather() {
+
+            const temperatureElement =
+                document.getElementById("temperature");
+
+            const descriptionElement =
+                document.getElementById("weather-description");
+
+            const updatedElement =
+                document.getElementById("weather-updated");
+
+            const url =
+                "https://api.open-meteo.com/v1/forecast" +
+                `?latitude=${WEATHER.latitude}` +
+                `&longitude=${WEATHER.longitude}` +
+                "&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m" +
+                "&timezone=Europe%2FOslo";
+
+            try {
+
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error("Værserveren svarte med en feil.");
+                }
+
+                const data = await response.json();
+                const current = data.current;
+
+                document.getElementById("weather-location").textContent =
+                    `Været i ${WEATHER.city}`;
+
+                temperatureElement.textContent =
+                    `${Math.round(current.temperature_2m)} °C`;
+
+                descriptionElement.textContent =
+                    describeWeather(current.weather_code);
+
+                document.getElementById("weather-icon").textContent =
+                    getWeatherIcon(current.weather_code);
+
+                document.getElementById("wind").textContent =
+                    `${current.wind_speed_10m} km/t`;
+
+                document.getElementById("humidity").textContent =
+                    `${current.relative_humidity_2m} %`;
+
+                const weatherTime = new Date(current.time);
+
+                updatedElement.textContent =
+                    "Værdata: " +
+                    weatherTime.toLocaleTimeString("no-NO", {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    });
+
+            } catch (error) {
+
+                console.error("Feil ved henting av vær:", error);
+
+                if (temperatureElement.textContent === "-- °C") {
+
+                    descriptionElement.textContent =
+                        "Kunne ikke hente værdata.";
+
+                }
+
+                updatedElement.textContent =
+                    "Værdata er midlertidig utilgjengelig.";
+
+            }
+
+        }
+
+
+        function describeWeather(code) {
+
+            const descriptions = {
+
+                0: "Klart",
+                1: "Hovedsakelig klart",
+                2: "Delvis skyet",
+                3: "Overskyet",
+
+                45: "Tåke",
+                48: "Rimtåke",
+
+                51: "Lett yr",
+                53: "Yr",
+                55: "Kraftig yr",
+
+                56: "Underkjølt yr",
+                57: "Kraftig underkjølt yr",
+
+                61: "Lett regn",
+                63: "Regn",
+                65: "Kraftig regn",
+
+                66: "Underkjølt regn",
+                67: "Kraftig underkjølt regn",
+
+                71: "Lett snøfall",
+                73: "Snøfall",
+                75: "Kraftig snøfall",
+                77: "Snøkorn",
+
+                80: "Lette regnbyger",
+                81: "Regnbyger",
+                82: "Kraftige regnbyger",
+
+                85: "Lette snøbyger",
+                86: "Kraftige snøbyger",
+
+                95: "Tordenvær",
+                96: "Tordenvær med hagl",
+                99: "Kraftig tordenvær med hagl"
+
+            };
+
+            return descriptions[code] ?? "Ukjente værforhold";
+
+        }
+
+
+        function getWeatherIcon(code) {
+
+            if (code === 0) return "☀️";
+
+            if (code === 1 || code === 2) return "🌤️";
+
+            if (code === 3) return "☁️";
+
+            if (code === 45 || code === 48) return "🌫️";
+
+            if (code >= 51 && code <= 67) return "🌧️";
+
+            if (code >= 71 && code <= 77) return "❄️";
+
+            if (code >= 80 && code <= 82) return "🌦️";
+
+            if (code === 85 || code === 86) return "🌨️";
+
+            if (code >= 95) return "⛈️";
+
+            return "🌡️";
+
+        }
+
+
+        /* =================================
+           VG NYHETER
+        ================================= */
+
+        let previousNews = [];
+
+        async function updateNews() {
+
+            const newsContainer =
+                document.getElementById("vg-news");
+
+            const updatedElement =
+                document.getElementById("news-updated");
+
+            try {
+
+                // news.json genereres av GitHub Actions.
+                // Filen inneholder de siste artiklene fra VG.
+
+                const response = await fetch(
+                    `news.json?t=${Date.now()}`,
+                    {
+                        cache: "no-store"
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error("Fant ikke news.json.");
+                }
+
+                const data = await response.json();
+
+                if (!Array.isArray(data.articles)) {
+                    throw new Error("Nyhetsfilen har feil format.");
+                }
+
+                const articles = data.articles;
+
+                if (articles.length === 0) {
+
+                    newsContainer.replaceChildren();
+
+                    const message = document.createElement("div");
+
+                    message.className = "news-message";
+                    message.textContent =
+                        "Ingen nyheter er tilgjengelige akkurat nå.";
+
+                    newsContainer.appendChild(message);
+
+                    return;
+
+                }
+
+                // Bygg opp nyhetslisten med sikre DOM-elementer.
+                // RSS-tekst settes aldri direkte inn som HTML.
+
+                const fragment = document.createDocumentFragment();
+
+                articles.forEach(article => {
+
+                    const link = document.createElement("a");
+
+                    link.className = "news-item";
+                    link.href = article.link;
+                    link.target = "_blank";
+                    link.rel = "noopener noreferrer";
+
+                    const title = document.createElement("div");
+
+                    title.className = "news-title";
+                    title.textContent = article.title;
+
+                    link.appendChild(title);
+
+                    if (article.pubDate) {
+
+                        const time = document.createElement("span");
+
+                        time.className = "news-time";
+
+                        const date = new Date(article.pubDate);
+
+                        time.textContent = Number.isNaN(date.getTime())
+                            ? article.pubDate
+                            : date.toLocaleString("no-NO", {
+                                day: "2-digit",
+                                month: "2-digit",
+                                hour: "2-digit",
+                                minute: "2-digit"
+                            });
+
+                        link.appendChild(time);
+
+                    }
+
+                    fragment.appendChild(link);
+
+                });
+
+                newsContainer.replaceChildren(fragment);
+
+                // Vis tidspunktet da RSS-filen ble generert.
+
+                if (data.updatedAt) {
+
+                    const generated = new Date(data.updatedAt);
+
+                    updatedElement.textContent =
+                        "Oppdatert: " +
+                        generated.toLocaleTimeString("no-NO", {
+                            hour: "2-digit",
+                            minute: "2-digit"
+                        });
+
+                } else {
+
+                    updatedElement.textContent =
+                        "Nyheter fra VG";
+
+                }
+
+                previousNews = articles;
+
+            } catch (error) {
+
+                console.error("Feil ved henting av VG-nyheter:", error);
+
+                // Behold eventuelle nyheter som allerede vises.
+                // Ikke erstatt en fungerende liste med en feilmelding.
+
+                if (previousNews.length === 0) {
+
+                    const message = document.createElement("div");
+
+                    message.className = "news-message";
+
+                    message.textContent =
+                        "Kunne ikke hente nyheter. " +
+                        "Kontroller at GitHub Actions har kjørt.";
+
+                    newsContainer.replaceChildren(message);
+
+                }
+
+                updatedElement.textContent =
+                    "Kunne ikke oppdatere nyhetene.";
+
+            }
+
+        }
+
+
+        /* =================================
+           OPPSTART OG AUTOMATISK OPPDATERING
+        ================================= */
+
+        document
+            .getElementById("refresh-news")
+            .addEventListener("click", updateNews);
+
+        // Hent data når siden åpnes.
+
+        updateWeather();
+        updateNews();
+
+        // Oppdater vær hvert femte minutt.
+
+        setInterval(updateWeather, WEATHER_INTERVAL);
+
+        // Kontroller om news.json har blitt oppdatert
+        // hvert minutt. Selve RSS-feeden hentes av GitHub.
+
+        setInterval(updateNews, NEWS_INTERVAL);
+
+    </script>
+
 </body>
+
 </html>
