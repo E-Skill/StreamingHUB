@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="no">
 
@@ -211,8 +210,13 @@
             flex-shrink: 0;
         }
 
-        .refresh-button:hover {
+        .refresh-button:hover:not(:disabled) {
             background: #1e3a8a;
+        }
+
+        .refresh-button:disabled {
+            opacity: 0.65;
+            cursor: wait;
         }
 
         .section-title {
@@ -323,6 +327,7 @@
         <section class="panel">
             <div class="panel-header">
                 <h2 id="weather-location">Været i Oslo</h2>
+                <button type="button" class="refresh-button" id="refresh-weather">Oppdater</button>
             </div>
 
             <div class="weather-main">
@@ -447,6 +452,7 @@
 
         const WEATHER_INTERVAL = 5 * 60 * 1000;
         const NEWS_INTERVAL = 60 * 1000;
+        const MAX_NEWS_ARTICLES = 3;
 
         async function updateWeather() {
             const temperatureElement = document.getElementById("temperature");
@@ -560,7 +566,7 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error("Fant ikke news.json.");
+                    throw new Error(`Kunne ikke hente news.json (HTTP ${response.status}).`);
                 }
 
                 const data = await response.json();
@@ -569,7 +575,7 @@
                     throw new Error("Nyhetsfilen har feil format.");
                 }
 
-                const articles = data.articles.slice(0, 3);
+                const articles = data.articles.slice(0, MAX_NEWS_ARTICLES);
 
                 if (articles.length === 0) {
                     newsContainer.replaceChildren();
@@ -580,6 +586,7 @@
 
                     newsContainer.appendChild(message);
                     updatedElement.textContent = "Ingen nyheter tilgjengelig";
+                    previousNews = [];
                     return;
                 }
 
@@ -646,11 +653,41 @@
                     newsContainer.replaceChildren(message);
                 }
 
-                updatedElement.textContent = "Kunne ikke oppdatere nyhetene.";
+                updatedElement.textContent = "Feil: " + error.message;
             }
         }
 
-        document.getElementById("refresh-news").addEventListener("click", updateNews);
+        const refreshButton = document.getElementById("refresh-news");
+
+        refreshButton.addEventListener("click", async function () {
+            if (refreshButton.disabled) return;
+
+            refreshButton.disabled = true;
+            refreshButton.textContent = "Oppdaterer...";
+
+            try {
+                await updateNews();
+            } finally {
+                refreshButton.disabled = false;
+                refreshButton.textContent = "Oppdater";
+            }
+        });
+
+        const weatherRefreshButton = document.getElementById("refresh-weather");
+
+        weatherRefreshButton.addEventListener("click", async function () {
+            if (weatherRefreshButton.disabled) return;
+
+            weatherRefreshButton.disabled = true;
+            weatherRefreshButton.textContent = "Henter...";
+
+            try {
+                await updateWeather();
+            } finally {
+                weatherRefreshButton.disabled = false;
+                weatherRefreshButton.textContent = "Oppdater";
+            }
+        });
 
         updateWeather();
         updateNews();
@@ -662,4 +699,3 @@
 </body>
 
 </html>
-
