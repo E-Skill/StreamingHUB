@@ -11,6 +11,7 @@ permissions:
 jobs:
   update-news:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,7 +26,7 @@ jobs:
           git add news.json
           if ! git diff --cached --quiet; then
             git commit -m "Update VG news"
-            git push origin HEAD:¤{{ github.ref_name}}
+            git push
           else
             echo "Ingen endringer i nyhetsfilen."
           fi
