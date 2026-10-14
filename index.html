@@ -327,7 +327,6 @@
         <section class="panel">
             <div class="panel-header">
                 <h2 id="weather-location">Været i Oslo</h2>
-                <button type="button" class="refresh-button" id="refresh-weather">Oppdater</button>
             </div>
 
             <div class="weather-main">
@@ -351,19 +350,19 @@
                 </div>
             </div>
 
-            <div class="panel-status" id="weather-updated">Venter på værdata...</div>
+            <div class="news-footer">
+                <div class="panel-status" id="weather-updated">Venter på værdata...</div>
+                <button type="button" class="refresh-button" id="refresh-weather">Oppdater</button>
+            </div>
         </section>
 
-        <section class="panel">    
-         <div class="panel-header">
-          <h2>VG</h2>
-        <a href="https://www.vg.no"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Åpne VG.no">
-           <img src="Images/vg.png" alt="VG-logo" class="panel-logo">
-    </a>
-</div>
+        <section class="panel">
+            <div class="panel-header">
+                <h2>VG</h2>
+                <a href="https://www.vg.no" target="_blank" rel="noopener noreferrer" aria-label="Åpne VG.no">
+                    <img src="Images/vg.png" alt="VG-logo" class="panel-logo">
+                </a>
+            </div>
 
             <div class="news-list" id="vg-news" aria-live="polite">
                 <div class="news-message">Henter de siste nyhetene fra VG...</div>
@@ -441,7 +440,7 @@
             <span>Yr</span>
         </a>
 
- 
+
     </div>
 
     <script>
@@ -452,7 +451,11 @@
         };
 
         const WEATHER_INTERVAL = 5 * 60 * 1000;
-        const NEWS_INTERVAL = 60 * 1000;
+        // Sett inn URL-en til Cloudflare Worker etter at den er publisert.
+        // Eksempel: https://streaminghub-news.DITT-NAVN.workers.dev/news
+        const NEWS_API_URL = "https://SETT-INN-WORKER-URL-HER.workers.dev/news";
+
+        const NEWS_INTERVAL = 15 * 60 * 1000;
         const MAX_NEWS_ARTICLES = 3;
 
         async function updateWeather() {
@@ -557,34 +560,40 @@
 
         let previousNews = [];
 
-        async function updateNews() {
+        async function updateNews(forceFresh = false) {
             const newsContainer = document.getElementById("vg-news");
             const updatedElement = document.getElementById("news-updated");
 
             try {
-                const response = await fetch(`news.json?t=${Date.now()}`, {
-                    cache: "no-store"
-                });
+                if (NEWS_API_URL.includes("SETT-INN-WORKER-URL-HER")) {
+                    throw new Error("Nyhetsserveren er ikke konfigurert ennå. Se README.txt i oppdateringspakken.");
+                }
 
+                const endpoint = forceFresh
+                    ? `${NEWS_API_URL}?refresh=1&t=${Date.now()}`
+                    : `${NEWS_API_URL}?t=${Date.now()}`;
+
+                const response = await fetch(endpoint, { cache: "no-store" });
                 if (!response.ok) {
-                    throw new Error(`Kunne ikke hente news.json (HTTP ${response.status}).`);
+                    let detail = "";
+                    try {
+                        const errorData = await response.json();
+                        detail = errorData.error ? ` ${errorData.error}` : "";
+                    } catch (_) {}
+                    throw new Error(`Nyhetsserveren svarte HTTP ${response.status}.${detail}`);
                 }
 
                 const data = await response.json();
-
                 if (!data || !Array.isArray(data.articles)) {
-                    throw new Error("Nyhetsfilen har feil format.");
+                    throw new Error("Nyhetsserveren returnerte ugyldige nyhetsdata.");
                 }
 
                 const articles = data.articles.slice(0, MAX_NEWS_ARTICLES);
-
                 if (articles.length === 0) {
                     newsContainer.replaceChildren();
-
                     const message = document.createElement("div");
                     message.className = "news-message";
-                    message.textContent = "Ingen nyheter er tilgjengelige akkurat nå.";
-
+                    message.textContent = "VG-feeden inneholder ingen tilgjengelige nyheter akkurat nå.";
                     newsContainer.appendChild(message);
                     updatedElement.textContent = "Ingen nyheter tilgjengelig";
                     previousNews = [];
@@ -592,101 +601,82 @@
                 }
 
                 const fragment = document.createDocumentFragment();
-
                 articles.forEach(article => {
                     const link = document.createElement("a");
                     link.className = "news-item";
-                    link.href = article.link || "#";
+                    link.href = article.link || "https://www.vg.no";
                     link.target = "_blank";
                     link.rel = "noopener noreferrer";
 
                     const title = document.createElement("div");
                     title.className = "news-title";
                     title.textContent = article.title || "Uten tittel";
-
                     link.appendChild(title);
 
                     if (article.pubDate) {
                         const time = document.createElement("span");
                         time.className = "news-time";
-
                         const date = new Date(article.pubDate);
                         time.textContent = Number.isNaN(date.getTime())
                             ? article.pubDate
                             : date.toLocaleString("no-NO", {
-                                day: "2-digit",
-                                month: "2-digit",
-                                hour: "2-digit",
-                                minute: "2-digit"
+                                day: "2-digit", month: "2-digit",
+                                hour: "2-digit", minute: "2-digit"
                             });
-
                         link.appendChild(time);
                     }
-
                     fragment.appendChild(link);
                 });
 
                 newsContainer.replaceChildren(fragment);
-
-                if (data.updatedAt) {
-                    const generated = new Date(data.updatedAt);
-                    updatedElement.textContent =
-                        "Oppdatert: " +
-                        generated.toLocaleTimeString("no-NO", {
-                            hour: "2-digit",
-                            minute: "2-digit"
-                        });
-                } else {
-                    updatedElement.textContent = "Nyheter fra VG";
+                const generated = data.updatedAt ? new Date(data.updatedAt) : null;
+                const timeLabel = generated && !Number.isNaN(generated.getTime())
+                    ? generated.toLocaleTimeString("no-NO", { hour: "2-digit", minute: "2-digit" })
+                    : "ukjent tidspunkt";
+                updatedElement.textContent = `${data.stale ? "Sist lagret" : "Hentet fra VG"}: ${timeLabel}`;
+                if (forceFresh && data.fetchedAt) {
+                    const fetched = new Date(data.fetchedAt);
+                    if (!Number.isNaN(fetched.getTime())) {
+                        updatedElement.textContent = `Hentet fra VG: ${fetched.toLocaleTimeString("no-NO", { hour: "2-digit", minute: "2-digit" })}`;
+                    }
                 }
-
                 previousNews = articles;
 
             } catch (error) {
                 console.error("Feil ved henting av VG-nyheter:", error);
-
                 if (previousNews.length === 0) {
                     const message = document.createElement("div");
                     message.className = "news-message";
-                    message.textContent =
-                        "Kunne ikke hente nyheter. Kontroller at GitHub Actions har kjørt og at news.json finnes i nettsiden.";
-
+                    message.textContent = `Kunne ikke hente nyheter. ${error.message}`;
                     newsContainer.replaceChildren(message);
                 }
-
-                updatedElement.textContent = "Feil: " + error.message;
+                updatedElement.textContent = "Feil ved oppdatering";
             }
         }
 
         const refreshButton = document.getElementById("refresh-news");
-
         refreshButton.addEventListener("click", async function () {
             if (refreshButton.disabled) return;
-
             refreshButton.disabled = true;
-            refreshButton.textContent = "Oppdaterer...";
-
+            refreshButton.textContent = "Henter fra VG...";
             try {
-                await updateNews();
+                await updateNews(true);
             } finally {
                 refreshButton.disabled = false;
                 refreshButton.textContent = "Oppdater";
             }
         });
 
-        const weatherRefreshButton = document.getElementById("refresh-weather");
-
-        weatherRefreshButton.addEventListener("click", async function () {
-            if (weatherRefreshButton.disabled) return;
-
-            weatherRefreshButton.disabled = true;
-            weatherRefreshButton.textContent = "Henter...";
-
+        const weatherButton = document.getElementById("refresh-weather");
+        weatherButton.addEventListener("click", async function () {
+            if (weatherButton.disabled) return;
+            weatherButton.disabled = true;
+            weatherButton.textContent = "Oppdaterer...";
             try {
                 await updateWeather();
             } finally {
-                weatherRefreshButton.disabled = false;
-                weatherRefreshButton.textContent = "Oppdater";
+                weatherButton.disabled = false;
+                weatherButton.textContent = "Oppdater";
             }
         });
 
