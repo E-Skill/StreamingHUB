@@ -18,7 +18,7 @@ jobs:
     steps:
       # Hent filene fra repositoriet.
       - name: Checkout repository
-        uses: actions/checkout@v4
+  uses: actions/checkout@v5
 
       # Hent RSS fra VG og generer news.json.
       - name: Fetch VG RSS
@@ -31,7 +31,7 @@ jobs:
           from email.utils import parsedate_to_datetime
           from pathlib import Path
 
-          rss_url = "https://www.vg.no/rss/feed/forsiden/"
+          rss_url = "https://www.vg.no/rss/feed/?categories=&keywords=&format=rss&limit=10"
 
           request = urllib.request.Request(
               rss_url,
