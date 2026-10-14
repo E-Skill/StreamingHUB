@@ -1,34 +1,31 @@
 name: Update VG News
 
 on:
-schedule:
-- cron: "*/15 * * * *"
-workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
 
 permissions:
-contents: write
+  contents: write
 
 jobs:
-update-news:
-runs-on: ubuntu-latest
+  update-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-```
-steps:
-  - name: Checkout repository
-    uses: actions/checkout@v4
+      - name: Fetch VG RSS
+        run: python3 scripts/update_news.py
 
-  - name: Fetch VG RSS
-    run: python3 scripts/update_news.py
-
-  - name: Commit updated news
-    run: |
-      git config user.name "github-actions[bot]"
-      git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      git add news.json
-      if ! git diff --cached --quiet; then
-        git commit -m "Update VG news"
-        git push
-      else
-        echo "Ingen endringer i nyhetsfilen."
-      fi
-```
+      - name: Commit updated news
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update VG news"
+            git push origin HEAD:¤{{ github.ref_name}}
+          else
+            echo "Ingen endringer i nyhetsfilen."
+          fi
