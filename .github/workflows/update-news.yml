@@ -1,0 +1,128 @@
+name: Update VG News
+
+on:
+  schedule:
+    # Kjør hvert 15. minutt.
+    - cron: "*/15 * * * *"
+
+  # Gjør det mulig å starte oppdateringen manuelt.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Hent filene fra repositoriet.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Hent RSS fra VG og generer news.json.
+      - name: Fetch VG RSS
+        run: |
+          python3 <<'PY'
+          import json
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          from datetime import datetime, timezone
+          from email.utils import parsedate_to_datetime
+          from pathlib import Path
+
+          rss_url = "https://www.vg.no/rss/feed/forsiden/"
+
+          request = urllib.request.Request(
+              rss_url,
+              headers={
+                  "User-Agent": "StreamingHUB/1.0",
+                  "Accept": "application/rss+xml, application/xml, text/xml"
+              }
+          )
+
+          with urllib.request.urlopen(request, timeout=30) as response:
+              xml_data = response.read()
+
+          root = ET.fromstring(xml_data)
+
+          articles = []
+
+          for item in root.findall(".//item"):
+              title_element = item.find("title")
+              link_element = item.find("link")
+              date_element = item.find("pubDate")
+
+              if title_element is None or link_element is None:
+                  continue
+
+              title = "".join(title_element.itertext()).strip()
+              link = "".join(link_element.itertext()).strip()
+
+              if not title or not link:
+                  continue
+
+              # Tillat bare artikler fra VG.
+              if not (
+                  link.startswith("https://www.vg.no/")
+                  or link.startswith("https://vg.no/")
+              ):
+                  continue
+
+              pub_date = ""
+
+              if date_element is not None and date_element.text:
+                  raw_date = date_element.text.strip()
+
+                  try:
+                      pub_date = parsedate_to_datetime(
+                          raw_date
+                      ).isoformat()
+                  except (TypeError, ValueError, OverflowError):
+                      pub_date = raw_date
+
+              articles.append({
+                  "title": title,
+                  "link": link,
+                  "pubDate": pub_date
+              })
+
+              # Vis maksimalt 10 nyheter på nettsiden.
+              if len(articles) >= 10:
+                  break
+
+          if not articles:
+              raise RuntimeError(
+                  "RSS-feeden ga ingen gyldige VG-artikler. "
+                  "news.json beholdes uendret."
+              )
+
+          output = {
+              "updatedAt": datetime.now(timezone.utc).isoformat(),
+              "articles": articles
+          }
+
+          output_path = Path("news.json")
+
+          output_path.write_text(
+              json.dumps(output, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8"
+          )
+
+          print(f"Lagret {len(articles)} artikler i news.json")
+          PY
+
+      # Lagre den nye JSON-filen i repositoriet.
+      - name: Commit updated news
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add news.json
+
+          if git diff --cached --quiet; then
+            echo "Ingen endringer i nyhetsfilen."
+          else
+            git commit -m "Update VG news"
+            git push
+          fi
