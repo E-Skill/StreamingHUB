@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
-RSS_URL = "https://www.vg.no/rss/feed/forsiden/"
+RSS_URL = "https://www.vg.no/rss/feed/?format=rss"
 
 def main():
 request = urllib.request.Request(
