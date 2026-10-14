@@ -569,7 +569,7 @@
                     throw new Error("Nyhetsfilen har feil format.");
                 }
 
-                const articles = data.articles;
+                const articles = data.articles.slice(0, 3);
 
                 if (articles.length === 0) {
                     newsContainer.replaceChildren();
