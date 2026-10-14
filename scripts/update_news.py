@@ -8,6 +8,8 @@ from pathlib import Path
 
 
 RSS_URL = "https://www.vg.no/rss/feed/?format=rss"
+NEWS_FILE = Path("news.json")
+MAX_ARTICLES = 3
 
 
 def main():
@@ -39,47 +41,44 @@ def main():
         if not title or not link:
             continue
 
-        if not (
-            link.startswith("https://www.vg.no/")
-            or link.startswith("https://vg.no/")
-        ):
+        if not (link.startswith("https://www.vg.no/") or link.startswith("https://vg.no/")):
             continue
 
         pub_date = ""
-
         if date_element is not None and date_element.text:
             raw_date = date_element.text.strip()
-
             try:
                 pub_date = parsedate_to_datetime(raw_date).isoformat()
             except (TypeError, ValueError, OverflowError):
                 pub_date = raw_date
 
-        articles.append({
-            "title": title,
-            "link": link,
-            "pubDate": pub_date,
-        })
-
-        if len(articles) >= 3:
+        articles.append({"title": title, "link": link, "pubDate": pub_date})
+        if len(articles) >= MAX_ARTICLES:
             break
 
     if not articles:
-        raise RuntimeError(
-            "Ingen gyldige artikler funnet i VG RSS-feeden."
-        )
+        raise RuntimeError("Ingen gyldige artikler funnet i VG RSS-feeden. news.json beholdes uendret.")
+
+    # Oppdater bare news.json når VG faktisk har levert nye/endrede overskrifter.
+    # Dette unngår unødvendige commits hvert 15. minutt.
+    existing = {}
+    if NEWS_FILE.exists():
+        try:
+            existing = json.loads(NEWS_FILE.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            existing = {}
+
+    same_articles = existing.get("articles") == articles
+    if same_articles and existing.get("updatedAt"):
+        print(f"VG-feeden ble kontrollert. Ingen endringer blant de {len(articles)} øverste artiklene.")
+        return
 
     output = {
         "updatedAt": datetime.now(timezone.utc).isoformat(),
         "articles": articles,
     }
-
-    Path("news.json").write_text(
-        json.dumps(output, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
-
-    print(f"Lagret {len(articles)} VG-artikler.")
+    NEWS_FILE.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"Lagret {len(articles)} VG-artikler i news.json.")
 
 
 if __name__ == "__main__":
