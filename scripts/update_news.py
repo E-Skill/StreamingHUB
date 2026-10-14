@@ -61,7 +61,7 @@ def main():
             "pubDate": pub_date,
         })
 
-        if len(articles) >= 10:
+        if len(articles) >= 3:
             break
 
     if not articles:
