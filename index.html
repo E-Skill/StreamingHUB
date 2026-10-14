@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, 1.0">
 
     <title>Streaming HUB</title>
 
@@ -11,10 +11,6 @@
     <meta name="description" content="Streaming HUB med strømmetjenester, vær og siste nyheter fra VG.">
 
     <style>
-        /* ==============================
-           GRUNNLEGGENDE DESIGN
-        ============================== */
-
         :root {
             --background: #080c14;
             --panel: #111827;
@@ -33,11 +29,9 @@
             background-color: var(--background);
             color: var(--text);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
             display: flex;
             flex-direction: column;
             align-items: center;
-
             min-height: 100vh;
             margin: 0;
             padding: 30px 16px;
@@ -51,18 +45,12 @@
             color: #f8fafc;
         }
 
-        /* ==============================
-           DASHBOARD
-        ============================== */
-
         .dashboard {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 20px;
-
             width: 100%;
             max-width: 920px;
-
             margin-bottom: 30px;
         }
 
@@ -70,11 +58,8 @@
             background-color: var(--panel);
             border: 2px solid var(--border);
             border-radius: 16px;
-
             padding: 22px;
-
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-
             min-width: 0;
         }
 
@@ -91,15 +76,19 @@
             gap: 10px;
         }
 
+        .panel-logo {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            display: inline-block;
+            border-radius: 6px;
+        }
+
         .panel-status {
             color: var(--muted);
             font-size: 0.78rem;
             margin-top: 16px;
         }
-
-        /* ==============================
-           VÆRPANEL
-        ============================== */
 
         .weather-main {
             display: flex;
@@ -129,7 +118,6 @@
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 12px;
-
             margin-top: 20px;
         }
 
@@ -151,10 +139,6 @@
             font-weight: 600;
         }
 
-        /* ==============================
-           VG NYHETER
-        ============================== */
-
         .news-list {
             display: flex;
             flex-direction: column;
@@ -165,10 +149,8 @@
             display: block;
             color: var(--text);
             text-decoration: none;
-
             padding: 13px 0;
             border-bottom: 1px solid var(--border);
-
             transition: color 0.2s ease;
         }
 
@@ -217,11 +199,9 @@
             background: #172554;
             border: 1px solid #1d4ed8;
             border-radius: 8px;
-
             padding: 8px 12px;
             font: inherit;
             font-size: 0.8rem;
-
             cursor: pointer;
         }
 
@@ -229,26 +209,18 @@
             background: #1e3a8a;
         }
 
-        /* ==============================
-           STRØMMETJENESTER
-        ============================== */
-
         .section-title {
             width: 100%;
             max-width: 920px;
-
             font-size: 1.1rem;
             color: #cbd5e1;
-
             margin: 0 0 16px;
         }
 
         .grid {
             display: grid;
-
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 20px;
-
             width: 100%;
             max-width: 920px;
         }
@@ -257,23 +229,17 @@
             background-color: var(--panel);
             border: 2px solid var(--border);
             border-radius: 16px;
-
             text-align: center;
             padding: 26px 15px;
-
             text-decoration: none;
             color: var(--text);
-
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-
             min-width: 0;
             min-height: 135px;
-
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
-
             transition:
                 transform 0.2s ease,
                 background-color 0.2s ease,
@@ -285,14 +251,12 @@
             background-color: var(--panel-hover);
             border-color: var(--accent);
             transform: scale(1.04);
-
             box-shadow: 0 10px 22px rgba(59, 130, 246, 0.3);
         }
 
         .card img {
             width: 60px;
             height: 60px;
-
             object-fit: contain;
             margin-bottom: 14px;
             border-radius: 8px;
@@ -302,10 +266,6 @@
             font-size: 1.05rem;
             font-weight: 600;
         }
-
-        /* ==============================
-           RESPONSIVT DESIGN
-        ============================== */
 
         @media (max-width: 700px) {
             .dashboard {
@@ -352,182 +312,121 @@
 
     <h1>Streaming HUB</h1>
 
-    <!-- ==============================
-         VÆR OG NYHETER
-    ============================== -->
-
     <div class="dashboard">
 
-        <!-- VÆR -->
-
         <section class="panel">
-
             <div class="panel-header">
                 <h2 id="weather-location">Været i Oslo</h2>
             </div>
 
             <div class="weather-main">
-
-                <div class="weather-icon" id="weather-icon">
-                    ☁️
-                </div>
+                <div class="weather-icon" id="weather-icon">☁️</div>
 
                 <div>
-                    <div class="weather-temperature" id="temperature">
-                        -- °C
-                    </div>
-
-                    <div class="weather-description" id="weather-description">
-                        Henter værdata...
-                    </div>
+                    <div class="weather-temperature" id="temperature">-- °C</div>
+                    <div class="weather-description" id="weather-description">Henter værdata...</div>
                 </div>
-
             </div>
 
             <div class="weather-details">
-
                 <div class="weather-detail">
                     <div class="detail-label">Vind</div>
-                    <div class="detail-value" id="wind">
-                        -- km/t
-                    </div>
+                    <div class="detail-value" id="wind">-- km/t</div>
                 </div>
 
                 <div class="weather-detail">
                     <div class="detail-label">Luftfuktighet</div>
-                    <div class="detail-value" id="humidity">
-                        -- %
-                    </div>
+                    <div class="detail-value" id="humidity">-- %</div>
                 </div>
-
             </div>
 
-            <div class="panel-status" id="weather-updated">
-                Venter på værdata...
-            </div>
-
+            <div class="panel-status" id="weather-updated">Venter på værdata...</div>
         </section>
 
-
-        <!-- VG NYHETER -->
-
         <section class="panel">
-
             <div class="panel-header">
                 <h2>VG</h2>
-
-             <span aria-hidden="true"><img src="Images/vg.png" alt=""></span>
+                <span aria-hidden="true">
+                    <img src="Images/vg.png" alt="VG" class="panel-logo">
+                </span>
             </div>
 
             <div class="news-list" id="vg-news" aria-live="polite">
-
-                <div class="news-message">
-                    Henter de siste nyhetene fra VG...
-                </div>
-
+                <div class="news-message">Henter de siste nyhetene fra VG...</div>
             </div>
 
             <div class="news-footer">
-
-                <div class="panel-status" id="news-updated">
-                    Venter på nyheter...
-                </div>
-
-                <button
-                    type="button"
-                    class="refresh-button"
-                    id="refresh-news">
-                    Oppdater
-                </button>
-
+                <div class="panel-status" id="news-updated">Venter på nyheter...</div>
+                <button type="button" class="refresh-button" id="refresh-news">Oppdater</button>
             </div>
-
         </section>
 
     </div>
-
-
-    <!-- ==============================
-         STRØMMETJENESTER
-    ============================== -->
 
     <h2 class="section-title">Strømmetjenester</h2>
 
     <div class="grid">
 
-        <!-- Spotify -->
         <a href="spotify:" class="card">
             <img src="Images/spotify.png" alt="Spotify">
             <span>Spotify</span>
         </a>
 
-        <!-- YouTube -->
         <a href="https://www.youtube.com" class="card">
             <img src="Images/youtube.png" alt="YouTube">
             <span>YouTube</span>
         </a>
 
-        <!-- Twitch -->
         <a href="https://www.twitch.tv" class="card">
             <img src="Images/twitch.png" alt="Twitch">
             <span>Twitch</span>
         </a>
 
-        <!-- Netflix -->
         <a href="https://www.netflix.com" class="card">
             <img src="Images/netflix.png" alt="Netflix">
             <span>Netflix</span>
         </a>
 
-        <!-- Max -->
         <a href="https://www.max.com" class="card">
             <img src="Images/max.png" alt="Max">
             <span>Max (HBO)</span>
         </a>
 
-        <!-- Disney+ -->
         <a href="https://www.disneyplus.com" class="card">
             <img src="Images/disneypluss.png" alt="Disney+">
             <span>Disney+</span>
         </a>
 
-        <!-- Prime Video -->
         <a href="https://www.primevideo.com" class="card">
             <img src="Images/prime.png" alt="Prime Video">
             <span>Prime Video</span>
         </a>
 
-        <!-- NRK TV -->
         <a href="https://tv.nrk.no" class="card">
             <img src="Images/nrk.png" alt="NRK TV">
             <span>NRK TV</span>
         </a>
 
-        <!-- TV 2 Play -->
         <a href="https://play.tv2.no" class="card">
             <img src="Images/tv2.png" alt="TV 2 Play">
             <span>TV 2 Play</span>
         </a>
 
-        <!-- Viaplay -->
         <a href="https://www.viaplay.no" class="card">
             <img src="Images/viaplay.png" alt="Viaplay">
             <span>Viaplay</span>
         </a>
 
-        <!-- Strim -->
         <a href="https://www.strim.no" class="card">
             <img src="Images/strim.png" alt="Strim">
             <span>Strim</span>
         </a>
 
-        <!-- Yr -->
         <a href="https://www.yr.no" class="card">
             <img src="Images/yr.png" alt="Været">
             <span>Yr</span>
         </a>
 
-        <!-- VG -->
         <a href="https://www.vg.no" class="card">
             <img src="Images/vg.png" alt="VG">
             <span>VG</span>
@@ -535,46 +434,20 @@
 
     </div>
 
-
-    <!-- ==============================
-         JAVASCRIPT
-    ============================== -->
-
     <script>
-
-        /* =================================
-           INNSTILLINGER
-        ================================= */
-
-        // Standardsted for værdata.
-        // Oslo: 59.9139, 10.7522
-
         const WEATHER = {
             city: "Oslo",
             latitude: 59.9139,
             longitude: 10.7522
         };
 
-        // Oppdateringsintervaller.
-
         const WEATHER_INTERVAL = 5 * 60 * 1000;
         const NEWS_INTERVAL = 60 * 1000;
 
-
-        /* =================================
-           VÆR
-        ================================= */
-
         async function updateWeather() {
-
-            const temperatureElement =
-                document.getElementById("temperature");
-
-            const descriptionElement =
-                document.getElementById("weather-description");
-
-            const updatedElement =
-                document.getElementById("weather-updated");
+            const temperatureElement = document.getElementById("temperature");
+            const descriptionElement = document.getElementById("weather-description");
+            const updatedElement = document.getElementById("weather-updated");
 
             const url =
                 "https://api.open-meteo.com/v1/forecast" +
@@ -584,7 +457,6 @@
                 "&timezone=Europe%2FOslo";
 
             try {
-
                 const response = await fetch(url);
 
                 if (!response.ok) {
@@ -592,28 +464,20 @@
                 }
 
                 const data = await response.json();
-                const current = data.current;
+                const current = data?.current;
 
-                document.getElementById("weather-location").textContent =
-                    `Været i ${WEATHER.city}`;
+                if (!current) {
+                    throw new Error("Værdata mangler.");
+                }
 
-                temperatureElement.textContent =
-                    `${Math.round(current.temperature_2m)} °C`;
-
-                descriptionElement.textContent =
-                    describeWeather(current.weather_code);
-
-                document.getElementById("weather-icon").textContent =
-                    getWeatherIcon(current.weather_code);
-
-                document.getElementById("wind").textContent =
-                    `${current.wind_speed_10m} km/t`;
-
-                document.getElementById("humidity").textContent =
-                    `${current.relative_humidity_2m} %`;
+                document.getElementById("weather-location").textContent = `Været i ${WEATHER.city}`;
+                temperatureElement.textContent = `${Math.round(current.temperature_2m)} °C`;
+                descriptionElement.textContent = describeWeather(current.weather_code);
+                document.getElementById("weather-icon").textContent = getWeatherIcon(current.weather_code);
+                document.getElementById("wind").textContent = `${current.wind_speed_10m} km/t`;
+                document.getElementById("humidity").textContent = `${current.relative_humidity_2m} %`;
 
                 const weatherTime = new Date(current.time);
-
                 updatedElement.textContent =
                     "Værdata: " +
                     weatherTime.toLocaleTimeString("no-NO", {
@@ -622,123 +486,74 @@
                     });
 
             } catch (error) {
-
                 console.error("Feil ved henting av vær:", error);
 
                 if (temperatureElement.textContent === "-- °C") {
-
-                    descriptionElement.textContent =
-                        "Kunne ikke hente værdata.";
-
+                    descriptionElement.textContent = "Kunne ikke hente værdata.";
                 }
 
-                updatedElement.textContent =
-                    "Værdata er midlertidig utilgjengelig.";
-
+                updatedElement.textContent = "Værdata er midlertidig utilgjengelig.";
             }
-
         }
 
-
         function describeWeather(code) {
-
             const descriptions = {
-
                 0: "Klart",
                 1: "Hovedsakelig klart",
                 2: "Delvis skyet",
                 3: "Overskyet",
-
                 45: "Tåke",
                 48: "Rimtåke",
-
                 51: "Lett yr",
                 53: "Yr",
                 55: "Kraftig yr",
-
                 56: "Underkjølt yr",
                 57: "Kraftig underkjølt yr",
-
                 61: "Lett regn",
                 63: "Regn",
                 65: "Kraftig regn",
-
                 66: "Underkjølt regn",
                 67: "Kraftig underkjølt regn",
-
                 71: "Lett snøfall",
                 73: "Snøfall",
                 75: "Kraftig snøfall",
                 77: "Snøkorn",
-
                 80: "Lette regnbyger",
                 81: "Regnbyger",
                 82: "Kraftige regnbyger",
-
                 85: "Lette snøbyger",
                 86: "Kraftige snøbyger",
-
                 95: "Tordenvær",
                 96: "Tordenvær med hagl",
                 99: "Kraftig tordenvær med hagl"
-
             };
 
             return descriptions[code] ?? "Ukjente værforhold";
-
         }
-
 
         function getWeatherIcon(code) {
-
             if (code === 0) return "☀️";
-
             if (code === 1 || code === 2) return "🌤️";
-
             if (code === 3) return "☁️";
-
             if (code === 45 || code === 48) return "🌫️";
-
             if (code >= 51 && code <= 67) return "🌧️";
-
             if (code >= 71 && code <= 77) return "❄️";
-
             if (code >= 80 && code <= 82) return "🌦️";
-
             if (code === 85 || code === 86) return "🌨️";
-
             if (code >= 95) return "⛈️";
-
             return "🌡️";
-
         }
-
-
-        /* =================================
-           VG NYHETER
-        ================================= */
 
         let previousNews = [];
 
         async function updateNews() {
-
-            const newsContainer =
-                document.getElementById("vg-news");
-
-            const updatedElement =
-                document.getElementById("news-updated");
+            const newsContainer = document.getElementById("vg-news");
+            const updatedElement = document.getElementById("news-updated");
 
             try {
-
-                // news.json genereres av GitHub Actions.
-                // Filen inneholder de siste artiklene fra VG.
-
-                const response = await fetch(
-                    `news.json?t=${Date.now()}`,
-                    {
-                        cache: "no-store"
-                    }
-                );
+                const response = await fetch(`news.json?t=${Date.now()}`, {
+                    cache: "no-store"
+                });
 
                 if (!response.ok) {
                     throw new Error("Fant ikke news.json.");
@@ -746,57 +561,44 @@
 
                 const data = await response.json();
 
-                if (!Array.isArray(data.articles)) {
+                if (!data || !Array.isArray(data.articles)) {
                     throw new Error("Nyhetsfilen har feil format.");
                 }
 
                 const articles = data.articles;
 
                 if (articles.length === 0) {
-
                     newsContainer.replaceChildren();
 
                     const message = document.createElement("div");
-
                     message.className = "news-message";
-                    message.textContent =
-                        "Ingen nyheter er tilgjengelige akkurat nå.";
+                    message.textContent = "Ingen nyheter er tilgjengelige akkurat nå.";
 
                     newsContainer.appendChild(message);
-
+                    updatedElement.textContent = "Ingen nyheter tilgjengelig";
                     return;
-
                 }
-
-                // Bygg opp nyhetslisten med sikre DOM-elementer.
-                // RSS-tekst settes aldri direkte inn som HTML.
 
                 const fragment = document.createDocumentFragment();
 
                 articles.forEach(article => {
-
                     const link = document.createElement("a");
-
                     link.className = "news-item";
-                    link.href = article.link;
+                    link.href = article.link || "#";
                     link.target = "_blank";
                     link.rel = "noopener noreferrer";
 
                     const title = document.createElement("div");
-
                     title.className = "news-title";
-                    title.textContent = article.title;
+                    title.textContent = article.title || "Uten tittel";
 
                     link.appendChild(title);
 
                     if (article.pubDate) {
-
                         const time = document.createElement("span");
-
                         time.className = "news-time";
 
                         const date = new Date(article.pubDate);
-
                         time.textContent = Number.isNaN(date.getTime())
                             ? article.pubDate
                             : date.toLocaleString("no-NO", {
@@ -807,88 +609,50 @@
                             });
 
                         link.appendChild(time);
-
                     }
 
                     fragment.appendChild(link);
-
                 });
 
                 newsContainer.replaceChildren(fragment);
 
-                // Vis tidspunktet da RSS-filen ble generert.
-
                 if (data.updatedAt) {
-
                     const generated = new Date(data.updatedAt);
-
                     updatedElement.textContent =
                         "Oppdatert: " +
                         generated.toLocaleTimeString("no-NO", {
                             hour: "2-digit",
                             minute: "2-digit"
                         });
-
                 } else {
-
-                    updatedElement.textContent =
-                        "Nyheter fra VG";
-
+                    updatedElement.textContent = "Nyheter fra VG";
                 }
 
                 previousNews = articles;
 
             } catch (error) {
-
                 console.error("Feil ved henting av VG-nyheter:", error);
 
-                // Behold eventuelle nyheter som allerede vises.
-                // Ikke erstatt en fungerende liste med en feilmelding.
-
                 if (previousNews.length === 0) {
-
                     const message = document.createElement("div");
-
                     message.className = "news-message";
-
                     message.textContent =
-                        "Kunne ikke hente nyheter. " +
-                        "Kontroller at GitHub Actions har kjørt.";
+                        "Kunne ikke hente nyheter. Kontroller at GitHub Actions har kjørt og at news.json finnes i nettsiden.";
 
                     newsContainer.replaceChildren(message);
-
                 }
 
-                updatedElement.textContent =
-                    "Kunne ikke oppdatere nyhetene.";
-
+                updatedElement.textContent = "Kunne ikke oppdatere nyhetene.";
             }
-
         }
 
-
-        /* =================================
-           OPPSTART OG AUTOMATISK OPPDATERING
-        ================================= */
-
-        document
-            .getElementById("refresh-news")
-            .addEventListener("click", updateNews);
-
-        // Hent data når siden åpnes.
+        document.getElementById("refresh-news").addEventListener("click", updateNews);
 
         updateWeather();
         updateNews();
 
-        // Oppdater vær hvert femte minutt.
-
         setInterval(updateWeather, WEATHER_INTERVAL);
-
-        // Kontroller om news.json har blitt oppdatert
-        // hvert minutt. Selve RSS-feeden hentes av GitHub.
-
         setInterval(updateNews, NEWS_INTERVAL);
-
     </script>
 
 </body>
