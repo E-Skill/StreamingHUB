@@ -26,19 +26,24 @@
 
         * { box-sizing: border-box; }
 
-        /* Prevent scrolling and hide scrollbars completely */
+        /* Allow scrolling, but hide scrollbars completely across browsers */
         html, body {
             height: 100%;
             margin: 0;
             background: var(--bg);
             color: var(--text);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE og eldre Edge */
         }
 
+        html::-webkit-scrollbar,
         body::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            display: none; /* Chrome, Safari, Opera, Edge */
+            width: 0;
+            height: 0;
         }
 
         body {
