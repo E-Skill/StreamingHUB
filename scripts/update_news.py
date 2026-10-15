@@ -1,6 +1,7 @@
 import json
 import urllib.request
 import xml.etree.ElementTree as ET
+import re
 
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -10,6 +11,42 @@ from pathlib import Path
 RSS_URL = "https://www.vg.no/rss/feed/?format=rss"
 NEWS_FILE = Path("news.json")
 MAX_ARTICLES = 3
+
+# Namespace mapping for common media extensions
+NS = {"media": "http://search.yahoo.com/mrss/"}
+
+
+def extract_image_from_item(item):
+    # 1) <enclosure url="..." />
+    enclosure = item.find("enclosure")
+    if enclosure is not None and enclosure.attrib.get("url"):
+        return enclosure.attrib.get("url")
+
+    # 2) <media:content url="..." /> (or inside media:group)
+    media = item.find("media:content", NS)
+    if media is not None and media.attrib.get("url"):
+        return media.attrib.get("url")
+
+    media_group = item.find("media:group", NS)
+    if media_group is not None:
+        mg_media = media_group.find("media:content", NS)
+        if mg_media is not None and mg_media.attrib.get("url"):
+            return mg_media.attrib.get("url")
+
+    # 3) <media:thumbnail url="..." />
+    thumb = item.find("media:thumbnail", NS)
+    if thumb is not None and thumb.attrib.get("url"):
+        return thumb.attrib.get("url")
+
+    # 4) Try to find an <img> tag in the description/content
+    desc = item.find("description")
+    if desc is not None and desc.text:
+        m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', desc.text)
+        if m:
+            return m.group(1)
+
+    # No image found
+    return None
 
 
 def main():
@@ -52,7 +89,13 @@ def main():
             except (TypeError, ValueError, OverflowError):
                 pub_date = raw_date
 
-        articles.append({"title": title, "link": link, "pubDate": pub_date})
+        image_url = extract_image_from_item(item)
+
+        article = {"title": title, "link": link, "pubDate": pub_date}
+        if image_url:
+            article["image"] = image_url
+
+        articles.append(article)
         if len(articles) >= MAX_ARTICLES:
             break
 
