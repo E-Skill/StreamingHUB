@@ -38,7 +38,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 18px 26px 12px;
+            padding: 18px 22px 10px;
         }
 
         .page {
@@ -49,13 +49,13 @@
 
         .layout {
             display: grid;
-            grid-template-columns: 220px minmax(0, 1fr) 320px;
-            gap: 32px;
+            grid-template-columns: 220px minmax(0, 1fr) 330px;
+            gap: 26px;
             align-items: start;
         }
 
         .weather-area {
-            padding-top: 18px;
+            padding-top: 16px;
             min-height: 420px;
         }
 
@@ -67,12 +67,12 @@
         }
 
         .weather-box {
-            margin-top: 8px;
             width: 100%;
             max-width: 220px;
             color: var(--text);
             background: transparent;
             border: none;
+            margin-top: 8px;
         }
 
         .weather-temp-row {
@@ -83,8 +83,8 @@
         }
 
         .weather-temp {
-            font-size: 4.2rem;
-            line-height: 0.95;
+            font-size: 4.1rem;
+            line-height: 0.96;
             font-weight: 400;
             letter-spacing: -0.06em;
             display: flex;
@@ -92,9 +92,9 @@
         }
 
         .weather-temp .degree {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             display: inline-block;
-            transform: translateY(10px);
+            transform: translateY(12px);
             margin-left: 2px;
         }
 
@@ -110,13 +110,13 @@
             grid-template-columns: 1fr 1fr;
             gap: 8px 12px;
             color: var(--muted);
-            font-size: 0.98rem;
+            font-size: 0.97rem;
         }
 
         .weather-meta strong {
             display: block;
             color: var(--text);
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             margin-bottom: 2px;
             font-weight: 600;
         }
@@ -149,13 +149,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 6px;
+            padding-top: 8px;
         }
 
         h1.title {
             margin: 0;
-            font-size: 4rem;
-            line-height: 1.1;
+            font-size: 3.7rem;
+            line-height: 1.05;
             letter-spacing: -0.06em;
             font-weight: 800;
             color: var(--text);
@@ -164,12 +164,12 @@
 
         .services-block {
             width: 100%;
-            margin-top: 26px;
+            margin-top: 22px;
             padding-right: 10px;
         }
 
         .section-header {
-            margin: 0 0 14px;
+            margin: 0 0 12px;
             font-size: 1rem;
             color: var(--muted);
             font-weight: 700;
@@ -177,8 +177,8 @@
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(120px, 1fr));
-            gap: 18px 22px;
+            grid-template-columns: repeat(4, minmax(110px, 1fr));
+            gap: 16px 18px;
             width: 100%;
             max-width: 700px;
         }
@@ -191,8 +191,8 @@
             width: 100%;
             min-height: 118px;
             border-radius: 10px;
-            background: var(--tile);
-            border: 1px solid var(--line);
+            background: rgba(18, 31, 45, 0.92);
+            border: 1px solid rgba(255,255,255,0.04);
             text-decoration: none;
             color: var(--text);
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.01);
@@ -220,13 +220,13 @@
         }
 
         .news-area {
-            padding-top: 10px;
+            padding-top: 6px;
             min-height: 100%;
         }
 
         .news-panel {
             width: 100%;
-            min-height: 780px;
+            min-height: 800px;
             background: transparent;
             border: none;
             color: var(--text);
@@ -353,7 +353,7 @@
 
                 <div class="weather-box">
                     <div class="weather-temp-row">
-                        <div id="weather-icon" style="font-size:3.8rem; line-height:1;">☁️</div>
+                        <div id="weather-icon" style="font-size:3.7rem; line-height:1;">☁️</div>
                         <div class="weather-temp" id="temperature">14<span class="degree">°</span></div>
                     </div>
 
