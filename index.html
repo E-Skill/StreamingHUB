@@ -431,7 +431,6 @@
                     <div class="weather-updated">
                         <div style="display:flex;flex-direction:column;align-items:flex-start">
                             <span id="weather-updated">Venter på værdata...</span>
-                            <span id="clock" style="font-size:0.95rem;color:var(--muted);margin-top:6px">--:--:--</span>
                         </div>
 
                         <button id="refresh-weather" type="button">Oppdater</button>
@@ -440,7 +439,7 @@
             </aside>
 
             <main class="main">
-                <h1 class="title">Streaming HUB</h1>
+                <h1 class="title" id="main-clock">--:--:--</h1>
 
                 <div class="services-block">
                     <div style="width:100%;max-width:700px;">
@@ -527,7 +526,7 @@
         </div>
 
         <div class="bottom-text">
-            <a href="https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-staar-uten-jobb" target="_blank" rel="noopener noreferrer">https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-staar-uten-jobb</a>
+            <a href="https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-staar-uten-jobb" target="_blank" rel="noopener noreferrer">https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-sta[...]</a>
         </div>
     </div>
 
@@ -557,11 +556,13 @@
             return '🌡️';
         }
 
-        // live clock under the weather
+        // live clock under the weather (and in the main title area)
         function updateClock() {
+            const timeStr = new Date().toLocaleTimeString('no-NO');
             const el = document.getElementById('clock');
-            if (!el) return;
-            el.textContent = new Date().toLocaleTimeString('no-NO');
+            if (el) el.textContent = timeStr;
+            const main = document.getElementById('main-clock');
+            if (main) main.textContent = timeStr;
         }
         setInterval(updateClock, 1000);
         updateClock();
@@ -623,7 +624,7 @@
 
                 if (iconEl) iconEl.textContent = weatherIcon(weatherCode);
 
-                // build vertical hourly forecast (next 3 hours)
+                // build vertical hourly forecast (next 8 hours)
                 if (hourlyContainer && data.hourly && Array.isArray(data.hourly.time)) {
                     hourlyContainer.innerHTML = '';
                     const times = data.hourly.time;
@@ -641,7 +642,7 @@
                     }
 
                     const start = idx + 1; // next hour
-                    const count = 3;
+                    const count = 8; // show next 8 hours
                     for (let i = start; i < Math.min(start + count, times.length); i++) {
                         const t = times[i];
                         const hourLabel = new Date(t).toLocaleTimeString('no-NO', { hour: '2-digit' });
@@ -651,7 +652,7 @@
 
                         const card = document.createElement('div');
                         card.className = 'hour-card';
-                        card.innerHTML = `<div class="hour-left"><div class="hour-icon">${ic}</div><div><div style="font-weight:600">${hourLabel}</div><div style="font-size:0.85rem;color:var(--muted);">Neste</div></div></div><div class="hour-temp">${tempH}°</div>`;
+                        card.innerHTML = `<div class="hour-left"><div class="hour-icon">${ic}</div><div><div style="font-weight:600">${hourLabel}</div></div></div><div class="hour-temp">${tempH}°</div>`;
                         hourlyContainer.appendChild(card);
                     }
                 }
