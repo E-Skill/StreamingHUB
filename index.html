@@ -149,8 +149,11 @@
             gap: 0;
         }
 
+        /* Change news items to use a flex layout so thumbnails can appear */
         .news-item {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             color: var(--text);
             text-decoration: none;
             padding: 13px 0;
@@ -171,10 +174,27 @@
             color: #60a5fa;
         }
 
+        .news-thumb {
+            width: 88px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+            background: #0b1220;
+        }
+
+        .news-content {
+            flex: 1 1 auto;
+            min-width: 0; /* allow text truncation inside flex */
+        }
+
         .news-title {
             font-size: 0.95rem;
             font-weight: 600;
-            line-height: 1.5;
+            line-height: 1.4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .news-time {
@@ -301,8 +321,9 @@
                 font-size: 0.9rem;
             }
 
-            h1 {
-                font-size: 2.1rem;
+            .news-thumb {
+                width: 72px;
+                height: 52px;
             }
         }
 
@@ -313,6 +334,11 @@
 
             .panel {
                 padding: 17px;
+            }
+
+            .news-thumb {
+                width: 64px;
+                height: 46px;
             }
         }
     </style>
@@ -602,10 +628,26 @@
                     link.target = "_blank";
                     link.rel = "noopener noreferrer";
 
+                    // If there's an image, create a thumbnail element
+                    if (article.image) {
+                        try {
+                            const img = document.createElement('img');
+                            img.className = 'news-thumb';
+                            img.src = article.image;
+                            img.alt = article.title || '';
+                            link.appendChild(img);
+                        } catch (_) {
+                            // if image creation fails, continue without it
+                        }
+                    }
+
+                    const content = document.createElement("div");
+                    content.className = "news-content";
+
                     const title = document.createElement("div");
                     title.className = "news-title";
                     title.textContent = article.title || "Uten tittel";
-                    link.appendChild(title);
+                    content.appendChild(title);
 
                     if (article.pubDate) {
                         const time = document.createElement("span");
@@ -617,8 +659,10 @@
                                 day: "2-digit", month: "2-digit",
                                 hour: "2-digit", minute: "2-digit"
                             });
-                        link.appendChild(time);
+                        content.appendChild(time);
                     }
+
+                    link.appendChild(content);
                     fragment.appendChild(link);
                 });
 
