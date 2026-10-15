@@ -1,28 +1,81 @@
 import json
+import os
+import re
 import urllib.request
 import xml.etree.ElementTree as ET
-import re
 
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
+from hashlib import sha1
+from mimetypes import guess_extension
 from pathlib import Path
+from urllib.parse import urlsplit
 
 
 RSS_URL = "https://www.vg.no/rss/feed/?format=rss"
 NEWS_FILE = Path("news.json")
 MAX_ARTICLES = 3
-
-# Namespace mapping for common media extensions
+STATIC_NEWS_DIR = Path("static/news")
 NS = {"media": "http://search.yahoo.com/mrss/"}
 
 
+def ensure_static_dir():
+    try:
+        STATIC_NEWS_DIR.mkdir(parents=True, exist_ok=True)
+    except Exception:
+        pass
+
+
+def filename_for_url(url: str) -> str:
+    digest = sha1(url.encode("utf-8")).hexdigest()
+    path = urlsplit(url).path
+    ext = os.path.splitext(path)[1]
+    if ext:
+        return f"{digest}{ext}"
+    return digest
+
+
+def download_image(image_url: str) -> str:
+    try:
+        ensure_static_dir()
+        filename = filename_for_url(image_url)
+        dest = STATIC_NEWS_DIR / filename
+        # If file already exists, return raw.githubusercontent URL
+        if dest.exists():
+            return f"https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/{dest.as_posix()}"
+
+        request = urllib.request.Request(
+            image_url,
+            headers={
+                "User-Agent": "Mozilla/5.0 StreamingHUB/1.0",
+                "Accept": "image/*,*/*;q=0.8",
+                "Referer": "https://www.vg.no/",
+            },
+        )
+
+        with urllib.request.urlopen(request, timeout=30) as response:
+            data = response.read()
+            content_type = response.headers.get_content_type()
+            # If destination has no extension, try to guess from content-type
+            if not dest.suffix:
+                guessed_ext = guess_extension(content_type) or ''
+                if guessed_ext:
+                    dest = STATIC_NEWS_DIR / f"{filename}{guessed_ext}"
+
+            with open(dest, "wb") as f:
+                f.write(data)
+
+        return f"https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/{dest.as_posix()}"
+    except Exception:
+        # fallback to original URL
+        return image_url
+
+
 def extract_image_from_item(item):
-    # 1) <enclosure url="..." />
     enclosure = item.find("enclosure")
     if enclosure is not None and enclosure.attrib.get("url"):
         return enclosure.attrib.get("url")
 
-    # 2) <media:content url="..." /> (or inside media:group)
     media = item.find("media:content", NS)
     if media is not None and media.attrib.get("url"):
         return media.attrib.get("url")
@@ -33,19 +86,16 @@ def extract_image_from_item(item):
         if mg_media is not None and mg_media.attrib.get("url"):
             return mg_media.attrib.get("url")
 
-    # 3) <media:thumbnail url="..." />
     thumb = item.find("media:thumbnail", NS)
     if thumb is not None and thumb.attrib.get("url"):
         return thumb.attrib.get("url")
 
-    # 4) Try to find an <img> tag in the description/content
     desc = item.find("description")
     if desc is not None and desc.text:
-        m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', desc.text)
-        if m:
-            return m.group(1)
+        match = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', desc.text)
+        if match:
+            return match.group(1)
 
-    # No image found
     return None
 
 
@@ -93,7 +143,9 @@ def main():
 
         article = {"title": title, "link": link, "pubDate": pub_date}
         if image_url:
-            article["image"] = image_url
+            # Attempt to download and cache image; prefer raw.githubusercontent URL after commit
+            cached = download_image(image_url)
+            article["image"] = cached
 
         articles.append(article)
         if len(articles) >= MAX_ARTICLES:
@@ -102,8 +154,6 @@ def main():
     if not articles:
         raise RuntimeError("Ingen gyldige artikler funnet i VG RSS-feeden. news.json beholdes uendret.")
 
-    # Oppdater bare news.json når VG faktisk har levert nye/endrede overskrifter.
-    # Dette unngår unødvendige commits hvert 15. minutt.
     existing = {}
     if NEWS_FILE.exists():
         try:
