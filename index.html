@@ -26,15 +26,19 @@
 
         * { box-sizing: border-box; }
 
-        /* Prevent any horizontal scrolling */
+        /* Prevent scrolling and hide scrollbars */
         html, body {
             height: 100%;
             margin: 0;
             background: var(--bg);
             color: var(--text);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden; /* added to lock horizontal scrolling */
-            
+            overflow: hidden;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        body::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
         }
 
         body {
@@ -82,12 +86,8 @@
             margin-top: 8px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* push update to bottom */
+            justify-content: space-between;
             flex: 1 1 auto;
-        }
-
-        .weather-top {
-            /* keeps icon + temp at top */
         }
 
         .weather-temp-row {
@@ -98,7 +98,7 @@
         }
 
         .weather-temp {
-            font-size: 3.2rem; /* reduced slightly to fit hourly */
+            font-size: 3.2rem;
             line-height: 0.96;
             font-weight: 700;
             letter-spacing: -0.06em;
@@ -163,30 +163,30 @@
         /* hourly forecast (vertical list, no slider) */
         .hourly-forecast {
             display: flex;
-            flex-direction: column; /* stack vertically */
-            gap: 10px; /* slightly larger spacing */
+            flex-direction: column;
+            gap: 8px;
             margin-top: 12px;
             padding-bottom: 6px;
-            overflow: visible; /* no slider */
+            overflow: visible;
         }
 
         .hour-card {
             width: 100%;
-            max-width: 100%; /* ensure cards don't overflow their container */
+            max-width: 100%;
             background: rgba(255,255,255,0.02);
             border-radius: 10px;
-            padding: 12px 14px; /* increased padding for bigger appearance */
+            padding: 10px 12px;
             text-align: left;
-            font-size: 1rem; /* slightly larger text */
+            font-size: 0.95rem;
             color: var(--text);
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .hour-left { display:flex; align-items:center; gap:12px; }
-        .hour-icon { font-size: 1.35rem; }
-        .hour-temp { font-weight: 700; font-size: 1.05rem; }
+        .hour-left { display:flex; align-items:center; gap:10px; }
+        .hour-icon { font-size: 1.2rem; }
+        .hour-temp { font-weight: 700; font-size: 1rem; }
 
         .main {
             display: flex;
@@ -198,7 +198,7 @@
 
         h1.title {
             margin: 6px 0 0;
-            font-size: 2.4rem; /* smaller title per request */
+            font-size: 2.4rem;
             line-height: 1.05;
             letter-spacing: -0.03em;
             font-weight: 800;
@@ -211,7 +211,7 @@
             margin-top: 18px;
             padding-right: 10px;
             display:flex;
-            justify-content:center; /* center the grid */
+            justify-content:center;
         }
 
         .section-header {
@@ -224,15 +224,14 @@
             text-align:left;
         }
 
-        /* responsive grid: avoids horizontal overflow by wrapping */
         .service-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 16px 28px;
             width: 100%;
             max-width: 100%;
-            margin: 0 auto; /* center horizontally */
-            justify-content: center; /* center the grid block */
+            margin: 0 auto;
+            justify-content: center;
             justify-items: center;
         }
 
@@ -241,15 +240,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 160px; /* card width remains reasonable */
-            min-height: 140px; /* increased height to fit larger logo */
+            width: 160px;
+            min-height: 140px;
             border-radius: 10px;
             background: rgba(18, 31, 45, 0.92);
             border: 1px solid rgba(255,255,255,0.04);
             text-decoration: none;
             color: var(--text);
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.01);
-            padding: 14px 12px 12px; /* slightly more padding */
+            padding: 14px 12px 12px;
             transition: transform 0.12s ease, filter 0.12s ease;
         }
 
@@ -259,7 +258,7 @@
         }
 
         .service-logo {
-            width: 72px; /* larger logo */
+            width: 72px;
             height: 72px;
             object-fit: contain;
             display: block;
@@ -272,7 +271,6 @@
             color: #f0f5ff;
         }
 
-        /* News column: full-height, show 7 articles and make list scroll to bottom */
         .news-area {
             padding-top: 10px;
             min-height: calc(100vh - 36px);
@@ -309,9 +307,8 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            overflow: visible; /* no local slider — let the page scroll */
+            overflow: visible;
             padding-right: 6px;
-            /* make it stretch to bottom */
             flex: 1 1 auto;
         }
 
@@ -321,8 +318,8 @@
             gap: 12px;
             color: var(--text);
             text-decoration: none;
-            min-height: 86px; /* larger full-size item */
-            padding: 6px 0 6px 0;
+            min-height: 86px;
+            padding: 6px 0;
             border-bottom: 1px solid var(--line);
         }
 
@@ -530,7 +527,7 @@
         </div>
 
         <div class="bottom-text">
-            <a href="https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-staar-uten-jobb" target="_blank" rel="noopener noreferrer">https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-sta[...]
+            <a href="https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-staar-uten-jobb" target="_blank" rel="noopener noreferrer">https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-sta[...]</a>
         </div>
     </div>
 
@@ -541,13 +538,11 @@
             longitude: 10.7522
         };
 
-        // Update weather every 15 minutes
         const WEATHER_INTERVAL = 15 * 60 * 1000;
         const NEWS_API_URL = 'https://streaminghub-news.eskil-sundby.workers.dev/news';
         const NEWS_INTERVAL = 15 * 60 * 1000;
-        const MAX_NEWS_ARTICLES = 7; // show 7 items
+        const MAX_NEWS_ARTICLES = 7;
 
-        // map weather code -> emoji icon (you can replace with SVGs later)
         function weatherIcon(code) {
             if (code === 0) return '☀️';
             if (code === 1 || code === 2) return '🌤️';
@@ -560,7 +555,6 @@
             return '🌡️';
         }
 
-        // live clock under the weather (and in the main title area)
         function updateClock() {
             const timeStr = new Date().toLocaleTimeString('no-NO');
             const el = document.getElementById('clock');
@@ -595,12 +589,9 @@
                 const current = data.current_weather ?? data.current;
                 if (!current) throw new Error('Ingen værdata');
 
-                // Open-Meteo returns temperatures in °C and windspeed in m/s by default for hourly/current_weather
-                // Use the returned values directly and label wind as m/s
                 const temp = Number.isFinite(current.temperature) ? Math.round(current.temperature) : (current.temperature_2m ? Math.round(current.temperature_2m) : '--');
                 const weatherCode = current.weathercode ?? current.weather_code ?? 0;
 
-                // apparent temperature: try to find it in hourly arrays for the current hour
                 let apparentVal = null;
                 if (data.hourly && Array.isArray(data.hourly.time) && Array.isArray(data.hourly.apparent_temperature)) {
                     const nowKey = current.time || data.current_weather?.time || data.current?.time;
@@ -609,14 +600,12 @@
                 }
                 if (apparentVal == null && current.apparent_temperature != null) apparentVal = current.apparent_temperature;
 
-                if (tempEl) tempEl.innerHTML = `${temp}<span class=\"degree\">°</span>`;
+                if (tempEl) tempEl.innerHTML = `${temp}<span class="degree">°</span>`;
                 if (feelsEl) feelsEl.textContent = `Føles som ${Number.isFinite(apparentVal) ? Math.round(apparentVal) : '--'}°`;
 
-                // wind in m/s
                 const windVal = current.windspeed ?? current.wind_speed_10m ?? current.windspeed_10m ?? '--';
                 if (windEl) windEl.textContent = `${Number.isFinite(windVal) ? (Math.round(windVal * 10) / 10) : '--'} m/s`;
 
-                // humidity from hourly if available, else fallback
                 let humVal = '--';
                 if (data.hourly && Array.isArray(data.hourly.time) && Array.isArray(data.hourly.relativehumidity_2m)) {
                     const nowKey = current.time || data.current_weather?.time || data.current?.time;
@@ -628,25 +617,22 @@
 
                 if (iconEl) iconEl.textContent = weatherIcon(weatherCode);
 
-                // build vertical hourly forecast (next 9 hours)
                 if (hourlyContainer && data.hourly && Array.isArray(data.hourly.time)) {
                     hourlyContainer.innerHTML = '';
                     const times = data.hourly.time;
                     const temps = data.hourly.temperature_2m || [];
                     const codes = data.hourly.weathercode || [];
 
-                    // find index of current time in hourly.time
                     const nowKey = current.time || data.current_weather?.time || data.current?.time;
                     let idx = times.indexOf(nowKey);
                     if (idx === -1) {
-                        // fallback: find first time >= now
-                        const now = new Date().toISOString().slice(0,13); // quick hour prefix
+                        const now = new Date().toISOString().slice(0,13);
                         idx = times.findIndex(t => t.startsWith(now));
                         if (idx === -1) idx = 0;
                     }
 
-                    const start = idx + 1; // next hour
-                    const count = 9; // show next 9 hours
+                    const start = idx + 1;
+                    const count = 8; // Viser nå 8 timer i stedet for 9
                     for (let i = start; i < Math.min(start + count, times.length); i++) {
                         const t = times[i];
                         const hourLabel = new Date(t).toLocaleTimeString('no-NO', { hour: '2-digit' });
@@ -656,12 +642,11 @@
 
                         const card = document.createElement('div');
                         card.className = 'hour-card';
-                        card.innerHTML = `<div class="hour-left"><div class="hour-icon">${ic}</div><div><div style="font-weight:600">${hourLabel}</div></div></div><div class="hour-temp">${tempH}�[...]`;
+                        card.innerHTML = `<div class="hour-left"><div class="hour-icon">${ic}</div><div><div style="font-weight:600">${hourLabel}</div></div></div><div class="hour-temp">${tempH}°</div>`;
                         hourlyContainer.appendChild(card);
                     }
                 }
 
-                // update timestamp
                 const weatherTime = new Date(current.time || data.current_weather?.time || data.current?.time);
                 if (updatedEl && !isNaN(weatherTime.getTime())) {
                     updatedEl.textContent = 'Værdato: ' + weatherTime.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
@@ -696,7 +681,6 @@
                 const data = await response.json();
                 let articles = Array.isArray(data.articles) ? data.articles.slice(0) : [];
 
-                // sort by pubDate descending (newest first)
                 articles.sort((a, b) => {
                     const ta = a.pubDate ? new Date(a.pubDate).getTime() : 0;
                     const tb = b.pubDate ? new Date(b.pubDate).getTime() : 0;
@@ -778,7 +762,6 @@
             }
         }
 
-        // Button handlers
         document.getElementById('refresh-weather').addEventListener('click', function () {
             this.disabled = true;
             this.textContent = 'Oppdaterer...';
@@ -797,7 +780,6 @@
             });
         });
 
-        // Initial load + intervals
         updateWeather();
         updateNews();
         setInterval(updateWeather, WEATHER_INTERVAL);
