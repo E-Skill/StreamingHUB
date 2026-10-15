@@ -26,7 +26,7 @@
 
         * { box-sizing: border-box; }
 
-        /* Prevent scrolling and hide scrollbars */
+        /* Prevent scrolling and hide scrollbars completely */
         html, body {
             height: 100%;
             margin: 0;
@@ -61,7 +61,7 @@
             align-items: start;
         }
 
-        /* Weather column stretches to bottom */
+        /* Weather column */
         .weather-area {
             padding-top: 16px;
             min-height: calc(100vh - 36px);
@@ -160,7 +160,7 @@
             cursor: pointer;
         }
 
-        /* hourly forecast (vertical list, no slider) */
+        /* hourly forecast */
         .hourly-forecast {
             display: flex;
             flex-direction: column;
@@ -578,61 +578,63 @@
                 const url = 'https://api.open-meteo.com/v1/forecast' +
                     `?latitude=${WEATHER.latitude}` +
                     `&longitude=${WEATHER.longitude}` +
-                    '&hourly=temperature_2m,apparent_temperature,weathercode,relativehumidity_2m' +
-                    '&current_weather=true' +
+                    '&hourly=temperature_2m,apparent_temperature,weathercode,relative_humidity_2m' +
+                    '&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,weather_code' +
                     '&timezone=Europe%2FOslo';
 
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('Værserveren svarte med feil');
 
                 const data = await response.json();
-                const current = data.current_weather ?? data.current;
+                const current = data.current || data.current_weather;
                 if (!current) throw new Error('Ingen værdata');
 
-                const temp = Number.isFinite(current.temperature) ? Math.round(current.temperature) : (current.temperature_2m ? Math.round(current.temperature_2m) : '--');
-                const weatherCode = current.weathercode ?? current.weather_code ?? 0;
+                const tempVal = current.temperature_2m ?? current.temperature;
+                const temp = Number.isFinite(tempVal) ? Math.round(tempVal) : '--';
+                
+                const weatherCode = current.weather_code ?? current.weathercode ?? 0;
 
-                let apparentVal = null;
-                if (data.hourly && Array.isArray(data.hourly.time) && Array.isArray(data.hourly.apparent_temperature)) {
-                    const nowKey = current.time || data.current_weather?.time || data.current?.time;
-                    const idx = data.hourly.time.indexOf(nowKey);
+                let apparentVal = current.apparent_temperature;
+                if ((apparentVal == null || !Number.isFinite(apparentVal)) && data.hourly && Array.isArray(data.hourly.apparent_temperature)) {
+                    const nowKey = current.time;
+                    const idx = data.hourly.time ? data.hourly.time.indexOf(nowKey) : -1;
                     if (idx >= 0) apparentVal = data.hourly.apparent_temperature[idx];
                 }
-                if (apparentVal == null && current.apparent_temperature != null) apparentVal = current.apparent_temperature;
+
+                const windVal = current.wind_speed_10m ?? current.windspeed ?? '--';
+
+                let humVal = current.relative_humidity_2m ?? current.relativehumidity_2m;
+                if (humVal == null && data.hourly) {
+                    const humArray = data.hourly.relative_humidity_2m || data.hourly.relativehumidity_2m;
+                    if (Array.isArray(humArray) && Array.isArray(data.hourly.time)) {
+                        const nowKey = current.time;
+                        const idx = data.hourly.time.indexOf(nowKey);
+                        if (idx >= 0) humVal = humArray[idx];
+                    }
+                }
 
                 if (tempEl) tempEl.innerHTML = `${temp}<span class="degree">°</span>`;
                 if (feelsEl) feelsEl.textContent = `Føles som ${Number.isFinite(apparentVal) ? Math.round(apparentVal) : '--'}°`;
-
-                const windVal = current.windspeed ?? current.wind_speed_10m ?? current.windspeed_10m ?? '--';
                 if (windEl) windEl.textContent = `${Number.isFinite(windVal) ? (Math.round(windVal * 10) / 10) : '--'} m/s`;
-
-                let humVal = '--';
-                if (data.hourly && Array.isArray(data.hourly.time) && Array.isArray(data.hourly.relativehumidity_2m)) {
-                    const nowKey = current.time || data.current_weather?.time || data.current?.time;
-                    const idx = data.hourly.time.indexOf(nowKey);
-                    if (idx >= 0) humVal = data.hourly.relativehumidity_2m[idx];
-                }
-                if (humVal === '--') humVal = current.relativehumidity_2m ?? current.relative_humidity_2m ?? '--';
-                if (humEl) humEl.textContent = `${humVal} %`;
-
+                if (humEl) humEl.textContent = `${humVal != null ? humVal : '--'} %`;
                 if (iconEl) iconEl.textContent = weatherIcon(weatherCode);
 
                 if (hourlyContainer && data.hourly && Array.isArray(data.hourly.time)) {
                     hourlyContainer.innerHTML = '';
                     const times = data.hourly.time;
                     const temps = data.hourly.temperature_2m || [];
-                    const codes = data.hourly.weathercode || [];
+                    const codes = data.hourly.weathercode || data.hourly.weather_code || [];
 
-                    const nowKey = current.time || data.current_weather?.time || data.current?.time;
+                    const nowKey = current.time;
                     let idx = times.indexOf(nowKey);
                     if (idx === -1) {
-                        const now = new Date().toISOString().slice(0,13);
+                        const now = new Date().toISOString().slice(0, 13);
                         idx = times.findIndex(t => t.startsWith(now));
                         if (idx === -1) idx = 0;
                     }
 
                     const start = idx + 1;
-                    const count = 8; // Viser nå 8 timer i stedet for 9
+                    const count = 8;
                     for (let i = start; i < Math.min(start + count, times.length); i++) {
                         const t = times[i];
                         const hourLabel = new Date(t).toLocaleTimeString('no-NO', { hour: '2-digit' });
@@ -647,16 +649,13 @@
                     }
                 }
 
-                const weatherTime = new Date(current.time || data.current_weather?.time || data.current?.time);
+                const weatherTime = new Date(current.time);
                 if (updatedEl && !isNaN(weatherTime.getTime())) {
                     updatedEl.textContent = 'Værdato: ' + weatherTime.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
                 }
 
             } catch (error) {
                 console.error('Weather fetch failed:', error);
-                const tempEl = document.getElementById('temperature');
-                const feelsEl = document.getElementById('feels-like');
-                const updatedEl = document.getElementById('weather-updated');
                 if (tempEl) tempEl.innerHTML = '--<span class="degree">°</span>';
                 if (feelsEl) feelsEl.textContent = 'Føles som --°';
                 if (updatedEl) updatedEl.textContent = 'Værdata utilgjengelig';
