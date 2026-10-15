@@ -169,6 +169,13 @@
             overflow: visible; /* no slider */
         }
 
+        /* Hide the hourly forecast entirely to remove the slider from the page. */
+        /* This is a minimal change: if you prefer to keep a static list instead, I can replace
+           this with a non-interactive vertical list or remove the JS that appends hour cards. */
+        #hourly-forecast {
+            display: none !important;
+        }
+
         .hour-card {
             width: 100%;
             max-width: 100%; /* ensure cards don't overflow their container */
@@ -529,7 +536,7 @@
         </div>
 
         <div class="bottom-text">
-            <a href="https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-staar-uten-jobb" target="_blank" rel="noopener noreferrer">https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-sta[...]</a>
+            <a href="https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-staar-uten-jobb" target="_blank" rel="noopener noreferrer">https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-sta[...]
         </div>
     </div>
 
@@ -608,7 +615,7 @@
                 }
                 if (apparentVal == null && current.apparent_temperature != null) apparentVal = current.apparent_temperature;
 
-                if (tempEl) tempEl.innerHTML = `${temp}<span class=\"degree\">°</span>`;
+                if (tempEl) tempEl.innerHTML = `${temp}<span class="degree">°</span>`;
                 if (feelsEl) feelsEl.textContent = `Føles som ${Number.isFinite(apparentVal) ? Math.round(apparentVal) : '--'}°`;
 
                 // wind in m/s
@@ -655,7 +662,7 @@
 
                         const card = document.createElement('div');
                         card.className = 'hour-card';
-                        card.innerHTML = `<div class="hour-left"><div class="hour-icon">${ic}</div><div><div style="font-weight:600">${hourLabel}</div></div></div><div class="hour-temp">${tempH}°</div>`;
+                        card.innerHTML = `<div class="hour-left"><div class="hour-icon">${ic}</div><div><div style="font-weight:600">${hourLabel}</div></div></div><div class="hour-temp">${tempH}�[...]`;
                         hourlyContainer.appendChild(card);
                     }
                 }
