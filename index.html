@@ -45,7 +45,7 @@
         /* three-column layout: left small, center large, right tall */
         .layout {
             display: grid;
-            grid-template-columns: 200px 1fr 360px;
+            grid-template-columns: 200px 1fr 420px;
             gap: 28px;
             align-items: start;
         }
@@ -63,7 +63,7 @@
         /* Weather tiny card on the left */
         .weather-card {
             width: 200px;
-            height: 160px;
+            height: 180px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -77,13 +77,70 @@
             font-weight: 700;
         }
 
-        .weather-visual {
-            flex: 1 1 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.9);
+        .weather-visual-row {
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .weather-icon {
             font-size: 2.6rem;
+            line-height: 1;
+        }
+
+        .weather-temp {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .weather-feels {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .weather-detail {
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .weather-footer {
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            margin-top:12px;
+        }
+
+        .refresh-button {
+            color: #93c5fd;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 8px;
+            padding: 6px 10px;
+            font: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .refresh-button:hover:not(:disabled) {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .refresh-button:disabled {
+            opacity: 0.6;
+            cursor: wait;
         }
 
         /* Center column: title and streaming tiles */
@@ -91,24 +148,27 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
-            padding-top: 16px;
+            gap: 18px;
+            padding-top: 8px;
         }
 
         h1.title {
             margin: 0;
-            font-size: 48px;
+            font-size: 38px; /* reduced from 48px */
             letter-spacing: 1px;
             font-weight: 800;
             color: #ffffff;
         }
 
+        .services-wrap { width:100%; max-width:760px; }
+
         .services-row {
             display: flex;
-            gap: 36px;
+            gap: 28px;
             align-items: center;
             justify-content: center;
             padding-top: 8px;
+            flex-wrap:wrap;
         }
 
         .service-tile {
@@ -118,26 +178,32 @@
             border-radius: 6px;
             border: 1px solid var(--border);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-decoration:none;
+            color:var(--text);
         }
+
+        .service-tile img { width:60px; height:60px; object-fit:contain; margin-bottom:8px; border-radius:6px; }
+        .service-tile span { font-size:0.95rem; font-weight:600; }
 
         /* Right column: VG news - large and tall */
         .vg-panel {
-            min-height: 640px;
+            min-height: 860px; /* made taller */
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            padding-top: 18px;
+            gap: 6px;
+            padding-top: 12px;
         }
 
         .vg-header {
             padding: 10px 18px;
             color: #fff;
             font-weight: 700;
+            font-size: 1rem;
         }
 
-        /* Make news list blend inside the right column with white text for headings */
         .vg-content {
             flex: 1 1 auto;
             overflow: auto;
@@ -161,10 +227,11 @@
 
         .news-thumb { width: 90px; height: 70px; background: var(--panel-dim); border-radius: 6px; object-fit: cover; }
 
-        /* Subtle responsive adjustments */
+        .vg-footer { display:flex; align-items:center; justify-content:space-between; padding:10px 18px 0 18px; }
+
         @media (max-width: 1100px) {
-            .layout { grid-template-columns: 160px 1fr 300px; gap: 18px; }
-            h1.title { font-size: 40px; }
+            .layout { grid-template-columns: 160px 1fr 320px; gap: 18px; }
+            h1.title { font-size: 34px; }
             .service-tile { width: 120px; height: 100px; }
         }
 
@@ -185,20 +252,93 @@
             <!-- left: small weather that blends in -->
             <aside class="blend-panel weather-card">
                 <h3>Været</h3>
-                <div class="weather-visual" id="weather-visual">☁️<div style="font-size:12px;margin-left:8px;display:inline-block">21°</div></div>
+
+                <div class="weather-visual-row">
+                    <div id="weather-icon" class="weather-icon">☁️</div>
+                    <div>
+                        <div id="temperature" class="weather-temp">--°</div>
+                        <div id="feels-like" class="weather-feels">Føles som --°</div>
+                    </div>
+                </div>
+
+                <div class="weather-details">
+                    <div class="weather-detail">Vind: <span id="wind">-- km/t</span></div>
+                    <div class="weather-detail">Luftfuktighet: <span id="humidity">-- %</span></div>
+                </div>
+
+                <div class="weather-footer">
+                    <div id="weather-updated" class="panel-status" style="font-size:0.78rem;color:var(--muted)">Venter på værdata...</div>
+                    <button id="refresh-weather" class="refresh-button">Oppdater</button>
+                </div>
             </aside>
 
             <!-- center: big title + streaming services -->
             <main class="center">
                 <h1 class="title">Streaming HUB</h1>
 
-                <div style="width:100%;max-width:760px;">
+                <div class="services-wrap">
                     <h2 style="font-size:0.95rem;color:var(--muted);margin:0 0 10px 0;font-weight:700">Strømmetjenester</h2>
                     <div class="services-row">
-                        <div class="service-tile"></div>
-                        <div class="service-tile"></div>
-                        <div class="service-tile"></div>
-                        <div class="service-tile"></div>
+                        <a class="service-tile" href="spotify:">
+                            <img src="Images/spotify.png" alt="Spotify">
+                            <span>Spotify</span>
+                        </a>
+
+                        <a class="service-tile" href="https://www.youtube.com">
+                            <img src="Images/youtube.png" alt="YouTube">
+                            <span>YouTube</span>
+                        </a>
+
+                        <a class="service-tile" href="https://www.twitch.tv">
+                            <img src="Images/twitch.png" alt="Twitch">
+                            <span>Twitch</span>
+                        </a>
+
+                        <a class="service-tile" href="https://www.netflix.com">
+                            <img src="Images/netflix.png" alt="Netflix">
+                            <span>Netflix</span>
+                        </a>
+
+                        <a class="service-tile" href="https://www.max.com">
+                            <img src="Images/max.png" alt="Max">
+                            <span>Max</span>
+                        </a>
+
+                        <a class="service-tile" href="https://www.disneyplus.com">
+                            <img src="Images/disneypluss.png" alt="Disney+">
+                            <span>Disney+</span>
+                        </a>
+
+                        <a class="service-tile" href="https://www.primevideo.com">
+                            <img src="Images/prime.png" alt="Prime Video">
+                            <span>Prime Video</span>
+                        </a>
+
+                        <a class="service-tile" href="https://tv.nrk.no">
+                            <img src="Images/nrk.png" alt="NRK TV">
+                            <span>NRK TV</span>
+                        </a>
+
+                        <a class="service-tile" href="https://play.tv2.no">
+                            <img src="Images/tv2.png" alt="TV 2 Play">
+                            <span>TV 2 Play</span>
+                        </a>
+
+                        <a class="service-tile" href="https://www.viaplay.no">
+                            <img src="Images/viaplay.png" alt="Viaplay">
+                            <span>Viaplay</span>
+                        </a>
+
+                        <a class="service-tile" href="https://www.strim.no">
+                            <img src="Images/strim.png" alt="Strim">
+                            <span>Strim</span>
+                        </a>
+
+                        <a class="service-tile" href="https://www.yr.no">
+                            <img src="Images/yr.png" alt="Yr">
+                            <span>Yr</span>
+                        </a>
+
                     </div>
                 </div>
             </main>
@@ -208,7 +348,6 @@
                 <div class="vg-header">Vg</div>
                 <div class="vg-content" id="vg-news" aria-live="polite">
                     <div class="news-list">
-                        <!-- news items will be injected here by the existing script -->
                         <div class="news-item">
                             <div style="flex:1">
                                 <div class="news-title">Laster nyheter ...</div>
@@ -217,38 +356,69 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="vg-footer">
+                    <div id="news-updated" class="panel-status" style="font-size:0.78rem;color:var(--muted)">Venter på nyheter...</div>
+                    <button id="refresh-news" class="refresh-button">Oppdater</button>
+                </div>
             </aside>
 
         </div>
     </div>
 
     <script>
-        /* Keep the existing weather/news script behavior but adapt some selectors used above. */
-
         const WEATHER = { city: "Oslo", latitude: 59.9139, longitude: 10.7522 };
         const WEATHER_INTERVAL = 5 * 60 * 1000;
         const NEWS_API_URL = "https://streaminghub-news.eskil-sundby.workers.dev/news";
         const NEWS_INTERVAL = 15 * 60 * 1000;
         const MAX_NEWS_ARTICLES = 5;
 
-        function setWeatherVisual(icon, tempText) {
-            const el = document.getElementById('weather-visual');
-            if (!el) return;
-            el.textContent = icon + ' ' + tempText;
+        function setWeatherVisual(icon, tempText, feelsText) {
+            const iconEl = document.getElementById('weather-icon');
+            const tempEl = document.getElementById('temperature');
+            const feelsEl = document.getElementById('feels-like');
+            if (iconEl) iconEl.textContent = icon;
+            if (tempEl) tempEl.textContent = tempText;
+            if (feelsEl) feelsEl.textContent = `Føles som ${feelsText}`;
         }
 
         async function updateWeather() {
+            const updateBtn = document.getElementById('refresh-weather');
+            if (updateBtn) { updateBtn.disabled = false; }
+
             try {
-                const url = `https://api.open-meteo.com/v1/forecast?latitude=${WEATHER.latitude}&longitude=${WEATHER.longitude}&current=temperature_2m,weather_code&timezone=Europe%2FOslo`;
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${WEATHER.latitude}&longitude=${WEATHER.longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Europe%2FOslo`;
                 const r = await fetch(url);
                 if (!r.ok) throw new Error('Værserver svarte med feil');
                 const data = await r.json();
                 const c = data.current;
                 if (!c) throw new Error('Ingen værdata');
+
                 const icon = getWeatherIcon(c.weather_code);
-                setWeatherVisual(icon, `${Math.round(c.temperature_2m)}°`);
+                const temp = Number.isFinite(c.temperature_2m) ? `${Math.round(c.temperature_2m)}°` : '--°';
+                const feels = Number.isFinite(c.apparent_temperature) ? `${Math.round(c.apparent_temperature)}°` : temp;
+
+                setWeatherVisual(icon, temp, feels);
+
+                const windEl = document.getElementById('wind');
+                const humEl = document.getElementById('humidity');
+                const updatedEl = document.getElementById('weather-updated');
+                if (windEl) windEl.textContent = (c.wind_speed_10m ?? '--') + ' km/t';
+                if (humEl) humEl.textContent = (c.relative_humidity_2m ?? '--') + ' %';
+
+                if (updatedEl && c.time) {
+                    const weatherTime = new Date(c.time);
+                    if (!isNaN(weatherTime.getTime())) {
+                        updatedEl.textContent = 'Værdata: ' + weatherTime.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
+                    }
+                }
+
             } catch (e) {
                 console.error(e);
+                const updatedEl = document.getElementById('weather-updated');
+                if (updatedEl) updatedEl.textContent = 'Værdata utilgjengelig';
+            } finally {
+                if (updateBtn) { updateBtn.disabled = false; updateBtn.textContent = 'Oppdater'; }
             }
         }
 
@@ -257,11 +427,18 @@
             if (code === 1 || code === 2) return '🌤️';
             if (code === 3) return '☁️';
             if (code >= 51 && code <= 67) return '🌧️';
+            if (code >= 71 && code <= 77) return '❄️';
+            if (code >= 80 && code <= 82) return '🌦️';
+            if (code >= 95) return '⛈️';
             return '🌡️';
         }
 
         async function updateNews(forceFresh = false) {
             const container = document.getElementById('vg-news');
+            const updatedEl = document.getElementById('news-updated');
+            const refreshBtn = document.getElementById('refresh-news');
+            if (refreshBtn) { refreshBtn.disabled = true; refreshBtn.textContent = 'Henter...'; }
+
             try {
                 const endpoint = forceFresh ? `${NEWS_API_URL}?refresh=1&t=${Date.now()}` : `${NEWS_API_URL}?t=${Date.now()}`;
                 const resp = await fetch(endpoint, { cache: 'no-store' });
@@ -271,6 +448,7 @@
 
                 if (!articles.length) {
                     container.innerHTML = '<div style="padding:12px;color:var(--muted)">Ingen nyheter tilgjengelig</div>';
+                    if (updatedEl) updatedEl.textContent = 'Ingen nyheter';
                     return;
                 }
 
@@ -314,13 +492,38 @@
 
                 container.innerHTML = '';
                 container.appendChild(list);
+
+                if (updatedEl) {
+                    const generated = data.updatedAt ? new Date(data.updatedAt) : null;
+                    const timeLabel = generated && !isNaN(generated.getTime()) ? generated.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' }) : 'ukjent tidspunkt';
+                    updatedEl.textContent = `${data.stale ? 'Sist lagret' : 'Hentet fra VG'}: ${timeLabel}`;
+                }
+
             } catch (e) {
                 console.error('Feil ved henting av nyheter:', e);
-                const el = document.getElementById('vg-news');
-                if (el) el.innerHTML = '<div style="padding:12px;color:var(--muted)">Kunne ikke hente nyheter</div>';
+                if (container) container.innerHTML = '<div style="padding:12px;color:var(--muted)">Kunne ikke hente nyheter</div>';
+                if (updatedEl) updatedEl.textContent = 'Feil ved oppdatering';
+            } finally {
+                if (refreshBtn) { refreshBtn.disabled = false; refreshBtn.textContent = 'Oppdater'; }
             }
         }
 
+        // Button handlers
+        document.addEventListener('click', function (ev) {
+            if (ev.target && ev.target.id === 'refresh-news') {
+                ev.target.disabled = true;
+                ev.target.textContent = 'Henter...';
+                updateNews(true).finally(() => { ev.target.disabled = false; ev.target.textContent = 'Oppdater'; });
+            }
+
+            if (ev.target && ev.target.id === 'refresh-weather') {
+                ev.target.disabled = true;
+                ev.target.textContent = 'Oppdaterer...';
+                updateWeather().finally(() => { ev.target.disabled = false; ev.target.textContent = 'Oppdater'; });
+            }
+        });
+
+        // Initial load and intervals
         updateWeather();
         updateNews();
         setInterval(updateWeather, WEATHER_INTERVAL);
