@@ -1,6 +1,12 @@
 {
-  "updatedAt": "2026-10-15T08:20:49.624255+00:00",
+  "updatedAt": "2026-10-15T08:27:36.014596+00:00",
   "articles": [
+    {
+      "title": "Blir revet bort av vannmassene",
+      "link": "https://www.vg.no/nyheter/i/OgqgK1/blir-revet-bort-av-vannmassene",
+      "pubDate": "2026-10-15T08:26:19+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/566c2e7606b0662364c1ef8b70aa0491b8401013.jpg"
+    },
     {
       "title": "Gais - AIK",
       "link": "https://www.vg.no/sport/i/77Q7yv/gais-aik",
@@ -12,12 +18,6 @@
       "link": "https://www.vg.no/sport/i/4O03pV/vasteraas-brommapojkarna",
       "pubDate": "2026-10-15T08:06:28+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7c633cf811a7166d02caa015735e2c64d031ecca.jpg"
-    },
-    {
-      "title": "Advares før skjebneuker: – Kan bite Glimt i ræva",
-      "link": "https://www.vg.no/sport/i/zlQkn1/bodoe-glimt-tre-uker-som-kan-definere-sesongen",
-      "pubDate": "2026-10-15T08:06:18+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/31517f921564b813eb61ffc541d4631c7ffc0328.jpg"
     }
   ]
 }
