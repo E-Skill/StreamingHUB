@@ -49,14 +49,18 @@
 
         .layout {
             display: grid;
-            grid-template-columns: 220px minmax(0, 1fr) 330px;
+            grid-template-columns: 220px minmax(0, 1fr) 360px;
             gap: 26px;
             align-items: start;
         }
 
+        /* Weather column stretches to bottom */
         .weather-area {
             padding-top: 16px;
-            min-height: 420px;
+            min-height: calc(100vh - 36px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .weather-head {
@@ -73,6 +77,14 @@
             background: transparent;
             border: none;
             margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* push update to bottom */
+            flex: 1 1 auto;
+        }
+
+        .weather-top {
+            /* keeps icon + temp at top */
         }
 
         .weather-temp-row {
@@ -83,7 +95,7 @@
         }
 
         .weather-temp {
-            font-size: 4.1rem;
+            font-size: 3.6rem; /* slightly reduced to fit */
             line-height: 0.96;
             font-weight: 400;
             letter-spacing: -0.06em;
@@ -92,7 +104,7 @@
         }
 
         .weather-temp .degree {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             display: inline-block;
             transform: translateY(12px);
             margin-left: 2px;
@@ -100,12 +112,12 @@
 
         .weather-feels {
             color: var(--muted);
-            font-size: 1.05rem;
+            font-size: 1.0rem;
             margin-top: 8px;
         }
 
         .weather-meta {
-            margin-top: 26px;
+            margin-top: 12px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px 12px;
@@ -122,8 +134,8 @@
         }
 
         .weather-updated {
-            margin-top: 28px;
-            font-size: 0.8rem;
+            margin-top: 12px;
+            font-size: 0.82rem;
             color: var(--muted-2);
             display: flex;
             align-items: center;
@@ -150,13 +162,14 @@
             flex-direction: column;
             align-items: center;
             padding-top: 8px;
+            min-height: calc(100vh - 36px);
         }
 
         h1.title {
-            margin: 0;
-            font-size: 3.7rem;
+            margin: 6px 0 0;
+            font-size: 2.9rem; /* smaller title */
             line-height: 1.05;
-            letter-spacing: -0.06em;
+            letter-spacing: -0.03em;
             font-weight: 800;
             color: var(--text);
             text-align: center;
@@ -164,8 +177,10 @@
 
         .services-block {
             width: 100%;
-            margin-top: 22px;
+            margin-top: 18px;
             padding-right: 10px;
+            display:flex;
+            justify-content:center; /* center the grid */
         }
 
         .section-header {
@@ -173,6 +188,9 @@
             font-size: 1rem;
             color: var(--muted);
             font-weight: 700;
+            width:100%;
+            max-width:700px;
+            text-align:left;
         }
 
         .service-grid {
@@ -181,6 +199,8 @@
             gap: 16px 18px;
             width: 100%;
             max-width: 700px;
+            margin: 0 auto; /* center horizontally */
+            justify-items: center;
         }
 
         .service-card {
@@ -219,18 +239,23 @@
             color: #f0f5ff;
         }
 
+        /* News column: full-height, show 7 articles and make list scroll to bottom */
         .news-area {
-            padding-top: 6px;
-            min-height: 100%;
+            padding-top: 10px;
+            min-height: calc(100vh - 36px);
+            display:flex;
+            flex-direction:column;
         }
 
         .news-panel {
             width: 100%;
-            min-height: 800px;
+            min-height: calc(100vh - 36px);
             background: transparent;
             border: none;
             color: var(--text);
             padding: 0;
+            display:flex;
+            flex-direction:column;
         }
 
         .news-header {
@@ -238,6 +263,7 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 12px;
+            padding-right: 6px;
         }
 
         .news-header h2 {
@@ -249,7 +275,11 @@
         .news-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
+            overflow:auto;
+            padding-right: 6px;
+            /* make it stretch to bottom */
+            flex: 1 1 auto;
         }
 
         .news-item {
@@ -258,8 +288,8 @@
             gap: 12px;
             color: var(--text);
             text-decoration: none;
-            min-height: 72px;
-            padding: 0 0 8px;
+            min-height: 86px; /* larger full-size item */
+            padding: 6px 0 6px 0;
             border-bottom: 1px solid var(--line);
         }
 
@@ -268,8 +298,8 @@
         }
 
         .news-thumb {
-            width: 76px;
-            height: 60px;
+            width: 96px;
+            height: 72px;
             border-radius: 8px;
             object-fit: cover;
             background: rgba(255,255,255,0.06);
@@ -282,7 +312,7 @@
         }
 
         .news-title {
-            font-size: 0.92rem;
+            font-size: 0.98rem;
             line-height: 1.3;
             font-weight: 600;
             color: var(--text);
@@ -293,8 +323,8 @@
 
         .news-time {
             color: var(--muted-2);
-            font-size: 0.74rem;
-            margin-top: 5px;
+            font-size: 0.78rem;
+            margin-top: 6px;
         }
 
         .news-footer {
@@ -329,7 +359,7 @@
             .service-grid {
                 grid-template-columns: repeat(3, minmax(110px, 1fr));
             }
-            h1.title { font-size: 3.1rem; }
+            h1.title { font-size: 2.6rem; }
         }
 
         @media (max-width: 768px) {
@@ -340,7 +370,7 @@
             .weather-area,
             .news-area { min-height: auto; }
             .service-grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
-            h1.title { font-size: 2.5rem; }
+            h1.title { font-size: 2rem; }
         }
     </style>
 </head>
@@ -352,20 +382,22 @@
                 <div class="weather-head">Været</div>
 
                 <div class="weather-box">
-                    <div class="weather-temp-row">
-                        <div id="weather-icon" style="font-size:3.7rem; line-height:1;">☁️</div>
-                        <div class="weather-temp" id="temperature">14<span class="degree">°</span></div>
-                    </div>
+                    <div class="weather-top">
+                        <div class="weather-temp-row">
+                            <div id="weather-icon" style="font-size:3.7rem; line-height:1;">☁️</div>
+                            <div class="weather-temp" id="temperature">--<span class="degree">°</span></div>
+                        </div>
 
-                    <div class="weather-feels" id="feels-like">Føles som 11°</div>
+                        <div class="weather-feels" id="feels-like">Føles som --°</div>
 
-                    <div class="weather-meta">
-                        <div><strong>Vind:</strong> <span id="wind">28.1 km/t</span></div>
-                        <div><strong>Luftfuktighet:</strong> <span id="humidity">88 %</span></div>
+                        <div class="weather-meta">
+                            <div><strong>Vind:</strong> <span id="wind">-- km/t</span></div>
+                            <div><strong>Luftfuktighet:</strong> <span id="humidity">-- %</span></div>
+                        </div>
                     </div>
 
                     <div class="weather-updated">
-                        <span id="weather-updated">Værdato: 14:15</span>
+                        <span id="weather-updated">Venter på værdata...</span>
                         <button id="refresh-weather" type="button">Oppdater</button>
                     </div>
                 </div>
@@ -375,67 +407,69 @@
                 <h1 class="title">Streaming HUB</h1>
 
                 <div class="services-block">
-                    <div class="section-header">Strømmetjenester</div>
-                    <div class="service-grid">
-                        <a class="service-card" href="spotify:">
-                            <img class="service-logo" src="Images/spotify.png" alt="Spotify">
-                            <div class="service-label">Spotify</div>
-                        </a>
+                    <div style="width:100%;max-width:700px;">
+                        <div class="section-header">Strømmetjenester</div>
+                        <div class="service-grid">
+                            <a class="service-card" href="spotify:">
+                                <img class="service-logo" src="Images/spotify.png" alt="Spotify">
+                                <div class="service-label">Spotify</div>
+                            </a>
 
-                        <a class="service-card" href="https://www.youtube.com">
-                            <img class="service-logo" src="Images/youtube.png" alt="YouTube">
-                            <div class="service-label">YouTube</div>
-                        </a>
+                            <a class="service-card" href="https://www.youtube.com">
+                                <img class="service-logo" src="Images/youtube.png" alt="YouTube">
+                                <div class="service-label">YouTube</div>
+                            </a>
 
-                        <a class="service-card" href="https://www.twitch.tv">
-                            <img class="service-logo" src="Images/twitch.png" alt="Twitch">
-                            <div class="service-label">Twitch</div>
-                        </a>
+                            <a class="service-card" href="https://www.twitch.tv">
+                                <img class="service-logo" src="Images/twitch.png" alt="Twitch">
+                                <div class="service-label">Twitch</div>
+                            </a>
 
-                        <a class="service-card" href="https://www.netflix.com">
-                            <img class="service-logo" src="Images/netflix.png" alt="Netflix">
-                            <div class="service-label">Netflix</div>
-                        </a>
+                            <a class="service-card" href="https://www.netflix.com">
+                                <img class="service-logo" src="Images/netflix.png" alt="Netflix">
+                                <div class="service-label">Netflix</div>
+                            </a>
 
-                        <a class="service-card" href="https://www.max.com">
-                            <img class="service-logo" src="Images/max.png" alt="Max">
-                            <div class="service-label">Max</div>
-                        </a>
+                            <a class="service-card" href="https://www.max.com">
+                                <img class="service-logo" src="Images/max.png" alt="Max">
+                                <div class="service-label">Max</div>
+                            </a>
 
-                        <a class="service-card" href="https://www.disneyplus.com">
-                            <img class="service-logo" src="Images/disneypluss.png" alt="Disney+">
-                            <div class="service-label">Disney+</div>
-                        </a>
+                            <a class="service-card" href="https://www.disneyplus.com">
+                                <img class="service-logo" src="Images/disneypluss.png" alt="Disney+">
+                                <div class="service-label">Disney+</div>
+                            </a>
 
-                        <a class="service-card" href="https://www.primevideo.com">
-                            <img class="service-logo" src="Images/prime.png" alt="Prime Video">
-                            <div class="service-label">Prime Video</div>
-                        </a>
+                            <a class="service-card" href="https://www.primevideo.com">
+                                <img class="service-logo" src="Images/prime.png" alt="Prime Video">
+                                <div class="service-label">Prime Video</div>
+                            </a>
 
-                        <a class="service-card" href="https://tv.nrk.no">
-                            <img class="service-logo" src="Images/nrk.png" alt="NRK TV">
-                            <div class="service-label">NRK TV</div>
-                        </a>
+                            <a class="service-card" href="https://tv.nrk.no">
+                                <img class="service-logo" src="Images/nrk.png" alt="NRK TV">
+                                <div class="service-label">NRK TV</div>
+                            </a>
 
-                        <a class="service-card" href="https://play.tv2.no">
-                            <img class="service-logo" src="Images/tv2.png" alt="TV 2 Play">
-                            <div class="service-label">TV 2 Play</div>
-                        </a>
+                            <a class="service-card" href="https://play.tv2.no">
+                                <img class="service-logo" src="Images/tv2.png" alt="TV 2 Play">
+                                <div class="service-label">TV 2 Play</div>
+                            </a>
 
-                        <a class="service-card" href="https://www.viaplay.no">
-                            <img class="service-logo" src="Images/viaplay.png" alt="Viaplay">
-                            <div class="service-label">Viaplay</div>
-                        </a>
+                            <a class="service-card" href="https://www.viaplay.no">
+                                <img class="service-logo" src="Images/viaplay.png" alt="Viaplay">
+                                <div class="service-label">Viaplay</div>
+                            </a>
 
-                        <a class="service-card" href="https://www.strim.no">
-                            <img class="service-logo" src="Images/strim.png" alt="Strim">
-                            <div class="service-label">Strim</div>
-                        </a>
+                            <a class="service-card" href="https://www.strim.no">
+                                <img class="service-logo" src="Images/strim.png" alt="Strim">
+                                <div class="service-label">Strim</div>
+                            </a>
 
-                        <a class="service-card" href="https://www.yr.no">
-                            <img class="service-logo" src="Images/yr.png" alt="Yr">
-                            <div class="service-label">Yr</div>
-                        </a>
+                            <a class="service-card" href="https://www.yr.no">
+                                <img class="service-logo" src="Images/yr.png" alt="Yr">
+                                <div class="service-label">Yr</div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -471,7 +505,7 @@
         const WEATHER_INTERVAL = 5 * 60 * 1000;
         const NEWS_API_URL = 'https://streaminghub-news.eskil-sundby.workers.dev/news';
         const NEWS_INTERVAL = 15 * 60 * 1000;
-        const MAX_NEWS_ARTICLES = 5;
+        const MAX_NEWS_ARTICLES = 7; // changed to 7
 
         async function updateWeather() {
             const tempEl = document.getElementById('temperature');
@@ -485,7 +519,7 @@
                 const url = 'https://api.open-meteo.com/v1/forecast' +
                     `?latitude=${WEATHER.latitude}` +
                     `&longitude=${WEATHER.longitude}` +
-                    '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m' +
+                    '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl,visibility' +
                     '&timezone=Europe%2FOslo';
 
                 const response = await fetch(url);
