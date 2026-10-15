@@ -34,7 +34,7 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            padding: 30px 16px;
+            padding: 28px 16px 40px;
         }
 
         h1 {
@@ -47,24 +47,25 @@
 
         .dashboard {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: 220px minmax(0, 1.7fr);
             gap: 20px;
             width: 100%;
-            max-width: 920px;
+            max-width: 1200px;
             margin-bottom: 30px;
+            align-items: start;
         }
 
         .panel {
             background-color: var(--panel);
             border: 2px solid var(--border);
             border-radius: 16px;
-            padding: 22px;
+            padding: 18px;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
             min-width: 0;
         }
 
         .panel h2 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             margin: 0;
             color: #f8fafc;
         }
@@ -79,10 +80,10 @@
 
         .panel-logo {
             display: block;
-            width: 30px;
-            height: 30px;
-            max-width: 30px;
-            max-height: 30px;
+            width: 26px;
+            height: 26px;
+            max-width: 26px;
+            max-height: 26px;
             object-fit: contain;
             flex-shrink: 0;
             border-radius: 6px;
@@ -94,69 +95,82 @@
             margin-top: 16px;
         }
 
+        /* Smaller weather panel in upper-left corner */
+        .weather-panel {
+            position: sticky;
+            top: 18px;
+            width: 100%;
+            min-height: 200px;
+            padding: 16px 14px;
+        }
+
         .weather-main {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 12px;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .weather-icon {
-            font-size: 3rem;
+            font-size: 2.4rem;
             line-height: 1;
         }
 
         .weather-temperature {
-            font-size: 2.8rem;
+            font-size: 2.1rem;
             font-weight: 700;
             line-height: 1.2;
         }
 
         .weather-description {
             color: #cbd5e1;
-            font-size: 0.95rem;
-            margin-top: 5px;
+            font-size: 0.82rem;
+            margin-top: 4px;
         }
 
         .weather-details {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 16px;
         }
 
         .weather-detail {
             background: #0b1220;
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 12px;
+            padding: 10px 8px;
         }
 
         .detail-label {
             color: var(--muted);
-            font-size: 0.8rem;
+            font-size: 0.72rem;
             margin-bottom: 5px;
         }
 
         .detail-value {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
+        }
+
+        .news-panel {
+            min-height: 420px;
+            width: 100%;
         }
 
         .news-list {
             display: flex;
             flex-direction: column;
-            gap: 0;
+            gap: 10px;
         }
 
-        /* Change news items to use a flex layout so thumbnails can appear */
         .news-item {
             display: flex;
             align-items: center;
             gap: 12px;
             color: var(--text);
             text-decoration: none;
-            padding: 13px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border);
             transition: color 0.2s ease;
         }
@@ -175,8 +189,8 @@
         }
 
         .news-thumb {
-            width: 88px;
-            height: 60px;
+            width: 90px;
+            height: 62px;
             object-fit: cover;
             border-radius: 8px;
             flex-shrink: 0;
@@ -185,13 +199,13 @@
 
         .news-content {
             flex: 1 1 auto;
-            min-width: 0; /* allow text truncation inside flex */
+            min-width: 0;
         }
 
         .news-title {
-            font-size: 0.95rem;
+            font-size: 0.96rem;
             font-weight: 600;
-            line-height: 1.4;
+            line-height: 1.35;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -200,7 +214,7 @@
         .news-time {
             display: block;
             color: var(--muted);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             margin-top: 5px;
         }
 
@@ -241,7 +255,7 @@
 
         .section-title {
             width: 100%;
-            max-width: 920px;
+            max-width: 1200px;
             font-size: 1.1rem;
             color: #cbd5e1;
             margin: 0 0 16px;
@@ -252,7 +266,7 @@
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 20px;
             width: 100%;
-            max-width: 920px;
+            max-width: 1200px;
         }
 
         .card {
@@ -297,9 +311,14 @@
             font-weight: 600;
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 900px) {
             .dashboard {
                 grid-template-columns: 1fr;
+            }
+
+            .weather-panel {
+                position: static;
+                min-height: 0;
             }
 
             .grid {
@@ -350,7 +369,7 @@
 
     <div class="dashboard">
 
-        <section class="panel">
+        <section class="panel weather-panel">
             <div class="panel-header">
                 <h2 id="weather-location">Været i Oslo</h2>
             </div>
@@ -382,7 +401,7 @@
             </div>
         </section>
 
-        <section class="panel">
+        <section class="panel news-panel">
             <div class="panel-header">
                 <h2>VG</h2>
                 <a href="https://www.vg.no" target="_blank" rel="noopener noreferrer" aria-label="Åpne VG.no">
@@ -466,7 +485,6 @@
             <span>Yr</span>
         </a>
 
-
     </div>
 
     <script>
@@ -480,7 +498,7 @@
         const NEWS_API_URL = "https://streaminghub-news.eskil-sundby.workers.dev/news";
 
         const NEWS_INTERVAL = 15 * 60 * 1000;
-        const MAX_NEWS_ARTICLES = 3;
+        const MAX_NEWS_ARTICLES = 5;
 
         async function updateWeather() {
             const temperatureElement = document.getElementById("temperature");
@@ -628,7 +646,6 @@
                     link.target = "_blank";
                     link.rel = "noopener noreferrer";
 
-                    // If there's an image, create a thumbnail element
                     if (article.image) {
                         try {
                             const img = document.createElement('img');
@@ -637,7 +654,6 @@
                             img.alt = article.title || '';
                             link.appendChild(img);
                         } catch (_) {
-                            // if image creation fails, continue without it
                         }
                     }
 
