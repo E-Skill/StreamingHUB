@@ -12,7 +12,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-RSS_URL = "https://www.vg.no/rss/feed/forsiden/"
+RSS_URL = "https://www.vg.no/rss/feed/?format=rss"
 NEWS_FILE = Path("news.json")
 MAX_ARTICLES = 3
 STATIC_NEWS_DIR = Path("static/news")
