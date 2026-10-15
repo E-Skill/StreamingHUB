@@ -224,10 +224,10 @@
         /* fixed-width columns so spacing is symmetric and grid is centered */
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(4, 140px);
+            grid-template-columns: repeat(4, 160px); /* increased column width */
             gap: 16px 28px;
             width: 100%;
-            max-width: 700px;
+            max-width: 800px; /* adjusted to match wider columns */
             margin: 0 auto; /* center horizontally */
             justify-content: center; /* center the grid block */
             justify-items: center;
@@ -238,15 +238,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 140px;
-            min-height: 118px;
+            width: 160px; /* increased card width */
+            min-height: 140px; /* increased height to fit larger logo */
             border-radius: 10px;
             background: rgba(18, 31, 45, 0.92);
             border: 1px solid rgba(255,255,255,0.04);
             text-decoration: none;
             color: var(--text);
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.01);
-            padding: 12px 10px 10px;
+            padding: 14px 12px 12px; /* slightly more padding */
             transition: transform 0.12s ease, filter 0.12s ease;
         }
 
@@ -256,11 +256,11 @@
         }
 
         .service-logo {
-            width: 56px;
-            height: 56px;
+            width: 72px; /* larger logo */
+            height: 72px;
             object-fit: contain;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .service-label {
@@ -387,7 +387,8 @@
                 gap: 20px;
             }
             .service-grid {
-                grid-template-columns: repeat(3, minmax(110px, 1fr));
+                grid-template-columns: repeat(3, minmax(120px, 1fr));
+                max-width: 720px;
             }
             h1.title { font-size: 2.1rem; }
         }
@@ -399,7 +400,7 @@
             }
             .weather-area,
             .news-area { min-height: auto; }
-            .service-grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+            .service-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
             h1.title { font-size: 1.8rem; }
         }
     </style>
