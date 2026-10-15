@@ -7,736 +7,322 @@
 
     <title>Streaming HUB</title>
 
-    <meta name="theme-color" content="#080c14">
+    <meta name="theme-color" content="#06070a">
     <meta name="description" content="Streaming HUB med strømmetjenester, vær og siste nyheter fra VG.">
 
     <style>
         :root {
-            --background: #080c14;
-            --panel: #111827;
-            --panel-hover: #1b263b;
-            --border: #1f293d;
+            --background: #0a0e12; /* page background (very dark) */
+            --panel-dim: #0e151b;  /* slightly lighter for tiles */
+            --panel: #111827; /* fallback panel color */
+            --border: rgba(255,255,255,0.02);
             --accent: #3b82f6;
             --text: #ffffff;
-            --muted: #94a3b8;
+            --muted: rgba(255,255,255,0.55);
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
+
+        html, body { height: 100%; }
 
         body {
-            background-color: var(--background);
+            margin: 0;
+            background: var(--background);
             color: var(--text);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 28px 16px 40px;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 36px 24px;
         }
 
-        h1 {
-            margin: 10px 0 30px;
-            font-size: 2.8rem;
-            letter-spacing: 2px;
-            text-align: center;
-            color: #f8fafc;
-        }
-
-        .dashboard {
-            display: grid;
-            grid-template-columns: 220px minmax(0, 1.7fr);
-            gap: 20px;
+        .stage {
             width: 100%;
-            max-width: 1200px;
-            margin-bottom: 30px;
+            max-width: 1400px;
+            min-height: calc(100vh - 72px);
+        }
+
+        /* three-column layout: left small, center large, right tall */
+        .layout {
+            display: grid;
+            grid-template-columns: 200px 1fr 360px;
+            gap: 28px;
             align-items: start;
         }
 
-        .panel {
-            background-color: var(--panel);
-            border: 2px solid var(--border);
-            border-radius: 16px;
-            padding: 18px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-            min-width: 0;
-        }
-
-        .panel h2 {
-            font-size: 1.1rem;
-            margin: 0;
-            color: #f8fafc;
-        }
-
-        .panel-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-
-        .panel-logo {
-            display: block;
-            width: 26px;
-            height: 26px;
-            max-width: 26px;
-            max-height: 26px;
-            object-fit: contain;
-            flex-shrink: 0;
-            border-radius: 6px;
-        }
-
-        .panel-status {
-            color: var(--muted);
-            font-size: 0.78rem;
-            margin-top: 16px;
-        }
-
-        /* Smaller weather panel in upper-left corner */
-        .weather-panel {
-            position: sticky;
-            top: 18px;
-            width: 100%;
-            min-height: 200px;
-            padding: 16px 14px;
-        }
-
-        .weather-main {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-
-        .weather-icon {
-            font-size: 2.4rem;
-            line-height: 1;
-        }
-
-        .weather-temperature {
-            font-size: 2.1rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .weather-description {
-            color: #cbd5e1;
-            font-size: 0.82rem;
-            margin-top: 4px;
-        }
-
-        .weather-details {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-            margin-top: 16px;
-        }
-
-        .weather-detail {
-            background: #0b1220;
+        /* Panels that should blend with background (weather + VG) */
+        .blend-panel {
+            background: var(--background);
+            color: var(--text);
             border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 10px 8px;
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: none;
         }
 
-        .detail-label {
-            color: var(--muted);
-            font-size: 0.72rem;
-            margin-bottom: 5px;
-        }
-
-        .detail-value {
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .news-panel {
-            min-height: 420px;
-            width: 100%;
-        }
-
-        .news-list {
+        /* Weather tiny card on the left */
+        .weather-card {
+            width: 200px;
+            height: 160px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            justify-content: flex-start;
+            position: relative;
         }
+
+        .weather-card h3 {
+            margin: 0 0 8px;
+            font-size: 0.95rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .weather-visual {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 2.6rem;
+        }
+
+        /* Center column: title and streaming tiles */
+        .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding-top: 16px;
+        }
+
+        h1.title {
+            margin: 0;
+            font-size: 48px;
+            letter-spacing: 1px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .services-row {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+            justify-content: center;
+            padding-top: 8px;
+        }
+
+        .service-tile {
+            width: 140px;
+            height: 120px;
+            background: var(--panel-dim);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Right column: VG news - large and tall */
+        .vg-panel {
+            min-height: 640px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-top: 18px;
+        }
+
+        .vg-header {
+            padding: 10px 18px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* Make news list blend inside the right column with white text for headings */
+        .vg-content {
+            flex: 1 1 auto;
+            overflow: auto;
+            padding: 0 18px 18px 18px;
+        }
+
+        .news-list { display: flex; flex-direction: column; gap: 8px; }
 
         .news-item {
             display: flex;
-            align-items: center;
             gap: 12px;
-            color: var(--text);
-            text-decoration: none;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
-            transition: color 0.2s ease;
-        }
-
-        .news-item:first-child {
-            padding-top: 0;
-        }
-
-        .news-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .news-item:hover {
-            color: #60a5fa;
-        }
-
-        .news-thumb {
-            width: 90px;
-            height: 62px;
-            object-fit: cover;
-            border-radius: 8px;
-            flex-shrink: 0;
-            background: #0b1220;
-        }
-
-        .news-content {
-            flex: 1 1 auto;
-            min-width: 0;
-        }
-
-        .news-title {
-            font-size: 0.96rem;
-            font-weight: 600;
-            line-height: 1.35;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .news-time {
-            display: block;
-            color: var(--muted);
-            font-size: 0.72rem;
-            margin-top: 5px;
-        }
-
-        .news-message {
-            color: #cbd5e1;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .news-footer {
-            display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .refresh-button {
-            color: #93c5fd;
-            background: #172554;
-            border: 1px solid #1d4ed8;
-            border-radius: 8px;
-            padding: 8px 12px;
-            font: inherit;
-            font-size: 0.8rem;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        .refresh-button:hover:not(:disabled) {
-            background: #1e3a8a;
-        }
-
-        .refresh-button:disabled {
-            opacity: 0.65;
-            cursor: wait;
-        }
-
-        .section-title {
-            width: 100%;
-            max-width: 1200px;
-            font-size: 1.1rem;
-            color: #cbd5e1;
-            margin: 0 0 16px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        .card {
-            background-color: var(--panel);
-            border: 2px solid var(--border);
-            border-radius: 16px;
-            text-align: center;
-            padding: 26px 15px;
+            padding: 10px 6px;
+            color: #fff;
             text-decoration: none;
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-width: 0;
-            min-height: 135px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
-            transition:
-                transform 0.2s ease,
-                background-color 0.2s ease,
-                border-color 0.2s ease,
-                box-shadow 0.2s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
         }
 
-        .card:hover {
-            background-color: var(--panel-hover);
-            border-color: var(--accent);
-            transform: scale(1.04);
-            box-shadow: 0 10px 22px rgba(59, 130, 246, 0.3);
+        .news-title { font-size: 0.95rem; font-weight:700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .news-time { color: var(--muted); font-size: 0.75rem; margin-top: 6px; }
+
+        .news-thumb { width: 90px; height: 70px; background: var(--panel-dim); border-radius: 6px; object-fit: cover; }
+
+        /* Subtle responsive adjustments */
+        @media (max-width: 1100px) {
+            .layout { grid-template-columns: 160px 1fr 300px; gap: 18px; }
+            h1.title { font-size: 40px; }
+            .service-tile { width: 120px; height: 100px; }
         }
 
-        .card img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            margin-bottom: 14px;
-            border-radius: 8px;
+        @media (max-width: 800px) {
+            .layout { grid-template-columns: 1fr; }
+            .center { padding-top: 0; }
+            .vg-panel { order: 3; min-height: 240px; }
+            .weather-card { order: 1; margin-bottom: 12px; }
         }
 
-        .card span {
-            font-size: 1.05rem;
-            font-weight: 600;
-        }
-
-        @media (max-width: 900px) {
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-
-            .weather-panel {
-                position: static;
-                min-height: 0;
-            }
-
-            .grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 12px;
-            }
-
-            .card {
-                padding: 20px 8px;
-                min-height: 120px;
-            }
-
-            .card img {
-                width: 48px;
-                height: 48px;
-            }
-
-            .card span {
-                font-size: 0.9rem;
-            }
-
-            .news-thumb {
-                width: 72px;
-                height: 52px;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .panel {
-                padding: 17px;
-            }
-
-            .news-thumb {
-                width: 64px;
-                height: 46px;
-            }
-        }
     </style>
 </head>
 
 <body>
+    <div class="stage">
+        <div class="layout">
 
-    <h1>Streaming HUB</h1>
+            <!-- left: small weather that blends in -->
+            <aside class="blend-panel weather-card">
+                <h3>Været</h3>
+                <div class="weather-visual" id="weather-visual">☁️<div style="font-size:12px;margin-left:8px;display:inline-block">21°</div></div>
+            </aside>
 
-    <div class="dashboard">
+            <!-- center: big title + streaming services -->
+            <main class="center">
+                <h1 class="title">Streaming HUB</h1>
 
-        <section class="panel weather-panel">
-            <div class="panel-header">
-                <h2 id="weather-location">Været i Oslo</h2>
-            </div>
-
-            <div class="weather-main">
-                <div class="weather-icon" id="weather-icon">☁️</div>
-
-                <div>
-                    <div class="weather-temperature" id="temperature">-- °C</div>
-                    <div class="weather-description" id="weather-description">Henter værdata...</div>
+                <div style="width:100%;max-width:760px;">
+                    <h2 style="font-size:0.95rem;color:var(--muted);margin:0 0 10px 0;font-weight:700">Strømmetjenester</h2>
+                    <div class="services-row">
+                        <div class="service-tile"></div>
+                        <div class="service-tile"></div>
+                        <div class="service-tile"></div>
+                        <div class="service-tile"></div>
+                    </div>
                 </div>
-            </div>
+            </main>
 
-            <div class="weather-details">
-                <div class="weather-detail">
-                    <div class="detail-label">Vind</div>
-                    <div class="detail-value" id="wind">-- km/t</div>
+            <!-- right: VG news that blends into background with white text -->
+            <aside class="blend-panel vg-panel">
+                <div class="vg-header">Vg</div>
+                <div class="vg-content" id="vg-news" aria-live="polite">
+                    <div class="news-list">
+                        <!-- news items will be injected here by the existing script -->
+                        <div class="news-item">
+                            <div style="flex:1">
+                                <div class="news-title">Laster nyheter ...</div>
+                                <div class="news-time">--</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </aside>
 
-                <div class="weather-detail">
-                    <div class="detail-label">Luftfuktighet</div>
-                    <div class="detail-value" id="humidity">-- %</div>
-                </div>
-            </div>
-
-            <div class="news-footer">
-                <div class="panel-status" id="weather-updated">Venter på værdata...</div>
-                <button type="button" class="refresh-button" id="refresh-weather">Oppdater</button>
-            </div>
-        </section>
-
-        <section class="panel news-panel">
-            <div class="panel-header">
-                <h2>VG</h2>
-                <a href="https://www.vg.no" target="_blank" rel="noopener noreferrer" aria-label="Åpne VG.no">
-                    <img src="Images/vg.png" alt="VG-logo" class="panel-logo">
-                </a>
-            </div>
-
-            <div class="news-list" id="vg-news" aria-live="polite">
-                <div class="news-message">Henter de siste nyhetene fra VG...</div>
-            </div>
-
-            <div class="news-footer">
-                <div class="panel-status" id="news-updated">Venter på nyheter...</div>
-                <button type="button" class="refresh-button" id="refresh-news">Oppdater</button>
-            </div>
-        </section>
-
-    </div>
-
-    <h2 class="section-title">Strømmetjenester</h2>
-
-    <div class="grid">
-
-        <a href="spotify:" class="card">
-            <img src="Images/spotify.png" alt="Spotify">
-            <span>Spotify</span>
-        </a>
-
-        <a href="https://www.youtube.com" class="card">
-            <img src="Images/youtube.png" alt="YouTube">
-            <span>YouTube</span>
-        </a>
-
-        <a href="https://www.twitch.tv" class="card">
-            <img src="Images/twitch.png" alt="Twitch">
-            <span>Twitch</span>
-        </a>
-
-        <a href="https://www.netflix.com" class="card">
-            <img src="Images/netflix.png" alt="Netflix">
-            <span>Netflix</span>
-        </a>
-
-        <a href="https://www.max.com" class="card">
-            <img src="Images/max.png" alt="Max">
-            <span>Max (HBO)</span>
-        </a>
-
-        <a href="https://www.disneyplus.com" class="card">
-            <img src="Images/disneypluss.png" alt="Disney+">
-            <span>Disney+</span>
-        </a>
-
-        <a href="https://www.primevideo.com" class="card">
-            <img src="Images/prime.png" alt="Prime Video">
-            <span>Prime Video</span>
-        </a>
-
-        <a href="https://tv.nrk.no" class="card">
-            <img src="Images/nrk.png" alt="NRK TV">
-            <span>NRK TV</span>
-        </a>
-
-        <a href="https://play.tv2.no" class="card">
-            <img src="Images/tv2.png" alt="TV 2 Play">
-            <span>TV 2 Play</span>
-        </a>
-
-        <a href="https://www.viaplay.no" class="card">
-            <img src="Images/viaplay.png" alt="Viaplay">
-            <span>Viaplay</span>
-        </a>
-
-        <a href="https://www.strim.no" class="card">
-            <img src="Images/strim.png" alt="Strim">
-            <span>Strim</span>
-        </a>
-
-        <a href="https://www.yr.no" class="card">
-            <img src="Images/yr.png" alt="Været">
-            <span>Yr</span>
-        </a>
-
+        </div>
     </div>
 
     <script>
-        const WEATHER = {
-            city: "Oslo",
-            latitude: 59.9139,
-            longitude: 10.7522
-        };
+        /* Keep the existing weather/news script behavior but adapt some selectors used above. */
 
+        const WEATHER = { city: "Oslo", latitude: 59.9139, longitude: 10.7522 };
         const WEATHER_INTERVAL = 5 * 60 * 1000;
         const NEWS_API_URL = "https://streaminghub-news.eskil-sundby.workers.dev/news";
-
         const NEWS_INTERVAL = 15 * 60 * 1000;
         const MAX_NEWS_ARTICLES = 5;
 
-        async function updateWeather() {
-            const temperatureElement = document.getElementById("temperature");
-            const descriptionElement = document.getElementById("weather-description");
-            const updatedElement = document.getElementById("weather-updated");
-
-            const url =
-                "https://api.open-meteo.com/v1/forecast" +
-                `?latitude=${WEATHER.latitude}` +
-                `&longitude=${WEATHER.longitude}` +
-                "&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m" +
-                "&timezone=Europe%2FOslo";
-
-            try {
-                const response = await fetch(url);
-
-                if (!response.ok) {
-                    throw new Error("Værserveren svarte med en feil.");
-                }
-
-                const data = await response.json();
-                const current = data?.current;
-
-                if (!current) {
-                    throw new Error("Værdata mangler.");
-                }
-
-                document.getElementById("weather-location").textContent = `Været i ${WEATHER.city}`;
-                temperatureElement.textContent = `${Math.round(current.temperature_2m)} °C`;
-                descriptionElement.textContent = describeWeather(current.weather_code);
-                document.getElementById("weather-icon").textContent = getWeatherIcon(current.weather_code);
-                document.getElementById("wind").textContent = `${current.wind_speed_10m} km/t`;
-                document.getElementById("humidity").textContent = `${current.relative_humidity_2m} %`;
-
-                const weatherTime = new Date(current.time);
-                updatedElement.textContent =
-                    "Værdata: " +
-                    weatherTime.toLocaleTimeString("no-NO", {
-                        hour: "2-digit",
-                        minute: "2-digit"
-                    });
-
-            } catch (error) {
-                console.error("Feil ved henting av vær:", error);
-
-                if (temperatureElement.textContent === "-- °C") {
-                    descriptionElement.textContent = "Kunne ikke hente værdata.";
-                }
-
-                updatedElement.textContent = "Værdata er midlertidig utilgjengelig.";
-            }
+        function setWeatherVisual(icon, tempText) {
+            const el = document.getElementById('weather-visual');
+            if (!el) return;
+            el.textContent = icon + ' ' + tempText;
         }
 
-        function describeWeather(code) {
-            const descriptions = {
-                0: "Klart",
-                1: "Hovedsakelig klart",
-                2: "Delvis skyet",
-                3: "Overskyet",
-                45: "Tåke",
-                48: "Rimtåke",
-                51: "Lett yr",
-                53: "Yr",
-                55: "Kraftig yr",
-                56: "Underkjølt yr",
-                57: "Kraftig underkjølt yr",
-                61: "Lett regn",
-                63: "Regn",
-                65: "Kraftig regn",
-                66: "Underkjølt regn",
-                67: "Kraftig underkjølt regn",
-                71: "Lett snøfall",
-                73: "Snøfall",
-                75: "Kraftig snøfall",
-                77: "Snøkorn",
-                80: "Lette regnbyger",
-                81: "Regnbyger",
-                82: "Kraftige regnbyger",
-                85: "Lette snøbyger",
-                86: "Kraftige snøbyger",
-                95: "Tordenvær",
-                96: "Tordenvær med hagl",
-                99: "Kraftig tordenvær med hagl"
-            };
-
-            return descriptions[code] ?? "Ukjente værforhold";
+        async function updateWeather() {
+            try {
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${WEATHER.latitude}&longitude=${WEATHER.longitude}&current=temperature_2m,weather_code&timezone=Europe%2FOslo`;
+                const r = await fetch(url);
+                if (!r.ok) throw new Error('Værserver svarte med feil');
+                const data = await r.json();
+                const c = data.current;
+                if (!c) throw new Error('Ingen værdata');
+                const icon = getWeatherIcon(c.weather_code);
+                setWeatherVisual(icon, `${Math.round(c.temperature_2m)}°`);
+            } catch (e) {
+                console.error(e);
+            }
         }
 
         function getWeatherIcon(code) {
-            if (code === 0) return "☀️";
-            if (code === 1 || code === 2) return "🌤️";
-            if (code === 3) return "☁️";
-            if (code === 45 || code === 48) return "🌫️";
-            if (code >= 51 && code <= 67) return "🌧️";
-            if (code >= 71 && code <= 77) return "❄️";
-            if (code >= 80 && code <= 82) return "🌦️";
-            if (code === 85 || code === 86) return "🌨️";
-            if (code >= 95) return "⛈️";
-            return "🌡️";
+            if (code === 0) return '☀️';
+            if (code === 1 || code === 2) return '🌤️';
+            if (code === 3) return '☁️';
+            if (code >= 51 && code <= 67) return '🌧️';
+            return '🌡️';
         }
 
-        let previousNews = [];
-
         async function updateNews(forceFresh = false) {
-            const newsContainer = document.getElementById("vg-news");
-            const updatedElement = document.getElementById("news-updated");
-
+            const container = document.getElementById('vg-news');
             try {
-                const endpoint = forceFresh
-                    ? `${NEWS_API_URL}?refresh=1&t=${Date.now()}`
-                    : `${NEWS_API_URL}?t=${Date.now()}`;
+                const endpoint = forceFresh ? `${NEWS_API_URL}?refresh=1&t=${Date.now()}` : `${NEWS_API_URL}?t=${Date.now()}`;
+                const resp = await fetch(endpoint, { cache: 'no-store' });
+                if (!resp.ok) throw new Error('Feil fra nyhets-API');
+                const data = await resp.json();
+                const articles = Array.isArray(data.articles) ? data.articles.slice(0, MAX_NEWS_ARTICLES) : [];
 
-                const response = await fetch(endpoint, { cache: "no-store" });
-                if (!response.ok) {
-                    let detail = "";
-                    try {
-                        const errorData = await response.json();
-                        detail = errorData.error ? ` ${errorData.error}` : "";
-                    } catch (_) {}
-                    throw new Error(`Nyhetsserveren svarte HTTP ${response.status}.${detail}`);
-                }
-
-                const data = await response.json();
-                if (!data || !Array.isArray(data.articles)) {
-                    throw new Error("Nyhetsserveren returnerte ugyldige nyhetsdata.");
-                }
-
-                const articles = data.articles.slice(0, MAX_NEWS_ARTICLES);
-                if (articles.length === 0) {
-                    newsContainer.replaceChildren();
-                    const message = document.createElement("div");
-                    message.className = "news-message";
-                    message.textContent = "VG-feeden inneholder ingen tilgjengelige nyheter akkurat nå.";
-                    newsContainer.appendChild(message);
-                    updatedElement.textContent = "Ingen nyheter tilgjengelig";
-                    previousNews = [];
+                if (!articles.length) {
+                    container.innerHTML = '<div style="padding:12px;color:var(--muted)">Ingen nyheter tilgjengelig</div>';
                     return;
                 }
 
-                const fragment = document.createDocumentFragment();
-                articles.forEach(article => {
-                    const link = document.createElement("a");
-                    link.className = "news-item";
-                    link.href = article.link || "https://www.vg.no";
-                    link.target = "_blank";
-                    link.rel = "noopener noreferrer";
+                const list = document.createElement('div');
+                list.className = 'news-list';
 
-                    if (article.image) {
-                        try {
-                            const img = document.createElement('img');
-                            img.className = 'news-thumb';
-                            img.src = article.image;
-                            img.alt = article.title || '';
-                            link.appendChild(img);
-                        } catch (_) {
-                        }
+                for (const art of articles) {
+                    const a = document.createElement('a');
+                    a.href = art.link || '#';
+                    a.className = 'news-item';
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+
+                    if (art.image) {
+                        const img = document.createElement('img');
+                        img.className = 'news-thumb';
+                        img.src = art.image;
+                        img.alt = art.title || '';
+                        a.appendChild(img);
                     }
 
-                    const content = document.createElement("div");
-                    content.className = "news-content";
+                    const meta = document.createElement('div');
+                    meta.style.flex = '1';
 
-                    const title = document.createElement("div");
-                    title.className = "news-title";
-                    title.textContent = article.title || "Uten tittel";
-                    content.appendChild(title);
+                    const t = document.createElement('div');
+                    t.className = 'news-title';
+                    t.textContent = art.title || 'Uten tittel';
+                    meta.appendChild(t);
 
-                    if (article.pubDate) {
-                        const time = document.createElement("span");
-                        time.className = "news-time";
-                        const date = new Date(article.pubDate);
-                        time.textContent = Number.isNaN(date.getTime())
-                            ? article.pubDate
-                            : date.toLocaleString("no-NO", {
-                                day: "2-digit", month: "2-digit",
-                                hour: "2-digit", minute: "2-digit"
-                            });
-                        content.appendChild(time);
+                    if (art.pubDate) {
+                        const dt = document.createElement('div');
+                        dt.className = 'news-time';
+                        const d = new Date(art.pubDate);
+                        dt.textContent = isNaN(d.getTime()) ? art.pubDate : d.toLocaleString('no-NO', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+                        meta.appendChild(dt);
                     }
 
-                    link.appendChild(content);
-                    fragment.appendChild(link);
-                });
-
-                newsContainer.replaceChildren(fragment);
-                const generated = data.updatedAt ? new Date(data.updatedAt) : null;
-                const timeLabel = generated && !Number.isNaN(generated.getTime())
-                    ? generated.toLocaleTimeString("no-NO", { hour: "2-digit", minute: "2-digit" })
-                    : "ukjent tidspunkt";
-                updatedElement.textContent = `${data.stale ? "Sist lagret" : "Hentet fra VG"}: ${timeLabel}`;
-                if (forceFresh && data.fetchedAt) {
-                    const fetched = new Date(data.fetchedAt);
-                    if (!Number.isNaN(fetched.getTime())) {
-                        updatedElement.textContent = `Hentet fra VG: ${fetched.toLocaleTimeString("no-NO", { hour: "2-digit", minute: "2-digit" })}`;
-                    }
+                    a.appendChild(meta);
+                    list.appendChild(a);
                 }
-                previousNews = articles;
 
-            } catch (error) {
-                console.error("Feil ved henting av VG-nyheter:", error);
-                if (previousNews.length === 0) {
-                    const message = document.createElement("div");
-                    message.className = "news-message";
-                    message.textContent = `Kunne ikke hente nyheter. ${error.message}`;
-                    newsContainer.replaceChildren(message);
-                }
-                updatedElement.textContent = "Feil ved oppdatering";
+                container.innerHTML = '';
+                container.appendChild(list);
+            } catch (e) {
+                console.error('Feil ved henting av nyheter:', e);
+                const el = document.getElementById('vg-news');
+                if (el) el.innerHTML = '<div style="padding:12px;color:var(--muted)">Kunne ikke hente nyheter</div>';
             }
         }
 
-        const refreshButton = document.getElementById("refresh-news");
-        refreshButton.addEventListener("click", async function () {
-            if (refreshButton.disabled) return;
-            refreshButton.disabled = true;
-            refreshButton.textContent = "Henter fra VG...";
-            try {
-                await updateNews(true);
-            } finally {
-                refreshButton.disabled = false;
-                refreshButton.textContent = "Oppdater";
-            }
-        });
-
-        const weatherButton = document.getElementById("refresh-weather");
-        weatherButton.addEventListener("click", async function () {
-            if (weatherButton.disabled) return;
-            weatherButton.disabled = true;
-            weatherButton.textContent = "Oppdaterer...";
-            try {
-                await updateWeather();
-            } finally {
-                weatherButton.disabled = false;
-                weatherButton.textContent = "Oppdater";
-            }
-        });
-
         updateWeather();
         updateNews();
-
         setInterval(updateWeather, WEATHER_INTERVAL);
         setInterval(updateNews, NEWS_INTERVAL);
     </script>
