@@ -157,27 +157,33 @@
             cursor: pointer;
         }
 
-        /* hourly forecast */
+        /* hourly forecast (vertical list, no slider) */
         .hourly-forecast {
             display: flex;
+            flex-direction: column; /* stack vertically */
             gap: 8px;
             margin-top: 12px;
-            overflow-x: auto;
             padding-bottom: 6px;
+            overflow: visible; /* no slider */
         }
 
         .hour-card {
-            min-width: 68px;
+            width: 100%;
+            max-width: 220px;
             background: rgba(255,255,255,0.02);
             border-radius: 8px;
-            padding: 6px 8px;
-            text-align: center;
-            font-size: 0.86rem;
+            padding: 8px 10px;
+            text-align: left;
+            font-size: 0.9rem;
             color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .hour-icon { font-size: 1.05rem; }
-        .hour-temp { font-weight: 700; margin-top: 4px; }
+        .hour-left { display:flex; align-items:center; gap:8px; }
+        .hour-icon { font-size: 1.15rem; }
+        .hour-temp { font-weight: 700; }
 
         .main {
             display: flex;
@@ -415,7 +421,7 @@
                         <div class="weather-feels" id="feels-like">Føles som --°</div>
 
                         <div class="weather-meta">
-                            <div><strong>Vind:</strong> <span id="wind">-- km/t</span></div>
+                            <div><strong>Vind:</strong> <span id="wind">-- m/s</span></div>
                             <div><strong>Luftfuktighet:</strong> <span id="humidity">-- %</span></div>
                         </div>
 
@@ -423,7 +429,11 @@
                     </div>
 
                     <div class="weather-updated">
-                        <span id="weather-updated">Venter på værdata...</span>
+                        <div style="display:flex;flex-direction:column;align-items:flex-start">
+                            <span id="weather-updated">Venter på værdata...</span>
+                            <span id="clock" style="font-size:0.95rem;color:var(--muted);margin-top:6px">--:--:--</span>
+                        </div>
+
                         <button id="refresh-weather" type="button">Oppdater</button>
                     </div>
                 </div>
@@ -547,6 +557,15 @@
             return '🌡️';
         }
 
+        // live clock under the weather
+        function updateClock() {
+            const el = document.getElementById('clock');
+            if (!el) return;
+            el.textContent = new Date().toLocaleTimeString('no-NO');
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
         async function updateWeather() {
             const tempEl = document.getElementById('temperature');
             const feelsEl = document.getElementById('feels-like');
@@ -560,7 +579,7 @@
                 const url = 'https://api.open-meteo.com/v1/forecast' +
                     `?latitude=${WEATHER.latitude}` +
                     `&longitude=${WEATHER.longitude}` +
-                    '&hourly=temperature_2m,apparent_temperature,weathercode' +
+                    '&hourly=temperature_2m,apparent_temperature,weathercode,relativehumidity_2m' +
                     '&current_weather=true' +
                     '&timezone=Europe%2FOslo';
 
@@ -571,36 +590,40 @@
                 const current = data.current_weather ?? data.current;
                 if (!current) throw new Error('Ingen værdata');
 
+                // Open-Meteo returns temperatures in °C and windspeed in m/s by default for hourly/current_weather
+                // Use the returned values directly and label wind as m/s
                 const temp = Number.isFinite(current.temperature) ? Math.round(current.temperature) : (current.temperature_2m ? Math.round(current.temperature_2m) : '--');
-                const feels = (data.hourly && data.hourly.apparent_temperature) ? null : null; // we'll read apparent from hourly when available
                 const weatherCode = current.weathercode ?? current.weather_code ?? 0;
 
-                // Update main values
-                if (tempEl) tempEl.innerHTML = `${temp}<span class="degree">°</span>`;
-                if (feelsEl) {
-                    // try to get apparent_temperature for current hour from hourly arrays
-                    let apparent = null;
-                    if (data.hourly && Array.isArray(data.hourly.time) && Array.isArray(data.hourly.apparent_temperature)) {
-                        // find index matching current.time
-                        const nowKey = current.time || data.current_weather?.time || data.current?.time;
-                        const idx = data.hourly.time.indexOf(nowKey);
-                        if (idx >= 0) apparent = data.hourly.apparent_temperature[idx];
-                    }
-                    if (apparent == null) apparent = current.apparent_temperature ?? temp;
-                    feelsEl.textContent = `Føles som ${Number.isFinite(apparent) ? Math.round(apparent) : '--'}°`;
-                }
-
-                if (windEl) windEl.textContent = `${current.windspeed ?? current.wind_speed_10m ?? '--'} km/t`;
-                if (humEl) humEl.textContent = `${data.hourly?.relativehumidity_2m ? (function(){
-                    // try to find current hour humidity
+                // apparent temperature: try to find it in hourly arrays for the current hour
+                let apparentVal = null;
+                if (data.hourly && Array.isArray(data.hourly.time) && Array.isArray(data.hourly.apparent_temperature)) {
                     const nowKey = current.time || data.current_weather?.time || data.current?.time;
-                    const idx = data.hourly.time ? data.hourly.time.indexOf(nowKey) : -1;
-                    return (idx >= 0 ? data.hourly.relativehumidity_2m[idx] : '--');
-                })() : (current.relativehumidity_2m ?? current.relative_humidity_2m ?? '--')} %`;
+                    const idx = data.hourly.time.indexOf(nowKey);
+                    if (idx >= 0) apparentVal = data.hourly.apparent_temperature[idx];
+                }
+                if (apparentVal == null && current.apparent_temperature != null) apparentVal = current.apparent_temperature;
+
+                if (tempEl) tempEl.innerHTML = `${temp}<span class="degree">°</span>`;
+                if (feelsEl) feelsEl.textContent = `Føles som ${Number.isFinite(apparentVal) ? Math.round(apparentVal) : '--'}°`;
+
+                // wind in m/s
+                const windVal = current.windspeed ?? current.wind_speed_10m ?? current.windspeed_10m ?? '--';
+                if (windEl) windEl.textContent = `${Number.isFinite(windVal) ? (Math.round(windVal * 10) / 10) : '--'} m/s`;
+
+                // humidity from hourly if available, else fallback
+                let humVal = '--';
+                if (data.hourly && Array.isArray(data.hourly.time) && Array.isArray(data.hourly.relativehumidity_2m)) {
+                    const nowKey = current.time || data.current_weather?.time || data.current?.time;
+                    const idx = data.hourly.time.indexOf(nowKey);
+                    if (idx >= 0) humVal = data.hourly.relativehumidity_2m[idx];
+                }
+                if (humVal === '--') humVal = current.relativehumidity_2m ?? current.relative_humidity_2m ?? '--';
+                if (humEl) humEl.textContent = `${humVal} %`;
 
                 if (iconEl) iconEl.textContent = weatherIcon(weatherCode);
 
-                // build hourly forecast (next 8 hours)
+                // build vertical hourly forecast (next 3 hours)
                 if (hourlyContainer && data.hourly && Array.isArray(data.hourly.time)) {
                     hourlyContainer.innerHTML = '';
                     const times = data.hourly.time;
@@ -611,23 +634,24 @@
                     const nowKey = current.time || data.current_weather?.time || data.current?.time;
                     let idx = times.indexOf(nowKey);
                     if (idx === -1) {
-                        // fallback: use first index >= now
+                        // fallback: find first time >= now
                         const now = new Date().toISOString().slice(0,13); // quick hour prefix
                         idx = times.findIndex(t => t.startsWith(now));
                         if (idx === -1) idx = 0;
                     }
 
-                    const count = 8;
-                    for (let i = idx; i < Math.min(idx + count, times.length); i++) {
+                    const start = idx + 1; // next hour
+                    const count = 3;
+                    for (let i = start; i < Math.min(start + count, times.length); i++) {
                         const t = times[i];
-                        const hour = new Date(t).toLocaleTimeString('no-NO', { hour: '2-digit' });
+                        const hourLabel = new Date(t).toLocaleTimeString('no-NO', { hour: '2-digit' });
                         const tempH = temps[i] != null ? Math.round(temps[i]) : '--';
                         const codeH = codes[i] != null ? codes[i] : null;
                         const ic = codeH != null ? weatherIcon(Number(codeH)) : '';
 
                         const card = document.createElement('div');
                         card.className = 'hour-card';
-                        card.innerHTML = `<div class="hour-hour">${hour}</div><div class="hour-icon">${ic}</div><div class="hour-temp">${tempH}°</div>`;
+                        card.innerHTML = `<div class="hour-left"><div class="hour-icon">${ic}</div><div><div style="font-weight:600">${hourLabel}</div><div style="font-size:0.85rem;color:var(--muted);">Neste</div></div></div><div class="hour-temp">${tempH}°</div>`;
                         hourlyContainer.appendChild(card);
                     }
                 }
