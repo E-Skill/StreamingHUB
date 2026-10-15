@@ -26,12 +26,14 @@
 
         * { box-sizing: border-box; }
 
+        /* Prevent any horizontal scrolling */
         html, body {
             height: 100%;
             margin: 0;
             background: var(--bg);
             color: var(--text);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden; /* added to lock horizontal scrolling */
         }
 
         body {
@@ -169,7 +171,7 @@
 
         .hour-card {
             width: 100%;
-            max-width: 240px; /* a bit wider to fit larger cards */
+            max-width: 100%; /* ensure cards don't overflow their container */
             background: rgba(255,255,255,0.02);
             border-radius: 10px;
             padding: 12px 14px; /* increased padding for bigger appearance */
@@ -221,13 +223,13 @@
             text-align:left;
         }
 
-        /* fixed-width columns so spacing is symmetric and grid is centered */
+        /* responsive grid: avoids horizontal overflow by wrapping */
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(4, 160px); /* increased column width */
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 16px 28px;
             width: 100%;
-            max-width: 800px; /* adjusted to match wider columns */
+            max-width: 100%;
             margin: 0 auto; /* center horizontally */
             justify-content: center; /* center the grid block */
             justify-items: center;
@@ -238,7 +240,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 160px; /* increased card width */
+            width: 160px; /* card width remains reasonable */
             min-height: 140px; /* increased height to fit larger logo */
             border-radius: 10px;
             background: rgba(18, 31, 45, 0.92);
@@ -606,7 +608,7 @@
                 }
                 if (apparentVal == null && current.apparent_temperature != null) apparentVal = current.apparent_temperature;
 
-                if (tempEl) tempEl.innerHTML = `${temp}<span class="degree">°</span>`;
+                if (tempEl) tempEl.innerHTML = `${temp}<span class=\"degree\">°</span>`;
                 if (feelsEl) feelsEl.textContent = `Føles som ${Number.isFinite(apparentVal) ? Math.round(apparentVal) : '--'}°`;
 
                 // wind in m/s
