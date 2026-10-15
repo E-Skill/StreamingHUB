@@ -1,23 +1,22 @@
 {
-  "updatedAt": "2026-10-15T07:44:08.182881+00:00",
+  "updatedAt": "2026-10-15T07:52:53.550332+00:00",
   "articles": [
+    {
+      "title": "Økokrim: Fire av fem siktede for Nato-bedrageri blir fremstilt for varetekt",
+      "link": "https://www.vg.no/nyheter/i/64K3x8/oekokrim-fire-av-fem-siktede-for-nato-bedrageri-blir-fremstilt-for-varetekt",
+      "pubDate": "2026-10-15T07:52:06+00:00"
+    },
+    {
+      "title": "Medier: Fifa ønsker regelendring etter VM-kontrovers",
+      "link": "https://www.vg.no/sport/i/d7pRXB/medier-fifa-oensker-regelendring-etter-vm-kontrovers",
+      "pubDate": "2026-10-15T07:49:34+00:00",
+      "image": "https://akamai.vgc.no/v2/images/a94b6a10-408b-3bf8-92f8-481504974e71?fit=crop&format=auto&h=1267&w=1900&s=378bffdb8cfd79b475c01a7159e6306d1c98698f"
+    },
     {
       "title": "– Selger må se på sine egne forventninger til pris",
       "link": "https://www.vg.no/i/eGXMMR/selger-maa-se-paa-sine-egne-forventninger-til-pris",
       "pubDate": "2026-10-15T07:35:20+00:00",
       "image": "https://akamai.vgc.no/v2/images/852e61bb-6067-3f74-b7d8-36026cc72360?fit=crop&format=auto&h=1267&w=1900&s=ff29afaab4ee12cada224ee072a092119139d735"
-    },
-    {
-      "title": "Zelenskyj: Trump beundrer Putin",
-      "link": "https://www.vg.no/nyheter/i/Pgq91e/zelenskyj-trump-beundrer-putin",
-      "pubDate": "2026-10-15T07:33:54+00:00",
-      "image": "https://akamai.vgc.no/v2/images/4dd6c2a6-6a89-3ce1-bd82-28f4b43b4783?fit=crop&format=auto&h=1267&w=1900&s=c8d30000c7cb928b731c308c9e2d5664197fac94"
-    },
-    {
-      "title": "Eksperter advarer: Alkoholrisikoen mange overser",
-      "link": "https://www.vg.no/forbruker/i/8pXdyx/alkohol-og-brystkreft-det-er-faa-som-vet-sammenhengen",
-      "pubDate": "2026-10-15T07:18:19+00:00",
-      "image": "https://akamai.vgc.no/v2/images/433c810f-2d06-32f1-b948-9a5438cc7b21?fit=crop&format=auto&h=1267&w=1900&s=0830a51cf666222769f639f9229ac5c7c6ce8d1a"
     }
   ]
 }
