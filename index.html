@@ -161,7 +161,7 @@
         .hourly-forecast {
             display: flex;
             flex-direction: column; /* stack vertically */
-            gap: 8px;
+            gap: 10px; /* slightly larger spacing */
             margin-top: 12px;
             padding-bottom: 6px;
             overflow: visible; /* no slider */
@@ -169,21 +169,21 @@
 
         .hour-card {
             width: 100%;
-            max-width: 220px;
+            max-width: 240px; /* a bit wider to fit larger cards */
             background: rgba(255,255,255,0.02);
-            border-radius: 8px;
-            padding: 8px 10px;
+            border-radius: 10px;
+            padding: 12px 14px; /* increased padding for bigger appearance */
             text-align: left;
-            font-size: 0.9rem;
+            font-size: 1rem; /* slightly larger text */
             color: var(--text);
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .hour-left { display:flex; align-items:center; gap:8px; }
-        .hour-icon { font-size: 1.15rem; }
-        .hour-temp { font-weight: 700; }
+        .hour-left { display:flex; align-items:center; gap:12px; }
+        .hour-icon { font-size: 1.35rem; }
+        .hour-temp { font-weight: 700; font-size: 1.05rem; }
 
         .main {
             display: flex;
@@ -624,7 +624,7 @@
 
                 if (iconEl) iconEl.textContent = weatherIcon(weatherCode);
 
-                // build vertical hourly forecast (next 8 hours)
+                // build vertical hourly forecast (next 9 hours)
                 if (hourlyContainer && data.hourly && Array.isArray(data.hourly.time)) {
                     hourlyContainer.innerHTML = '';
                     const times = data.hourly.time;
@@ -642,7 +642,7 @@
                     }
 
                     const start = idx + 1; // next hour
-                    const count = 8; // show next 8 hours
+                    const count = 9; // show next 9 hours
                     for (let i = start; i < Math.min(start + count, times.length); i++) {
                         const t = times[i];
                         const hourLabel = new Date(t).toLocaleTimeString('no-NO', { hour: '2-digit' });
