@@ -308,7 +308,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            overflow:auto;
+            overflow: visible; /* no local slider — let the page scroll */
             padding-right: 6px;
             /* make it stretch to bottom */
             flex: 1 1 auto;
@@ -529,7 +529,7 @@
         </div>
 
         <div class="bottom-text">
-            <a href="https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-staar-uten-jobb" target="_blank" rel="noopener noreferrer">https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-sta[...]</a>
+            <a href="https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-staar-uten-jobb" target="_blank" rel="noopener noreferrer">https://www.vg.no/nyheter/i/MKp8i/il-ai-gojere-at-mange-sta[...]
         </div>
     </div>
 
@@ -655,7 +655,7 @@
 
                         const card = document.createElement('div');
                         card.className = 'hour-card';
-                        card.innerHTML = `<div class="hour-left"><div class="hour-icon">${ic}</div><div><div style="font-weight:600">${hourLabel}</div></div></div><div class="hour-temp">${tempH}°</div>`;
+                        card.innerHTML = `<div class="hour-left"><div class="hour-icon">${ic}</div><div><div style="font-weight:600">${hourLabel}</div></div></div><div class="hour-temp">${tempH}�[...]`;
                         hourlyContainer.appendChild(card);
                     }
                 }
