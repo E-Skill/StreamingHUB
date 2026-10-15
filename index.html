@@ -95,9 +95,9 @@
         }
 
         .weather-temp {
-            font-size: 3.6rem; /* slightly reduced to fit */
+            font-size: 3.2rem; /* reduced slightly to fit hourly */
             line-height: 0.96;
-            font-weight: 400;
+            font-weight: 700;
             letter-spacing: -0.06em;
             display: flex;
             align-items: flex-start;
@@ -157,6 +157,28 @@
             cursor: pointer;
         }
 
+        /* hourly forecast */
+        .hourly-forecast {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+        }
+
+        .hour-card {
+            min-width: 68px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            padding: 6px 8px;
+            text-align: center;
+            font-size: 0.86rem;
+            color: var(--text);
+        }
+
+        .hour-icon { font-size: 1.05rem; }
+        .hour-temp { font-weight: 700; margin-top: 4px; }
+
         .main {
             display: flex;
             flex-direction: column;
@@ -167,7 +189,7 @@
 
         h1.title {
             margin: 6px 0 0;
-            font-size: 2.9rem; /* smaller title */
+            font-size: 2.4rem; /* smaller title per request */
             line-height: 1.05;
             letter-spacing: -0.03em;
             font-weight: 800;
@@ -193,13 +215,15 @@
             text-align:left;
         }
 
+        /* fixed-width columns so spacing is symmetric and grid is centered */
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(110px, 1fr));
-            gap: 16px 18px;
+            grid-template-columns: repeat(4, 140px);
+            gap: 16px 28px;
             width: 100%;
             max-width: 700px;
             margin: 0 auto; /* center horizontally */
+            justify-content: center; /* center the grid block */
             justify-items: center;
         }
 
@@ -208,7 +232,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100%;
+            width: 140px;
             min-height: 118px;
             border-radius: 10px;
             background: rgba(18, 31, 45, 0.92);
@@ -226,8 +250,8 @@
         }
 
         .service-logo {
-            width: 54px;
-            height: 54px;
+            width: 56px;
+            height: 56px;
             object-fit: contain;
             display: block;
             margin-bottom: 8px;
@@ -359,7 +383,7 @@
             .service-grid {
                 grid-template-columns: repeat(3, minmax(110px, 1fr));
             }
-            h1.title { font-size: 2.6rem; }
+            h1.title { font-size: 2.1rem; }
         }
 
         @media (max-width: 768px) {
@@ -370,7 +394,7 @@
             .weather-area,
             .news-area { min-height: auto; }
             .service-grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
-            h1.title { font-size: 2rem; }
+            h1.title { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -394,6 +418,8 @@
                             <div><strong>Vind:</strong> <span id="wind">-- km/t</span></div>
                             <div><strong>Luftfuktighet:</strong> <span id="humidity">-- %</span></div>
                         </div>
+
+                        <div id="hourly-forecast" class="hourly-forecast" aria-hidden="false"></div>
                     </div>
 
                     <div class="weather-updated">
@@ -502,10 +528,24 @@
             longitude: 10.7522
         };
 
-        const WEATHER_INTERVAL = 5 * 60 * 1000;
+        // Update weather every 15 minutes
+        const WEATHER_INTERVAL = 15 * 60 * 1000;
         const NEWS_API_URL = 'https://streaminghub-news.eskil-sundby.workers.dev/news';
         const NEWS_INTERVAL = 15 * 60 * 1000;
-        const MAX_NEWS_ARTICLES = 7; // changed to 7
+        const MAX_NEWS_ARTICLES = 7; // show 7 items
+
+        // map weather code -> emoji icon (you can replace with SVGs later)
+        function weatherIcon(code) {
+            if (code === 0) return '☀️';
+            if (code === 1 || code === 2) return '🌤️';
+            if (code === 3) return '☁️';
+            if (code >= 45 && code <= 48) return '🌫️';
+            if (code >= 51 && code <= 67) return '🌧️';
+            if (code >= 71 && code <= 77) return '❄️';
+            if (code >= 80 && code <= 82) return '🌦️';
+            if (code >= 95) return '⛈️';
+            return '🌡️';
+        }
 
         async function updateWeather() {
             const tempEl = document.getElementById('temperature');
@@ -514,52 +554,99 @@
             const humEl = document.getElementById('humidity');
             const updatedEl = document.getElementById('weather-updated');
             const iconEl = document.getElementById('weather-icon');
+            const hourlyContainer = document.getElementById('hourly-forecast');
 
             try {
                 const url = 'https://api.open-meteo.com/v1/forecast' +
                     `?latitude=${WEATHER.latitude}` +
                     `&longitude=${WEATHER.longitude}` +
-                    '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl,visibility' +
+                    '&hourly=temperature_2m,apparent_temperature,weathercode' +
+                    '&current_weather=true' +
                     '&timezone=Europe%2FOslo';
 
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('Værserveren svarte med feil');
 
                 const data = await response.json();
-                const current = data?.current;
+                const current = data.current_weather ?? data.current;
                 if (!current) throw new Error('Ingen værdata');
 
-                const temp = Number.isFinite(current.temperature_2m) ? Math.round(current.temperature_2m) : '--';
-                const feels = Number.isFinite(current.apparent_temperature) ? Math.round(current.apparent_temperature) : temp;
-                const weatherCode = current.weather_code ?? 0;
+                const temp = Number.isFinite(current.temperature) ? Math.round(current.temperature) : (current.temperature_2m ? Math.round(current.temperature_2m) : '--');
+                const feels = (data.hourly && data.hourly.apparent_temperature) ? null : null; // we'll read apparent from hourly when available
+                const weatherCode = current.weathercode ?? current.weather_code ?? 0;
 
+                // Update main values
                 if (tempEl) tempEl.innerHTML = `${temp}<span class="degree">°</span>`;
-                if (feelsEl) feelsEl.textContent = `Føles som ${feels}°`;
-                if (windEl) windEl.textContent = `${current.wind_speed_10m ?? '--'} km/t`;
-                if (humEl) humEl.textContent = `${current.relative_humidity_2m ?? '--'} %`;
-                if (iconEl) iconEl.textContent = getWeatherIcon(weatherCode);
+                if (feelsEl) {
+                    // try to get apparent_temperature for current hour from hourly arrays
+                    let apparent = null;
+                    if (data.hourly && Array.isArray(data.hourly.time) && Array.isArray(data.hourly.apparent_temperature)) {
+                        // find index matching current.time
+                        const nowKey = current.time || data.current_weather?.time || data.current?.time;
+                        const idx = data.hourly.time.indexOf(nowKey);
+                        if (idx >= 0) apparent = data.hourly.apparent_temperature[idx];
+                    }
+                    if (apparent == null) apparent = current.apparent_temperature ?? temp;
+                    feelsEl.textContent = `Føles som ${Number.isFinite(apparent) ? Math.round(apparent) : '--'}°`;
+                }
 
-                const weatherTime = new Date(current.time);
+                if (windEl) windEl.textContent = `${current.windspeed ?? current.wind_speed_10m ?? '--'} km/t`;
+                if (humEl) humEl.textContent = `${data.hourly?.relativehumidity_2m ? (function(){
+                    // try to find current hour humidity
+                    const nowKey = current.time || data.current_weather?.time || data.current?.time;
+                    const idx = data.hourly.time ? data.hourly.time.indexOf(nowKey) : -1;
+                    return (idx >= 0 ? data.hourly.relativehumidity_2m[idx] : '--');
+                })() : (current.relativehumidity_2m ?? current.relative_humidity_2m ?? '--')} %`;
+
+                if (iconEl) iconEl.textContent = weatherIcon(weatherCode);
+
+                // build hourly forecast (next 8 hours)
+                if (hourlyContainer && data.hourly && Array.isArray(data.hourly.time)) {
+                    hourlyContainer.innerHTML = '';
+                    const times = data.hourly.time;
+                    const temps = data.hourly.temperature_2m || [];
+                    const codes = data.hourly.weathercode || [];
+
+                    // find index of current time in hourly.time
+                    const nowKey = current.time || data.current_weather?.time || data.current?.time;
+                    let idx = times.indexOf(nowKey);
+                    if (idx === -1) {
+                        // fallback: use first index >= now
+                        const now = new Date().toISOString().slice(0,13); // quick hour prefix
+                        idx = times.findIndex(t => t.startsWith(now));
+                        if (idx === -1) idx = 0;
+                    }
+
+                    const count = 8;
+                    for (let i = idx; i < Math.min(idx + count, times.length); i++) {
+                        const t = times[i];
+                        const hour = new Date(t).toLocaleTimeString('no-NO', { hour: '2-digit' });
+                        const tempH = temps[i] != null ? Math.round(temps[i]) : '--';
+                        const codeH = codes[i] != null ? codes[i] : null;
+                        const ic = codeH != null ? weatherIcon(Number(codeH)) : '';
+
+                        const card = document.createElement('div');
+                        card.className = 'hour-card';
+                        card.innerHTML = `<div class="hour-hour">${hour}</div><div class="hour-icon">${ic}</div><div class="hour-temp">${tempH}°</div>`;
+                        hourlyContainer.appendChild(card);
+                    }
+                }
+
+                // update timestamp
+                const weatherTime = new Date(current.time || data.current_weather?.time || data.current?.time);
                 if (updatedEl && !isNaN(weatherTime.getTime())) {
                     updatedEl.textContent = 'Værdato: ' + weatherTime.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
                 }
+
             } catch (error) {
                 console.error('Weather fetch failed:', error);
+                const tempEl = document.getElementById('temperature');
+                const feelsEl = document.getElementById('feels-like');
+                const updatedEl = document.getElementById('weather-updated');
                 if (tempEl) tempEl.innerHTML = '--<span class="degree">°</span>';
                 if (feelsEl) feelsEl.textContent = 'Føles som --°';
                 if (updatedEl) updatedEl.textContent = 'Værdata utilgjengelig';
             }
-        }
-
-        function getWeatherIcon(code) {
-            if (code === 0) return '☀️';
-            if (code === 1 || code === 2) return '🌤️';
-            if (code === 3) return '☁️';
-            if (code >= 51 && code <= 67) return '🌧️';
-            if (code >= 71 && code <= 77) return '❄️';
-            if (code >= 80 && code <= 82) return '🌦️';
-            if (code >= 95) return '⛈️';
-            return '🌡️';
         }
 
         async function updateNews(forceFresh = false) {
@@ -578,7 +665,16 @@
                 }
 
                 const data = await response.json();
-                const articles = Array.isArray(data.articles) ? data.articles.slice(0, MAX_NEWS_ARTICLES) : [];
+                let articles = Array.isArray(data.articles) ? data.articles.slice(0) : [];
+
+                // sort by pubDate descending (newest first)
+                articles.sort((a, b) => {
+                    const ta = a.pubDate ? new Date(a.pubDate).getTime() : 0;
+                    const tb = b.pubDate ? new Date(b.pubDate).getTime() : 0;
+                    return tb - ta;
+                });
+
+                articles = articles.slice(0, MAX_NEWS_ARTICLES);
 
                 if (!container) return;
 
@@ -653,6 +749,7 @@
             }
         }
 
+        // Button handlers
         document.getElementById('refresh-weather').addEventListener('click', function () {
             this.disabled = true;
             this.textContent = 'Oppdaterer...';
@@ -671,6 +768,7 @@
             });
         });
 
+        // Initial load + intervals
         updateWeather();
         updateNews();
         setInterval(updateWeather, WEATHER_INTERVAL);
