@@ -1,22 +1,23 @@
 {
-  "updatedAt": "2026-10-16T01:17:29.774287+00:00",
+  "updatedAt": "2026-10-16T05:59:30.135879+00:00",
   "articles": [
     {
-      "title": "Målt til over 100 km/t over fartsgrensen i Holmestrand – stakk av",
-      "link": "https://www.vg.no/nyheter/i/4O0W1e/maalt-til-over-100-km-t-over-fartsgrensen-i-holmestrand-stakk-av",
-      "pubDate": "2026-10-16T00:30:15+00:00"
+      "title": "Fotballstjernens eks: – Som en åpen hjertekirurgi",
+      "link": "https://www.vg.no/sport/i/zlbxw4/matthijs-de-ligt-og-annekee-molenaar-skiltes-tre-uker-foer-bryllupsfesten",
+      "pubDate": "2026-10-16T05:49:40+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ed0134462b27133be50d1bc1770f660e7e28b2dd.jpg"
     },
     {
-      "title": "Moi-scoring da FCK vant klart",
-      "link": "https://www.vg.no/sport/i/aOp3mL/moi-scoring-da-fck-vant-klart",
-      "pubDate": "2026-10-15T21:47:46+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/048301d874bda125f05f8ff2afa8a3c1db8dfe49.jpg"
+      "title": "Aksjetrøbbel for Indonesia: Kan havne på kriseliste",
+      "link": "https://www.vg.no/i/mKpzEE/aksjetroebbel-for-indonesia-kan-havne-paa-kriseliste",
+      "pubDate": "2026-10-16T05:37:05+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c765955f4fb666af21c14fb3a044a0cf6635a2d6.jpg"
     },
     {
-      "title": "SAS-fly satt på bakken: Teknisk feil skapte vond lukt",
-      "link": "https://www.vg.no/nyheter/i/0Bko7B/sas-fly-satt-paa-bakken-teknisk-feil-skapte-vond-lukt",
-      "pubDate": "2026-10-15T21:20:26+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/cdc29ea8be6b87f64e3609171d84508191718ea3.jpg"
+      "title": "Millionregn over Glimt og Viking – se utbetalingene",
+      "link": "https://www.vg.no/sport/i/lKbJLL/millionregn-over-glimt-og-viking-etter-europa-suksess-se-utbetalingene",
+      "pubDate": "2026-10-16T05:16:53+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a616f62dca021f278e0bf75482cfdcc49b793c7c.jpg"
     }
   ]
 }
