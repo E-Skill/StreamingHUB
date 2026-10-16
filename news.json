@@ -1,6 +1,11 @@
 {
-  "updatedAt": "2026-10-15T23:02:35.483504+00:00",
+  "updatedAt": "2026-10-16T01:17:29.774287+00:00",
   "articles": [
+    {
+      "title": "Målt til over 100 km/t over fartsgrensen i Holmestrand – stakk av",
+      "link": "https://www.vg.no/nyheter/i/4O0W1e/maalt-til-over-100-km-t-over-fartsgrensen-i-holmestrand-stakk-av",
+      "pubDate": "2026-10-16T00:30:15+00:00"
+    },
     {
       "title": "Moi-scoring da FCK vant klart",
       "link": "https://www.vg.no/sport/i/aOp3mL/moi-scoring-da-fck-vant-klart",
@@ -12,12 +17,6 @@
       "link": "https://www.vg.no/nyheter/i/0Bko7B/sas-fly-satt-paa-bakken-teknisk-feil-skapte-vond-lukt",
       "pubDate": "2026-10-15T21:20:26+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/cdc29ea8be6b87f64e3609171d84508191718ea3.jpg"
-    },
-    {
-      "title": "Amerikanske medier: Fire drept i skyting ved barneskole i Oregon",
-      "link": "https://www.vg.no/nyheter/i/qybmqO/melding-om-skyting-ved-barneskole-i-oregon-usa",
-      "pubDate": "2026-10-15T21:01:19+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f5db8c74b665e751df1b18232c5f54194da607a1.jpg"
     }
   ]
 }
