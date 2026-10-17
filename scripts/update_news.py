@@ -12,7 +12,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-RSS_URL = "https://www.vg.no/rss/feed/?format=rss"
+RSS_URL = "https://www.nrk.no/toppsaker.rss"
 NEWS_FILE = Path("news.json")
 MAX_ARTICLES = 3
 STATIC_NEWS_DIR = Path("static/news")
@@ -49,7 +49,7 @@ def download_image(image_url: str) -> str:
             headers={
                 "User-Agent": "Mozilla/5.0 StreamingHUB/1.0",
                 "Accept": "image/*,*/*;q=0.8",
-                "Referer": "https://www.vg.no/",
+                "Referer": "https://www.nrk.no/",
             },
         )
 
@@ -128,7 +128,7 @@ def main():
         if not title or not link:
             continue
 
-        if not (link.startswith("https://www.vg.no/") or link.startswith("https://vg.no/")):
+        if not (link.startswith("https://www.nrk.no/") or link.startswith("https://nrk.no/")):
             continue
 
         pub_date = ""
@@ -152,7 +152,7 @@ def main():
             break
 
     if not articles:
-        raise RuntimeError("Ingen gyldige artikler funnet i VG RSS-feeden. news.json beholdes uendret.")
+        raise RuntimeError("Ingen gyldige artikler funnet i NRK RSS-feeden. news.json beholdes uendret.")
 
     existing = {}
     if NEWS_FILE.exists():
@@ -163,7 +163,7 @@ def main():
 
     same_articles = existing.get("articles") == articles
     if same_articles and existing.get("updatedAt"):
-        print(f"VG-feeden ble kontrollert. Ingen endringer blant de {len(articles)} øverste artiklene.")
+        print(f"NRK-feeden ble kontrollert. Ingen endringer blant de {len(articles)} øverste artiklene.")
         return
 
     output = {
@@ -171,7 +171,7 @@ def main():
         "articles": articles,
     }
     NEWS_FILE.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Lagret {len(articles)} VG-artikler i news.json.")
+    print(f"Lagret {len(articles)} NRK-artikler i news.json.")
 
 
 if __name__ == "__main__":
