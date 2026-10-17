@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-10-17T18:01:10.480289+00:00",
+  "updatedAt": "2026-10-17T20:31:37.561508+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Fire personar pågripne etter politiaksjon i Bergen: Sikta for medverknad til fridomsberøving",
+      "link": "https://www.nrk.no/vestland/fire-personar-pagripne-etter-politiaksjon-i-bergen_-sikta-for-medverknad-til-fridomsberoving-1.18057668",
+      "pubDate": "2026-10-17T18:07:34+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/8b0e1b51f860b52e5926ba4794c08b5988e0c731.jpg"
+    },
     {
       "title": "Fire personer siktet for medvirkning til frihetsberøvelse i Bergen",
       "link": "https://www.nrk.no/nyheter/fire-personer-siktet-for-medvirkning-til-frihetsberovelse-i-bergen-1.18057582",
@@ -12,12 +18,6 @@
       "link": "https://www.nrk.no/trondelag/to-menn-siktet-for-hallikvirksomhet-i-trondelag-1.18057586",
       "pubDate": "2026-10-17T15:26:56+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/55cf1caf46880a12833e055194d58ac9386f7a16.jpg"
-    },
-    {
-      "title": "Ikkje berre for å vere snill",
-      "link": "https://www.nrk.no/trondelag/xl/natteramnar-kan-ikkje-gripe-inn-mot-vald_-men-synet-av-dei-kan-trygge-og-sikre-alle-som-ser-dei.-1.18016692",
-      "pubDate": "2026-10-17T16:06:21+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/29a6c6376ca1e67ca6c756af22abca2136c2572f.jpg"
     }
   ]
 }
