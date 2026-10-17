@@ -304,8 +304,8 @@
         }
 
         .news-brand-logo {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
             display: block;
             flex-shrink: 0;
@@ -526,10 +526,15 @@
 
             <aside class="news-area">
                 <div class="news-panel">
-                    <div class="news-header">
-                        <img class="news-brand-logo" src="Images/nrk.png" href="https://www.nrk.no/nyheter/" alt="NRK">
-                        <h2>NRK nyheter</h2>
-                    </div>
+    <div class="news-header">
+        <a href="https://www.nrk.no/nyheter/" target="_blank">
+            <img class="news-brand-logo" src="Images/nrk.png" alt="NRK Logo">
+        </a>
+        <h2>NRK nyheter</h2>
+    </div>
+    <!-- Her kommer selve nyhetslisten din inn dynamisk -->
+    <div id="news-container"></div>
+</div>
 
                     <div id="nrk-news" class="news-list" aria-live="polite"></div>
 
