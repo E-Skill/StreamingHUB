@@ -99,6 +99,35 @@ def extract_image_from_item(item):
     return None
 
 
+def extract_feed_logo(root):
+    # Try common RSS/Atom locations for a feed logo
+    # 1) <channel><image><url>
+    channel = root.find('channel')
+    if channel is not None:
+        image = channel.find('image')
+        if image is not None:
+            url_el = image.find('url') or image.find('link') or image.find('logo')
+            if url_el is not None and (url_el.text and url_el.text.strip()):
+                return url_el.text.strip()
+        # itunes image: <itunes:image href="..." />
+        for child in channel.findall('.//*'):
+            tag = child.tag.lower()
+            if tag.endswith('image') and 'href' in child.attrib:
+                return child.attrib.get('href')
+            # elements like <logo> or <icon>
+            if tag.endswith('logo') or tag.endswith('icon'):
+                if child.text and child.text.strip():
+                    return child.text.strip()
+
+    # 2) Atom: <logo> at root or feed
+    for elem in root.findall('.//*'):
+        tag = elem.tag.lower()
+        if tag.endswith('logo') or tag.endswith('icon'):
+            if elem.text and elem.text.strip():
+                return elem.text.strip()
+    return None
+
+
 def main():
     request = urllib.request.Request(
         RSS_URL,
@@ -112,26 +141,28 @@ def main():
         xml_data = response.read()
 
     root = ET.fromstring(xml_data)
+    feed_logo = extract_feed_logo(root)
+
     articles = []
 
-    for item in root.findall(".//item"):
-        title_element = item.find("title")
-        link_element = item.find("link")
-        date_element = item.find("pubDate")
+    for item in root.findall('.//item'):
+        title_element = item.find('title')
+        link_element = item.find('link')
+        date_element = item.find('pubDate')
 
         if title_element is None or link_element is None:
             continue
 
-        title = "".join(title_element.itertext()).strip()
-        link = "".join(link_element.itertext()).strip()
+        title = ''.join(title_element.itertext()).strip()
+        link = ''.join(link_element.itertext()).strip()
 
         if not title or not link:
             continue
 
-        if not (link.startswith("https://www.nrk.no/") or link.startswith("https://nrk.no/")):
+        if not (link.startswith('https://www.nrk.no/') or link.startswith('https://nrk.no/')):
             continue
 
-        pub_date = ""
+        pub_date = ''
         if date_element is not None and date_element.text:
             raw_date = date_element.text.strip()
             try:
@@ -141,38 +172,39 @@ def main():
 
         image_url = extract_image_from_item(item)
 
-        article = {"title": title, "link": link, "pubDate": pub_date}
+        article = {'title': title, 'link': link, 'pubDate': pub_date}
         if image_url:
             # Attempt to download and cache image; prefer raw.githubusercontent URL after commit
             cached = download_image(image_url)
-            article["image"] = cached
+            article['image'] = cached
 
         articles.append(article)
         if len(articles) >= MAX_ARTICLES:
             break
 
     if not articles:
-        raise RuntimeError("Ingen gyldige artikler funnet i NRK RSS-feeden. news.json beholdes uendret.")
+        raise RuntimeError('Ingen gyldige artikler funnet i NRK RSS-feeden. news.json beholdes uendret.')
 
     existing = {}
     if NEWS_FILE.exists():
         try:
-            existing = json.loads(NEWS_FILE.read_text(encoding="utf-8"))
+            existing = json.loads(NEWS_FILE.read_text(encoding='utf-8'))
         except (json.JSONDecodeError, OSError):
             existing = {}
 
-    same_articles = existing.get("articles") == articles
-    if same_articles and existing.get("updatedAt"):
-        print(f"NRK-feeden ble kontrollert. Ingen endringer blant de {len(articles)} øverste artiklene.")
+    same_articles = existing.get('articles') == articles
+    if same_articles and existing.get('updatedAt'):
+        print(f'NRK-feeden ble kontrollert. Ingen endringer blant de {len(articles)} øverste artiklene.')
         return
 
     output = {
-        "updatedAt": datetime.now(timezone.utc).isoformat(),
-        "articles": articles,
+        'updatedAt': datetime.now(timezone.utc).isoformat(),
+        'logo': feed_logo,
+        'articles': articles,
     }
-    NEWS_FILE.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Lagret {len(articles)} NRK-artikler i news.json.")
+    NEWS_FILE.write_text(json.dumps(output, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print(f'Lagret {len(articles)} NRK-artikler i news.json.')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
