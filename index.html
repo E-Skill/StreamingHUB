@@ -551,8 +551,34 @@
 
         const WEATHER_INTERVAL = 15 * 60 * 1000;
         const NEWS_API_URL = 'https://streaminghub-news.eskil-sundby.workers.dev/news';
+        const NEWS_FALLBACK_URL = 'https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/news.json';
         const NEWS_INTERVAL = 15 * 60 * 1000;
         const MAX_NEWS_ARTICLES = 7;
+
+        async function fetchJsonWithFallback(urls) {
+            let lastError = null;
+
+            for (const url of urls) {
+                try {
+                    const response = await fetch(url, { cache: 'no-store' });
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    if (data && Array.isArray(data.articles)) {
+                        return data;
+                    }
+
+                    throw new Error('Invalid news payload');
+                } catch (error) {
+                    lastError = error;
+                    console.warn(`News fetch failed for ${url}:`, error);
+                }
+            }
+
+            throw lastError || new Error('Could not fetch news');
+        }
 
         function weatherIcon(code) {
             if (code === 0) return '☀️';
@@ -655,7 +681,7 @@
 
                         const card = document.createElement('div');
                         card.className = 'hour-card';
-                        card.innerHTML = '<div class="hour-left"><div class="hour-icon">' + ic + '</div><div><div style="font-weight:600">' + hourLabel + '</div></div></div><div class="hour-temp">' + tempH + '°</div>';
+                        card.innerHTML = '<div class="hour-left"><div class="hour-icon">' + ic + '</div><div><div style="font-weight:600">' + hourLabel + '</div></div></div><div class="hour-temp">' + (tempH === '--' ? '--' : tempH + '<span class="degree">°</span>') + '</div>';
                         hourlyContainer.appendChild(card);
                     }
                 }
@@ -674,21 +700,20 @@
         }
 
         async function updateNews(forceFresh = false) {
-            const container = document.getElementById('vg-news');
+            const container = document.getElementById('nrk-news');
             const updatedEl = document.getElementById('news-updated');
             const refreshBtn = document.getElementById('refresh-news');
 
             try {
-                const endpoint = forceFresh
-                    ? `${NEWS_API_URL}?refresh=1&t=${Date.now()}`
-                    : `${NEWS_API_URL}?t=${Date.now()}`;
+                const urls = [
+                    forceFresh
+                        ? `${NEWS_API_URL}?refresh=1&t=${Date.now()}`
+                        : `${NEWS_API_URL}?t=${Date.now()}`,
+                    NEWS_FALLBACK_URL
+                ];
 
-                const response = await fetch(endpoint, { cache: 'no-store' });
-                if (!response.ok) {
-                    throw new Error(`Nyhetsserveren svarte ${response.status}`);
-                }
+                const data = await fetchJsonWithFallback(urls);
 
-                const data = await response.json();
                 const brandImg = document.querySelector('.news-brand-logo');
                 if (brandImg) {
                     const feedLogo = data.logo || 'Images/nrk.png';
