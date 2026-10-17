@@ -8,7 +8,7 @@
     <title>Streaming HUB</title>
 
     <meta name="theme-color" content="#060b12">
-    <meta name="description" content="Streaming HUB med strømmetjenester, vær og siste nyheter fra VG.">
+    <meta name="description" content="Streaming HUB med strømmetjenester, vær og siste nyheter fra NRK.">
 
     <style>
         :root {
@@ -297,9 +297,18 @@
         .news-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 8px;
             margin-bottom: 12px;
             padding-right: 6px;
+        }
+
+        .news-brand-logo {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+            display: block;
+            flex-shrink: 0;
         }
 
         .news-header h2 {
@@ -518,13 +527,14 @@
             <aside class="news-area">
                 <div class="news-panel">
                     <div class="news-header">
-                        <h2>Vg</h2>
+                        <img class="news-brand-logo" src="Images/nrk.png" alt="NRK">
+                        <h2>NRK nyheter</h2>
                     </div>
 
                     <div id="vg-news" class="news-list" aria-live="polite"></div>
 
                     <div class="news-footer">
-                        <span id="news-updated">Hentet fra VG: --:--</span>
+                        <span id="news-updated">Hentet fra NRK: --:--</span>
                         <button id="refresh-news" type="button">Oppdater</button>
                     </div>
                 </div>
@@ -592,7 +602,7 @@
 
                 const tempVal = current.temperature_2m ?? current.temperature;
                 const temp = Number.isFinite(tempVal) ? Math.round(tempVal) : '--';
-                
+
                 const weatherCode = current.weather_code ?? current.weathercode ?? 0;
 
                 let apparentVal = current.apparent_temperature;
@@ -645,7 +655,7 @@
 
                         const card = document.createElement('div');
                         card.className = 'hour-card';
-                        card.innerHTML = `<div class="hour-left"><div class="hour-icon">${ic}</div><div><div style="font-weight:600">${hourLabel}</div></div></div><div class="hour-temp">${tempH}°</div>`;
+                        card.innerHTML = '<div class="hour-left"><div class="hour-icon">' + ic + '</div><div><div style="font-weight:600">' + hourLabel + '</div></div></div><div class="hour-temp">' + tempH + '°</div>';
                         hourlyContainer.appendChild(card);
                     }
                 }
@@ -679,6 +689,16 @@
                 }
 
                 const data = await response.json();
+                const brandImg = document.querySelector('.news-brand-logo');
+                if (brandImg) {
+                    const feedLogo = data.logo || 'Images/nrk.png';
+                    brandImg.src = feedLogo;
+                    brandImg.onerror = function () {
+                        this.onerror = null;
+                        this.src = 'Images/nrk.png';
+                    };
+                }
+
                 let articles = Array.isArray(data.articles) ? data.articles.slice(0) : [];
 
                 articles.sort((a, b) => {
@@ -700,7 +720,7 @@
                 const fragment = document.createDocumentFragment();
                 articles.forEach(article => {
                     const link = document.createElement('a');
-                    link.href = article.link || 'https://www.vg.no';
+                    link.href = article.link || 'https://www.nrk.no';
                     link.target = '_blank';
                     link.rel = 'noopener noreferrer';
                     link.className = 'news-item';
@@ -746,7 +766,7 @@
                     const timeLabel = generated && !Number.isNaN(generated.getTime())
                         ? generated.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' })
                         : 'ukjent tidspunkt';
-                    updatedEl.textContent = `${data.stale ? 'Sist lagret' : 'Hentet fra VG'}: ${timeLabel}`;
+                    updatedEl.textContent = `${data.stale ? 'Sist lagret' : 'Hentet fra NRK'}: ${timeLabel}`;
                 }
             } catch (error) {
                 console.error('News fetch failed:', error);
