@@ -1,24 +1,24 @@
 {
-  "updatedAt": "2026-10-18T18:54:19.472238+00:00",
+  "updatedAt": "2026-10-18T21:08:19.993797+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Trump: – Zelenskyj ønsker ikke å avslutte krigen",
+      "link": "https://www.nrk.no/nyheter/trump_-_-zelenskyj-onsker-ikke-a-avslutte-krigen-1.18058111",
+      "pubDate": "2026-10-18T20:43:37+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/80efca6209fecca0e7a8fb5ef78fed4108ecc4a8.jpg"
+    },
+    {
+      "title": "Advarte om nazikonsert – hit dro nynazistene",
+      "link": "https://www.nrk.no/buskerud/advarte-om-nazikonsert-_-hit-dro-nynazistene-1.18056871",
+      "pubDate": "2026-10-18T19:32:09+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e73d7e1ebeff6c052ac6249a93369c2b41ce1e01.jpg"
+    },
     {
       "title": "Spørsmål om TV-aksjonen 2026? Vi svarar!",
       "link": "https://www.nrk.no/tvaksjonen/desse-svarar-pa-sporsmal-om-tv-aksjonen-2026_-nrc-flyktninghjelpen_-tv-aksjonen-og-nrk-1.18014233",
       "pubDate": "2026-10-18T12:22:33+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c1cd6f3ed929f7c635b632724c48ea17e29a7ef7.jpg"
-    },
-    {
-      "title": "Straffebom, drømmescoring og matchvinner: – Det er hevnen sin",
-      "link": "https://www.nrk.no/sport/straffebom_-drommescoring-og-matchvinner_-_-det-er-hevnen-sin-1.18057999",
-      "pubDate": "2026-10-18T16:57:42+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/417f07a4b4c65ad45346b1f55cfe6e55450a52de.jpg"
-    },
-    {
-      "title": "Fleire vil overvake hyttene etter uoppklarte brannar: – Vi er bekymra",
-      "link": "https://www.nrk.no/mr/mange-er-uroa-etter-to-hyttebrannar-pa-emblemsfjellet-i-alesund-_-vil-sette-opp-kamera-1.18057795",
-      "pubDate": "2026-10-18T16:25:10+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ce699d3ab49daf8e1718a7e6113c0345f8872130.jpg"
     }
   ]
 }
