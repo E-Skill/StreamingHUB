@@ -1,7 +1,12 @@
 {
-  "updatedAt": "2026-10-18T00:16:41.282044+00:00",
+  "updatedAt": "2026-10-18T04:49:51.166859+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Canada: Flere døde og skadede i brann på militærbase",
+      "link": "https://www.nrk.no/nyheter/canada_-flere-dode-og-skadede-i-brann-pa-militaerbase-1.18057740",
+      "pubDate": "2026-10-18T01:48:23+00:00"
+    },
     {
       "title": "Mann til Ullevål etter elsparkesykkelulykke i Sandefjord",
       "link": "https://www.nrk.no/nyheter/mann-til-ulleval-etter-elsparkesykkelulykke-i-sandefjord-1.18057729",
@@ -12,11 +17,6 @@
       "link": "https://www.nrk.no/vestland/fire-personar-pagripne-etter-politiaksjon-i-bergen_-sikta-for-medverknad-til-fridomsberoving-1.18057668",
       "pubDate": "2026-10-17T18:07:34+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/8b0e1b51f860b52e5926ba4794c08b5988e0c731.jpg"
-    },
-    {
-      "title": "Fire personer siktet for medvirkning til frihetsberøvelse i Bergen",
-      "link": "https://www.nrk.no/nyheter/fire-personer-siktet-for-medvirkning-til-frihetsberovelse-i-bergen-1.18057582",
-      "pubDate": "2026-10-17T17:02:31+00:00"
     }
   ]
 }
