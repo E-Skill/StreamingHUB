@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-10-18T21:08:19.993797+00:00",
+  "updatedAt": "2026-10-18T23:06:27.761549+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "TV-aksjonen: 251 millioner kroner ble samlet inn",
+      "link": "https://www.nrk.no/tvaksjonen/over-250-millioner-kroner-kom-inn-til-tv-aksjonen-2026-1.18047087",
+      "pubDate": "2026-10-18T21:10:54+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/2b9d8c8a68fa20771a6cc64b576fedfd06d2289e.jpg"
+    },
     {
       "title": "Trump: – Zelenskyj ønsker ikke å avslutte krigen",
       "link": "https://www.nrk.no/nyheter/trump_-_-zelenskyj-onsker-ikke-a-avslutte-krigen-1.18058111",
@@ -13,12 +19,6 @@
       "link": "https://www.nrk.no/buskerud/advarte-om-nazikonsert-_-hit-dro-nynazistene-1.18056871",
       "pubDate": "2026-10-18T19:32:09+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e73d7e1ebeff6c052ac6249a93369c2b41ce1e01.jpg"
-    },
-    {
-      "title": "Spørsmål om TV-aksjonen 2026? Vi svarar!",
-      "link": "https://www.nrk.no/tvaksjonen/desse-svarar-pa-sporsmal-om-tv-aksjonen-2026_-nrc-flyktninghjelpen_-tv-aksjonen-og-nrk-1.18014233",
-      "pubDate": "2026-10-18T12:22:33+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c1cd6f3ed929f7c635b632724c48ea17e29a7ef7.jpg"
     }
   ]
 }
