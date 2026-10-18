@@ -1,22 +1,24 @@
 {
-  "updatedAt": "2026-10-18T04:49:51.166859+00:00",
+  "updatedAt": "2026-10-18T09:12:30.759456+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Canada: Flere døde og skadede i brann på militærbase",
-      "link": "https://www.nrk.no/nyheter/canada_-flere-dode-og-skadede-i-brann-pa-militaerbase-1.18057740",
-      "pubDate": "2026-10-18T01:48:23+00:00"
+      "title": "Banket opp på perrongen: – Nå dør jeg",
+      "link": "https://www.nrk.no/sport/xl/supporterkoordinatoren-i-lyn-fikk-brutalt-mote-med-fotballvolden_-_-nar-slutter-de-a-sla_-1.18003380",
+      "pubDate": "2026-10-18T08:53:08+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/2b4705b11589721ab04aea2a98839ef89215e495.jpg"
     },
     {
-      "title": "Mann til Ullevål etter elsparkesykkelulykke i Sandefjord",
-      "link": "https://www.nrk.no/nyheter/mann-til-ulleval-etter-elsparkesykkelulykke-i-sandefjord-1.18057729",
-      "pubDate": "2026-10-17T23:14:30+00:00"
+      "title": "Bengt vil forby jordklumpen som kommer med planten din",
+      "link": "https://www.nrk.no/sorlandet/krever-strengere-lovverk-for-jordklumpene-i-importerte-planter-1.18052544",
+      "pubDate": "2026-10-18T07:56:28+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0d14337329e4551381a3942f56cb9a2c07a5659c.jpg"
     },
     {
-      "title": "Fire personar pågripne etter politiaksjon i Bergen: Sikta for medverknad til fridomsberøving",
-      "link": "https://www.nrk.no/vestland/fire-personar-pagripne-etter-politiaksjon-i-bergen_-sikta-for-medverknad-til-fridomsberoving-1.18057668",
-      "pubDate": "2026-10-17T18:07:34+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/8b0e1b51f860b52e5926ba4794c08b5988e0c731.jpg"
+      "title": "Telenor anker i Myanmar-saken. Hyklersk, mener saksøkerne",
+      "link": "https://www.nrk.no/dokumentar/telenor-kjemper-for-a-unnga-soksmalet-fra-kundene-i-myanmar-1.18057745",
+      "pubDate": "2026-10-18T07:11:02+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/4f12093e9773d1d64835a918c2561cc2b2d161af.jpg"
     }
   ]
 }
