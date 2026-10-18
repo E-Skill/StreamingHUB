@@ -1,7 +1,12 @@
 {
-  "updatedAt": "2026-10-17T20:31:37.561508+00:00",
+  "updatedAt": "2026-10-18T00:16:41.282044+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Mann til Ullevål etter elsparkesykkelulykke i Sandefjord",
+      "link": "https://www.nrk.no/nyheter/mann-til-ulleval-etter-elsparkesykkelulykke-i-sandefjord-1.18057729",
+      "pubDate": "2026-10-17T23:14:30+00:00"
+    },
     {
       "title": "Fire personar pågripne etter politiaksjon i Bergen: Sikta for medverknad til fridomsberøving",
       "link": "https://www.nrk.no/vestland/fire-personar-pagripne-etter-politiaksjon-i-bergen_-sikta-for-medverknad-til-fridomsberoving-1.18057668",
@@ -12,12 +17,6 @@
       "title": "Fire personer siktet for medvirkning til frihetsberøvelse i Bergen",
       "link": "https://www.nrk.no/nyheter/fire-personer-siktet-for-medvirkning-til-frihetsberovelse-i-bergen-1.18057582",
       "pubDate": "2026-10-17T17:02:31+00:00"
-    },
-    {
-      "title": "Sexklubb-grunnlegger er siktet for hallikvirksomhet igjen",
-      "link": "https://www.nrk.no/trondelag/to-menn-siktet-for-hallikvirksomhet-i-trondelag-1.18057586",
-      "pubDate": "2026-10-17T15:26:56+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/55cf1caf46880a12833e055194d58ac9386f7a16.jpg"
     }
   ]
 }
