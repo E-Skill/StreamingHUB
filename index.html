@@ -516,7 +516,19 @@
             padding: 2px 8px;
             border-radius: 4px;
             margin-top: 4px;
+            margin-right: 6px;
             border: 1px solid rgba(77, 166, 255, 0.3);
+        }
+        .recipe-badge-time {
+            display: inline-block;
+            background: rgba(40, 167, 69, 0.2);
+            color: #5cdb95;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 4px;
+            border: 1px solid rgba(92, 219, 149, 0.3);
         }
 
         .recipe-list { display: flex; flex-direction: column; gap: 10px; }
@@ -805,6 +817,18 @@
                     <input type="text" id="recipe-desc" placeholder="F.eks. Meksikansk Taco med entrecôte">
                 </div>
                 <div class="form-group">
+                    <label>Tilberedningstid</label>
+                    <input type="text" id="recipe-prep-time" placeholder="F.eks. 30 min, 1 time">
+                </div>
+                <div class="form-group">
+                    <label>Antall porsjoner</label>
+                    <input type="text" id="recipe-servings" placeholder="F.eks. 4 porsjoner">
+                </div>
+                <div class="form-group">
+                    <label>Næringsinnhold (f.eks. Kalorier, Protein, Fett)</label>
+                    <input type="text" id="recipe-nutrition" placeholder="F.eks. ca. 550 kcal, 35g protein">
+                </div>
+                <div class="form-group">
                     <label>Bilde av maten (PNG / JPEG / WebP)</label>
                     <input type="file" id="recipe-file-input" accept="image/*" onchange="handleFileSelect(event)" style="margin-bottom: 8px;">
                     <div style="text-align: center; color: var(--muted); font-size: 0.8em; margin: 4px 0;">— eller lim inn bilde-URL —</div>
@@ -1007,7 +1031,6 @@
             }
         }
 
-        // --- OPPSKRIFTSLOGIKK MED SØK OG KATEGORI ---
         async function loadRecipesFromCloud() {
             try {
                 const res = await fetch(`${WORKER_URL}/recipes`);
@@ -1041,7 +1064,6 @@
                 return;
             }
 
-            // Filtrer etter søkeord og valgt kategori
             const filtered = recipesArray.filter(recipe => {
                 const matchesCategory = (activeCategoryFilter === 'alle') || 
                                         (recipe.category && recipe.category.toLowerCase() === activeCategoryFilter.toLowerCase());
@@ -1061,7 +1083,6 @@
             }
 
             filtered.forEach((recipe) => {
-                // Finn den reelle indeksen i hoved-arrayet for redigering/sletting
                 const realIndex = recipesArray.findIndex(r => r.id === recipe.id);
 
                 const card = document.createElement('div');
@@ -1072,7 +1093,10 @@
                     <div class="recipe-info">
                         <h3>${recipe.title}</h3>
                         <p>${recipe.description || ''}</p>
-                        ${recipe.category ? `<span class="recipe-badge">${recipe.category}</span>` : ''}
+                        <div>
+                            ${recipe.category ? `<span class="recipe-badge">${recipe.category}</span>` : ''}
+                            ${recipe.prepTime ? `<span class="recipe-badge-time">⏱️ ${recipe.prepTime}</span>` : ''}
+                        </div>
                     </div>
                 `;
                 listContainer.appendChild(card);
@@ -1131,6 +1155,9 @@
             const title = document.getElementById('recipe-title').value.trim();
             const category = document.getElementById('recipe-category').value;
             const description = document.getElementById('recipe-desc').value.trim();
+            const prepTime = document.getElementById('recipe-prep-time').value.trim();
+            const servings = document.getElementById('recipe-servings').value.trim();
+            const nutrition = document.getElementById('recipe-nutrition').value.trim();
             const image = document.getElementById('recipe-img').value.trim();
             const ingredients = document.getElementById('recipe-ingredients').value.trim().split('\n').filter(Boolean);
             const instructions = document.getElementById('recipe-instructions').value.trim();
@@ -1143,9 +1170,9 @@
 
             let updatedRecipes = [...recipesArray];
             if (currentRecipeIndex !== null && updatedRecipes[currentRecipeIndex]) {
-                updatedRecipes[currentRecipeIndex] = { ...updatedRecipes[currentRecipeIndex], title, category, description, image, ingredients, instructions };
+                updatedRecipes[currentRecipeIndex] = { ...updatedRecipes[currentRecipeIndex], title, category, description, prepTime, servings, nutrition, image, ingredients, instructions };
             } else {
-                updatedRecipes.push({ id: 'recipe_' + Date.now(), title, category, description, image, ingredients, instructions });
+                updatedRecipes.push({ id: 'recipe_' + Date.now(), title, category, description, prepTime, servings, nutrition, image, ingredients, instructions });
             }
 
             try {
@@ -1175,7 +1202,12 @@
 
             document.getElementById('recipe-detail-body').innerHTML = `
                 <h2 style="margin-top:0; margin-bottom: 5px;">${r.title}</h2>
-                ${r.category ? `<span class="recipe-badge" style="margin-bottom: 12px;">${r.category}</span>` : ''}
+                <div style="margin-bottom: 8px;">
+                    ${r.category ? `<span class="recipe-badge">${r.category}</span>` : ''}
+                    ${r.prepTime ? `<span class="recipe-badge-time">⏱️ ${r.prepTime}</span>` : ''}
+                </div>
+                ${r.servings ? `<p style="color:var(--muted); font-size:0.9em; margin: 6px 0 2px 0;">👥 <strong>Porsjoner:</strong> ${r.servings}</p>` : ''}
+                ${r.nutrition ? `<p style="color:var(--muted); font-size:0.9em; margin: 2px 0 12px 0;">⚡ <strong>Næringsinnhold:</strong> ${r.nutrition}</p>` : ''}
                 ${r.image ? `<img src="${r.image}" class="recipe-detail-img" style="margin-top:10px;">` : ''}
                 <h3 style="color:#4da6ff; margin-bottom:5px;">Ingredienser:</h3>
                 <ul style="color:var(--muted); margin-top:0;">${r.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
@@ -1197,6 +1229,9 @@
             document.getElementById('recipe-title').value = r.title || '';
             document.getElementById('recipe-category').value = r.category || 'Middag';
             document.getElementById('recipe-desc').value = r.description || '';
+            document.getElementById('recipe-prep-time').value = r.prepTime || '';
+            document.getElementById('recipe-servings').value = r.servings || '';
+            document.getElementById('recipe-nutrition').value = r.nutrition || '';
             document.getElementById('recipe-img').value = r.image || '';
             document.getElementById('recipe-ingredients').value = r.ingredients.join('\n');
             document.getElementById('recipe-instructions').value = r.instructions || '';
@@ -1233,7 +1268,7 @@
         }
 
         function openMatAI() {
-          window.open("https://chatgpt.com/?q=Vis%20meg%20umiddelbart%20et%20interaktivt%20skjema%20for%20middagsplanlegging%20uten%20introduksjon.%20Inkluder%20kalorivelger%20fra%20200%20til%201200%20kcal%20per%20porsjon%2C%20antall%20personer%2C%20matkultur%2C%20proteintype%2C%20smaksprofil%2C%20tidsbruk%2C%20vanskelighetsgrad%2C%20ingredienser%20jeg%20har%20hjemme%2C%20allergier%20og%20kj%C3%B8kkenutstyr.%20Avslutt%20med%20knappen%20%C2%ABLag%20middagen%20min%C2%BB.%20Etter%20svarene%20mine%20skal%20du%20lage%20en%20konkret%2C%20smaksrik%20oppskrift%20med%20n%C3%B8yaktige%20mengder%2C%20trinnvis%20fremgangsm%C3%A5te%20og%20estimert%20kcal%20og%20protein%20per%20porsjon.%20Maksimer%20smaken%20og%20bruk%20ingredienser%20jeg%20allerede%20har.", "_blank");
+            window.open("https://chatgpt.com/?q=Du+er+en+mesterkokk.+Hjelp+meg+med+en+kreativ+middagsoppskrift+basert+på+det+jeg+har+hjemme.", "_blank");
         }
 
         document.getElementById('refresh-weather').addEventListener('click', updateWeather);
