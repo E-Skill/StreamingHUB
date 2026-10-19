@@ -1041,7 +1041,6 @@
                     if (idx === -1) idx = 0;
 
                     for (let i = idx + 1; i < Math.min(idx + 9, times.length); i++) {
-                        // Tolker datoen korrekt og henter ut rent klokkeslett (f.eks. "17:00") i riktig tidssone
                         const d = new Date(times[i]);
                         const hourLabel = !isNaN(d.getTime()) 
                             ? d.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz })
