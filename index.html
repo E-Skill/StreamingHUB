@@ -412,9 +412,9 @@
         }
 
         .news-time {
-        color: var(--muted-2);
-        font-size: 0.78rem;
-         margin-top: 6px;
+            color: var(--muted-2);
+            font-size: 0.78rem;
+            margin-top: 4px;
         }
 
         .news-footer {
@@ -461,9 +461,6 @@
             width: 0;
         }
         .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
             background: #222;
             color: #fff;
             border: 1px solid #444;
@@ -810,8 +807,9 @@
     <!-- MODAL 1: OPPSKRIFTSLISTE MED SØK OG FILTER -->
     <div id="recipe-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
-            <button class="close-btn" onclick="closeRecipesModal()">X</button>
-            <div class="modal-header-actions">
+            <!-- Flyttet lukkeknapp til venstre i toppen -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px;">
+                <button class="close-btn" onclick="closeRecipesModal()">Lukk</button>
                 <h2 style="margin:0;">Mine Oppskrifter</h2>
                 <button class="add-btn" onclick="openAddRecipeForm()">+ Ny oppskrift</button>
             </div>
@@ -839,7 +837,7 @@
     <!-- MODAL 2: SKJEMA FOR NY/REDIGER OPPSKRIFT -->
     <div id="add-recipe-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
-            <button class="close-btn" onclick="closeAddRecipeForm()">Avbryt</button>
+            <button class="close-btn" onclick="closeAddRecipeForm()" style="position: absolute; top: 15px; right: 15px;">Avbryt</button>
             <h2 id="form-modal-title" style="margin-top:0;">Legg til ny oppskrift</h2>
             <form id="new-recipe-form" onsubmit="saveNewRecipe(event)">
                 <div class="form-group">
@@ -899,7 +897,7 @@
     <!-- MODAL 3: OPPSKRIFTSDETALJER -->
     <div id="recipe-detail-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
-            <button class="close-btn" onclick="closeRecipeDetail()">Tilbake</button>
+            <button class="close-btn" onclick="closeRecipeDetail()" style="position: absolute; top: 15px; right: 15px;">Tilbake</button>
             <div id="recipe-detail-body"></div>
             <div style="margin-top: 25px; display: flex; gap: 10px; border-top: 1px solid var(--line); padding-top: 15px;">
                 <button class="add-btn" onclick="editCurrentRecipe()" style="flex:1;">Rediger</button>
@@ -909,7 +907,6 @@
     </div>
 
     <script>
-        // Definisjon av byer med koordinater og tidssoner
         const CITIES = {
             'Oslo': { lat: 59.9139, lon: 10.7522, tz: 'Europe/Oslo' },
             'Trondheim': { lat: 63.4305, lon: 10.3951, tz: 'Europe/Oslo' },
@@ -1097,11 +1094,14 @@
                         link.appendChild(img);
                     }
 
+                    // Viser både dato og klokkeslett med standard gråtone (.news-time)
+                    const timeDisplay = article.date && article.time ? `${article.date} kl. ${article.time}` : (article.time || article.date || '');
+
                     const text = document.createElement('div');
                     text.className = 'news-text';
                     text.innerHTML = `
                         <div class="news-title">${article.title || ''}</div>
-                        ${article.time ? `<div class="news-time">🕒 ${article.time}</div>` : ''}
+                        ${timeDisplay ? `<div class="news-time">🕒 ${timeDisplay}</div>` : ''}
                     `;
                     link.appendChild(text);
                     container.appendChild(link);
