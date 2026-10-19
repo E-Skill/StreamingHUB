@@ -988,7 +988,7 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        async function updateWeather() {
+                async function updateWeather() {
             const tempEl = document.getElementById('temperature');
             const feelsEl = document.getElementById('feels-like');
             const windEl = document.getElementById('wind');
@@ -1042,9 +1042,9 @@
                     if (idx === -1) idx = 0;
 
                     for (let i = idx + 1; i < Math.min(idx + 9, times.length); i++) {
-                        const timeString = times[i].includes('T') ? times[i] : times[i].replace(' ', 'T');
-                        const dateObj = new Date(timeString);
-                        const hourLabel = isNaN(dateObj) ? times[i] : dateObj.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
+                        // Henter ut selve klokkeslettet fra tidsstrengen (f.eks. "2026-10-19T17:00" -> "17:00")
+                        const timePart = times[i].split('T')[1];
+                        const hourLabel = timePart ? timePart.substring(0, 5) : times[i];
                         
                         const tempH = temps[i] != null ? Math.round(temps[i]) : '--';
                         const ic = codes[i] != null ? weatherIcon(Number(codes[i])) : '';
@@ -1064,7 +1064,8 @@
                 console.error('Weather fetch failed:', error);
                 if (updatedEl) updatedEl.textContent = 'Kunne ikke hente vær';
             }
-        }
+                }
+        
 
         async function updateNews(forceFresh = false) {
             const container = document.getElementById('nrk-news');
