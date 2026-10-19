@@ -1041,8 +1041,11 @@
                     if (idx === -1) idx = 0;
 
                     for (let i = idx + 1; i < Math.min(idx + 9, times.length); i++) {
-                        const timePart = times[i].split('T')[1];
-                        const hourLabel = timePart ? timePart.substring(0, 5) : times[i];
+                        // Tolker datoen korrekt og henter ut rent klokkeslett (f.eks. "17:00") i riktig tidssone
+                        const d = new Date(times[i]);
+                        const hourLabel = !isNaN(d.getTime()) 
+                            ? d.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz })
+                            : times[i];
                         
                         const tempH = temps[i] != null ? Math.round(temps[i]) : '--';
                         const ic = codes[i] != null ? weatherIcon(Number(codes[i])) : '';
