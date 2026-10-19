@@ -1,24 +1,24 @@
 {
-  "updatedAt": "2026-10-19T06:09:14.038389+00:00",
+  "updatedAt": "2026-10-19T13:02:20.189338+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Macron nekter innenriksministeren å gå av",
-      "link": "https://www.nrk.no/nyheter/macron-nekter-innenriksministeren-a-ga-av-1.18058212",
-      "pubDate": "2026-10-19T05:23:47+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/71d1bb6013eee95a28ca4211479ef42b1d299f71.jpg"
+      "title": "Centerparti-leder får prøve å danne regjering i Sverige",
+      "link": "https://www.nrk.no/nyheter/centerparti-leder-far-prove-a-danne-regjering-i-sverige-1.18058702",
+      "pubDate": "2026-10-19T11:37:53+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1d2273ed0b9324065146c3200e1621fcc93da1aa.jpg"
     },
     {
-      "title": "Smelteverket vil bli først i verden: Men først må de stå i strømkø",
-      "link": "https://www.nrk.no/tromsogfinnmark/finnfjord-as-vil-bli-forst-i-verden_-men-forst-ma-de-sta-i-stromko-1.18054865",
-      "pubDate": "2026-10-19T03:15:45+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/998c3d2121ab17a7687406cb6a9e9ae808990123.jpg"
+      "title": "Fryktar hamnespy i Oslofjorden: – Ei tikkande bombe",
+      "link": "https://www.nrk.no/ostfold/fryktar-hamnespy-rykker-inn-i-oslofjorden_-ber-folk-sjekke-baten-1.18058300",
+      "pubDate": "2026-10-19T11:19:11+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/b1db9f0f47db0bb662f1ccf51543b59389d1ec79.jpg"
     },
     {
-      "title": "Regjeringen nekter å love desemberbarna barnehageplass",
-      "link": "https://www.nrk.no/nordland/stortinget-vil-gi-desemberbarna-barnehageplass-fra-fylte-ett-ar-1.18049141",
-      "pubDate": "2026-10-19T03:42:03+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ed9d56da0fb6c9ff0ad84d90f5390605b27a2d63.jpg"
+      "title": "Skipsarresten på Svalbard: Skal ha blitt truet med «store konsekvenser»",
+      "link": "https://www.nrk.no/tromsogfinnmark/_professor-moltsjanov_-i-arrest_-advokat-hevder-arrestasjonen-ble-truet-med-store-konsekvenser-1.18057606",
+      "pubDate": "2026-10-19T10:33:18+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c307ae7c6b4ab00ca68a42c6a64b0ebb83c151e3.jpg"
     }
   ]
 }
