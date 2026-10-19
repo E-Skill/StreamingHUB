@@ -75,7 +75,7 @@
         }
 
         .weather-head {
-            margin: 0 0 18px;
+            margin: 0 0 14px;
             font-size: 1.05rem;
             font-weight: 700;
             color: var(--text);
@@ -84,10 +84,21 @@
             justify-content: space-between;
         }
 
-        .weather-location {
+        .city-select {
+            width: 100%;
+            background: #081821;
+            color: var(--text);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 6px;
+            padding: 6px 10px;
             font-size: 0.85rem;
-            color: var(--muted);
-            font-weight: 500;
+            font-family: inherit;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+        .city-select:focus {
+            outline: none;
+            border-color: #007bff;
         }
 
         .weather-box {
@@ -96,7 +107,7 @@
             color: var(--text);
             background: transparent;
             border: none;
-            margin-top: 8px;
+            margin-top: 4px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -390,19 +401,21 @@
         }
 
         .news-title {
-            font-size: 0.98rem;
+            font-size: 0.95rem;
             line-height: 1.3;
             font-weight: 600;
             color: var(--text);
-            white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
 
         .news-time {
-            color: var(--muted-2);
-            font-size: 0.78rem;
-            margin-top: 6px;
+            color: #5cdb95;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            font-weight: 600;
         }
 
         .news-footer {
@@ -657,8 +670,22 @@
             <aside class="weather-area">
                 <div class="weather-head">
                     <span>Været</span>
-                    <span class="weather-location" id="weather-location">Oslo</span>
                 </div>
+
+                <!-- Nedtrekksmeny for valg av by -->
+                <select id="city-selector" class="city-select" onchange="changeCity(this.value)">
+                    <option value="Oslo">Oslo</option>
+                    <option value="Trondheim">Trondheim</option>
+                    <option value="Bergen">Bergen</option>
+                    <option value="Tromsø">Tromsø</option>
+                    <option value="Tokyo">Tokyo</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Madrid">Madrid</option>
+                    <option value="Athen">Athen</option>
+                    <option value="Washington">Washington</option>
+                    <option value="London">London</option>
+                    <option value="Berlin">Berlin</option>
+                </select>
 
                 <div class="weather-box">
                     <div class="weather-top">
@@ -883,11 +910,22 @@
     </div>
 
     <script>
-        const WEATHER = {
-            city: 'Oslo',
-            latitude: 59.9139,
-            longitude: 10.7522
+        // Definisjon av byer med koordinater og tidssoner
+        const CITIES = {
+            'Oslo': { lat: 59.9139, lon: 10.7522, tz: 'Europe/Oslo' },
+            'Trondheim': { lat: 63.4305, lon: 10.3951, tz: 'Europe/Oslo' },
+            'Bergen': { lat: 60.3913, lon: 5.3221, tz: 'Europe/Oslo' },
+            'Tromsø': { lat: 69.6492, lon: 18.9553, tz: 'Europe/Oslo' },
+            'Tokyo': { lat: 35.6762, lon: 139.6503, tz: 'Asia/Tokyo' },
+            'Paris': { lat: 48.8566, lon: 2.3522, tz: 'Europe/Paris' },
+            'Madrid': { lat: 40.4168, lon: -3.7038, tz: 'Europe/Madrid' },
+            'Athen': { lat: 37.9838, lon: 23.7275, tz: 'Europe/Athens' },
+            'Washington': { lat: 38.9072, lon: -77.0369, tz: 'America/New_York' },
+            'London': { lat: 51.5074, lon: -0.1278, tz: 'Europe/London' },
+            'Berlin': { lat: 52.5200, lon: 13.4050, tz: 'Europe/Berlin' }
         };
+
+        let currentCityName = 'Oslo';
 
         const WEATHER_INTERVAL = 15 * 60 * 1000;
         const NEWS_API_URL = 'https://streaminghub-news.eskil-sundby.workers.dev/news';
@@ -899,6 +937,13 @@
         let recipesArray = [];
         let currentRecipeIndex = null;
         let activeCategoryFilter = 'alle';
+
+        function changeCity(cityName) {
+            if (CITIES[cityName]) {
+                currentCityName = cityName;
+                updateWeather();
+            }
+        }
 
         function getAdminPassword() {
             let pwd = localStorage.getItem('recipe_admin_pwd');
@@ -956,13 +1001,15 @@
             const hourlyContainer = document.getElementById('hourly-forecast');
             const updatedEl = document.getElementById('weather-updated');
 
+            const cityData = CITIES[currentCityName];
+
             try {
                 const cacheBuster = `&t=${Date.now()}`;
                 const url = 'https://api.open-meteo.com/v1/forecast' +
-                    `?latitude=${WEATHER.latitude}&longitude=${WEATHER.longitude}` +
+                    `?latitude=${cityData.lat}&longitude=${cityData.lon}` +
                     '&hourly=temperature_2m,apparent_temperature,weathercode,relative_humidity_2m' +
                     '&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,weather_code' +
-                    '&timezone=Europe%2FOslo' + cacheBuster;
+                    `&timezone=${encodeURIComponent(cityData.tz)}` + cacheBuster;
 
                 const response = await fetch(url, { cache: 'no-store' });
                 if (!response.ok) throw new Error('Værserveren svarte med feil');
@@ -999,7 +1046,10 @@
                     if (idx === -1) idx = 0;
 
                     for (let i = idx + 1; i < Math.min(idx + 9, times.length); i++) {
-                        const hourLabel = new Date(times[i]).toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
+                        const timeString = times[i].includes('T') ? times[i] : times[i].replace(' ', 'T');
+                        const dateObj = new Date(timeString);
+                        const hourLabel = isNaN(dateObj) ? times[i] : dateObj.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
+                        
                         const tempH = temps[i] != null ? Math.round(temps[i]) : '--';
                         const ic = codes[i] != null ? weatherIcon(Number(codes[i])) : '';
 
@@ -1050,7 +1100,10 @@
 
                     const text = document.createElement('div');
                     text.className = 'news-text';
-                    text.innerHTML = `<div class="news-title">${article.title || ''}</div>`;
+                    text.innerHTML = `
+                        <div class="news-title">${article.title || ''}</div>
+                        ${article.time ? `<div class="news-time">🕒 ${article.time}</div>` : ''}
+                    `;
                     link.appendChild(text);
                     container.appendChild(link);
                 });
