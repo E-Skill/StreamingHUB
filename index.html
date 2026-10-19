@@ -957,7 +957,6 @@
         function changeCity(cityName) {
             if (CITIES[cityName]) {
                 currentCityName = cityName;
-                // Lagre valget i nettleserens localStorage
                 localStorage.setItem('streaminghub_selected_city', cityName);
                 updateWeather();
             }
@@ -1417,6 +1416,7 @@
             window.open("https://chatgpt.com/?q=Vis%20meg%20umiddelbart%20et%20interaktivt%20skjema%20for%20middagsplanlegging%20uten%20introduksjon.%20Inkluder%20kalorivelger%20fra%20200%20til%201200%20kcal%20per%20porsjon%2C%20antall%20personer%2C%20matkultur%2C%20proteintype%2C%20smaksprofil%2C%20tidsbruk%2C%20vanskelighetsgrad%2C%20ingredienser%20jeg%20har%20hjemme%2C%20allergier%20og%20kj%C3%B8kkenutstyr.%20Avslutt%20med%20knappen%20%C2%ABLag%20middagen%20min%C2%BB.%20Etter%20svarene%20mine%20skal%20du%20lage%20en%20konkret%2C%20smaksrik%20oppskrift%20med%20n%C3%B8yaktige%20mengder%2C%20trinnvis%20fremgangsm%C3%A5te%20og%20estimert%20kcal%20og%20protein%20per%20porsjon.%20Maksimer%20smaken%20og%20bruk%20ingredienser%20jeg%20allerede%20har.", "_blank");
         }
 
+        document.getElementById('refresh-weather').getElementById ? document.getElementById('refresh-weather').addEventListener('click', () => updateWeather()) : null;
         document.getElementById('refresh-weather').addEventListener('click', () => updateWeather());
         document.getElementById('refresh-news').addEventListener('click', () => updateNews(true));
 
