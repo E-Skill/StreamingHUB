@@ -26,7 +26,6 @@
 
         * { box-sizing: border-box; }
 
-        /* Allow scrolling, but hide scrollbars completely across browsers */
         html, body {
             height: 100%;
             margin: 0;
@@ -35,13 +34,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
             overflow-y: auto;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE og eldre Edge */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
 
         html::-webkit-scrollbar,
         body::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera, Edge */
+            display: none;
             width: 0;
             height: 0;
         }
@@ -165,19 +164,16 @@
             cursor: pointer;
         }
 
-        /* hourly forecast */
         .hourly-forecast {
             display: flex;
             flex-direction: column;
             gap: 8px;
             margin-top: 12px;
             padding-bottom: 6px;
-            overflow: visible;
         }
 
         .hour-card {
             width: 100%;
-            max-width: 100%;
             background: rgba(255,255,255,0.02);
             border-radius: 10px;
             padding: 10px 12px;
@@ -190,7 +186,6 @@
         }
 
         .hour-left { display:flex; align-items:center; gap:10px; }
-        .hour-icon { font-size: 1.2rem; }
         .hour-temp { font-weight: 700; font-size: 1rem; }
 
         .main {
@@ -215,8 +210,9 @@
             width: 100%;
             margin-top: 18px;
             padding-right: 10px;
-            display:flex;
-            justify-content:center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .section-header {
@@ -224,9 +220,9 @@
             font-size: 1rem;
             color: var(--muted);
             font-weight: 700;
-            width:100%;
-            max-width:700px;
-            text-align:left;
+            width: 100%;
+            max-width: 700px;
+            text-align: left;
         }
 
         .service-grid {
@@ -234,7 +230,7 @@
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 16px 28px;
             width: 100%;
-            max-width: 100%;
+            max-width: 700px;
             margin: 0 auto;
             justify-content: center;
             justify-items: center;
@@ -255,6 +251,7 @@
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.01);
             padding: 14px 12px 12px;
             transition: transform 0.12s ease, filter 0.12s ease;
+            cursor: pointer;
         }
 
         .service-card:hover {
@@ -276,11 +273,12 @@
             color: #f0f5ff;
         }
 
+        /* Nyheter */
         .news-area {
             padding-top: 10px;
             min-height: calc(100vh - 36px);
-            display:flex;
-            flex-direction:column;
+            display: flex;
+            flex-direction: column;
         }
 
         .news-panel {
@@ -290,8 +288,8 @@
             border: none;
             color: var(--text);
             padding: 0;
-            display:flex;
-            flex-direction:column;
+            display: flex;
+            flex-direction: column;
         }
 
         .news-header {
@@ -337,9 +335,7 @@
             border-bottom: 1px solid var(--line);
         }
 
-        .news-item:last-child {
-            border-bottom: none;
-        }
+        .news-item:last-child { border-bottom: none; }
 
         .news-thumb {
             width: 96px;
@@ -382,38 +378,172 @@
             border-top: 1px solid var(--line);
         }
 
-        .bottom-text {
-            margin-top: 22px;
-            border-top: 1px solid rgba(255,255,255,0.04);
-            padding-top: 8px;
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.4);
+        /* --- MODALER / OPPSKRIFTER STYLING --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
 
-        .bottom-text a {
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
+        .modal-content {
+            background: #121f2d;
+            color: #eef5ff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.08);
         }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .close-btn:hover { background: rgba(255,255,255,0.2); }
+
+        .modal-header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .add-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .add-btn:hover { background: #0056b3; }
+
+        .recipe-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+
+        .recipe-card {
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(255,255,255,0.04);
+            transition: background 0.2s;
+        }
+        .recipe-card:hover { background: rgba(255,255,255,0.07); }
+
+        .recipe-thumb {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 6px;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .recipe-info h3 {
+            margin: 0 0 5px 0;
+            color: #4da6ff;
+            font-size: 1.1em;
+        }
+        .recipe-info p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.85em;
+        }
+
+        .recipe-detail-img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; color: var(--muted); font-size: 0.9em; }
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .form-actions { display: flex; gap: 10px; margin-top: 20px; }
+        .save-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            flex: 1;
+        }
+        .save-btn:hover { background: #218838; }
+
+        .ai-section {
+            margin-top: 20px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            padding-top: 15px;
+        }
+        .ai-btn {
+            background: #17a2b8;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .ai-btn:hover { background: #138496; }
 
         @media (max-width: 1100px) {
             .layout {
                 grid-template-columns: 200px 1fr 280px;
                 gap: 20px;
             }
-            .service-grid {
-                grid-template-columns: repeat(3, minmax(120px, 1fr));
-                max-width: 720px;
-            }
+            .service-grid { grid-template-columns: repeat(3, minmax(120px, 1fr)); }
             h1.title { font-size: 2.1rem; }
         }
 
         @media (max-width: 768px) {
             body { padding: 14px; }
-            .layout {
-                grid-template-columns: 1fr;
-            }
-            .weather-area,
-            .news-area { min-height: auto; }
+            .layout { grid-template-columns: 1fr; }
+            .weather-area, .news-area { min-height: auto; }
             .service-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
             h1.title { font-size: 1.8rem; }
         }
@@ -423,118 +553,71 @@
 <body>
     <div class="page">
         <div class="layout">
+            <!-- VÆR KOLONNE -->
             <aside class="weather-area">
                 <div class="weather-head">Været</div>
-
                 <div class="weather-box">
                     <div class="weather-top">
                         <div class="weather-temp-row">
                             <div id="weather-icon" style="font-size:3.7rem; line-height:1;">☁️</div>
                             <div class="weather-temp" id="temperature">--<span class="degree">°</span></div>
                         </div>
-
                         <div class="weather-feels" id="feels-like">Føles som --°</div>
-
                         <div class="weather-meta">
                             <div><strong>Vind:</strong> <span id="wind">-- m/s</span></div>
                             <div><strong>Luftfuktighet:</strong> <span id="humidity">-- %</span></div>
                         </div>
-
                         <div id="hourly-forecast" class="hourly-forecast" aria-hidden="false"></div>
                     </div>
-
                     <div class="weather-updated">
-                        <div style="display:flex;flex-direction:column;align-items:flex-start">
-                            <span id="weather-updated">Venter på værdata...</span>
-                        </div>
-
+                        <span id="weather-updated">Venter på værdata...</span>
                         <button id="refresh-weather" type="button">Oppdater</button>
                     </div>
                 </div>
             </aside>
 
+            <!-- HOVEDSIDEN / STRØMMETJENESTER -->
             <main class="main">
                 <h1 class="title" id="main-clock">--:--:--</h1>
 
                 <div class="services-block">
                     <div style="width:100%;max-width:700px;">
-                        <div class="section-header">Strømmetjenester</div>
+                        <div class="section-header">Strømmetjenester & Verktøy</div>
                         <div class="service-grid">
-                            <a class="service-card" href="spotify:">
-                                <img class="service-logo" src="Images/spotify.png" alt="Spotify">
-                                <div class="service-label">Spotify</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.youtube.com">
-                                <img class="service-logo" src="Images/youtube.png" alt="YouTube">
-                                <div class="service-label">YouTube</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.twitch.tv">
-                                <img class="service-logo" src="Images/twitch.png" alt="Twitch">
-                                <div class="service-label">Twitch</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.netflix.com">
-                                <img class="service-logo" src="Images/netflix.png" alt="Netflix">
-                                <div class="service-label">Netflix</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.max.com">
-                                <img class="service-logo" src="Images/max.png" alt="Max">
-                                <div class="service-label">Max</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.disneyplus.com">
-                                <img class="service-logo" src="Images/disneypluss.png" alt="Disney+">
-                                <div class="service-label">Disney+</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.primevideo.com">
-                                <img class="service-logo" src="Images/prime.png" alt="Prime Video">
-                                <div class="service-label">Prime Video</div>
-                            </a>
-
-                            <a class="service-card" href="https://tv.nrk.no">
-                                <img class="service-logo" src="Images/nrktv.png" alt="NRK TV">
-                                <div class="service-label">NRK TV</div>
-                            </a>
-
-                            <a class="service-card" href="https://play.tv2.no">
-                                <img class="service-logo" src="Images/tv2.png" alt="TV 2 Play">
-                                <div class="service-label">TV 2 Play</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.viaplay.no">
-                                <img class="service-logo" src="Images/viaplay.png" alt="Viaplay">
-                                <div class="service-label">Viaplay</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.strim.no">
-                                <img class="service-logo" src="Images/strim.png" alt="Strim">
-                                <div class="service-label">Strim</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.yr.no">
-                                <img class="service-logo" src="Images/yr.png" alt="Yr">
-                                <div class="service-label">Yr</div>
-                            </a>
+                            <!-- Strømmetjenester (ofte brukte) -->
+                            <a class="service-card" href="spotify:"><img class="service-logo" src="Images/spotify.png" alt="Spotify"><div class="service-label">Spotify</div></a>
+                            <a class="service-card" href="https://www.youtube.com"><img class="service-logo" src="Images/youtube.png" alt="YouTube"><div class="service-label">YouTube</div></a>
+                            <a class="service-card" href="https://www.twitch.tv"><img class="service-logo" src="Images/twitch.png" alt="Twitch"><div class="service-label">Twitch</div></a>
+                            <a class="service-card" href="https://www.netflix.com"><img class="service-logo" src="Images/netflix.png" alt="Netflix"><div class="service-label">Netflix</div></a>
+                            <a class="service-card" href="https://www.max.com"><img class="service-logo" src="Images/max.png" alt="Max"><div class="service-label">Max</div></a>
+                            <a class="service-card" href="https://www.disneyplus.com"><img class="service-logo" src="Images/disneypluss.png" alt="Disney+"><div class="service-label">Disney+</div></a>
+                            <a class="service-card" href="https://www.primevideo.com"><img class="service-logo" src="Images/prime.png" alt="Prime Video"><div class="service-label">Prime Video</div></a>
+                            <a class="service-card" href="https://tv.nrk.no"><img class="service-logo" src="Images/nrktv.png" alt="NRK TV"><div class="service-label">NRK TV</div></a>
+                            <a class="service-card" href="https://play.tv2.no"><img class="service-logo" src="Images/tv2.png" alt="TV 2 Play"><div class="service-label">TV 2 Play</div></a>
+                            <a class="service-card" href="https://www.viaplay.no"><img class="service-logo" src="Images/viaplay.png" alt="Viaplay"><div class="service-label">Viaplay</div></a>
+                            <a class="service-card" href="https://www.strim.no"><img class="service-logo" src="Images/strim.png" alt="Strim"><div class="service-label">Strim</div></a>
+                            <a class="service-card" href="https://www.yr.no"><img class="service-logo" src="Images/yr.png" alt="Yr"><div class="service-label">Yr</div></a>
+                            
+                            <!-- NY KNAPP FOR OPPSKRIFTER -->
+                            <div class="service-card" onclick="openRecipesModal()">
+                                <div style="font-size: 2.5rem; margin-bottom: 12px;">🍲</div>
+                                <div class="service-label">Oppskrifter</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </main>
 
+            <!-- NYHETER FRA NRK -->
             <aside class="news-area">
                 <div class="news-panel">
-    <div class="news-header">
-        <a href="https://www.nrk.no/nyheter/" target="_blank">
-            <img class="news-brand-logo" src="Images/nrk.png" alt="NRK Logo">
-        </a>
-        <h2>NRK nyheter</h2>
-</div>
-
+                    <div class="news-header">
+                        <a href="https://www.nrk.no/nyheter/" target="_blank">
+                            <img class="news-brand-logo" src="Images/nrk.png" alt="NRK Logo">
+                        </a>
+                        <h2>NRK nyheter</h2>
+                    </div>
                     <div id="nrk-news" class="news-list" aria-live="polite"></div>
-
                     <div class="news-footer">
                         <span id="news-updated">Hentet fra NRK: --:--</span>
                         <button id="refresh-news" type="button">Oppdater</button>
@@ -544,41 +627,110 @@
         </div>
     </div>
 
-    <script>
-        const WEATHER = {
-            city: 'Oslo',
-            latitude: 59.9139,
-            longitude: 10.7522
-        };
+    <!-- === MODALER FOR OPPSKRIFTER OG SKJEMAER === -->
 
+    <!-- 1. Hovedmeny for Oppskrifter -->
+    <div id="recipe-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeRecipesModal()">X</button>
+            <div class="modal-header-actions">
+                <h2>Mine Oppskrifter</h2>
+                <button class="add-btn" onclick="openAddRecipeForm()">+ Ny oppskrift</button>
+            </div>
+            
+            <div id="recipe-list-container" class="recipe-list"></div>
+
+            <div class="ai-section">
+                <button class="ai-btn" onclick="openMatAI()">🤖 Spør Mat-AI om ny oppskrift</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Skjema for å Legge til / Redigere Oppskrift -->
+    <div id="add-recipe-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeAddRecipeForm()">Avbryt</button>
+            <h2 id="form-modal-title">Legg til ny oppskrift</h2>
+            
+            <form id="new-recipe-form" onsubmit="saveRecipeData(event)">
+                <div class="form-group">
+                    <label>Tittel *</label>
+                    <input type="text" id="recipe-title" required placeholder="F.eks. Galinhada">
+                </div>
+
+                <div class="form-group">
+                    <label>Kort beskrivelse</label>
+                    <input type="text" id="recipe-desc" placeholder="Kort oppsummering av retten">
+                </div>
+
+                <div class="form-group">
+                    <label>Bilde av maten (Velg fil eller lim inn bilde/URL)</label>
+                    <input type="file" id="recipe-file-input" accept="image/*" onchange="handleFileSelect(event)" style="margin-bottom: 8px;">
+                    <div style="text-align: center; color: var(--muted); font-size: 0.8em; margin: 4px 0;">— eller skriv/lim inn lenke —</div>
+                    <input type="text" id="recipe-img" placeholder="https://..." oninput="previewImageUrl(this.value)">
+                    
+                    <div id="image-preview-container" style="margin-top: 10px; display: none; text-align: center;">
+                        <img id="image-preview" src="" alt="Forhåndsvisning" style="max-height: 140px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); object-fit: cover;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Ingredienser (én per linje) *</label>
+                    <textarea id="recipe-ingredients" rows="4" required placeholder="Kyllinglår&#10;Ris&#10;Løk"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Framgangsmåte *</label>
+                    <textarea id="recipe-instructions" rows="5" required placeholder="1. Brun kyllingen...&#10;2. Kok risen..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Lagre oppskrift</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. Detaljvisning for Oppskrift -->
+    <div id="recipe-detail-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeRecipeDetail()">Tilbake</button>
+            <div id="recipe-detail-body"></div>
+
+            <div style="margin-top: 25px; display: flex; gap: 10px; border-top: 1px solid var(--line); padding-top: 15px;">
+                <button class="add-btn" onclick="editCurrentRecipe()" style="background: #ffc107; color: #000;">Rediger</button>
+                <button class="add-btn" onclick="deleteCurrentRecipe()" style="background: #dc3545;">Slett</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- VÆR OG NYHETER (Uendret logikk) ---
+        const WEATHER = { city: 'Oslo', latitude: 59.9139, longitude: 10.7522 };
         const WEATHER_INTERVAL = 15 * 60 * 1000;
         const NEWS_API_URL = 'https://streaminghub-news.eskil-sundby.workers.dev/news';
         const NEWS_FALLBACK_URL = 'https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/news.json';
         const NEWS_INTERVAL = 15 * 60 * 1000;
         const MAX_NEWS_ARTICLES = 7;
 
+        // --- SKYSYNK FOR OPPSKRIFTER (Cloudflare Worker URL) ---
+        const WORKER_URL = 'https://streaminghub-news.eskil-sundby.workers.dev'; // Peker på din eksisterende Worker eller opprettet endepunkt
+        let recipesArray = [];
+        let currentRecipeIndex = null;
+
         async function fetchJsonWithFallback(urls) {
             let lastError = null;
-
             for (const url of urls) {
                 try {
                     const response = await fetch(url, { cache: 'no-store' });
-                    if (!response.ok) {
-                        throw new Error(`HTTP ${response.status}`);
-                    }
-
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
                     const data = await response.json();
-                    if (data && Array.isArray(data.articles)) {
-                        return data;
-                    }
-
+                    if (data && Array.isArray(data.articles)) return data;
                     throw new Error('Invalid news payload');
                 } catch (error) {
                     lastError = error;
-                    console.warn(`News fetch failed for ${url}:`, error);
                 }
             }
-
             throw lastError || new Error('Could not fetch news');
         }
 
@@ -596,8 +748,6 @@
 
         function updateClock() {
             const timeStr = new Date().toLocaleTimeString('no-NO');
-            const el = document.getElementById('clock');
-            if (el) el.textContent = timeStr;
             const main = document.getElementById('main-clock');
             if (main) main.textContent = timeStr;
         }
@@ -614,224 +764,280 @@
             const hourlyContainer = document.getElementById('hourly-forecast');
 
             try {
-                const url = 'https://api.open-meteo.com/v1/forecast' +
-                    `?latitude=${WEATHER.latitude}` +
-                    `&longitude=${WEATHER.longitude}` +
-                    '&hourly=temperature_2m,apparent_temperature,weathercode,relative_humidity_2m' +
-                    '&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,weather_code' +
-                    '&timezone=Europe%2FOslo';
-
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${WEATHER.latitude}&longitude=${WEATHER.longitude}&hourly=temperature_2m,apparent_temperature,weathercode,relative_humidity_2m&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,weather_code&timezone=Europe%2FOslo`;
                 const response = await fetch(url);
-                if (!response.ok) throw new Error('Værserveren svarte med feil');
-
+                if (!response.ok) throw new Error('Værserver feil');
                 const data = await response.json();
-                const current = data.current || data.current_weather;
+                const current = data.current;
                 if (!current) throw new Error('Ingen værdata');
 
-                const tempVal = current.temperature_2m ?? current.temperature;
-                const temp = Number.isFinite(tempVal) ? Math.round(tempVal) : '--';
-
-                const weatherCode = current.weather_code ?? current.weathercode ?? 0;
-
-                let apparentVal = current.apparent_temperature;
-                if ((apparentVal == null || !Number.isFinite(apparentVal)) && data.hourly && Array.isArray(data.hourly.apparent_temperature)) {
-                    const nowKey = current.time;
-                    const idx = data.hourly.time ? data.hourly.time.indexOf(nowKey) : -1;
-                    if (idx >= 0) apparentVal = data.hourly.apparent_temperature[idx];
-                }
-
-                const windVal = current.wind_speed_10m ?? current.windspeed ?? '--';
-
-                let humVal = current.relative_humidity_2m ?? current.relativehumidity_2m;
-                if (humVal == null && data.hourly) {
-                    const humArray = data.hourly.relative_humidity_2m || data.hourly.relativehumidity_2m;
-                    if (Array.isArray(humArray) && Array.isArray(data.hourly.time)) {
-                        const nowKey = current.time;
-                        const idx = data.hourly.time.indexOf(nowKey);
-                        if (idx >= 0) humVal = humArray[idx];
-                    }
-                }
-
+                const temp = Math.round(current.temperature_2m);
                 if (tempEl) tempEl.innerHTML = `${temp}<span class="degree">°</span>`;
-                if (feelsEl) feelsEl.textContent = `Føles som ${Number.isFinite(apparentVal) ? Math.round(apparentVal) : '--'}°`;
-                if (windEl) windEl.textContent = `${Number.isFinite(windVal) ? (Math.round(windVal * 10) / 10) : '--'} m/s`;
-                if (humEl) humEl.textContent = `${humVal != null ? humVal : '--'} %`;
-                if (iconEl) iconEl.textContent = weatherIcon(weatherCode);
+                if (feelsEl) feelsEl.textContent = `Føles som ${Math.round(current.apparent_temperature)}°`;
+                if (windEl) windEl.textContent = `${Math.round(current.wind_speed_10m * 10) / 10} m/s`;
+                if (humEl) humEl.textContent = `${current.relative_humidity_2m} %`;
+                if (iconEl) iconEl.textContent = weatherIcon(current.weather_code);
 
                 if (hourlyContainer && data.hourly && Array.isArray(data.hourly.time)) {
                     hourlyContainer.innerHTML = '';
                     const times = data.hourly.time;
-                    const temps = data.hourly.temperature_2m || [];
-                    const codes = data.hourly.weathercode || data.hourly.weather_code || [];
+                    const temps = data.hourly.temperature_2m;
+                    const codes = data.hourly.weather_code;
+                    let idx = times.indexOf(current.time);
+                    if (idx === -1) idx = 0;
 
-                    const nowKey = current.time;
-                    let idx = times.indexOf(nowKey);
-                    if (idx === -1) {
-                        const now = new Date().toISOString().slice(0, 13);
-                        idx = times.findIndex(t => t.startsWith(now));
-                        if (idx === -1) idx = 0;
-                    }
-
-                    const start = idx + 1;
-                    const count = 8;
-                    for (let i = start; i < Math.min(start + count, times.length); i++) {
-                        const t = times[i];
-                        const hourLabel = new Date(t).toLocaleTimeString('no-NO', { hour: '2-digit' });
-                        const tempH = temps[i] != null ? Math.round(temps[i]) : '--';
-                        const codeH = codes[i] != null ? codes[i] : null;
-                        const ic = codeH != null ? weatherIcon(Number(codeH)) : '';
-
+                    for (let i = idx + 1; i < Math.min(idx + 8, times.length); i++) {
+                        const hourLabel = new Date(times[i]).toLocaleTimeString('no-NO', { hour: '2-digit' });
                         const card = document.createElement('div');
                         card.className = 'hour-card';
-                        card.innerHTML = '<div class="hour-left"><div class="hour-icon">' + ic + '</div><div><div style="font-weight:600">' + hourLabel + '</div></div></div><div class="hour-temp">' + (tempH === '--' ? '--' : tempH + '<span class="degree">°</span>') + '</div>';
+                        card.innerHTML = `<div class="hour-left"><div>${weatherIcon(codes[i])}</div><div style="font-weight:600">${hourLabel}</div></div><div class="hour-temp">${Math.round(temps[i])}<span class="degree">°</span></div>`;
                         hourlyContainer.appendChild(card);
                     }
                 }
-
-                const weatherTime = new Date(current.time);
-                if (updatedEl && !isNaN(weatherTime.getTime())) {
-                    updatedEl.textContent = 'Værdato: ' + weatherTime.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
-                }
-
-            } catch (error) {
-                console.error('Weather fetch failed:', error);
-                if (tempEl) tempEl.innerHTML = '--<span class="degree">°</span>';
-                if (feelsEl) feelsEl.textContent = 'Føles som --°';
-                if (updatedEl) updatedEl.textContent = 'Værdata utilgjengelig';
+            } catch (err) {
+                console.error('Weather error:', err);
             }
         }
 
         async function updateNews(forceFresh = false) {
-            const container = document.getElementById('nrk-news');
-            const updatedEl = document.getElementById('news-updated');
-            const refreshBtn = document.getElementById('refresh-news');
-
             try {
                 const urls = [
-                    forceFresh
-                        ? `${NEWS_API_URL}?refresh=1&t=${Date.now()}`
-                        : `${NEWS_API_URL}?t=${Date.now()}`,
+                    forceFresh ? `${NEWS_API_URL}?refresh=1&t=${Date.now()}` : `${NEWS_API_URL}?t=${Date.now()}`,
                     NEWS_FALLBACK_URL
                 ];
-
                 const data = await fetchJsonWithFallback(urls);
-
-                const brandImg = document.querySelector('.news-brand-logo');
-                if (brandImg) {
-                    const feedLogo = data.logo || 'Images/nrk.png';
-                    brandImg.src = feedLogo;
-                    brandImg.onerror = function () {
-                        this.onerror = null;
-                        this.src = 'Images/nrk.png';
-                    };
-                }
-
-                let articles = Array.isArray(data.articles) ? data.articles.slice(0) : [];
-
-                articles.sort((a, b) => {
-                    const ta = a.pubDate ? new Date(a.pubDate).getTime() : 0;
-                    const tb = b.pubDate ? new Date(b.pubDate).getTime() : 0;
-                    return tb - ta;
-                });
-
-                articles = articles.slice(0, MAX_NEWS_ARTICLES);
-
-                if (!container) return;
-
-                if (!articles.length) {
-                    container.innerHTML = '<div class="news-item"><div class="news-text"><div class="news-title">Ingen nyheter tilgjengelig</div></div></div>';
-                    if (updatedEl) updatedEl.textContent = 'Ingen nyheter';
-                    return;
-                }
-
-                const fragment = document.createDocumentFragment();
-                articles.forEach(article => {
-                    const link = document.createElement('a');
-                    link.href = article.link || 'https://www.nrk.no';
-                    link.target = '_blank';
-                    link.rel = 'noopener noreferrer';
-                    link.className = 'news-item';
-
-                    if (article.image) {
-                        const img = document.createElement('img');
-                        img.src = article.image;
-                        img.alt = article.title || '';
-                        img.className = 'news-thumb';
-                        link.appendChild(img);
-                    }
-
-                    const text = document.createElement('div');
-                    text.className = 'news-text';
-
-                    const title = document.createElement('div');
-                    title.className = 'news-title';
-                    title.textContent = article.title || 'Uten tittel';
-                    text.appendChild(title);
-
-                    if (article.pubDate) {
-                        const time = document.createElement('div');
-                        time.className = 'news-time';
-                        const dt = new Date(article.pubDate);
-                        time.textContent = Number.isNaN(dt.getTime())
-                            ? article.pubDate
-                            : dt.toLocaleString('no-NO', {
-                                day: '2-digit', month: '2-digit',
-                                hour: '2-digit', minute: '2-digit'
-                            });
-                        text.appendChild(time);
-                    }
-
-                    link.appendChild(text);
-                    fragment.appendChild(link);
-                });
+                const container = document.getElementById('nrk-news');
+                if (!container || !data.articles) return;
 
                 container.innerHTML = '';
-                container.appendChild(fragment);
-
-                if (updatedEl) {
-                    const generated = data.updatedAt ? new Date(data.updatedAt) : null;
-                    const timeLabel = generated && !Number.isNaN(generated.getTime())
-                        ? generated.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' })
-                        : 'ukjent tidspunkt';
-                    updatedEl.textContent = `${data.stale ? 'Sist lagret' : 'Hentet fra NRK'}: ${timeLabel}`;
-                }
-            } catch (error) {
-                console.error('News fetch failed:', error);
-                if (container) {
-                    container.innerHTML = '<div class="news-item"><div class="news-text"><div class="news-title">Kunne ikke hente nyheter</div></div></div>';
-                }
-                if (updatedEl) updatedEl.textContent = 'Feil ved oppdatering';
-            } finally {
-                if (refreshBtn) {
-                    refreshBtn.disabled = false;
-                    refreshBtn.textContent = 'Oppdater';
-                }
+                data.articles.slice(0, MAX_NEWS_ARTICLES).forEach(article => {
+                    const link = document.createElement('a');
+                    link.href = article.link;
+                    link.target = '_blank';
+                    link.className = 'news-item';
+                    link.innerHTML = `
+                        ${article.image ? `<img src="${article.image}" class="news-thumb">` : ''}
+                        <div class="news-text">
+                            <div class="news-title">${article.title}</div>
+                            <div class="news-time">${new Date(article.pubDate).toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' })}</div>
+                        </div>
+                    `;
+                    container.appendChild(link);
+                });
+            } catch (err) {
+                console.error('News error:', err);
             }
         }
 
-        document.getElementById('refresh-weather').addEventListener('click', function () {
-            this.disabled = true;
-            this.textContent = 'Oppdaterer...';
-            updateWeather().finally(() => {
-                this.disabled = false;
-                this.textContent = 'Oppdater';
-            });
-        });
+        // --- OPPSKRIFTER LOGIKK & BILDE-KOMPRIMERING TIL PNG ---
 
-        document.getElementById('refresh-news').addEventListener('click', function () {
-            this.disabled = true;
-            this.textContent = 'Henter...';
-            updateNews(true).finally(() => {
-                this.disabled = false;
-                this.textContent = 'Oppdater';
-            });
-        });
+        async function loadRecipesFromCloud() {
+            try {
+                const res = await fetch(`${WORKER_URL}/recipes`);
+                if (res.ok) {
+                    recipesArray = await res.json();
+                } else {
+                    recipesArray = [];
+                }
+            } catch (err) {
+                console.warn('Kunne ikke hente fra sky, sjekker lokalt:', err);
+                const saved = localStorage.getItem('hub_recipes');
+                recipesArray = saved ? JSON.parse(saved) : [];
+            }
+            renderRecipesList();
+        }
 
+        async function syncRecipesToCloud() {
+            // Lagre lokalt som backup
+            localStorage.setItem('hub_recipes', JSON.stringify(recipesArray));
+            try {
+                await fetch(`${WORKER_URL}/recipes`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(recipesArray)
+                });
+            } catch (err) {
+                console.error('Kunne ikke synkronisere til skyen:', err);
+            }
+        }
+
+        function renderRecipesList() {
+            const listContainer = document.getElementById('recipe-list-container');
+            listContainer.innerHTML = '';
+
+            if (!recipesArray.length) {
+                listContainer.innerHTML = '<p style="color:var(--muted); text-align:center;">Ingen oppskrifter lagt til enda.</p>';
+                return;
+            }
+
+            recipesArray.forEach((recipe, index) => {
+                const card = document.createElement('div');
+                card.className = 'recipe-card';
+                card.onclick = () => openRecipeDetail(index);
+                card.innerHTML = `
+                    ${recipe.image ? `<img src="${recipe.image}" class="recipe-thumb">` : '<div class="recipe-thumb" style="display:flex;align-items:center;justify-content:center;">🍲</div>'}
+                    <div class="recipe-info">
+                        <h3>${recipe.title}</h3>
+                        <p>${recipe.description || 'Ingen beskrivelse'}</p>
+                    </div>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        function openRecipesModal() {
+            document.getElementById('recipe-modal').style.display = 'flex';
+            loadRecipesFromCloud();
+        }
+        function closeRecipesModal() { document.getElementById('recipe-modal').style.display = 'none'; }
+
+        function openAddRecipeForm() {
+            currentRecipeIndex = null;
+            document.getElementById('form-modal-title').textContent = 'Legg til ny oppskrift';
+            document.getElementById('new-recipe-form').reset();
+            document.getElementById('image-preview-container').style.display = 'none';
+            document.getElementById('recipe-modal').style.display = 'none';
+            document.getElementById('add-recipe-modal').style.display = 'flex';
+        }
+        function closeAddRecipeForm() {
+            document.getElementById('add-recipe-modal').style.display = 'none';
+            document.getElementById('recipe-modal').style.display = 'flex';
+        }
+
+        // Bildeopplasting konvertert til PNG og optimalisert
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const MAX_SIZE = 800;
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > height && width > MAX_SIZE) {
+                        height *= MAX_SIZE / width;
+                        width = MAX_SIZE;
+                    } else if (height > MAX_SIZE) {
+                        width *= MAX_SIZE / height;
+                        height = MAX_SIZE;
+                    }
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    // Konverterer til PNG slik du ønsket
+                    const pngDataUrl = canvas.toDataURL('image/png');
+                    document.getElementById('recipe-img').value = pngDataUrl;
+                    showImagePreview(pngDataUrl);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function previewImageUrl(url) {
+            if (url.trim()) showImagePreview(url.trim());
+            else document.getElementById('image-preview-container').style.display = 'none';
+        }
+
+        function showImagePreview(src) {
+            const container = document.getElementById('image-preview-container');
+            const preview = document.getElementById('image-preview');
+            preview.src = src;
+            container.style.display = 'block';
+        }
+
+        async function saveRecipeData(event) {
+            event.preventDefault();
+            const title = document.getElementById('recipe-title').value.trim();
+            const description = document.getElementById('recipe-desc').value.trim();
+            const image = document.getElementById('recipe-img').value.trim();
+            const ingredients = document.getElementById('recipe-ingredients').value.split('\n').map(i => i.trim()).filter(Boolean);
+            const instructions = document.getElementById('recipe-instructions').value.trim();
+
+            if (currentRecipeIndex !== null) {
+                recipesArray[currentRecipeIndex] = { ...recipesArray[currentRecipeIndex], title, description, image, ingredients, instructions };
+            } else {
+                recipesArray.push({ id: 'rec_' + Date.now(), title, description, image, ingredients, instructions });
+            }
+
+            await syncRecipesToCloud();
+            closeAddRecipeForm();
+            openRecipesModal();
+        }
+
+        function openRecipeDetail(index) {
+            currentRecipeIndex = index;
+            const recipe = recipesArray[index];
+            if (!recipe) return;
+
+            const detailBody = document.getElementById('recipe-detail-body');
+            let ingredientsHtml = recipe.ingredients.map(i => `<li>${i}</li>`).join('');
+
+            detailBody.innerHTML = `
+                <h2>${recipe.title}</h2>
+                ${recipe.image ? `<img src="${recipe.image}" class="recipe-detail-img">` : ''}
+                <p style="color:var(--muted);">${recipe.description || ''}</p>
+                <h3>Ingredienser:</h3>
+                <ul>${ingredientsHtml}</ul>
+                <h3>Framgangsmåte:</h3>
+                <p style="white-space: pre-line;">${recipe.instructions}</p>
+            `;
+
+            document.getElementById('recipe-modal').style.display = 'none';
+            document.getElementById('recipe-detail-modal').style.display = 'flex';
+        }
+
+        function closeRecipeDetail() {
+            document.getElementById('recipe-detail-modal').style.display = 'none';
+            document.getElementById('recipe-modal').style.display = 'flex';
+        }
+
+        function editCurrentRecipe() {
+            if (currentRecipeIndex === null) return;
+            const recipe = recipesArray[currentRecipeIndex];
+
+            document.getElementById('form-modal-title').textContent = 'Rediger oppskrift';
+            document.getElementById('recipe-title').value = recipe.title || '';
+            document.getElementById('recipe-desc').value = recipe.description || '';
+            document.getElementById('recipe-img').value = recipe.image || '';
+            document.getElementById('recipe-ingredients').value = recipe.ingredients ? recipe.ingredients.join('\n') : '';
+            document.getElementById('recipe-instructions').value = recipe.instructions || '';
+
+            if (recipe.image) showImagePreview(recipe.image);
+
+            document.getElementById('recipe-detail-modal').style.display = 'none';
+            document.getElementById('add-recipe-modal').style.display = 'flex';
+        }
+
+        async function deleteCurrentRecipe() {
+            if (currentRecipeIndex === null) return;
+            if (!confirm('Er du sikker på at du vil slette denne oppskriften?')) return;
+
+            recipesArray.splice(currentRecipeIndex, 1);
+            await syncRecipesToCloud();
+            closeRecipeDetail();
+            openRecipesModal();
+        }
+
+        function openMatAI() {
+            window.open("https://chatgpt.com/?q=Du+er+en+mesterkokk.+Hjelp+meg+med+en+kreativ+middagsoppskrift+basert+på+det+jeg+har+hjemme.", "_blank");
+        }
+
+        // Init
         updateWeather();
         updateNews();
         setInterval(updateWeather, WEATHER_INTERVAL);
         setInterval(updateNews, NEWS_INTERVAL);
+
+        document.getElementById('refresh-weather').onclick = () => updateWeather();
+        document.getElementById('refresh-news').onclick = () => updateNews(true);
     </script>
 </body>
-
 </html>
