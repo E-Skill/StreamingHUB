@@ -697,15 +697,12 @@
                             <div><strong>Luftfuktighet:</strong> <span id="humidity">-- %</span></div>
                         </div>
 
-                        <!-- Soloppgang / Solnedgang info med klartekst -->
-                        <div style="margin-top: 10px; font-size: 0.8rem; color: var(--muted); display: flex; flex-direction: column; gap: 4px; background: rgba(255,255,255,0.03); padding: 8px 10px; border-radius: 6px;">
-                            <div style="display: flex; justify-content: space-between;">
-                                <span>Soloppgang:</span>
-                                <strong id="sun-rise" style="color: var(--text);">--:--</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <span>Solnedgang:</span>
-                                <strong id="sun-set" style="color: var(--text);">--:--</strong>
+                        <!-- Lokalt klokkeslett for valgt by og Soloppgang / Solnedgang info -->
+                        <div style="margin-top: 10px; font-size: 0.82rem; color: var(--muted); background: rgba(255,255,255,0.03); padding: 8px; border-radius: 6px; display: flex; flex-direction: column; gap: 4px;">
+                            <div style="text-align: center; font-weight: 600; color: var(--text);" id="city-local-time">🕒 Klokken: --:--</div>
+                            <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 4px;">
+                                <span id="sun-rise">🌅 --:--</span>
+                                <span id="sun-set">🌇 --:--</span>
                             </div>
                         </div>
 
@@ -980,21 +977,29 @@
         }
 
         function weatherIcon(code, isNight = false) {
-            if (code === 0) return isNight ? '<span style="filter: grayscale(100%) brightness(200%);">🌕</span>' : '☀️';
-            if (code === 1 || code === 2) return isNight ? '<span style="filter: grayscale(100%) brightness(200%);">☁️</span>' : '🌤️';
+            if (code === 0) return isNight ? '🌕' : '☀️';
+            if (code === 1 || code === 2) return isNight ? '🌕' : '🌤️';
             if (code === 3) return '☁️';
             if (code >= 45 && code <= 48) return '🌫️';
             if (code >= 51 && code <= 67) return '🌧️';
             if (code >= 71 && code <= 77) return '❄️';
             if (code >= 80 && code <= 82) return '🌦️';
             if (code >= 95) return '⛈️';
-            return isNight ? '<span style="filter: grayscale(100%) brightness(200%);">🌕</span>' : '🌡️';
+            return isNight ? '🌕' : '🌡️';
         }
 
         function updateClock() {
             const timeStr = new Date().toLocaleTimeString('no-NO');
             const main = document.getElementById('main-clock');
             if (main) main.textContent = timeStr;
+
+            // Oppdater også klokkeslettet for valgt by i værpanelet
+            const cityData = CITIES[currentCityName];
+            if (cityData) {
+                const cityTimeStr = new Date().toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: cityData.tz });
+                const cityTimeEl = document.getElementById('city-local-time');
+                if (cityTimeEl) cityTimeEl.textContent = `🕒 ${currentCityName}: ${cityTimeStr}`;
+            }
         }
         setInterval(updateClock, 1000);
         updateClock();
@@ -1034,8 +1039,8 @@
                     sunriseDate = new Date(data.daily.sunrise[0]);
                     sunsetDate = new Date(data.daily.sunset[0]);
 
-                    if (sunRiseEl) sunRiseEl.textContent = sunriseDate.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz });
-                    if (sunSetEl) sunSetEl.textContent = sunsetDate.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz });
+                    if (sunRiseEl) sunRiseEl.textContent = `🌅 ${sunriseDate.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz })}`;
+                    if (sunSetEl) sunSetEl.textContent = `🌇 ${sunsetDate.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz })}`;
                 }
 
                 const tempVal = current.temperature_2m ?? current.temperature;
@@ -1061,14 +1066,17 @@
                 if (feelsEl) feelsEl.textContent = `Føles som ${Number.isFinite(apparentVal) ? Math.round(apparentVal) : '--'}°`;
                 if (windEl) windEl.textContent = `${Number.isFinite(windVal) ? (Math.round(windVal * 10) / 10) : '--'} m/s`;
                 if (humEl) humEl.textContent = `${humVal != null ? humVal : '--'} %`;
-                if (iconEl) iconEl.innerHTML = weatherIcon(weatherCode, isCurrentNight);
+                if (iconEl) iconEl.textContent = weatherIcon(weatherCode, isCurrentNight);
 
                 if (hourlyContainer && data.hourly && Array.isArray(data.hourly.time)) {
                     hourlyContainer.innerHTML = '';
                     const times = data.hourly.time;
                     const temps = data.hourly.temperature_2m || [];
                     const codes = data.hourly.weathercode || data.hourly.weather_code || [];
-                    let idx = times.indexOf(current.time);
+
+                    // Finn riktig startindeks basert på nåtidspunktet i den valgte tidssonen
+                    const nowIsoString = new Date().toLocaleString('sv-SE', { timeZone: cityData.tz }).replace(' ', 'T').substring(0, 13) + ':00';
+                    let idx = times.findIndex(t => t.startsWith(nowIsoString));
                     if (idx === -1) idx = 0;
 
                     for (let i = idx + 1; i < Math.min(idx + 9, times.length); i++) {
