@@ -697,6 +697,18 @@
                             <div><strong>Luftfuktighet:</strong> <span id="humidity">-- %</span></div>
                         </div>
 
+                        <!-- Soloppgang / Solnedgang info med klartekst -->
+                        <div style="margin-top: 10px; font-size: 0.8rem; color: var(--muted); display: flex; flex-direction: column; gap: 4px; background: rgba(255,255,255,0.03); padding: 8px 10px; border-radius: 6px;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Soloppgang:</span>
+                                <strong id="sun-rise" style="color: var(--text);">--:--</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Solnedgang:</span>
+                                <strong id="sun-set" style="color: var(--text);">--:--</strong>
+                            </div>
+                        </div>
+
                         <div id="hourly-forecast" class="hourly-forecast" aria-hidden="false"></div>
                     </div>
 
@@ -967,16 +979,16 @@
             throw lastError || new Error('Could not fetch news');
         }
 
-        function weatherIcon(code) {
-            if (code === 0) return '☀️';
-            if (code === 1 || code === 2) return '🌤️';
+        function weatherIcon(code, isNight = false) {
+            if (code === 0) return isNight ? '<span style="filter: grayscale(100%) brightness(200%);">🌕</span>' : '☀️';
+            if (code === 1 || code === 2) return isNight ? '<span style="filter: grayscale(100%) brightness(200%);">☁️</span>' : '🌤️';
             if (code === 3) return '☁️';
             if (code >= 45 && code <= 48) return '🌫️';
             if (code >= 51 && code <= 67) return '🌧️';
             if (code >= 71 && code <= 77) return '❄️';
             if (code >= 80 && code <= 82) return '🌦️';
             if (code >= 95) return '⛈️';
-            return '🌡️';
+            return isNight ? '<span style="filter: grayscale(100%) brightness(200%);">🌕</span>' : '🌡️';
         }
 
         function updateClock() {
@@ -995,6 +1007,8 @@
             const iconEl = document.getElementById('weather-icon');
             const hourlyContainer = document.getElementById('hourly-forecast');
             const updatedEl = document.getElementById('weather-updated');
+            const sunRiseEl = document.getElementById('sun-rise');
+            const sunSetEl = document.getElementById('sun-set');
 
             const cityData = CITIES[currentCityName];
 
@@ -1003,6 +1017,7 @@
                 const url = 'https://api.open-meteo.com/v1/forecast' +
                     `?latitude=${cityData.lat}&longitude=${cityData.lon}` +
                     '&hourly=temperature_2m,apparent_temperature,weathercode,relative_humidity_2m' +
+                    '&daily=sunrise,sunset' +
                     '&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,weather_code' +
                     `&timezone=${encodeURIComponent(cityData.tz)}` + cacheBuster;
 
@@ -1013,9 +1028,25 @@
                 const current = data.current || data.current_weather;
                 if (!current) throw new Error('Ingen værdata');
 
+                let sunriseDate = null;
+                let sunsetDate = null;
+                if (data.daily && data.daily.sunrise && data.daily.sunrise.length > 0) {
+                    sunriseDate = new Date(data.daily.sunrise[0]);
+                    sunsetDate = new Date(data.daily.sunset[0]);
+
+                    if (sunRiseEl) sunRiseEl.textContent = sunriseDate.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz });
+                    if (sunSetEl) sunSetEl.textContent = sunsetDate.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz });
+                }
+
                 const tempVal = current.temperature_2m ?? current.temperature;
                 const temp = Number.isFinite(tempVal) ? Math.round(tempVal) : '--';
                 const weatherCode = current.weather_code ?? current.weathercode ?? 0;
+
+                const nowTime = new Date();
+                let isCurrentNight = false;
+                if (sunriseDate && sunsetDate) {
+                    isCurrentNight = nowTime < sunriseDate || nowTime > sunsetDate;
+                }
 
                 let apparentVal = current.apparent_temperature;
                 if ((apparentVal == null || !Number.isFinite(apparentVal)) && data.hourly && Array.isArray(data.hourly.apparent_temperature)) {
@@ -1030,7 +1061,7 @@
                 if (feelsEl) feelsEl.textContent = `Føles som ${Number.isFinite(apparentVal) ? Math.round(apparentVal) : '--'}°`;
                 if (windEl) windEl.textContent = `${Number.isFinite(windVal) ? (Math.round(windVal * 10) / 10) : '--'} m/s`;
                 if (humEl) humEl.textContent = `${humVal != null ? humVal : '--'} %`;
-                if (iconEl) iconEl.textContent = weatherIcon(weatherCode);
+                if (iconEl) iconEl.innerHTML = weatherIcon(weatherCode, isCurrentNight);
 
                 if (hourlyContainer && data.hourly && Array.isArray(data.hourly.time)) {
                     hourlyContainer.innerHTML = '';
@@ -1046,8 +1077,13 @@
                             ? d.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz })
                             : times[i];
                         
+                        let isHourNight = false;
+                        if (sunriseDate && sunsetDate) {
+                            isHourNight = d < sunriseDate || d > sunsetDate;
+                        }
+
                         const tempH = temps[i] != null ? Math.round(temps[i]) : '--';
-                        const ic = codes[i] != null ? weatherIcon(Number(codes[i])) : '';
+                        const ic = codes[i] != null ? weatherIcon(Number(codes[i]), isHourNight) : '';
 
                         const card = document.createElement('div');
                         card.className = 'hour-card';
