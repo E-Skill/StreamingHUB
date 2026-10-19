@@ -668,19 +668,19 @@
                     <span>Været</span>
                 </div>
 
-                <!-- Nedtrekksmeny for valg av by -->
+                <!-- Alfabetisk sortert nedtrekksmeny for valg av by -->
                 <select id="city-selector" class="city-select" onchange="changeCity(this.value)">
-                    <option value="Oslo">Oslo</option>
-                    <option value="Trondheim">Trondheim</option>
-                    <option value="Bergen">Bergen</option>
-                    <option value="Tromsø">Tromsø</option>
-                    <option value="Tokyo">Tokyo</option>
-                    <option value="Paris">Paris</option>
-                    <option value="Madrid">Madrid</option>
                     <option value="Athen">Athen</option>
-                    <option value="Washington">Washington</option>
-                    <option value="London">London</option>
+                    <option value="Bergen">Bergen</option>
                     <option value="Berlin">Berlin</option>
+                    <option value="London">London</option>
+                    <option value="Madrid">Madrid</option>
+                    <option value="Oslo">Oslo</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Tokyo">Tokyo</option>
+                    <option value="Trondheim">Trondheim</option>
+                    <option value="Tromsø">Tromsø</option>
+                    <option value="Washington">Washington</option>
                 </select>
 
                 <div class="weather-box">
@@ -916,17 +916,17 @@
 
     <script>
         const CITIES = {
-            'Oslo': { lat: 59.9139, lon: 10.7522, tz: 'Europe/Oslo' },
-            'Trondheim': { lat: 63.4305, lon: 10.3951, tz: 'Europe/Oslo' },
-            'Bergen': { lat: 60.3913, lon: 5.3221, tz: 'Europe/Oslo' },
-            'Tromsø': { lat: 69.6492, lon: 18.9553, tz: 'Europe/Oslo' },
-            'Tokyo': { lat: 35.6762, lon: 139.6503, tz: 'Asia/Tokyo' },
-            'Paris': { lat: 48.8566, lon: 2.3522, tz: 'Europe/Paris' },
-            'Madrid': { lat: 40.4168, lon: -3.7038, tz: 'Europe/Madrid' },
             'Athen': { lat: 37.9838, lon: 23.7275, tz: 'Europe/Athens' },
-            'Washington': { lat: 38.9072, lon: -77.0369, tz: 'America/New_York' },
+            'Bergen': { lat: 60.3913, lon: 5.3221, tz: 'Europe/Oslo' },
+            'Berlin': { lat: 52.5200, lon: 13.4050, tz: 'Europe/Berlin' },
             'London': { lat: 51.5074, lon: -0.1278, tz: 'Europe/London' },
-            'Berlin': { lat: 52.5200, lon: 13.4050, tz: 'Europe/Berlin' }
+            'Madrid': { lat: 40.4168, lon: -3.7038, tz: 'Europe/Madrid' },
+            'Oslo': { lat: 59.9139, lon: 10.7522, tz: 'Europe/Oslo' },
+            'Paris': { lat: 48.8566, lon: 2.3522, tz: 'Europe/Paris' },
+            'Tokyo': { lat: 35.6762, lon: 139.6503, tz: 'Asia/Tokyo' },
+            'Trondheim': { lat: 63.4305, lon: 10.3951, tz: 'Europe/Oslo' },
+            'Tromsø': { lat: 69.6492, lon: 18.9553, tz: 'Europe/Oslo' },
+            'Washington': { lat: 38.9072, lon: -77.0369, tz: 'America/New_York' }
         };
 
         let currentCityName = 'Oslo';
@@ -977,15 +977,15 @@
         }
 
         function weatherIcon(code, isNight = false) {
-            if (code === 0) return isNight ? '🌕' : '☀️';
-            if (code === 1 || code === 2) return isNight ? '🌕' : '🌤️';
+            if (code === 0) return isNight ? '🌙' : '☀️';
+            if (code === 1 || code === 2) return isNight ? '🌙☁️' : '🌤️';
             if (code === 3) return '☁️';
             if (code >= 45 && code <= 48) return '🌫️';
             if (code >= 51 && code <= 67) return '🌧️';
             if (code >= 71 && code <= 77) return '❄️';
             if (code >= 80 && code <= 82) return '🌦️';
             if (code >= 95) return '⛈️';
-            return isNight ? '🌕' : '🌡️';
+            return isNight ? '🌙' : '🌡️';
         }
 
         function updateClock() {
@@ -993,7 +993,6 @@
             const main = document.getElementById('main-clock');
             if (main) main.textContent = timeStr;
 
-            // Oppdater også klokkeslettet for valgt by i værpanelet
             const cityData = CITIES[currentCityName];
             if (cityData) {
                 const cityTimeStr = new Date().toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: cityData.tz });
@@ -1074,7 +1073,6 @@
                     const temps = data.hourly.temperature_2m || [];
                     const codes = data.hourly.weathercode || data.hourly.weather_code || [];
 
-                    // Finn riktig startindeks basert på nåtidspunktet i den valgte tidssonen
                     const nowIsoString = new Date().toLocaleString('sv-SE', { timeZone: cityData.tz }).replace(' ', 'T').substring(0, 13) + ':00';
                     let idx = times.findIndex(t => t.startsWith(nowIsoString));
                     if (idx === -1) idx = 0;
