@@ -687,6 +687,315 @@
                     <div class="weather-top">
                         <div class="weather-temp-row">
                             <div id="weather-icon" style="font-size:3.7rem; line-height:1;">☁️</div>
+                            <div class="weather-temp" id="temperature">--< 6px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-thumb {
+            width: 96px;
+            height: 72px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: rgba(255,255,255,0.06);
+            flex-shrink: 0;
+        }
+
+        .news-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .news-title {
+            font-size: 0.95rem;
+            line-height: 1.3;
+            font-weight: 600;
+            color: var(--text);
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .news-time {
+            color: var(--muted-2);
+            font-size: 0.78rem;
+            margin-top: 4px;
+        }
+
+        .news-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+            color: var(--muted-2);
+            font-size: 0.8rem;
+            padding-top: 8px;
+            border-top: 1px solid var(--line);
+        }
+
+        /* Modaler for oppskrifter */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #111827;
+            color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .modal-content::-webkit-scrollbar {
+            display: none;
+            width: 0;
+        }
+        .close-btn {
+            background: #222;
+            color: #fff;
+            border: 1px solid #444;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .close-btn:hover { background: #333; }
+        .modal-header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+        .add-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .add-btn:hover { background: #0056b3; }
+
+        /* Søk og kategorier */
+        .search-container {
+            margin-bottom: 12px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px 14px;
+            background: #081821;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        .category-bar {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+            scrollbar-width: none;
+        }
+        .category-bar::-webkit-scrollbar { display: none; }
+        .cat-chip {
+            background: rgba(255,255,255,0.06);
+            color: var(--muted);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+        .cat-chip.active, .cat-chip:hover {
+            background: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+        .recipe-badge {
+            display: inline-block;
+            background: rgba(0, 123, 255, 0.2);
+            color: #4da6ff;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 4px;
+            margin-right: 6px;
+            border: 1px solid rgba(77, 166, 255, 0.3);
+        }
+        .recipe-badge-time {
+            display: inline-block;
+            background: rgba(40, 167, 69, 0.2);
+            color: #5cdb95;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 4px;
+            border: 1px solid rgba(92, 219, 149, 0.3);
+        }
+
+        .recipe-list { display: flex; flex-direction: column; gap: 10px; }
+        .recipe-card-item {
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(255,255,255,0.04);
+            transition: background 0.2s;
+        }
+        .recipe-card-item:hover { background: rgba(255,255,255,0.07); }
+        .recipe-thumb {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 6px;
+            flex-shrink: 0;
+            background: #222;
+        }
+        .recipe-info h3 { margin: 0 0 3px 0; color: #4da6ff; font-size: 1.1em; }
+        .recipe-info p { margin: 0; color: var(--muted); font-size: 0.85em; }
+        .ai-section {
+            margin-top: 25px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            padding-top: 20px;
+        }
+        .ai-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+        .ai-btn:hover { background: #218838; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; color: var(--muted); font-size: 0.9em; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            background: #081821;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+        #recipe-file-input {
+            color: var(--text);
+            background: #081821;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px;
+            padding: 6px;
+            width: 100%;
+        }
+        #recipe-file-input::file-selector-button {
+            background: #2b7cd3;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            margin-right: 12px;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        #recipe-file-input::file-selector-button:hover {
+            background: #2460a1;
+        }
+        .form-actions { display: flex; gap: 10px; margin-top: 20px; }
+        .save-btn { background: #28a745; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; flex: 1; }
+        .save-btn:hover { background: #218838; }
+        .recipe-detail-img { width: 100%; max-height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
+
+        @media (max-width: 1100px) {
+            .layout {
+                grid-template-columns: 200px 1fr 280px;
+                gap: 20px;
+            }
+            .service-grid {
+                grid-template-columns: repeat(3, minmax(120px, 1fr));
+                max-width: 720px;
+            }
+            h1.title { font-size: 2.1rem; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 14px; }
+            .layout {
+                grid-template-columns: 1fr;
+            }
+            .weather-area,
+            .news-area { min-height: auto; }
+            .service-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+            h1.title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="layout">
+            <aside class="weather-area">
+                <div class="weather-head">
+                    <span>Været</span>
+                </div>
+
+                <!-- Nedtrekksmeny for valg av by -->
+                <select id="city-selector" class="city-select" onchange="changeCity(this.value)">
+                    <option value="Oslo">Oslo</option>
+                    <option value="Trondheim">Trondheim</option>
+                    <option value="Bergen">Bergen</option>
+                    <option value="Tromsø">Tromsø</option>
+                    <option value="Tokyo">Tokyo</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Madrid">Madrid</option>
+                    <option value="Athen">Athen</option>
+                    <option value="Washington">Washington</option>
+                    <option value="London">London</option>
+                    <option value="Berlin">Berlin</option>
+                </select>
+
+                <div class="weather-box">
+                    <div class="weather-top">
+                        <div class="weather-temp-row">
+                            <div id="weather-icon" style="font-size:3.7rem; line-height:1;">☁️</div>
                             <div class="weather-temp" id="temperature">--<span class="degree">°</span></div>
                         </div>
 
