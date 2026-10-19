@@ -929,7 +929,19 @@
             'Washington': { lat: 38.9072, lon: -77.0369, tz: 'America/New_York' }
         };
 
-        let currentCityName = 'Oslo';
+        // Hent lagret by fra localStorage, eller bruk 'Oslo' som standard hvis ingenting er lagret
+        let currentCityName = localStorage.getItem('streaminghub_selected_city');
+        if (!currentCityName || !CITIES[currentCityName]) {
+            currentCityName = 'Oslo';
+        }
+
+        // Sett nedtrekksmenyen til riktig by ved oppstart
+        document.addEventListener('DOMContentLoaded', () => {
+            const citySelector = document.getElementById('city-selector');
+            if (citySelector) {
+                citySelector.value = currentCityName;
+            }
+        });
 
         const WEATHER_INTERVAL = 15 * 60 * 1000;
         const NEWS_API_URL = 'https://streaminghub-news.eskil-sundby.workers.dev/news';
@@ -945,6 +957,8 @@
         function changeCity(cityName) {
             if (CITIES[cityName]) {
                 currentCityName = cityName;
+                // Lagre valget i nettleserens localStorage
+                localStorage.setItem('streaminghub_selected_city', cityName);
                 updateWeather();
             }
         }
