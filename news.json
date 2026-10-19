@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-10-19T19:17:03.779328+00:00",
+  "updatedAt": "2026-10-19T22:56:42.882237+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Regjeringen vil begrense ordningen: – Helt krise for meg",
-      "link": "https://www.nrk.no/innlandet/som-15-aring-ble-han-lam_-uten-aktivitetsmidler-hadde-han-ikke-hatt-et-fullverdig-liv-1.18053291",
-      "pubDate": "2026-10-19T17:46:57+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/92cf12d9ec5c874ba7fd1534aa6d31e57a334203.jpg"
+      "title": "Fløymer over i Vesterålen: – Alle mann til pumpene",
+      "link": "https://www.nrk.no/nordland/floymer-over-i-sortland-1.18059148",
+      "pubDate": "2026-10-19T20:28:34+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f7347ad15c6f63c4ba3a37e4688d7030dab6d6b3.jpg"
     },
     {
-      "title": "Ny teknologi kan gjøre aluminium helt utslippsfri",
-      "link": "https://www.nrk.no/vestfoldogtelemark/ny-hydro-teknologi-kan-fjerne-co_-utslipp-fra-aluminium-1.18058813",
-      "pubDate": "2026-10-19T17:21:28+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e0ec6abb106a286cfdae57c07de64bdea8ec35aa.jpg"
+      "title": "Søker med hund etter savnet mann: – Har vært ute siden fredag",
+      "link": "https://www.nrk.no/tromsogfinnmark/mann-i-80-arene-savnet-i-tana-1.18059031",
+      "pubDate": "2026-10-19T15:51:51+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/da9fee466ba966043290d5023b5439c81161fe95.jpg"
     },
     {
-      "title": "Portforbud i franske byer",
-      "link": "https://www.nrk.no/nyheter/portforbud-i-franske-byer-1.18059042",
-      "pubDate": "2026-10-19T16:51:56+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1cea6df35facea6e3be5ec1cc24bf7984eedefca.jpg"
+      "title": "Zelenskyj: Forhandlere kan møtes i Norge",
+      "link": "https://www.nrk.no/nyheter/zelenskyj_-forhandlere-kan-motes-i-norge-1.18059063",
+      "pubDate": "2026-10-19T19:40:37+00:00"
     }
   ]
 }
