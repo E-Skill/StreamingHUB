@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-10-20T19:42:05.577148+00:00",
+  "updatedAt": "2026-10-20T22:39:46.024913+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Liverpool snudde etter grusom start",
+      "link": "https://www.nrk.no/sport/liverpool-snudde-etter-grusom-start--1.18060206",
+      "pubDate": "2026-10-20T20:58:09+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/6b1e96e5c7419ec5625cdccd27f87eaad4666166.jpg"
+    },
+    {
+      "title": "Freser mot egne spillere: – For meg er det helt utilgivelig",
+      "link": "https://www.nrk.no/sport/glimt-ligger-under-etter-marerittstart-1.18060009",
+      "pubDate": "2026-10-20T19:52:32+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a32f9c1ce667ac14c5cf77a6b154614d70d9bd50.jpg"
+    },
     {
       "title": "Raud Ungdom: Raudt vil halvere støtta til ungdomspartiet",
       "link": "https://www.nrk.no/nyheter/raud-ungdom_-raudt-vil-halvere-stotta-til-ungdomspartiet-1.18060183",
       "pubDate": "2026-10-20T18:27:21+00:00"
-    },
-    {
-      "title": "Ville be for at blinde Thomas skulle få synet tilbake: – Forkvakla form for nestekjærlighet",
-      "link": "https://www.nrk.no/rogaland/_the-voice_-thomas-oppsokt-pa-gata_-ville-helbrede-synet-hans-1.18055197",
-      "pubDate": "2026-10-20T17:45:05+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f0953ff4e245eec46a8082422e2b568c1dde2944.jpg"
-    },
-    {
-      "title": "Viking-treneren om Glimt-kritikk: – Tidlig å begynne med «mind games» nå",
-      "link": "https://www.nrk.no/rogaland/mesterligaen_-viking-moter-pressen-for-aston-villa-1.18058651",
-      "pubDate": "2026-10-20T16:45:00+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/5bd968b175fb6ac9c4cd8e7aea49f5ab60d66b7f.jpg"
     }
   ]
 }
