@@ -1010,7 +1010,7 @@
             if (cityData) {
                 const cityTimeStr = new Date().toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: cityData.tz });
                 const cityTimeEl = document.getElementById('city-local-time');
-                if (cityTimeEl) cityTimeEl.textContent = `🕒 ${currentCityName}: ${cityTimeStr}`;
+                if (cityTimeEl) cityTimeEl.textContent = ` ${currentCityName}: ${cityTimeStr}`;
             }
         }
         setInterval(updateClock, 1000);
