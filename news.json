@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-10-20T11:31:35.159667+00:00",
+  "updatedAt": "2026-10-20T15:49:53.831602+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Ulovlig asfalt får ligge i naturreservat i Gamvik",
-      "link": "https://www.nrk.no/tromsogfinnmark/ulovlig-asfalt-far-ligge-i-naturreservat-i-gamvik-1.18059617",
-      "pubDate": "2026-10-20T10:25:35+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/96fc78d5e181858c6bcb1871384f477b1c56f236.jpg"
+      "title": "Ut mot media etter kritikk-kampen: – De er vel ute etter klikk",
+      "link": "https://www.nrk.no/rogaland/zlatko-tripic-ut-mot-media-etter-bayern-munchen-kampen-og-kritikken_-_-de-er-vel-ute-etter-klikk-1.18059494",
+      "pubDate": "2026-10-20T13:22:32+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/fe75756ac4380cf692c5a47dae8fb8ed7f8e63d4.jpg"
     },
     {
-      "title": "Hjem til nord (bare ikke helt ennå)",
-      "link": "https://www.nrk.no/sport/vm-2029_-hjem-til-nord-_bare-ikke-helt-enna_-1.18059057",
-      "pubDate": "2026-10-20T10:16:54+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/61ddde5b8fa0416f34ca38ea7960571ba5721ce4.jpg"
+      "title": "EU vil la oljen i Arktis ligge",
+      "link": "https://www.nrk.no/nyheter/eu-vil-la-oljen-i-arktis-ligge-1.18059832",
+      "pubDate": "2026-10-20T12:45:21+00:00"
     },
     {
-      "title": "Full strid om jordmor­vakta i distriktet: – Eg fryktar for jobben",
-      "link": "https://www.nrk.no/vestfoldogtelemark/strid-om-fodetilbodet_-skrotar-avtale-etter-utviding-_-no-fryktar-jordmodrene-for-jobben-1.18055000",
-      "pubDate": "2026-10-20T10:16:40+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ab8f68b158bc222adde6e47c76286f2877842311.jpg"
+      "title": "Feirer 100 felt i Norge, men advarer om dramatisk stup i oljeproduksjonen",
+      "link": "https://www.nrk.no/nordland/feirer-100-felt-i-norge_-men-advarer-om-dramatisk-stup-i-oljeproduksjonen-1.18055623",
+      "pubDate": "2026-10-20T11:37:13+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/8c1ee69eeec70bfb1f2ef1feb74938d1a7e163e8.jpg"
     }
   ]
 }
