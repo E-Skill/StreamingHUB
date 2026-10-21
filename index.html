@@ -837,7 +837,112 @@
 
             <div id="recipe-list-container" class="recipe-list"></div>
             <div class="ai-section">
-                <button class="ai-btn" onclick="openMatAI()">Spør Mat-AI om ny oppskrift</button>
+                <button class="ai-btn" onclick="openMatAIWizard()">🤖 Spør Mat-AI (Interaktiv)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAT-AI WIZARD MODAL (3-stegs flyt) -->
+    <div id="mat-ai-wizard" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px;">
+                <button class="close-btn" onclick="closeMatAIWizard()">Tilbake</button>
+                <h2 style="margin:0; color: #28a745;">🤖 Interaktiv Mat-AI</h2>
+                <div></div>
+            </div>
+            
+            <!-- STEG 1: DET STORE SKJEMAET -->
+            <div id="ai-step-form">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>Matkultur / Region</label>
+                        <select id="ai-region">
+                            <option value="Global / Velg selv">Velg fri (AI bestemmer)</option>
+                            <option value="Asiatisk">Asiatisk</option>
+                            <option value="Meksikansk">Meksikansk</option>
+                            <option value="Italiensk">Italiensk</option>
+                            <option value="Norsk / Nordisk">Norsk / Nordisk</option>
+                            <option value="Midtøsten">Midtøsten</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>Kalorier per porsjon</label>
+                        <select id="ai-calories">
+                            <option value="Ca 400 kcal">Ca. 400 kcal (Lett)</option>
+                            <option value="Ca 600 kcal" selected>Ca. 600 kcal (Normal)</option>
+                            <option value="Ca 800 kcal">Ca. 800 kcal (Rik)</option>
+                            <option value="Ca 1000+ kcal">1000+ kcal (Masse energi)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>Antall porsjoner</label>
+                        <input type="text" id="ai-servings" value="2 porsjoner">
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>Vanskelighetsgrad</label>
+                        <select id="ai-difficulty">
+                            <option value="Enkel og rask">Enkel og rask</option>
+                            <option value="Middels">Middels</option>
+                            <option value="Avansert">Avansert</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>Tidsbruk</label>
+                        <input type="text" id="ai-time" value="Under 30 min">
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>Kjøkkenutstyr (flervalg / stikkord)</label>
+                        <input type="text" id="ai-equipment" placeholder="F.eks. Stekepanne, Airfryer, Ovn, Kjele">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Vanlige ingredienser hjemme (Preset / stikkord)</label>
+                    <textarea id="ai-ingredients-home" rows="2" placeholder="F.eks. Olje, salt, pepper, hvitløk, løk, ris, egg..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Allergier / Spesielle hensyn</label>
+                    <input type="text" id="ai-allergies" placeholder="F.eks. Glutenfri, laktoseintoleranse, ingen...">
+                </div>
+
+                <button class="ai-btn" onclick="requestAiOptions()" id="ai-generate-btn">Generer 3 oppskriftsforslag</button>
+            </div>
+
+            <!-- STEG 2: VISNING AV DE 3 ALTERNATIVENE -->
+            <div id="ai-step-choices" style="display: none;">
+                <p style="color: var(--muted); font-size: 0.9rem;">Her er 3 alternative retter basert på dine valg. Velg én, eller trykk for å få 3 nye:</p>
+                <div id="ai-options-container" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;"></div>
+                
+                <div style="display: flex; gap: 10px;">
+                    <button class="close-btn" onclick="resetAiWizard()" style="flex: 1;">⬅️ Tilbake til skjema</button>
+                    <button class="ai-btn" onclick="requestAiOptions()" style="flex: 1; background: #17a2b8;">🔄 Få 3 nye alternativer</button>
+                </div>
+            </div>
+
+            <!-- STEG 3: MODIFISERING OG LAGRING AV VALGT RETT -->
+            <div id="ai-step-modify" style="display: none;">
+                <h4 id="selected-recipe-title" style="color: #4da6ff; margin-bottom: 5px;"></h4>
+                <div id="selected-recipe-summary" style="color: var(--muted); font-size: 0.9rem; margin-bottom: 15px;"></div>
+
+                <div class="form-group">
+                    <label>Vil du endre på noe? Gi beskjed til AI-en:</label>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" id="ai-mod-instruction" placeholder="F.eks. Gjør den sterkere, bytt ut ris med pasta...">
+                        <button class="add-btn" onclick="modifySelectedRecipe()" id="ai-mod-btn">Oppdater</button>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button class="close-btn" onclick="backToChoices()" style="flex: 1;">Tilbake til valg</button>
+                    <button class="save-btn" onclick="finalSaveAiRecipe()" style="flex: 1;">💾 Lagre i oppskriftsmenyen</button>
+                </div>
             </div>
         </div>
     </div>
@@ -929,13 +1034,11 @@
             'Washington': { lat: 38.9072, lon: -77.0369, tz: 'America/New_York' }
         };
 
-        // Hent lagret by fra localStorage, eller bruk 'Oslo' som standard hvis ingenting er lagret
         let currentCityName = localStorage.getItem('streaminghub_selected_city');
         if (!currentCityName || !CITIES[currentCityName]) {
             currentCityName = 'Oslo';
         }
 
-        // Sett nedtrekksmenyen til riktig by ved oppstart
         document.addEventListener('DOMContentLoaded', () => {
             const citySelector = document.getElementById('city-selector');
             if (citySelector) {
@@ -953,6 +1056,10 @@
         let recipesArray = [];
         let currentRecipeIndex = null;
         let activeCategoryFilter = 'alle';
+
+        // Mat-AI variabler
+        let currentAiOptions = [];
+        let chosenRecipeData = null;
 
         function changeCity(cityName) {
             if (CITIES[cityName]) {
@@ -1010,7 +1117,7 @@
             if (cityData) {
                 const cityTimeStr = new Date().toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: cityData.tz });
                 const cityTimeEl = document.getElementById('city-local-time');
-                if (cityTimeEl) cityTimeEl.textContent = ` ${currentCityName}: ${cityTimeStr}`;
+                if (cityTimeEl) cityTimeEl.textContent = `🕒 ${currentCityName}: ${cityTimeStr}`;
             }
         }
         setInterval(updateClock, 1000);
@@ -1160,7 +1267,7 @@
                     text.className = 'news-text';
                     text.innerHTML = `
                         <div class="news-title">${article.title || ''}</div>
-                        <div class="news-time"> ${timeDisplay}</div>
+                        <div class="news-time">🕒 ${timeDisplay}</div>
                     `;
                     link.appendChild(text);
                     container.appendChild(link);
@@ -1412,11 +1519,148 @@
             }
         }
 
-        function openMatAI() {
-            window.open("https://chatgpt.com/?q=Vis%20meg%20umiddelbart%20et%20interaktivt%20skjema%20for%20middagsplanlegging%20uten%20introduksjon.%20Inkluder%20kalorivelger%20fra%20200%20til%201200%20kcal%20per%20porsjon%2C%20antall%20personer%2C%20matkultur%2C%20proteintype%2C%20smaksprofil%2C%20tidsbruk%2C%20vanskelighetsgrad%2C%20ingredienser%20jeg%20har%20hjemme%2C%20allergier%20og%20kj%C3%B8kkenutstyr.%20Benytt%20fler%20valg%20av%20utstyr.%20Benytt%20en%20preset%20liste%20om%20hva%20som%20er%20vanlig%20å%20ha%20liggende%20hjemme.%20Avslutt%20med%20knappen%20%C2%ABLag%20middagen%20min%C2%BB.%20Etter%20svarene%20mine%20skal%20du%20lage%20en%20konkret%2C%20smaksrik%20oppskrift%20med%20n%C3%B8yaktige%20mengder%2C%20trinnvis%20fremgangsm%C3%A5te%20og%20estimert%20kcal%20og%20protein%20per%20porsjon.%20Maksimer%20smaken%20og%20bruk%20ingredienser%20jeg%20allerede%20har.", "_blank");
+        // --- MAT-AI WIZARD LOGIKK ---
+        function openMatAIWizard() {
+            document.getElementById('recipe-modal').style.display = 'none';
+            document.getElementById('mat-ai-wizard').style.display = 'flex';
+            resetAiWizard();
         }
 
-        document.getElementById('refresh-weather').getElementById ? document.getElementById('refresh-weather').addEventListener('click', () => updateWeather()) : null;
+        function closeMatAIWizard() {
+            document.getElementById('mat-ai-wizard').style.display = 'none';
+            document.getElementById('recipe-modal').style.display = 'flex';
+        }
+
+        function resetAiWizard() {
+            document.getElementById('ai-step-form').style.display = 'block';
+            document.getElementById('ai-step-choices').style.display = 'none';
+            document.getElementById('ai-step-modify').style.display = 'none';
+        }
+
+        async function requestAiOptions() {
+            const payload = {
+                region: document.getElementById('ai-region').value,
+                calories: document.getElementById('ai-calories').value,
+                servings: document.getElementById('ai-servings').value,
+                difficulty: document.getElementById('ai-difficulty').value,
+                time: document.getElementById('ai-time').value,
+                equipment: document.getElementById('ai-equipment').value,
+                ingredients: document.getElementById('ai-ingredients-home').value,
+                allergies: document.getElementById('ai-allergies').value
+            };
+
+            const btn = document.getElementById('ai-generate-btn');
+            btn.textContent = "Tenker ut 3 retter...";
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(`${WORKER_URL}/generate-three-recipes`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || "Klarte ikke generere retter");
+
+                currentAiOptions = data.recipes;
+                renderAiOptionsList();
+
+                document.getElementById('ai-step-form').style.display = 'none';
+                document.getElementById('ai-step-choices').style.display = 'block';
+            } catch (err) {
+                alert("Feil: " + err.message);
+            } finally {
+                btn.textContent = "Generer 3 oppskriftsforslag";
+                btn.disabled = false;
+            }
+        }
+
+        function renderAiOptionsList() {
+            const container = document.getElementById('ai-options-container');
+            container.innerHTML = '';
+
+            currentAiOptions.forEach((recipe, index) => {
+                const card = document.createElement('div');
+                card.className = 'recipe-card-item';
+                card.style.display = 'flex';
+                card.style.flexDirection = 'column';
+                card.style.alignItems = 'flex-start';
+                card.style.cursor = 'pointer';
+                card.onclick = () => selectRecipeOption(index);
+                
+                card.innerHTML = `
+                    <h3 style="margin: 0 0 4px 0; color: #4da6ff;">Alternativ ${index + 1}: ${recipe.title}</h3>
+                    <p style="margin: 0 0 6px 0; color: var(--muted);">${recipe.description}</p>
+                    <div>
+                        <span class="recipe-badge">⚡ ${recipe.nutrition}</span>
+                        <span class="recipe-badge-time">⏱️ ${recipe.prepTime}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function selectRecipeOption(index) {
+            chosenRecipeData = currentAiOptions[index];
+            
+            document.getElementById('selected-recipe-title').textContent = chosenRecipeData.title;
+            document.getElementById('selected-recipe-summary').textContent = `${chosenRecipeData.description} — ${chosenRecipeData.nutrition}`;
+
+            document.getElementById('ai-step-choices').style.display = 'none';
+            document.getElementById('ai-step-modify').style.display = 'block';
+        }
+
+        function backToChoices() {
+            document.getElementById('ai-step-modify').style.display = 'none';
+            document.getElementById('ai-step-choices').style.display = 'block';
+        }
+
+        async function modifySelectedRecipe() {
+            const instruction = document.getElementById('ai-mod-instruction').value.trim();
+            if (!instruction) return;
+
+            const btn = document.getElementById('ai-mod-btn');
+            btn.textContent = "...";
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(`${WORKER_URL}/modify-recipe`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ recipe: chosenRecipeData, instruction })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error);
+
+                chosenRecipeData = data.recipe;
+                document.getElementById('selected-recipe-title').textContent = chosenRecipeData.title;
+                document.getElementById('selected-recipe-summary').textContent = `${chosenRecipeData.description} (Modifisert!)`;
+                document.getElementById('ai-mod-instruction').value = '';
+                alert("Oppskriften ble oppdatert av AI-en!");
+            } catch (err) {
+                alert("Klarte ikke modifisere: " + err.message);
+            } finally {
+                btn.textContent = "Oppdater";
+                btn.disabled = false;
+            }
+        }
+
+        function finalSaveAiRecipe() {
+            document.getElementById('recipe-title').value = chosenRecipeData.title || '';
+            document.getElementById('recipe-category').value = chosenRecipeData.category || 'Middag';
+            document.getElementById('recipe-desc').value = chosenRecipeData.description || '';
+            document.getElementById('recipe-prep-time').value = chosenRecipeData.prepTime || '';
+            document.getElementById('recipe-servings').value = chosenRecipeData.servings || '';
+            document.getElementById('recipe-nutrition').value = chosenRecipeData.nutrition || '';
+            document.getElementById('recipe-ingredients').value = (chosenRecipeData.ingredients || []).join('\n');
+            document.getElementById('recipe-instructions').value = chosenRecipeData.instructions || '';
+
+            document.getElementById('mat-ai-wizard').style.display = 'none';
+            document.getElementById('add-recipe-modal').style.display = 'flex';
+            document.getElementById('form-modal-title').textContent = 'Lagre AI-oppskrift';
+        }
+
         document.getElementById('refresh-weather').addEventListener('click', () => updateWeather());
         document.getElementById('refresh-news').addEventListener('click', () => updateNews(true));
 
