@@ -34,11 +34,10 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
             overflow-y: auto;
-            scrollbar-width: none; /* Skjuler scrollbar i Firefox */
-            -ms-overflow-style: none; /* Skjuler scrollbar i IE/Edge */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
 
-        /* Skjuler scrollbar i Chrome, Safari og Opera for hele nettsiden */
         html::-webkit-scrollbar,
         body::-webkit-scrollbar {
             display: none;
@@ -451,14 +450,14 @@
             max-width: 650px;
             max-height: 85vh;
             overflow-y: auto;
-            scrollbar-width: none; /* Skjuler scrollbar i Firefox */
-            -ms-overflow-style: none; /* Skjuler scrollbar i IE/Edge */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
             position: relative;
             border: 1px solid rgba(255,255,255,0.1);
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
         .modal-content::-webkit-scrollbar {
-            display: none; /* Skjuler scrollbar i Chrome/Safari */
+            display: none;
             width: 0;
         }
         .close-btn {
@@ -489,16 +488,16 @@
         }
         .add-btn:hover { background: #0056b3; }
 
-        /* Kryssboks-grid med skjult scrollbar */
+        /* Ryddig rutenett for avkrysningsbokser med tekst ved siden av */
         .checkbox-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 8px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px 14px;
             background: #081821;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #333;
-            max-height: 140px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-height: 160px;
             overflow-y: auto;
             scrollbar-width: none;
             -ms-overflow-style: none;
@@ -507,16 +506,27 @@
             display: none;
             width: 0;
         }
+
         .checkbox-item {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
+            gap: 8px;
+            font-size: 0.88rem;
             color: var(--text);
             cursor: pointer;
+            user-select: none;
         }
-        .checkbox-item input {
+
+        .checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #007bff;
             cursor: pointer;
+            margin: 0;
+        }
+
+        .checkbox-item span {
+            line-height: 1.2;
         }
 
         /* Søk og kategorier */
@@ -868,17 +878,17 @@
 
             <div id="recipe-list-container" class="recipe-list"></div>
             <div class="ai-section">
-                <button class="ai-btn" onclick="openMatAIWizard()"> Spør Mat-AI </button>
+                <button class="ai-btn" onclick="openMatAIWizard()">🤖 Spør Mat-AI (Interaktiv)</button>
             </div>
         </div>
     </div>
 
-    <!-- MAT-AI WIZARD MODAL (Med avkrysningsbokser for proteiner, ingredienser, utstyr, allergier og utvidet region) -->
+    <!-- MAT-AI WIZARD MODAL -->
     <div id="mat-ai-wizard" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px;">
                 <button class="close-btn" onclick="closeMatAIWizard()">Tilbake</button>
-                <h2 style="margin:0; color: #28a745;">Mat-AI</h2>
+                <h2 style="margin:0; color: #28a745;">🤖 Interaktiv Mat-AI</h2>
                 <div></div>
             </div>
             
@@ -888,11 +898,11 @@
                     <div class="form-group" style="margin-bottom:0;">
                         <label>Matkultur / Region</label>
                         <select id="ai-region">
-                            <option value="Global / Velg selv">AI bestemmer</option>
+                            <option value="Global / Velg selv">Fri flyt (AI bestemmer)</option>
                             <option value="Norsk / Nordisk">Norsk / Nordisk</option>
                             <option value="Italiensk">Italiensk</option>
                             <option value="Meksikansk">Meksikansk</option>
-                            <option value="Asiatisk (Generelt)">Asiatisk </option>
+                            <option value="Asiatisk (Generelt)">Asiatisk (Generelt)</option>
                             <option value="Thai">Thai</option>
                             <option value="Japansk">Japansk</option>
                             <option value="Indisk">Indisk</option>
@@ -901,7 +911,9 @@
                             <option value="Midtøsten">Midtøsten</option>
                             <option value="Amerikansk / BBQ">Amerikansk / BBQ</option>
                             <option value="Fransk">Fransk</option>
-                             <option value="Afrikansk">Afrikansk</option>
+                            <option value="Kinesisk">Kinesisk</option>
+                            <option value="Koreansk">Koreansk</option>
+                            <option value="Karibisk / Latinsk">Karibisk / Latinsk</option>
                         </select>
                     </div>
                     <div class="form-group" style="margin-bottom:0;">
@@ -941,68 +953,71 @@
                     </div>
                 </div>
 
-                <!-- PROTEINTYPE (Avkrysningsbokser) -->
+                <!-- PROTEINTYPE -->
                 <div class="form-group">
-                    <label>Proteintype / Hovedingrediens (Kryss av for det du ønsker):</label>
+                    <label>Proteintype / Hovedingrediens:</label>
                     <div class="checkbox-grid" id="protein-checkboxes">
-                        <label class="checkbox-item"><input type="checkbox" value="Kylling" checked> Kylling</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Storfe / Biff"> Storfe / Biff</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Svin"> Svin</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Kjøttdeig"> Kjøttdeig</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Laks / Ørret"> Laks / Ørret</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Torsk / Hvit fisk"> Torsk / Hvit fisk</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Reker / Sjømat"> Reker / Sjømat</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Egg"> Egg</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Tofu"> Tofu</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Linser / Bønner"> Linser / Bønner</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Vegetar / Valgfritt"> Vegetar</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Kylling" checked><span>Kylling</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Storfe / Biff"><span>Storfe / Biff</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Svin"><span>Svin</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Kjøttdeig"><span>Kjøttdeig</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Laks / Ørret"><span>Laks / Ørret</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Torsk / Hvit fisk"><span>Torsk / Hvit fisk</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Reker / Sjømat"><span>Reker / Sjømat</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Egg"><span>Egg</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Tofu"><span>Tofu</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Linser / Bønner"><span>Linser / Bønner</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Vegetar / Valgfritt"><span>Vegetar</span></label>
                     </div>
                 </div>
 
-                <!-- UTSTYR (Avkrysningsbokser) -->
+                <!-- UTSTYR -->
                 <div class="form-group">
-                    <label>Kjøkkenutstyr tilgjengelig (Kryss av det du har):</label>
+                    <label>Kjøkkenutstyr tilgjengelig:</label>
                     <div class="checkbox-grid" id="equipment-checkboxes">
-                        <label class="checkbox-item"><input type="checkbox" value="Stekepanne" checked> Stekepanne</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Kjele" checked> Kjele</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Ovn" checked> Ovn</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Airfryer"> Airfryer</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Mikrobølgeovn"> Mikrobølgeovn</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Blender"> Blender</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Stavmikser"> Stavmikser</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Vaffeljern"> Vaffeljern</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Stekepanne" checked><span>Stekepanne</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Kjele" checked><span>Kjele</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Ovn" checked><span>Ovn</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Airfryer"><span>Airfryer</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Mikrobølgeovn"><span>Mikrobølgeovn</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Blender"><span>Blender</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Stavmikser"><span>Stavmikser</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Vaffeljern"><span>Vaffeljern</span></label>
                     </div>
                 </div>
 
-                <!-- INGREDIENSER HJEMME (Avkrysningsbokser) -->
+                <!-- INGREDIENSER HJEMME (Med tomatpuré, uten olje/smør/salt/pepper) -->
                 <div class="form-group">
-                    <label>Vanlige basisvarer hjemme (Kryss av det du har):</label>
+                    <label>Vanlige basisvarer hjemme:</label>
                     <div class="checkbox-grid" id="ingredients-checkboxes">
-                        <label class="checkbox-item"><input type="checkbox" value="Olje / Smør" checked> Olje / Smør</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Salt & Pepper" checked> Salt & Pepper</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Løk & Hvitløk" checked> Løk & Hvitløk</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Ris"> Ris</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Pasta"> Pasta</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Poteter"> Poteter</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Mel"> Mel</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Egg"> Egg</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Melk / Fløte"> Melk / Fløte</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Bokstomater"> Bokstomater</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Soyasaus"> Soyasaus</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Ost"> Ost</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Løk & Hvitløk" checked><span>Løk & Hvitløk</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Tomatpuré (Tomato paste)" checked><span>Tomatpuré</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Ris"><span>Ris</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Pasta"><span>Pasta</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Poteter"><span>Poteter</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Mel"><span>Mel</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Egg"><span>Egg</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Melk / Fløte"><span>Melk / Fløte</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Bokstomater"><span>Bokstomater</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Soyasaus"><span>Soyasaus</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Ost"><span>Ost</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Chili / Jalapeno"><span>Chili / Jalapeno</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Paprikapulver / Spisskummen"><span>Krydder (Paprika/Spissk.)</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Kokosmelk"><span>Kokosmelk</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Buljong (Kjøtt/Grønnsak)"><span>Buljongterning</span></label>
                     </div>
                 </div>
 
-                <!-- ALLERGIER (Avkrysningsbokser) -->
+                <!-- ALLERGIER -->
                 <div class="form-group">
                     <label>Allergier / Spesielle hensyn:</label>
                     <div class="checkbox-grid" id="allergies-checkboxes">
-                        <label class="checkbox-item"><input type="checkbox" value="Ingen spesielle hensyn" checked> Ingen</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Glutenfri"> Glutenfri</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Laktosefri"> Laktosefri</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Nøttefri"> Nøttefri</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Vegetar"> Vegetar</label>
-                        <label class="checkbox-item"><input type="checkbox" value="Vegansk"> Vegansk</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Ingen spesielle hensyn" checked><span>Ingen</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Glutenfri"><span>Glutenfri</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Laktosefri"><span>Laktosefri</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Nøttefri"><span>Nøttefri</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Vegetar"><span>Vegetar</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Vegansk"><span>Vegansk</span></label>
                     </div>
                 </div>
 
@@ -1015,7 +1030,7 @@
                 <div id="ai-options-container" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;"></div>
                 
                 <div style="display: flex; gap: 10px;">
-                    <button class="close-btn" onclick="resetAiWizard()" style="flex: 1;">Tilbake til skjema</button>
+                    <button class="close-btn" onclick="resetAiWizard()" style="flex: 1;">⬅️ Tilbake til skjema</button>
                     <button class="ai-btn" onclick="requestAiOptions()" style="flex: 1; background: #17a2b8;">🔄 Få 3 nye alternativer</button>
                 </div>
             </div>
@@ -1026,7 +1041,7 @@
                 <div id="selected-recipe-summary" style="color: var(--muted); font-size: 0.9rem; margin-bottom: 15px;"></div>
 
                 <div class="form-group">
-                    <label>Vil du endre på noe? </label>
+                    <label>Vil du endre på noe? Gi beskjed til AI-en:</label>
                     <div style="display: flex; gap: 8px;">
                         <input type="text" id="ai-mod-instruction" placeholder="F.eks. Gjør den sterkere, bytt ut ris med pasta...">
                         <button class="add-btn" onclick="modifySelectedRecipe()" id="ai-mod-btn">Oppdater</button>
