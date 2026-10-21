@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-10-21T15:28:26.211262+00:00",
+  "updatedAt": "2026-10-21T19:27:26.551209+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Frontkollisjon på E39: – Fremstår alvorlig",
-      "link": "https://www.nrk.no/trondelag/to-biler-og-tre-personer-involvert-i-frontkollisjon-pa-e39-i-heim-kommune-1.18061011",
-      "pubDate": "2026-10-21T14:30:52+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/52f438f46f3d60b1b4423a4ec986b09e02cf305e.jpg"
+      "title": "Ber amerikanere forlate Saudi-Arabia",
+      "link": "https://www.nrk.no/nyheter/ber-amerikanere-forlate-saudi-arabia-1.18061250",
+      "pubDate": "2026-10-21T19:24:18+00:00"
     },
     {
-      "title": "Advokat pågrepet midt i rettssak",
-      "link": "https://www.nrk.no/vestfoldogtelemark/lagmannsretten-griper-inn_-menneskehandelsak-kan-kollapse-etter-advokat-pagripelse-1.18060490",
-      "pubDate": "2026-10-21T13:01:26+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/06b4a500d8c657e0e93ae01af340a6d8331ff49d.jpg"
+      "title": "Oslos nye bydelsnavn vedtatt",
+      "link": "https://www.nrk.no/stor-oslo/oslos-nye-bydelsnavn-vedtatt-1.18061231",
+      "pubDate": "2026-10-21T18:52:52+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/46e423fbea334c45515d4efc63821ea3d762a186.jpg"
     },
     {
-      "title": "Fikk toppjobb kort tid etter avgangen – nå øker presset mot ham",
-      "link": "https://www.nrk.no/vestfoldogtelemark/fikk-toppjobb-kort-tid-etter-avgangen-_-na-oker-presset-mot-ham-1.18059513",
-      "pubDate": "2026-10-21T12:38:21+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/2641468ff5514e728bfbf8bdfdd33eb99b63016a.jpg"
+      "title": "Lærarutdanninga mistar 360 studieplassar: Fryktar nedbygging av tilbodet",
+      "link": "https://www.nrk.no/vestland/hvl-styret-flyttar-360-studieplassar-fra-laerarutdanninga-1.18060475",
+      "pubDate": "2026-10-21T18:34:15+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/546dde1635c1995fceafbdb3e9fd8fc54f873a63.jpg"
     }
   ]
 }
