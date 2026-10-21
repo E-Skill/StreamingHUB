@@ -38,11 +38,18 @@
             -ms-overflow-style: none;
         }
 
-        html::-webkit-scrollbar,
-        body::-webkit-scrollbar {
-            display: none;
-            width: 0;
-            height: 0;
+        /* Skjul scrollbar for Chrome, Safari og Opera */
+::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+  background: transparent;
+}
+
+/* Skjul scrollbar for IE, Edge og Firefox */
+* {
+  -ms-overflow-style: none;  /* IE og Edge */
+  scrollbar-width: none;  /* Firefox */
+}
         }
 
         body {
