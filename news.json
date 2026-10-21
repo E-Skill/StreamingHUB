@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-10-21T19:27:26.551209+00:00",
+  "updatedAt": "2026-10-21T22:34:13.622858+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Tripic med krass kritikk mot eget lag: – Kaster bort kampen",
+      "link": "https://www.nrk.no/sport/mesterligaen_-aston-villa-_-viking_-tripic-blemme-og-praktmal-i-viking-nedtur_-_-brutal-laering-1.18061158",
+      "pubDate": "2026-10-21T19:50:28+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/29caeaf13b92243fa2cdb32ec90a6ce8e5555b00.jpg"
+    },
+    {
+      "title": "Nå er de nye bydelsnavnene vedtatt",
+      "link": "https://www.nrk.no/stor-oslo/nye-navn-pa-oslos-bydeler-vedtatt-1.18061263",
+      "pubDate": "2026-10-21T19:38:35+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/46e423fbea334c45515d4efc63821ea3d762a186.jpg"
+    },
     {
       "title": "Ber amerikanere forlate Saudi-Arabia",
       "link": "https://www.nrk.no/nyheter/ber-amerikanere-forlate-saudi-arabia-1.18061250",
       "pubDate": "2026-10-21T19:24:18+00:00"
-    },
-    {
-      "title": "Oslos nye bydelsnavn vedtatt",
-      "link": "https://www.nrk.no/stor-oslo/oslos-nye-bydelsnavn-vedtatt-1.18061231",
-      "pubDate": "2026-10-21T18:52:52+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/46e423fbea334c45515d4efc63821ea3d762a186.jpg"
-    },
-    {
-      "title": "Lærarutdanninga mistar 360 studieplassar: Fryktar nedbygging av tilbodet",
-      "link": "https://www.nrk.no/vestland/hvl-styret-flyttar-360-studieplassar-fra-laerarutdanninga-1.18060475",
-      "pubDate": "2026-10-21T18:34:15+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/546dde1635c1995fceafbdb3e9fd8fc54f873a63.jpg"
     }
   ]
 }
