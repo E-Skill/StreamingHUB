@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-10-21T22:34:13.622858+00:00",
+  "updatedAt": "2026-10-22T00:53:03.193355+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Rød beredskap ved Kirkenes sykehus etter vannlekkasje",
+      "link": "https://www.nrk.no/nyheter/rod-beredskap-ved-kirkenes-sykehus-etter-vannlekkasje-1.18061316",
+      "pubDate": "2026-10-22T00:03:38+00:00"
+    },
+    {
+      "title": "Mann til sykehus etter knivstikking i Stavanger",
+      "link": "https://www.nrk.no/nyheter/mann-til-sykehus-etter-knivstikking-i-stavanger-1.18061302",
+      "pubDate": "2026-10-21T22:31:21+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/41e54bcafdfda68fb9c4ef7d8ed525937d291fe5.jpg"
+    },
     {
       "title": "Tripic med krass kritikk mot eget lag: – Kaster bort kampen",
       "link": "https://www.nrk.no/sport/mesterligaen_-aston-villa-_-viking_-tripic-blemme-og-praktmal-i-viking-nedtur_-_-brutal-laering-1.18061158",
       "pubDate": "2026-10-21T19:50:28+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/29caeaf13b92243fa2cdb32ec90a6ce8e5555b00.jpg"
-    },
-    {
-      "title": "Nå er de nye bydelsnavnene vedtatt",
-      "link": "https://www.nrk.no/stor-oslo/nye-navn-pa-oslos-bydeler-vedtatt-1.18061263",
-      "pubDate": "2026-10-21T19:38:35+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/46e423fbea334c45515d4efc63821ea3d762a186.jpg"
-    },
-    {
-      "title": "Ber amerikanere forlate Saudi-Arabia",
-      "link": "https://www.nrk.no/nyheter/ber-amerikanere-forlate-saudi-arabia-1.18061250",
-      "pubDate": "2026-10-21T19:24:18+00:00"
     }
   ]
 }
