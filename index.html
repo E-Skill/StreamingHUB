@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Streaming HUB</title>
     <meta name="theme-color" content="#060b12">
-    <meta name="description" content="Streaming HUB med strømmetjenester, vær, oppskrifter og siste nyheter fra NRK[cite: 1].">
+    <meta name="description" content="Streaming HUB med strømmetjenester, vær, oppskrifter og siste nyheter fra NRK.">
 
     <style>
         :root {
@@ -37,7 +37,7 @@
 
         .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr) 360px; gap: 26px; align-items: start; }
 
-        /* Vær-kolonne[cite: 1] */
+        /* Vær-kolonne */
         .weather-area { padding-top: 16px; min-height: calc(100vh - 36px); display: flex; flex-direction: column; }
         .weather-head { margin: 0 0 14px; font-size: 1.05rem; font-weight: 700; display: flex; justify-content: space-between; }
         .city-select { width: 100%; background: var(--bg-2); color: var(--text); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 6px 10px; font-size: 0.85rem; font-family: inherit; margin-bottom: 12px; cursor: pointer; }
@@ -55,7 +55,7 @@
         .hourly-forecast { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; padding-bottom: 6px; }
         .hour-card { background: rgba(255,255,255,0.02); border-radius: 10px; padding: 10px 12px; font-size: 0.95rem; display: flex; align-items: center; justify-content: space-between; }
 
-        /* Midtkolonne[cite: 1] */
+        /* Midtkolonne: Strømmetjenester */
         .main { display: flex; flex-direction: column; align-items: center; padding-top: 8px; min-height: calc(100vh - 36px); }
         h1.title { margin: 6px 0 0; font-size: 2.4rem; font-weight: 800; text-align: center; }
         .services-block { width: 100%; margin-top: 18px; padding-right: 10px; display: flex; justify-content: center; }
@@ -69,7 +69,7 @@
         .service-logo { width: 72px; height: 72px; object-fit: contain; margin-bottom: 12px; }
         .service-label { font-size: 0.95rem; font-weight: 600; color: #f0f5ff; }
 
-        /* Nyhetskolonne[cite: 1] */
+        /* Nyhetskolonne */
         .news-area, .news-panel { padding-top: 10px; min-height: calc(100vh - 36px); display: flex; flex-direction: column; width: 100%; }
         .news-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
         .news-brand-logo { width: 40px; height: 40px; object-fit: contain; }
@@ -82,7 +82,7 @@
         .news-time { color: var(--muted-2); font-size: 0.78rem; margin-top: 4px; }
         .news-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; color: var(--muted-2); font-size: 0.8rem; padding-top: 8px; border-top: 1px solid var(--line); }
 
-        /* Modaler[cite: 1] */
+        /* Modaler */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); display: none; justify-content: center; align-items: center; z-index: 1000; }
         .modal-content { background: #111827; color: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 650px; max-height: 85vh; overflow-y: auto; position: relative; border: 1px solid rgba(255, 255, 255, 0.1); }
         .modal-top-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px; }
@@ -113,13 +113,23 @@
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px; background: var(--bg-2); border: 1px solid #333; color: #fff; border-radius: 6px; font-family: inherit; }
         #recipe-file-input { color: var(--text); background: var(--bg-2); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 6px; width: 100%; }
 
-        /* Loading Spinner Animation */
+        /* Loading Spinner */
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .spinner {
             display: inline-block; width: 16px; height: 16px;
             border: 2px solid rgba(255,255,255,0.3); border-radius: 50%;
             border-top-color: #fff; animation: spin 0.8s linear infinite;
             vertical-align: middle; margin-right: 6px;
+        }
+
+        @media (max-width: 1100px) {
+            .layout { grid-template-columns: 200px 1fr 280px; gap: 20px; }
+            .service-grid { grid-template-columns: repeat(3, minmax(120px, 1fr)); max-width: 720px; }
+        }
+        @media (max-width: 768px) {
+            body { padding: 14px; }
+            .layout { grid-template-columns: 1fr; }
+            .service-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
         }
     </style>
 </head>
@@ -128,7 +138,7 @@
     <div class="page">
         <div class="layout">
             
-            <!-- VÆR-KOLONNE[cite: 1] -->
+            <!-- VÆR-KOLONNE -->
             <aside class="weather-area">
                 <div class="weather-head"><span>Været</span></div>
                 <select id="city-selector" class="city-select" onchange="changeCity(this.value)">
@@ -172,7 +182,7 @@
                 </div>
             </aside>
 
-            <!-- MIDT-KOLONNE[cite: 1] -->
+            <!-- MIDT-KOLONNE: KLOKKE & STRØMMETJENESTER -->
             <main class="main">
                 <h1 class="title" id="main-clock">--:--:--</h1>
                 <div class="services-block">
@@ -199,7 +209,7 @@
                 </div>
             </main>
 
-            <!-- HØYRE KOLONNE[cite: 1] -->
+            <!-- HØYRE KOLONNE: NYHETER -->
             <aside class="news-area">
                 <div class="news-panel">
                     <div class="news-header">
@@ -216,7 +226,7 @@
         </div>
     </div>
 
-    <!-- MODAL: OPPSKRIFTSLISTE[cite: 1] -->
+    <!-- MODAL: OPPSKRIFTSLISTE -->
     <div id="recipe-modal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-top-bar">
@@ -242,7 +252,7 @@
         </div>
     </div>
 
-    <!-- MAT-AI WIZARD MODAL[cite: 1] -->
+    <!-- MAT-AI WIZARD MODAL -->
     <div id="mat-ai-wizard" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-top-bar">
@@ -337,7 +347,7 @@
         </div>
     </div>
 
-    <!-- MODAL: LEGG TIL / REDIGER[cite: 1] -->
+    <!-- MODAL: LEGG TIL / REDIGER -->
     <div id="add-recipe-modal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-btn" onclick="closeAddRecipeForm()" style="position: absolute; top: 15px; right: 15px;">Avbryt</button>
@@ -359,7 +369,7 @@
         </div>
     </div>
 
-    <!-- MODAL: DETALJER & FORHÅNDSVISNING[cite: 1] -->
+    <!-- MODAL: DETALJER & FORHÅNDSVISNING -->
     <div id="recipe-detail-modal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-btn" onclick="closeRecipeDetail()" style="position: absolute; top: 15px; right: 15px;">Tilbake</button>
@@ -403,16 +413,36 @@
             if (el) el.style.display = visible ? 'flex' : 'none';
         }
 
-        function getAdminPassword() {
-            let pwd = localStorage.getItem('recipe_admin_pwd');
-            if (!pwd) {
-                pwd = prompt("Skriv inn passord for redigering/sletting:");
-                if (pwd) localStorage.setItem('recipe_admin_pwd', pwd.trim());
+        /* TOKEN-AUTENTISERING: Du taster inn passordet ditt, og nettleseren lagrer en midlertidig token i bakgrunnen */
+        async function getAuthToken() {
+            let token = sessionStorage.getItem('recipe_auth_token');
+            if (token) return token;
+
+            const pwd = prompt("Skriv inn administratorpassord for å bekrefte endringen:");
+            if (!pwd) return null;
+
+            try {
+                const res = await fetch(`${WORKER_URL}/login`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ password: pwd.trim() })
+                });
+                const data = await res.json();
+
+                if (res.ok && data.token) {
+                    sessionStorage.setItem('recipe_auth_token', data.token);
+                    return data.token;
+                } else {
+                    alert(data.error || "Feil passord!");
+                    return null;
+                }
+            } catch (err) {
+                alert("Kunne ikke nå påloggingsserveren.");
+                return null;
             }
-            return localStorage.getItem('recipe_admin_pwd');
         }
 
-        /* Vær- og klokkelogg med Loading Spinner */
+        /* Vær */
         function changeCity(cityName) {
             if (CITIES[cityName]) {
                 currentCityName = cityName;
@@ -463,7 +493,7 @@
             }
         }
 
-        /* Nyhetslogg med Loading Spinner */
+        /* Nyheter */
         async function updateNews(forceFresh = false) {
             const container = document.getElementById('nrk-news');
             const updatedEl = document.getElementById('news-updated');
@@ -575,20 +605,34 @@
                 instructions: document.getElementById('recipe-instructions').value.trim()
             };
 
+            let token = null;
+            if (currentRecipeIndex !== null) {
+                token = await getAuthToken();
+                if (!token) return;
+            }
+
             const updated = [...recipesArray];
             if (currentRecipeIndex !== null) updated[currentRecipeIndex] = recipeObj;
             else updated.push(recipeObj);
 
-            const pwd = currentRecipeIndex !== null ? getAdminPassword() : null;
-            if (currentRecipeIndex !== null && !pwd) return;
-
             const res = await fetch(`${WORKER_URL}/recipes`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json", ...(pwd ? { "X-Delete-Password": pwd } : {}) },
+                headers: {
+                    "Content-Type": "application/json",
+                    ...(token ? { "X-Auth-Token": token } : {})
+                },
                 body: JSON.stringify(updated)
             });
-            if (res.ok) { recipesArray = updated; closeAddRecipeForm(); openRecipesModal(); }
-            else alert("Lagring feilet (sjekk passord)");
+
+            const result = await res.json();
+            if (res.ok && result.success) {
+                recipesArray = updated;
+                closeAddRecipeForm();
+                openRecipesModal();
+            } else {
+                sessionStorage.removeItem('recipe_auth_token');
+                alert(result.error || "Lagring feilet.");
+            }
         }
 
         function openRecipeDetail(idx, isPreview = false) {
@@ -609,7 +653,6 @@
                 <p style="white-space:pre-line;color:var(--muted); margin-top:0;">${r.instructions || ''}</p>
             `;
 
-            // Skjul slett/rediger-knapper hvis det bare er en forhåndsvisning
             document.getElementById('detail-action-buttons').style.display = isPreview ? 'none' : 'flex';
 
             showModal('recipe-modal', false);
@@ -623,7 +666,6 @@
             showModal('recipe-modal', true);
         }
 
-        // Forhåndsvis oppskrift direkte fra skjemaet før lagring
         function previewFormRecipe() {
             const formRecipe = {
                 title: document.getElementById('recipe-title').value.trim(),
@@ -639,9 +681,7 @@
         }
 
         function previewChosenAiRecipe() {
-            if (chosenRecipeData) {
-                openRecipeDetail(chosenRecipeData, true);
-            }
+            if (chosenRecipeData) openRecipeDetail(chosenRecipeData, true);
         }
 
         function editCurrentRecipe() {
@@ -660,19 +700,32 @@
 
         async function deleteCurrentRecipe() {
             if (!confirm("Slette denne oppskriften?")) return;
-            const pwd = getAdminPassword();
-            if (!pwd) return;
+
+            const token = await getAuthToken();
+            if (!token) return;
+
             const updated = recipesArray.filter((_, i) => i !== currentRecipeIndex);
             const res = await fetch(`${WORKER_URL}/recipes`, {
                 method: "DELETE",
-                headers: { "Content-Type": "application/json", "X-Delete-Password": pwd },
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Auth-Token": token
+                },
                 body: JSON.stringify({ updatedRecipes: updated })
             });
-            if (res.ok) { recipesArray = updated; closeRecipeDetail(); openRecipesModal(); }
-            else alert("Sletting feilet");
+
+            const result = await res.json();
+            if (res.ok && result.success) {
+                recipesArray = updated;
+                closeRecipeDetail();
+                openRecipesModal();
+            } else {
+                sessionStorage.removeItem('recipe_auth_token');
+                alert(result.error || "Sletting feilet.");
+            }
         }
 
-        /* Mat-AI Wizard med Loading Spinner */
+        /* Mat-AI Wizard */
         function openMatAIWizard() { showModal('recipe-modal', false); showModal('mat-ai-wizard', true); resetAiWizard(); }
         function closeMatAIWizard() { showModal('mat-ai-wizard', false); showModal('recipe-modal', true); }
         function resetAiWizard() {
