@@ -149,19 +149,31 @@
 
         .weather-meta {
             margin-top: 12px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
             color: var(--muted);
-            font-size: 0.97rem;
+            font-size: 0.95rem;
+        }
+
+        .weather-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .weather-meta strong {
-            display: block;
             color: var(--text);
             font-size: 0.9rem;
-            margin-bottom: 2px;
             font-weight: 600;
+        }
+
+        .wind-direction-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1rem;
+            line-height: 1;
+            margin-right: 2px;
         }
 
         .weather-updated {
@@ -742,8 +754,22 @@
                         <div class="weather-feels" id="feels-like">Føles som --°</div>
 
                         <div class="weather-meta">
-                            <div><strong>Vind:</strong> <span id="wind">-- m/s</span></div>
-                            <div><strong>Luftfuktighet:</strong> <span id="humidity">-- %</span></div>
+                            <div class="weather-meta-row">
+                                <strong>Vind:</strong> 
+                                <span id="wind">-- m/s</span>
+                            </div>
+                            <div class="weather-meta-row">
+                                <strong>Vindkast:</strong> 
+                                <span id="wind-gusts">-- m/s</span>
+                            </div>
+                            <div class="weather-meta-row">
+                                <strong>Nedbør:</strong> 
+                                <span id="precipitation">-- mm</span>
+                            </div>
+                            <div class="weather-meta-row">
+                                <strong>Luftfuktighet:</strong> 
+                                <span id="humidity">-- %</span>
+                            </div>
                         </div>
 
                         <div style="margin-top: 10px; font-size: 0.82rem; color: var(--muted); background: rgba(255,255,255,0.03); padding: 8px; border-radius: 6px; display: flex; flex-direction: column; gap: 4px;">
@@ -994,7 +1020,7 @@
                     </div>
                 </div>
 
-                <!-- BASISVARER: Rene, adskilte råvarer med lime og sitron, uten krydder eller kokosmelk -->
+                <!-- BASISVARER: Rene råvarer med lime og sitron -->
                 <div class="form-group">
                     <label>Vanlige basisvarer hjemme:</label>
                     <div class="checkbox-grid" id="ingredients-checkboxes">
@@ -1245,6 +1271,13 @@
             return isNight ? '🌙' : '🌡️';
         }
 
+        function degreesToCompass(deg) {
+            if (deg == null || !Number.isFinite(deg)) return '';
+            const directions = ['N', 'NNØ', 'NØ', 'ØNØ', 'Ø', 'ØSØ', 'SØ', 'SSØ', 'S', 'SSV', 'SV', 'VSV', 'V', 'VNV', 'NV', 'NNV'];
+            const val = Math.floor((deg / 22.5) + 0.5);
+            return directions[val % 16];
+        }
+
         function updateClock() {
             const timeStr = new Date().toLocaleTimeString('no-NO');
             const main = document.getElementById('main-clock');
@@ -1264,6 +1297,8 @@
             const tempEl = document.getElementById('temperature');
             const feelsEl = document.getElementById('feels-like');
             const windEl = document.getElementById('wind');
+            const windGustsEl = document.getElementById('wind-gusts');
+            const precipEl = document.getElementById('precipitation');
             const humEl = document.getElementById('humidity');
             const iconEl = document.getElementById('weather-icon');
             const hourlyContainer = document.getElementById('hourly-forecast');
@@ -1277,11 +1312,13 @@
 
             try {
                 const cacheBuster = `&t=${Date.now()}`;
+                // Open-Meteo med eksplisitt wind_speed_unit=ms og precipitation
                 const url = 'https://api.open-meteo.com/v1/forecast' +
                     `?latitude=${cityData.lat}&longitude=${cityData.lon}` +
                     '&hourly=temperature_2m,apparent_temperature,weathercode,relative_humidity_2m' +
                     '&daily=sunrise,sunset' +
-                    '&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,weather_code' +
+                    '&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,wind_gusts_10m,wind_direction_10m,precipitation,weather_code' +
+                    '&wind_speed_unit=ms' +
                     `&timezone=${encodeURIComponent(cityData.tz)}` + cacheBuster;
 
                 const response = await fetch(url, { cache: 'no-store' });
@@ -1317,12 +1354,32 @@
                     if (idx >= 0) apparentVal = data.hourly.apparent_temperature[idx];
                 }
 
-                const windVal = current.wind_speed_10m ?? current.windspeed ?? '--';
+                // Vind, vindretning og vindkast
+                const rawWind = current.wind_speed_10m ?? current.windspeed;
+                const rawGusts = current.wind_gusts_10m;
+                const windDirDeg = current.wind_direction_10m ?? current.winddirection;
+
+                let windSpeedStr = Number.isFinite(rawWind) ? `${(Math.round(rawWind * 10) / 10).toFixed(1)} m/s` : '-- m/s';
+                let windGustsStr = Number.isFinite(rawGusts) ? `${(Math.round(rawGusts * 10) / 10).toFixed(1)} m/s` : '-- m/s';
+
+                let windDirectionHtml = '';
+                if (Number.isFinite(windDirDeg)) {
+                    const compassDir = degreesToCompass(windDirDeg);
+                    const arrowRotation = (windDirDeg + 180) % 360;
+                    windDirectionHtml = `<span class="wind-direction-arrow" style="transform: rotate(${arrowRotation}deg);" title="${windDirDeg}°">↑</span> ${compassDir} `;
+                }
+
+                // Nedbør (mm)
+                const rawPrecip = current.precipitation;
+                let precipStr = Number.isFinite(rawPrecip) ? `${(Math.round(rawPrecip * 10) / 10).toFixed(1)} mm` : '0.0 mm';
+
                 let humVal = current.relative_humidity_2m ?? current.relativehumidity_2m;
 
                 if (tempEl) tempEl.innerHTML = `${temp}<span class="degree">°</span>`;
                 if (feelsEl) feelsEl.textContent = `Føles som ${Number.isFinite(apparentVal) ? Math.round(apparentVal) : '--'}°`;
-                if (windEl) windEl.textContent = `${Number.isFinite(windVal) ? (Math.round(windVal * 10) / 10) : '--'} m/s`;
+                if (windEl) windEl.innerHTML = `${windDirectionHtml}${windSpeedStr}`;
+                if (windGustsEl) windGustsEl.textContent = windGustsStr;
+                if (precipEl) precipEl.textContent = precipStr;
                 if (humEl) humEl.textContent = `${humVal != null ? humVal : '--'} %`;
                 if (iconEl) iconEl.textContent = weatherIcon(weatherCode, isCurrentNight);
 
