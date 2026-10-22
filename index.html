@@ -4,706 +4,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Streaming HUB</title>
-
     <meta name="theme-color" content="#060b12">
-    <meta name="description" content="Streaming HUB med strømmetjenester, vær og siste nyheter fra NRK.">
+    <meta name="description" content="Streaming HUB med strømmetjenester, vær, oppskrifter og siste nyheter fra NRK[cite: 1].">
 
     <style>
         :root {
             --bg: #030d17;
             --bg-2: #081821;
-            --panel: rgba(17, 24, 39, 0.7);
-            --panel-soft: rgba(17, 24, 39, 0.9);
             --tile: rgba(18, 31, 45, 0.92);
-            --tile-alt: rgba(14, 20, 31, 0.8);
             --text: #eef5ff;
-            --muted: rgba(255,255,255,0.65);
-            --muted-2: rgba(255,255,255,0.38);
-            --line: rgba(255,255,255,0.05);
+            --muted: rgba(255, 255, 255, 0.65);
+            --muted-2: rgba(255, 255, 255, 0.38);
+            --line: rgba(255, 255, 255, 0.05);
+            --accent: #007bff;
+            --accent-light: #4da6ff;
+            --success: #28a745;
+            --danger: #dc3545;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; -ms-overflow-style: none; scrollbar-width: none; }
+        ::-webkit-scrollbar { display: none; width: 0; background: transparent; }
 
         html, body {
-            height: 100%;
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
+            height: 100%; margin: 0; background: var(--bg); color: var(--text);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
-            overflow-y: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            overflow-x: hidden; overflow-y: auto;
         }
 
-        /* Skjul scrollbar for Chrome, Safari og Opera */
-::-webkit-scrollbar {
-  display: none;
-  width: 0px;
-  background: transparent;
-}
+        body { display: flex; justify-content: center; align-items: flex-start; padding: 18px 22px 10px; }
+        .page { width: 100%; max-width: 1460px; min-height: calc(100vh - 30px); }
 
-/* Skjul scrollbar for IE, Edge og Firefox */
-* {
-  -ms-overflow-style: none;  /* IE og Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-        }
+        .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr) 360px; gap: 26px; align-items: start; }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 18px 22px 10px;
-        }
+        /* Vær-kolonne[cite: 1] */
+        .weather-area { padding-top: 16px; min-height: calc(100vh - 36px); display: flex; flex-direction: column; }
+        .weather-head { margin: 0 0 14px; font-size: 1.05rem; font-weight: 700; display: flex; justify-content: space-between; }
+        .city-select { width: 100%; background: var(--bg-2); color: var(--text); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 6px 10px; font-size: 0.85rem; font-family: inherit; margin-bottom: 12px; cursor: pointer; }
+        .weather-box { width: 100%; max-width: 220px; display: flex; flex-direction: column; justify-content: space-between; flex: 1 1 auto; }
+        .weather-temp-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+        .weather-temp { font-size: 3.2rem; line-height: 0.96; font-weight: 700; letter-spacing: -0.06em; display: flex; align-items: flex-start; }
+        .weather-temp .degree { font-size: 1.05rem; transform: translateY(12px); margin-left: 2px; }
+        .weather-feels { color: var(--muted); font-size: 1rem; margin-top: 8px; }
+        .weather-meta { margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; color: var(--muted); font-size: 0.97rem; }
+        .weather-meta strong { display: block; color: var(--text); font-size: 0.9rem; margin-bottom: 2px; font-weight: 600; }
+        .city-time-box { margin-top: 10px; font-size: 0.82rem; color: var(--muted); background: rgba(255,255,255,0.03); padding: 8px; border-radius: 6px; display: flex; flex-direction: column; gap: 4px; }
+        .sun-row { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 4px; }
+        .weather-updated { margin-top: 12px; font-size: 0.82rem; color: var(--muted-2); display: flex; align-items: center; justify-content: space-between; gap: 8px; max-width: 220px; }
+        .weather-updated button, .news-footer button { background: rgba(255,255,255,0.02); color: #dfeeff; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 0.76rem; cursor: pointer; }
+        .hourly-forecast { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; padding-bottom: 6px; }
+        .hour-card { background: rgba(255,255,255,0.02); border-radius: 10px; padding: 10px 12px; font-size: 0.95rem; display: flex; align-items: center; justify-content: space-between; }
 
-        .page {
-            width: 100%;
-            max-width: 1460px;
-            min-height: calc(100vh - 30px);
-        }
+        /* Midtkolonne[cite: 1] */
+        .main { display: flex; flex-direction: column; align-items: center; padding-top: 8px; min-height: calc(100vh - 36px); }
+        h1.title { margin: 6px 0 0; font-size: 2.4rem; font-weight: 800; text-align: center; }
+        .services-block { width: 100%; margin-top: 18px; padding-right: 10px; display: flex; justify-content: center; }
+        .section-header-row { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 700px; margin-bottom: 12px; }
+        .section-header { margin: 0; font-size: 1rem; color: var(--muted); font-weight: 700; }
+        .recipe-nav-btn { background: none; border: none; color: var(--muted); font-size: 1rem; font-weight: 700; cursor: pointer; padding: 0; }
+        .recipe-nav-btn:hover { color: var(--text); }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px 28px; width: 100%; justify-items: center; }
+        .service-card { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 160px; min-height: 140px; border-radius: 10px; background: var(--tile); border: 1px solid rgba(255,255,255,0.04); text-decoration: none; color: var(--text); padding: 14px 12px 12px; transition: transform 0.12s ease; }
+        .service-card:hover { transform: translateY(-1px); filter: brightness(1.06); }
+        .service-logo { width: 72px; height: 72px; object-fit: contain; margin-bottom: 12px; }
+        .service-label { font-size: 0.95rem; font-weight: 600; color: #f0f5ff; }
 
-        .layout {
-            display: grid;
-            grid-template-columns: 220px minmax(0, 1fr) 360px;
-            gap: 26px;
-            align-items: start;
-        }
+        /* Nyhetskolonne[cite: 1] */
+        .news-area, .news-panel { padding-top: 10px; min-height: calc(100vh - 36px); display: flex; flex-direction: column; width: 100%; }
+        .news-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+        .news-brand-logo { width: 40px; height: 40px; object-fit: contain; }
+        .news-header h2 { margin: 0; font-size: 1.05rem; font-weight: 700; }
+        .news-list { display: flex; flex-direction: column; gap: 12px; padding-right: 6px; flex: 1 1 auto; }
+        .news-item { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; min-height: 86px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+        .news-thumb { width: 96px; height: 72px; border-radius: 8px; object-fit: cover; background: rgba(255,255,255,0.06); flex-shrink: 0; }
+        .news-text { flex: 1; min-width: 0; }
+        .news-title { font-size: 0.95rem; line-height: 1.3; font-weight: 600; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .news-time { color: var(--muted-2); font-size: 0.78rem; margin-top: 4px; }
+        .news-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; color: var(--muted-2); font-size: 0.8rem; padding-top: 8px; border-top: 1px solid var(--line); }
 
-        /* Weather column */
-        .weather-area {
-            padding-top: 16px;
-            min-height: calc(100vh - 36px);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .weather-head {
-            margin: 0 0 14px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .city-select {
-            width: 100%;
-            background: #081821;
-            color: var(--text);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 6px;
-            padding: 6px 10px;
-            font-size: 0.85rem;
-            font-family: inherit;
-            margin-bottom: 12px;
-            cursor: pointer;
-        }
-        .city-select:focus {
-            outline: none;
-            border-color: #007bff;
-        }
-
-        .weather-box {
-            width: 100%;
-            max-width: 220px;
-            color: var(--text);
-            background: transparent;
-            border: none;
-            margin-top: 4px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex: 1 1 auto;
-        }
-
-        .weather-temp-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-
-        .weather-temp {
-            font-size: 3.2rem;
-            line-height: 0.96;
-            font-weight: 700;
-            letter-spacing: -0.06em;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .weather-temp .degree {
-            font-size: 1.05rem;
-            display: inline-block;
-            transform: translateY(12px);
-            margin-left: 2px;
-        }
-
-        .weather-feels {
-            color: var(--muted);
-            font-size: 1.0rem;
-            margin-top: 8px;
-        }
-
-        .weather-meta {
-            margin-top: 12px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px 12px;
-            color: var(--muted);
-            font-size: 0.97rem;
-        }
-
-        .weather-meta strong {
-            display: block;
-            color: var(--text);
-            font-size: 0.9rem;
-            margin-bottom: 2px;
-            font-weight: 600;
-        }
-
-        .weather-updated {
-            margin-top: 12px;
-            font-size: 0.82rem;
-            color: var(--muted-2);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            width: 100%;
-            max-width: 220px;
-        }
-
-        .weather-updated button,
-        .news-footer button {
-            background: rgba(255,255,255,0.02);
-            color: #dfeeff;
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 8px;
-            padding: 6px 10px;
-            font: inherit;
-            font-size: 0.76rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .weather-updated button:hover,
-        .news-footer button:hover {
-            background: rgba(255,255,255,0.08);
-        }
-
-        .hourly-forecast {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 12px;
-            padding-bottom: 6px;
-            overflow: visible;
-        }
-
-        .hour-card {
-            width: 100%;
-            max-width: 100%;
-            background: rgba(255,255,255,0.02);
-            border-radius: 10px;
-            padding: 10px 12px;
-            text-align: left;
-            font-size: 0.95rem;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .hour-left { display:flex; align-items:center; gap:10px; }
-        .hour-icon { font-size: 1.2rem; }
-        .hour-temp { font-weight: 700; font-size: 1rem; }
-
-        .main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 8px;
-            min-height: calc(100vh - 36px);
-        }
-
-        h1.title {
-            margin: 6px 0 0;
-            font-size: 2.4rem;
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            font-weight: 800;
-            color: var(--text);
-            text-align: center;
-        }
-
-        .services-block {
-            width: 100%;
-            margin-top: 18px;
-            padding-right: 10px;
-            display:flex;
-            justify-content:center;
-        }
-
-        .section-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 700px;
-            margin-bottom: 12px;
-        }
-
-        .section-header {
-            margin: 0;
-            font-size: 1rem;
-            color: var(--muted);
-            font-weight: 700;
-        }
-
-        .recipe-nav-btn {
-            background: none;
-            border: none;
-            color: var(--muted);
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            padding: 0;
-            font-family: inherit;
-            transition: color 0.2s;
-        }
-        .recipe-nav-btn:hover {
-            color: var(--text);
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 16px 28px;
-            width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
-            justify-content: center;
-            justify-items: center;
-        }
-
-        .service-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 160px;
-            min-height: 140px;
-            border-radius: 10px;
-            background: rgba(18, 31, 45, 0.92);
-            border: 1px solid rgba(255,255,255,0.04);
-            text-decoration: none;
-            color: var(--text);
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.01);
-            padding: 14px 12px 12px;
-            transition: transform 0.12s ease, filter 0.12s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-1px);
-            filter: brightness(1.06);
-        }
-
-        .service-logo {
-            width: 72px;
-            height: 72px;
-            object-fit: contain;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        .service-label {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #f0f5ff;
-        }
-
-        .news-area {
-            padding-top: 10px;
-            min-height: calc(100vh - 36px);
-            display:flex;
-            flex-direction:column;
-        }
-
-        .news-panel {
-            width: 100%;
-            min-height: calc(100vh - 36px);
-            background: transparent;
-            border: none;
-            color: var(--text);
-            padding: 0;
-            display:flex;
-            flex-direction:column;
-        }
-
-        .news-header {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 8px;
-            margin-bottom: 12px;
-            padding-right: 6px;
-        }
-
-        .news-brand-logo {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            display: block;
-            flex-shrink: 0;
-        }
-
-        .news-header h2 {
-            margin: 0;
-            font-size: 1.05rem;
-            font-weight: 700;
-        }
-
-        .news-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            overflow: visible;
-            padding-right: 6px;
-            flex: 1 1 auto;
-        }
-
-        .news-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--text);
-            text-decoration: none;
-            min-height: 86px;
-            padding: 6px 0;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .news-item:last-child {
-            border-bottom: none;
-        }
-
-        .news-thumb {
-            width: 96px;
-            height: 72px;
-            border-radius: 8px;
-            object-fit: cover;
-            background: rgba(255,255,255,0.06);
-            flex-shrink: 0;
-        }
-
-        .news-text {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .news-title {
-            font-size: 0.95rem;
-            line-height: 1.3;
-            font-weight: 600;
-            color: var(--text);
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        .news-time {
-            color: var(--muted-2);
-            font-size: 0.78rem;
-            margin-top: 4px;
-        }
-
-        .news-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 12px;
-            color: var(--muted-2);
-            font-size: 0.8rem;
-            padding-top: 8px;
-            border-top: 1px solid var(--line);
-        }
-
-        /* Modaler for oppskrifter med skjulte scrollbarer */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            background: #111827;
-            color: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 650px;
-            max-height: 85vh;
-            overflow-y: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            position: relative;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-        .modal-content::-webkit-scrollbar {
-            display: none;
-            width: 0;
-        }
-        .close-btn {
-            background: #222;
-            color: #fff;
-            border: 1px solid #444;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        .close-btn:hover { background: #333; }
-        .modal-header-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--line);
-            padding-bottom: 12px;
-            margin-bottom: 15px;
-        }
-        .add-btn {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .add-btn:hover { background: #0056b3; }
-
-        /* Ryddig rutenett for avkrysningsbokser med tekst ved siden av */
-        .checkbox-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 10px 14px;
-            background: #081821;
-            padding: 12px 14px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-height: 160px;
-            overflow-y: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        .checkbox-grid::-webkit-scrollbar {
-            display: none;
-            width: 0;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.88rem;
-            color: var(--text);
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            accent-color: #007bff;
-            cursor: pointer;
-            margin: 0;
-        }
-
-        .checkbox-item span {
-            line-height: 1.2;
-        }
-
-        /* Søk og kategorier */
-        .search-container {
-            margin-bottom: 12px;
-        }
-        .search-input {
-            width: 100%;
-            padding: 10px 14px;
-            background: #081821;
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 8px;
-            color: #fff;
-            font-size: 0.95rem;
-            font-family: inherit;
-        }
-        .search-input:focus {
-            outline: none;
-            border-color: #007bff;
-        }
-        .category-bar {
-            display: flex;
-            gap: 6px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            margin-bottom: 12px;
-            scrollbar-width: none;
-        }
-        .category-bar::-webkit-scrollbar { display: none; }
-        .cat-chip {
-            background: rgba(255,255,255,0.06);
-            color: var(--muted);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px;
-            padding: 5px 12px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s ease;
-        }
-        .cat-chip.active, .cat-chip:hover {
-            background: #007bff;
-            color: #fff;
-            border-color: #007bff;
-        }
-        .recipe-badge {
-            display: inline-block;
-            background: rgba(0, 123, 255, 0.2);
-            color: #4da6ff;
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-top: 4px;
-            margin-right: 6px;
-            border: 1px solid rgba(77, 166, 255, 0.3);
-        }
-        .recipe-badge-time {
-            display: inline-block;
-            background: rgba(40, 167, 69, 0.2);
-            color: #5cdb95;
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-top: 4px;
-            border: 1px solid rgba(92, 219, 149, 0.3);
-        }
-
+        /* Modaler[cite: 1] */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); display: none; justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: #111827; color: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 650px; max-height: 85vh; overflow-y: auto; position: relative; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .modal-top-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px; }
+        .close-btn { background: #222; color: #fff; border: 1px solid #444; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
+        .add-btn { background: var(--accent); color: #fff; border: none; padding: 8px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        .checkbox-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px 14px; background: var(--bg-2); padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); max-height: 160px; overflow-y: auto; }
+        .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; cursor: pointer; user-select: none; }
+        .checkbox-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; margin: 0; }
+        .search-container { margin-bottom: 12px; }
+        .search-input { width: 100%; padding: 10px 14px; background: var(--bg-2); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: #fff; font-size: 0.95rem; font-family: inherit; }
+        .category-bar { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 12px; }
+        .cat-chip { background: rgba(255, 255, 255, 0.06); color: var(--muted); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 5px 12px; font-size: 0.8rem; cursor: pointer; white-space: nowrap; }
+        .cat-chip.active, .cat-chip:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .recipe-badge { display: inline-block; background: rgba(0, 123, 255, 0.2); color: var(--accent-light); font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-top: 4px; margin-right: 6px; }
+        .recipe-badge-time { display: inline-block; background: rgba(40, 167, 69, 0.2); color: #5cdb95; font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-top: 4px; }
         .recipe-list { display: flex; flex-direction: column; gap: 10px; }
-        .recipe-card-item {
-            background: rgba(255,255,255,0.03);
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border: 1px solid rgba(255,255,255,0.04);
-            transition: background 0.2s;
-        }
-        .recipe-card-item:hover { background: rgba(255,255,255,0.07); }
-        .recipe-thumb {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 6px;
-            flex-shrink: 0;
-            background: #222;
-        }
-        .recipe-info h3 { margin: 0 0 3px 0; color: #4da6ff; font-size: 1.1em; }
+        .recipe-card-item { background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255, 255, 255, 0.04); }
+        .recipe-card-item:hover { background: rgba(255, 255, 255, 0.07); }
+        .recipe-thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 6px; flex-shrink: 0; background: #222; }
+        .recipe-info h3 { margin: 0 0 3px 0; color: var(--accent-light); font-size: 1.1em; }
         .recipe-info p { margin: 0; color: var(--muted); font-size: 0.85em; }
-        .ai-section {
-            margin-top: 25px;
-            text-align: center;
-            border-top: 1px solid var(--line);
-            padding-top: 20px;
-        }
-        .ai-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-        }
-        .ai-btn:hover { background: #218838; }
+        .ai-section { margin-top: 25px; text-align: center; border-top: 1px solid var(--line); padding-top: 20px; }
+        .ai-btn, .save-btn { background: var(--success); color: #fff; border: none; padding: 12px 20px; border-radius: 8px; font-size: 1em; font-weight: bold; cursor: pointer; width: 100%; }
+        .ai-btn:hover, .save-btn:hover { background: #218838; }
+        .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 5px; color: var(--muted); font-size: 0.9em; }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 10px;
-            background: #081821;
-            border: 1px solid #333;
-            color: #fff;
-            border-radius: 6px;
-            font-family: inherit;
-        }
-        #recipe-file-input {
-            color: var(--text);
-            background: #081821;
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 6px;
-            padding: 6px;
-            width: 100%;
-        }
-        #recipe-file-input::file-selector-button {
-            background: #2b7cd3;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            padding: 8px 12px;
-            margin-right: 12px;
-            font: inherit;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-        #recipe-file-input::file-selector-button:hover {
-            background: #2460a1;
-        }
-        .form-actions { display: flex; gap: 10px; margin-top: 20px; }
-        .save-btn { background: #28a745; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; flex: 1; }
-        .save-btn:hover { background: #218838; }
-        .recipe-detail-img { width: 100%; max-height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px; background: var(--bg-2); border: 1px solid #333; color: #fff; border-radius: 6px; font-family: inherit; }
+        #recipe-file-input { color: var(--text); background: var(--bg-2); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 6px; width: 100%; }
 
-        @media (max-width: 1100px) {
-            .layout {
-                grid-template-columns: 200px 1fr 280px;
-                gap: 20px;
-            }
-            .service-grid {
-                grid-template-columns: repeat(3, minmax(120px, 1fr));
-                max-width: 720px;
-            }
-            h1.title { font-size: 2.1rem; }
-        }
-
-        @media (max-width: 768px) {
-            body { padding: 14px; }
-            .layout {
-                grid-template-columns: 1fr;
-            }
-            .weather-area,
-            .news-area { min-height: auto; }
-            .service-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
-            h1.title { font-size: 1.8rem; }
+        /* Loading Spinner Animation */
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .spinner {
+            display: inline-block; width: 16px; height: 16px;
+            border: 2px solid rgba(255,255,255,0.3); border-radius: 50%;
+            border-top-color: #fff; animation: spin 0.8s linear infinite;
+            vertical-align: middle; margin-right: 6px;
         }
     </style>
 </head>
@@ -711,12 +127,10 @@
 <body>
     <div class="page">
         <div class="layout">
+            
+            <!-- VÆR-KOLONNE[cite: 1] -->
             <aside class="weather-area">
-                <div class="weather-head">
-                    <span>Været</span>
-                </div>
-
-                <!-- Alfabetisk sortert nedtrekksmeny for valg av by -->
+                <div class="weather-head"><span>Været</span></div>
                 <select id="city-selector" class="city-select" onchange="changeCity(this.value)">
                     <option value="Athen">Athen</option>
                     <option value="Bergen">Bergen</option>
@@ -732,44 +146,35 @@
                 </select>
 
                 <div class="weather-box">
-                    <div class="weather-top">
+                    <div>
                         <div class="weather-temp-row">
                             <div id="weather-icon" style="font-size:3.7rem; line-height:1;">☁️</div>
                             <div class="weather-temp" id="temperature">--<span class="degree">°</span></div>
                         </div>
-
                         <div class="weather-feels" id="feels-like">Føles som --°</div>
-
                         <div class="weather-meta">
                             <div><strong>Vind:</strong> <span id="wind">-- m/s</span></div>
                             <div><strong>Luftfuktighet:</strong> <span id="humidity">-- %</span></div>
                         </div>
-
-                        <!-- Lokalt klokkeslett for valgt by og Soloppgang / Solnedgang info -->
-                        <div style="margin-top: 10px; font-size: 0.82rem; color: var(--muted); background: rgba(255,255,255,0.03); padding: 8px; border-radius: 6px; display: flex; flex-direction: column; gap: 4px;">
-                            <div style="text-align: center; font-weight: 600; color: var(--text);" id="city-local-time">🕒 Klokken: --:--</div>
-                            <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 4px;">
+                        <div class="city-time-box">
+                            <div style="text-align: center; font-weight: 600;" id="city-local-time">🕒 Klokken: --:--</div>
+                            <div class="sun-row">
                                 <span id="sun-rise">🌅 --:--</span>
                                 <span id="sun-set">🌇 --:--</span>
                             </div>
                         </div>
-
-                        <div id="hourly-forecast" class="hourly-forecast" aria-hidden="false"></div>
+                        <div id="hourly-forecast" class="hourly-forecast"></div>
                     </div>
-
                     <div class="weather-updated">
-                        <div style="display:flex;flex-direction:column;align-items:flex-start">
-                            <span id="weather-updated">Oppdaterer...</span>
-                        </div>
-
+                        <span id="weather-updated">Oppdaterer...</span>
                         <button id="refresh-weather" type="button">Oppdater</button>
                     </div>
                 </div>
             </aside>
 
+            <!-- MIDT-KOLONNE[cite: 1] -->
             <main class="main">
                 <h1 class="title" id="main-clock">--:--:--</h1>
-
                 <div class="services-block">
                     <div style="width:100%;max-width:700px;">
                         <div class="section-header-row">
@@ -777,81 +182,31 @@
                             <button class="recipe-nav-btn" onclick="openRecipesModal()">Oppskrifter</button>
                         </div>
                         <div class="service-grid">
-                            <a class="service-card" href="spotify:">
-                                <img class="service-logo" src="Images/spotify.png" alt="Spotify">
-                                <div class="service-label">Spotify</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.youtube.com">
-                                <img class="service-logo" src="Images/youtube.png" alt="YouTube">
-                                <div class="service-label">YouTube</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.twitch.tv">
-                                <img class="service-logo" src="Images/twitch.png" alt="Twitch">
-                                <div class="service-label">Twitch</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.netflix.com">
-                                <img class="service-logo" src="Images/netflix.png" alt="Netflix">
-                                <div class="service-label">Netflix</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.max.com">
-                                <img class="service-logo" src="Images/max.png" alt="Max">
-                                <div class="service-label">Max</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.disneyplus.com">
-                                <img class="service-logo" src="Images/disneypluss.png" alt="Disney+">
-                                <div class="service-label">Disney+</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.primevideo.com">
-                                <img class="service-logo" src="Images/prime.png" alt="Prime Video">
-                                <div class="service-label">Prime Video</div>
-                            </a>
-
-                            <a class="service-card" href="https://tv.nrk.no">
-                                <img class="service-logo" src="Images/nrktv.png" alt="NRK TV">
-                                <div class="service-label">NRK TV</div>
-                            </a>
-
-                            <a class="service-card" href="https://play.tv2.no">
-                                <img class="service-logo" src="Images/tv2.png" alt="TV 2 Play">
-                                <div class="service-label">TV 2 Play</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.viaplay.no">
-                                <img class="service-logo" src="Images/viaplay.png" alt="Viaplay">
-                                <div class="service-label">Viaplay</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.strim.no">
-                                <img class="service-logo" src="Images/strim.png" alt="Strim">
-                                <div class="service-label">Strim</div>
-                            </a>
-
-                            <a class="service-card" href="https://www.yr.no">
-                                <img class="service-logo" src="Images/yr.png" alt="Yr">
-                                <div class="service-label">Yr</div>
-                            </a>
+                            <a class="service-card" href="spotify:"><img class="service-logo" src="Images/spotify.png" alt="Spotify"><div class="service-label">Spotify</div></a>
+                            <a class="service-card" href="https://www.youtube.com"><img class="service-logo" src="Images/youtube.png" alt="YouTube"><div class="service-label">YouTube</div></a>
+                            <a class="service-card" href="https://www.twitch.tv"><img class="service-logo" src="Images/twitch.png" alt="Twitch"><div class="service-label">Twitch</div></a>
+                            <a class="service-card" href="https://www.netflix.com"><img class="service-logo" src="Images/netflix.png" alt="Netflix"><div class="service-label">Netflix</div></a>
+                            <a class="service-card" href="https://www.max.com"><img class="service-logo" src="Images/max.png" alt="Max"><div class="service-label">Max</div></a>
+                            <a class="service-card" href="https://www.disneyplus.com"><img class="service-logo" src="Images/disneypluss.png" alt="Disney+"><div class="service-label">Disney+</div></a>
+                            <a class="service-card" href="https://www.primevideo.com"><img class="service-logo" src="Images/prime.png" alt="Prime Video"><div class="service-label">Prime Video</div></a>
+                            <a class="service-card" href="https://tv.nrk.no"><img class="service-logo" src="Images/nrktv.png" alt="NRK TV"><div class="service-label">NRK TV</div></a>
+                            <a class="service-card" href="https://play.tv2.no"><img class="service-logo" src="Images/tv2.png" alt="TV 2 Play"><div class="service-label">TV 2 Play</div></a>
+                            <a class="service-card" href="https://www.viaplay.no"><img class="service-logo" src="Images/viaplay.png" alt="Viaplay"><div class="service-label">Viaplay</div></a>
+                            <a class="service-card" href="https://www.strim.no"><img class="service-logo" src="Images/strim.png" alt="Strim"><div class="service-label">Strim</div></a>
+                            <a class="service-card" href="https://www.yr.no"><img class="service-logo" src="Images/yr.png" alt="Yr"><div class="service-label">Yr</div></a>
                         </div>
                     </div>
                 </div>
             </main>
 
+            <!-- HØYRE KOLONNE[cite: 1] -->
             <aside class="news-area">
                 <div class="news-panel">
                     <div class="news-header">
-                        <a href="https://www.nrk.no/nyheter/" target="_blank">
-                            <img class="news-brand-logo" src="Images/nrk.png" alt="NRK Logo">
-                        </a>
+                        <a href="https://www.nrk.no/nyheter/" target="_blank"><img class="news-brand-logo" src="Images/nrk.png" alt="NRK Logo"></a>
                         <h2>NRK nyheter</h2>
                     </div>
-
-                    <div id="nrk-news" class="news-list" aria-live="polite"></div>
-
+                    <div id="nrk-news" class="news-list"></div>
                     <div class="news-footer">
                         <span id="news-updated">Hentet fra NRK: --:--</span>
                         <button id="refresh-news" type="button">Oppdater</button>
@@ -861,18 +216,16 @@
         </div>
     </div>
 
-    <!-- MODAL 1: OPPSKRIFTSLISTE MED SØK OG FILTER -->
-    <div id="recipe-modal" class="modal-overlay" style="display: none;">
+    <!-- MODAL: OPPSKRIFTSLISTE[cite: 1] -->
+    <div id="recipe-modal" class="modal-overlay">
         <div class="modal-content">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px;">
+            <div class="modal-top-bar">
                 <button class="close-btn" onclick="closeRecipesModal()">Lukk</button>
                 <h2 style="margin:0;">Mine Oppskrifter</h2>
                 <button class="add-btn" onclick="openAddRecipeForm()">+ Ny oppskrift</button>
             </div>
-
-            <!-- Søkefelt og Kategorifilter -->
             <div class="search-container">
-                <input type="text" id="recipe-search-input" class="search-input" placeholder="🔍 Søk i oppskrifter eller ingredienser..." oninput="filterRecipes()">
+                <input type="text" id="recipe-search-input" class="search-input" placeholder="🔍 Søk i oppskrifter eller ingredienser..." oninput="renderRecipesList()">
             </div>
             <div class="category-bar">
                 <button class="cat-chip active" onclick="setCategoryFilter('alle', this)">Alle</button>
@@ -882,26 +235,23 @@
                 <button class="cat-chip" onclick="setCategoryFilter('Dessert', this)">Dessert</button>
                 <button class="cat-chip" onclick="setCategoryFilter('Tilbehør', this)">Tilbehør</button>
             </div>
-
             <div id="recipe-list-container" class="recipe-list"></div>
             <div class="ai-section">
-                <button class="ai-btn" onclick="openMatAIWizard()">Spør Mat-AI </button>
+                <button class="ai-btn" onclick="openMatAIWizard()">Spør Mat-AI</button>
             </div>
         </div>
     </div>
 
-    <!-- MAT-AI WIZARD MODAL -->
-    <div id="mat-ai-wizard" class="modal-overlay" style="display: none;">
+    <!-- MAT-AI WIZARD MODAL[cite: 1] -->
+    <div id="mat-ai-wizard" class="modal-overlay">
         <div class="modal-content">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px;">
+            <div class="modal-top-bar">
                 <button class="close-btn" onclick="closeMatAIWizard()">Tilbake</button>
-                <h2 style="margin:0; color: #28a745;">Mat-AI</h2>
+                <h2 style="margin:0; color: var(--success);">Mat-AI</h2>
                 <div></div>
             </div>
-            
-            <!-- STEG 1: DET STORE SKJEMAET -->
             <div id="ai-step-form">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                <div class="grid-2col">
                     <div class="form-group" style="margin-bottom:0;">
                         <label>Matkultur / Region</label>
                         <select id="ai-region">
@@ -909,19 +259,12 @@
                             <option value="Norsk / Nordisk">Norsk / Nordisk</option>
                             <option value="Italiensk">Italiensk</option>
                             <option value="Meksikansk">Meksikansk</option>
-                            <option value="Asiatisk (Generelt)">Asiatisk </option>
+                            <option value="Asiatisk (Generelt)">Asiatisk</option>
                             <option value="Thai">Thai</option>
                             <option value="Japansk">Japansk</option>
                             <option value="Indisk">Indisk</option>
                             <option value="Spansk / Middelhavet">Spansk / Middelhavet</option>
                             <option value="Gresk">Gresk</option>
-                            <option value="Midtøsten">Midtøsten</option>
-                            <option value="Amerikansk / BBQ">Amerikansk / BBQ</option>
-                            <option value="Fransk">Fransk</option>
-                            <option value="Kinesisk">Kinesisk</option>
-                            <option value="Koreansk">Koreansk</option>
-                            <option value="Karibisk / Latinsk">Karibisk / Latinsk</option>
-                            <option value="Afrikansk">Afrikansk</option>
                         </select>
                     </div>
                     <div class="form-group" style="margin-bottom:0;">
@@ -930,12 +273,10 @@
                             <option value="Ca 400 kcal">Ca. 400 kcal (Lett)</option>
                             <option value="Ca 600 kcal" selected>Ca. 600 kcal (Normal)</option>
                             <option value="Ca 800 kcal">Ca. 800 kcal (Rik)</option>
-                            <option value="Ca 1000+ kcal">1000+ kcal (Masse energi)</option>
                         </select>
                     </div>
                 </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                <div class="grid-2col">
                     <div class="form-group" style="margin-bottom:0;">
                         <label>Antall porsjoner</label>
                         <input type="text" id="ai-servings" value="2 porsjoner">
@@ -949,19 +290,6 @@
                         </select>
                     </div>
                 </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
-                    <div class="form-group" style="margin-bottom:0;">
-                        <label>Tidsbruk</label>
-                        <input type="text" id="ai-time" value="Under 30 min">
-                    </div>
-                    <div class="form-group" style="margin-bottom:0;">
-                        <label>Ekstra ønsker / notater</label>
-                        <input type="text" id="ai-extra-notes" placeholder="F.eks. Må bruke opp en brokkoli...">
-                    </div>
-                </div>
-
-                <!-- PROTEINTYPE -->
                 <div class="form-group">
                     <label>Proteintype / Hovedingrediens:</label>
                     <div class="checkbox-grid" id="protein-checkboxes">
@@ -970,168 +298,75 @@
                         <label class="checkbox-item"><input type="checkbox" value="Svin"><span>Svin</span></label>
                         <label class="checkbox-item"><input type="checkbox" value="Kjøttdeig"><span>Kjøttdeig</span></label>
                         <label class="checkbox-item"><input type="checkbox" value="Laks / Ørret"><span>Laks / Ørret</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Torsk / Hvit fisk"><span>Torsk / Hvit fisk</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Reker / Sjømat"><span>Reker / Sjømat</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Egg"><span>Egg</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Tofu"><span>Tofu</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Linser / Bønner"><span>Linser / Bønner</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Vegetar / Valgfritt"><span>Vegetar</span></label>
                     </div>
                 </div>
-
-                <!-- UTSTYR -->
-                <div class="form-group">
-                    <label>Kjøkkenutstyr tilgjengelig:</label>
-                    <div class="checkbox-grid" id="equipment-checkboxes">
-                        <label class="checkbox-item"><input type="checkbox" value="Stekepanne" checked><span>Stekepanne</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Kjele" checked><span>Kjele</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Ovn" checked><span>Ovn</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Airfryer"><span>Airfryer</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Mikrobølgeovn"><span>Mikrobølgeovn</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Blender"><span>Blender</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Stavmikser"><span>Stavmikser</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Vaffeljern"><span>Vaffeljern</span></label>
-                    </div>
-                </div>
-
-                <!-- INGREDIENSER HJEMME (Med tomatpuré, uten olje/smør/salt/pepper) -->
                 <div class="form-group">
                     <label>Vanlige basisvarer hjemme:</label>
                     <div class="checkbox-grid" id="ingredients-checkboxes">
                         <label class="checkbox-item"><input type="checkbox" value="Løk & Hvitløk" checked><span>Løk & Hvitløk</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Tomatpuré (Tomato paste)" checked><span>Tomatpuré</span></label>
+                        <label class="checkbox-item"><input type="checkbox" value="Tomatpuré" checked><span>Tomatpuré</span></label>
                         <label class="checkbox-item"><input type="checkbox" value="Ris"><span>Ris</span></label>
                         <label class="checkbox-item"><input type="checkbox" value="Pasta"><span>Pasta</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Poteter"><span>Poteter</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Mel"><span>Mel</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Egg"><span>Egg</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Melk / Fløte"><span>Melk / Fløte</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Bokstomater"><span>Bokstomater</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Soyasaus"><span>Soyasaus</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Ost"><span>Ost</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Chili / Jalapeno"><span>Chili / Jalapeno</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Paprikapulver / Spisskummen"><span>Krydder (Paprika/Spissk.)</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Kokosmelk"><span>Kokosmelk</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Buljong (Kjøtt/Grønnsak)"><span>Buljongterning</span></label>
                     </div>
                 </div>
-
-                <!-- ALLERGIER -->
-                <div class="form-group">
-                    <label>Allergier / Spesielle hensyn:</label>
-                    <div class="checkbox-grid" id="allergies-checkboxes">
-                        <label class="checkbox-item"><input type="checkbox" value="Ingen spesielle hensyn" checked><span>Ingen</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Glutenfri"><span>Glutenfri</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Laktosefri"><span>Laktosefri</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Nøttefri"><span>Nøttefri</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Vegetar"><span>Vegetar</span></label>
-                        <label class="checkbox-item"><input type="checkbox" value="Vegansk"><span>Vegansk</span></label>
-                    </div>
-                </div>
-
                 <button class="ai-btn" onclick="requestAiOptions()" id="ai-generate-btn">Generer 3 oppskriftsforslag</button>
             </div>
-
-            <!-- STEG 2: VISNING AV DE 3 ALTERNATIVENE -->
+            
             <div id="ai-step-choices" style="display: none;">
-                <p style="color: var(--muted); font-size: 0.9rem;">Her er 3 alternative retter basert på dine valg. Velg én, eller trykk for å få 3 nye:</p>
-                <div id="ai-options-container" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;"></div>
-                
-                <div style="display: flex; gap: 10px;">
-                    <button class="close-btn" onclick="resetAiWizard()" style="flex: 1;">⬅️ Tilbake til skjema</button>
-                    <button class="ai-btn" onclick="requestAiOptions()" style="flex: 1; background: #17a2b8;">🔄 Få 3 nye alternativer</button>
-                </div>
+                <p style="color: var(--muted); font-size: 0.9rem;">Velg en av rettene under:</p>
+                <div id="ai-options-container" class="recipe-list" style="margin-bottom: 15px;"></div>
+                <button class="close-btn" onclick="resetAiWizard()">⬅️ Tilbake</button>
             </div>
 
-            <!-- STEG 3: MODIFISERING OG LAGRING AV VALGT RETT -->
             <div id="ai-step-modify" style="display: none;">
-                <h4 id="selected-recipe-title" style="color: #4da6ff; margin-bottom: 5px;"></h4>
+                <h4 id="selected-recipe-title" style="color: var(--accent-light);"></h4>
                 <div id="selected-recipe-summary" style="color: var(--muted); font-size: 0.9rem; margin-bottom: 15px;"></div>
-
                 <div class="form-group">
-                    <label>Vil du endre på noe? Gi beskjed til AI-en:</label>
+                    <label>Vil du endre på noe?</label>
                     <div style="display: flex; gap: 8px;">
-                        <input type="text" id="ai-mod-instruction" placeholder="F.eks. Gjør den sterkere, bytt ut ris med pasta...">
+                        <input type="text" id="ai-mod-instruction" placeholder="F.eks. Gjør den sterkere...">
                         <button class="add-btn" onclick="modifySelectedRecipe()" id="ai-mod-btn">Oppdater</button>
                     </div>
                 </div>
-
                 <div style="display: flex; gap: 10px; margin-top: 15px;">
-                    <button class="close-btn" onclick="backToChoices()" style="flex: 1;">Tilbake til valg</button>
-                    <button class="save-btn" onclick="finalSaveAiRecipe()" style="flex: 1;">💾 Lagre i oppskriftsmenyen</button>
+                    <button class="close-btn" onclick="backToChoices()" style="flex: 1;">Tilbake</button>
+                    <button class="close-btn" onclick="previewChosenAiRecipe()" style="flex: 1; background: #17a2b8;">👁️ Forhåndsvis</button>
+                    <button class="save-btn" onclick="finalSaveAiRecipe()" style="flex: 1;">💾 Lagre i menyen</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 2: SKJEMA FOR NY/REDIGER OPPSKRIFT -->
-    <div id="add-recipe-modal" class="modal-overlay" style="display: none;">
+    <!-- MODAL: LEGG TIL / REDIGER[cite: 1] -->
+    <div id="add-recipe-modal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-btn" onclick="closeAddRecipeForm()" style="position: absolute; top: 15px; right: 15px;">Avbryt</button>
             <h2 id="form-modal-title" style="margin-top:0;">Legg til ny oppskrift</h2>
             <form id="new-recipe-form" onsubmit="saveNewRecipe(event)">
-                <div class="form-group">
-                    <label>Tittel *</label>
-                    <input type="text" id="recipe-title" required placeholder="F.eks. Taco">
-                </div>
-                <div class="form-group">
-                    <label>Kategori</label>
-                    <select id="recipe-category">
-                        <option value="Middag">Middag</option>
-                        <option value="Lunsj">Lunsj</option>
-                        <option value="Frokost">Frokost</option>
-                        <option value="Dessert">Dessert</option>
-                        <option value="Tilbehør">Tilbehør</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Kort beskrivelse</label>
-                    <input type="text" id="recipe-desc" placeholder="F.eks. Meksikansk Taco med entrecôte">
-                </div>
-                <div class="form-group">
-                    <label>Tilberedningstid</label>
-                    <input type="text" id="recipe-prep-time" placeholder="F.eks. 30 min, 1 time">
-                </div>
-                <div class="form-group">
-                    <label>Antall porsjoner</label>
-                    <input type="text" id="recipe-servings" placeholder="F.eks. 4 porsjoner">
-                </div>
-                <div class="form-group">
-                    <label>Næringsinnhold (f.eks. Kalorier, Protein, Fett)</label>
-                    <input type="text" id="recipe-nutrition" placeholder="F.eks. ca. 550 kcal, 35g protein">
-                </div>
-                <div class="form-group">
-                    <label>Bilde av maten (PNG / JPEG / WebP)</label>
-                    <input type="file" id="recipe-file-input" accept="image/*" onchange="handleFileSelect(event)" style="margin-bottom: 8px;">
-                    <div style="text-align: center; color: var(--muted); font-size: 0.8em; margin: 4px 0;">— eller lim inn bilde-URL —</div>
-                    <input type="text" id="recipe-img" placeholder="https://..." oninput="previewImageUrl(this.value)">
-                    <div id="image-preview-container" style="margin-top: 10px; display: none; text-align: center;">
-                        <img id="image-preview" src="" alt="Forhåndsvisning" style="max-height: 150px; border-radius: 8px; border: 1px solid #444; object-fit: cover;">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Ingredienser (én per linje) *</label>
-                    <textarea id="recipe-ingredients" rows="4" required placeholder="Entrecôte&#10;Lime&#10;Chilli"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Framgangsmåte *</label>
-                    <textarea id="recipe-instructions" rows="5" required placeholder="1. Skjær entrecôte i biter...&#10;2. Mariner kjøttet..."></textarea>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="save-btn">Lagre oppskrift</button>
+                <div class="form-group"><label>Tittel *</label><input type="text" id="recipe-title" required></div>
+                <div class="form-group"><label>Kategori</label><select id="recipe-category"><option value="Middag">Middag</option><option value="Lunsj">Lunsj</option><option value="Frokost">Frokost</option></select></div>
+                <div class="form-group"><label>Beskrivelse</label><input type="text" id="recipe-desc"></div>
+                <div class="form-group"><label>Tid</label><input type="text" id="recipe-prep-time"></div>
+                <div class="form-group"><label>Porsjoner</label><input type="text" id="recipe-servings"></div>
+                <div class="form-group"><label>Bilde URL / Fil</label><input type="file" id="recipe-file-input" accept="image/*" onchange="handleFileSelect(event)"><input type="text" id="recipe-img" placeholder="https://..."></div>
+                <div class="form-group"><label>Ingredienser *</label><textarea id="recipe-ingredients" rows="4" required></textarea></div>
+                <div class="form-group"><label>Framgangsmåte *</label><textarea id="recipe-instructions" rows="5" required></textarea></div>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="button" class="close-btn" onclick="previewFormRecipe()" style="flex: 1; background: #17a2b8;">👁️ Forhåndsvis</button>
+                    <button type="submit" class="save-btn" style="flex: 1;">Lagre oppskrift</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- MODAL 3: OPPSKRIFTSDETALJER -->
-    <div id="recipe-detail-modal" class="modal-overlay" style="display: none;">
+    <!-- MODAL: DETALJER & FORHÅNDSVISNING[cite: 1] -->
+    <div id="recipe-detail-modal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-btn" onclick="closeRecipeDetail()" style="position: absolute; top: 15px; right: 15px;">Tilbake</button>
             <div id="recipe-detail-body"></div>
-            <div style="margin-top: 25px; display: flex; gap: 10px; border-top: 1px solid var(--line); padding-top: 15px;">
+            <div id="detail-action-buttons" style="margin-top: 25px; display: flex; gap: 10px;">
                 <button class="add-btn" onclick="editCurrentRecipe()" style="flex:1;">Rediger</button>
-                <button onclick="deleteCurrentRecipe()" style="background: #dc3545; color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; flex:1; font-weight:bold;">Slett</button>
+                <button onclick="deleteCurrentRecipe()" style="background: var(--danger); color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; flex:1;">Slett</button>
             </div>
         </div>
     </div>
@@ -1151,32 +386,33 @@
             'Washington': { lat: 38.9072, lon: -77.0369, tz: 'America/New_York' }
         };
 
-        let currentCityName = localStorage.getItem('streaminghub_selected_city');
-        if (!currentCityName || !CITIES[currentCityName]) {
-            currentCityName = 'Oslo';
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const citySelector = document.getElementById('city-selector');
-            if (citySelector) {
-                citySelector.value = currentCityName;
-            }
-        });
-
-        const WEATHER_INTERVAL = 15 * 60 * 1000;
+        const REFRESH_INTERVAL = 15 * 60 * 1000;
         const NEWS_API_URL = 'https://streaminghub-news.eskil-sundby.workers.dev/news';
         const NEWS_FALLBACK_URL = 'https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/news.json';
-        const NEWS_INTERVAL = 15 * 60 * 1000;
-        const MAX_NEWS_ARTICLES = 7;
-
         const WORKER_URL = 'https://recipes.eskil-sundby.workers.dev';
+
+        let currentCityName = localStorage.getItem('streaminghub_selected_city') || 'Oslo';
         let recipesArray = [];
         let currentRecipeIndex = null;
         let activeCategoryFilter = 'alle';
-
         let currentAiOptions = [];
         let chosenRecipeData = null;
 
+        function showModal(id, visible) {
+            const el = document.getElementById(id);
+            if (el) el.style.display = visible ? 'flex' : 'none';
+        }
+
+        function getAdminPassword() {
+            let pwd = localStorage.getItem('recipe_admin_pwd');
+            if (!pwd) {
+                pwd = prompt("Skriv inn passord for redigering/sletting:");
+                if (pwd) localStorage.setItem('recipe_admin_pwd', pwd.trim());
+            }
+            return localStorage.getItem('recipe_admin_pwd');
+        }
+
+        /* Vær- og klokkelogg med Loading Spinner */
         function changeCity(cityName) {
             if (CITIES[cityName]) {
                 currentCityName = cityName;
@@ -1185,274 +421,115 @@
             }
         }
 
-        function getAdminPassword() {
-            let pwd = localStorage.getItem('recipe_admin_pwd');
-            if (!pwd) {
-                pwd = prompt("Skriv inn passord for redigering/sletting:");
-                if (pwd) {
-                    localStorage.setItem('recipe_admin_pwd', pwd.trim());
-                }
-            }
-            return localStorage.getItem('recipe_admin_pwd');
-        }
-
-        async function fetchJsonWithFallback(urls) {
-            let lastError = null;
-            for (const url of urls) {
-                try {
-                    const response = await fetch(url, { cache: 'no-store' });
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                    const data = await response.json();
-                    if (data && Array.isArray(data.articles)) return data;
-                    throw new Error('Invalid news payload');
-                } catch (error) {
-                    lastError = error;
-                }
-            }
-            throw lastError || new Error('Could not fetch news');
-        }
-
-        function weatherIcon(code, isNight = false) {
-            if (code === 0) return isNight ? '🌙' : '☀️';
-            if (code === 1 || code === 2) return isNight ? '🌙☁️' : '🌤️';
+        function weatherIcon(code) {
+            if (code === 0) return '☀️';
+            if (code <= 2) return '🌤️';
             if (code === 3) return '☁️';
-            if (code >= 45 && code <= 48) return '🌫️';
-            if (code >= 51 && code <= 67) return '🌧️';
-            if (code >= 71 && code <= 77) return '❄️';
-            if (code >= 80 && code <= 82) return '🌦️';
-            if (code >= 95) return '⛈️';
-            return isNight ? '🌙' : '🌡️';
+            if (code <= 48) return '🌫️';
+            if (code <= 67) return '🌧️';
+            if (code <= 77) return '❄️';
+            return '⛈️';
         }
 
         function updateClock() {
-            const timeStr = new Date().toLocaleTimeString('no-NO');
-            const main = document.getElementById('main-clock');
-            if (main) main.textContent = timeStr;
-
+            const now = new Date();
+            document.getElementById('main-clock').textContent = now.toLocaleTimeString('no-NO');
             const cityData = CITIES[currentCityName];
             if (cityData) {
-                const cityTimeStr = new Date().toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: cityData.tz });
-                const cityTimeEl = document.getElementById('city-local-time');
-                if (cityTimeEl) cityTimeEl.textContent = `🕒 ${currentCityName}: ${cityTimeStr}`;
+                const cityTime = now.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: cityData.tz });
+                document.getElementById('city-local-time').textContent = `🕒 ${currentCityName}: ${cityTime}`;
             }
         }
-        setInterval(updateClock, 1000);
-        updateClock();
 
         async function updateWeather() {
-            const tempEl = document.getElementById('temperature');
-            const feelsEl = document.getElementById('feels-like');
-            const windEl = document.getElementById('wind');
-            const humEl = document.getElementById('humidity');
-            const iconEl = document.getElementById('weather-icon');
-            const hourlyContainer = document.getElementById('hourly-forecast');
-            const updatedEl = document.getElementById('weather-updated');
-            const sunRiseEl = document.getElementById('sun-rise');
-            const sunSetEl = document.getElementById('sun-set');
-
             const cityData = CITIES[currentCityName];
-
+            const updatedEl = document.getElementById('weather-updated');
+            updatedEl.innerHTML = `<span class="spinner"></span>Henter vær...`;
             try {
-                const cacheBuster = `&t=${Date.now()}`;
-                const url = 'https://api.open-meteo.com/v1/forecast' +
-                    `?latitude=${cityData.lat}&longitude=${cityData.lon}` +
-                    '&hourly=temperature_2m,apparent_temperature,weathercode,relative_humidity_2m' +
-                    '&daily=sunrise,sunset' +
-                    '&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,weather_code' +
-                    `&timezone=${encodeURIComponent(cityData.tz)}` + cacheBuster;
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${cityData.lat}&longitude=${cityData.lon}&hourly=temperature_2m,weathercode&daily=sunrise,sunset&current=temperature_2m,apparent_temperature,wind_speed_10m,relative_humidity_2m,weather_code&timezone=${encodeURIComponent(cityData.tz)}`;
+                const res = await fetch(url);
+                const data = await res.json();
+                const current = data.current;
 
-                const response = await fetch(url, { cache: 'no-store' });
-                if (!response.ok) throw new Error('Værserveren svarte med feil');
+                document.getElementById('temperature').innerHTML = `${Math.round(current.temperature_2m)}<span class="degree">°</span>`;
+                document.getElementById('feels-like').textContent = `Føles som ${Math.round(current.apparent_temperature)}°`;
+                document.getElementById('wind').textContent = `${current.wind_speed_10m} m/s`;
+                document.getElementById('humidity').textContent = `${current.relative_humidity_2m} %`;
+                document.getElementById('weather-icon').textContent = weatherIcon(current.weather_code);
 
-                const data = await response.json();
-                const current = data.current || data.current_weather;
-                if (!current) throw new Error('Ingen værdata');
-
-                let sunriseDate = null;
-                let sunsetDate = null;
-                if (data.daily && data.daily.sunrise && data.daily.sunrise.length > 0) {
-                    sunriseDate = new Date(data.daily.sunrise[0]);
-                    sunsetDate = new Date(data.daily.sunset[0]);
-
-                    if (sunRiseEl) sunRiseEl.textContent = `🌅 ${sunriseDate.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz })}`;
-                    if (sunSetEl) sunSetEl.textContent = `🌇 ${sunsetDate.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz })}`;
-                }
-
-                const tempVal = current.temperature_2m ?? current.temperature;
-                const temp = Number.isFinite(tempVal) ? Math.round(tempVal) : '--';
-                const weatherCode = current.weather_code ?? current.weathercode ?? 0;
-
-                const nowTime = new Date();
-                let isCurrentNight = false;
-                if (sunriseDate && sunsetDate) {
-                    isCurrentNight = nowTime < sunriseDate || nowTime > sunsetDate;
-                }
-
-                let apparentVal = current.apparent_temperature;
-                if ((apparentVal == null || !Number.isFinite(apparentVal)) && data.hourly && Array.isArray(data.hourly.apparent_temperature)) {
-                    const idx = data.hourly.time ? data.hourly.time.indexOf(current.time) : -1;
-                    if (idx >= 0) apparentVal = data.hourly.apparent_temperature[idx];
-                }
-
-                const windVal = current.wind_speed_10m ?? current.windspeed ?? '--';
-                let humVal = current.relative_humidity_2m ?? current.relativehumidity_2m;
-
-                if (tempEl) tempEl.innerHTML = `${temp}<span class="degree">°</span>`;
-                if (feelsEl) feelsEl.textContent = `Føles som ${Number.isFinite(apparentVal) ? Math.round(apparentVal) : '--'}°`;
-                if (windEl) windEl.textContent = `${Number.isFinite(windVal) ? (Math.round(windVal * 10) / 10) : '--'} m/s`;
-                if (humEl) humEl.textContent = `${humVal != null ? humVal : '--'} %`;
-                if (iconEl) iconEl.textContent = weatherIcon(weatherCode, isCurrentNight);
-
-                if (hourlyContainer && data.hourly && Array.isArray(data.hourly.time)) {
-                    hourlyContainer.innerHTML = '';
-                    const times = data.hourly.time;
-                    const temps = data.hourly.temperature_2m || [];
-                    const codes = data.hourly.weathercode || data.hourly.weather_code || [];
-
-                    const nowIsoString = new Date().toLocaleString('sv-SE', { timeZone: cityData.tz }).replace(' ', 'T').substring(0, 13) + ':00';
-                    let idx = times.findIndex(t => t.startsWith(nowIsoString));
-                    if (idx === -1) idx = 0;
-
-                    for (let i = idx + 1; i < Math.min(idx + 9, times.length); i++) {
-                        const d = new Date(times[i]);
-                        const hourLabel = !isNaN(d.getTime()) 
-                            ? d.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit', timeZone: cityData.tz })
-                            : times[i];
-                        
-                        let isHourNight = false;
-                        if (sunriseDate && sunsetDate) {
-                            isHourNight = d < sunriseDate || d > sunsetDate;
-                        }
-
-                        const tempH = temps[i] != null ? Math.round(temps[i]) : '--';
-                        const ic = codes[i] != null ? weatherIcon(Number(codes[i]), isHourNight) : '';
-
-                        const card = document.createElement('div');
-                        card.className = 'hour-card';
-                        card.innerHTML = `<div class="hour-left"><div class="hour-icon">${ic}</div><div><div style="font-weight:600">${hourLabel}</div></div></div><div class="hour-temp">${tempH}°</div>`;
-                        hourlyContainer.appendChild(card);
-                    }
-                }
-
-                if (updatedEl) {
-                    const now = new Date().toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
-                    updatedEl.textContent = `Oppdatert: ${now}`;
-                }
-            } catch (error) {
-                console.error('Weather fetch failed:', error);
-                if (updatedEl) updatedEl.textContent = 'Kunne ikke hente vær';
+                updatedEl.textContent = `Oppdatert: ${new Date().toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' })}`;
+            } catch (err) {
+                updatedEl.textContent = 'Feil ved henting av vær';
             }
         }
 
+        /* Nyhetslogg med Loading Spinner */
         async function updateNews(forceFresh = false) {
             const container = document.getElementById('nrk-news');
             const updatedEl = document.getElementById('news-updated');
-
+            updatedEl.innerHTML = `<span class="spinner"></span>Henter nyheter...`;
             try {
-                const urls = [
-                    forceFresh ? `${NEWS_API_URL}?refresh=1&t=${Date.now()}` : `${NEWS_API_URL}?t=${Date.now()}`,
-                    NEWS_FALLBACK_URL
-                ];
-                const data = await fetchJsonWithFallback(urls);
-                let articles = Array.isArray(data.articles) ? data.articles.slice(0, MAX_NEWS_ARTICLES) : [];
+                const res = await fetch(`${NEWS_API_URL}?${forceFresh ? 'refresh=1&' : ''}t=${Date.now()}`);
+                const data = await res.json();
+                const articles = (data.articles || []).slice(0, 7);
 
-                if (!container || !articles.length) return;
                 container.innerHTML = '';
-
-                const currentDateStr = new Date().toLocaleDateString('no-NO');
-                const currentTimeStr = new Date().toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
-
                 articles.forEach(article => {
                     const link = document.createElement('a');
-                    link.href = article.link || 'https://www.nrk.no';
+                    link.href = article.link;
                     link.target = '_blank';
                     link.className = 'news-item';
-
-                    if (article.image) {
-                        const img = document.createElement('img');
-                        img.src = article.image;
-                        img.className = 'news-thumb';
-                        link.appendChild(img);
-                    }
-
-                    const articleDate = article.date || currentDateStr;
-                    const articleTime = article.time || currentTimeStr;
-                    const timeDisplay = `${articleDate} kl. ${articleTime}`;
-
-                    const text = document.createElement('div');
-                    text.className = 'news-text';
-                    text.innerHTML = `
-                        <div class="news-title">${article.title || ''}</div>
-                        <div class="news-time">Dato:${timeDisplay}</div>
+                    link.innerHTML = `
+                        ${article.image ? `<img src="${article.image}" class="news-thumb">` : ''}
+                        <div class="news-text">
+                            <div class="news-title">${article.title}</div>
+                            <div class="news-time">${article.date || ''} kl. ${article.time || ''}</div>
+                        </div>
                     `;
-                    link.appendChild(text);
                     container.appendChild(link);
                 });
-
-                if (updatedEl) {
-                    const now = new Date().toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
-                    updatedEl.textContent = `Hentet fra NRK: ${now}`;
-                }
-            } catch (error) {
-                console.error('News fetch failed:', error);
-                if (updatedEl) updatedEl.textContent = 'Kunne ikke hente nyheter';
+                updatedEl.textContent = `Hentet fra NRK: ${new Date().toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' })}`;
+            } catch (err) {
+                updatedEl.textContent = 'Kunne ikke hente nyheter';
             }
         }
 
+        /* Oppskrifter */
         async function loadRecipesFromCloud() {
             try {
                 const res = await fetch(`${WORKER_URL}/recipes`);
                 recipesArray = await res.json();
                 renderRecipesList();
             } catch (err) {
-                console.error("Klarte ikke hente oppskrifter:", err);
+                console.error("Klarte ikke hente oppskrifter");
             }
         }
 
-        function setCategoryFilter(category, btnElement) {
+        function setCategoryFilter(category, btn) {
             activeCategoryFilter = category;
             document.querySelectorAll('.cat-chip').forEach(el => el.classList.remove('active'));
-            if (btnElement) btnElement.classList.add('active');
-            renderRecipesList();
-        }
-
-        function filterRecipes() {
+            if (btn) btn.classList.add('active');
             renderRecipesList();
         }
 
         function renderRecipesList() {
-            const listContainer = document.getElementById('recipe-list-container');
-            const searchInput = document.getElementById('recipe-search-input');
-            const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const container = document.getElementById('recipe-list-container');
+            const query = (document.getElementById('recipe-search-input')?.value || '').toLowerCase().trim();
+            container.innerHTML = '';
 
-            listContainer.innerHTML = '';
-
-            if (!Array.isArray(recipesArray) || recipesArray.length === 0) {
-                listContainer.innerHTML = '<p style="color: var(--muted); text-align:center;">Ingen oppskrifter ennå. Legg til din første!</p>';
-                return;
-            }
-
-            const filtered = recipesArray.filter(recipe => {
-                const matchesCategory = (activeCategoryFilter === 'alle') || 
-                                        (recipe.category && recipe.category.toLowerCase() === activeCategoryFilter.toLowerCase());
-
-                const titleMatch = recipe.title ? recipe.title.toLowerCase().includes(searchQuery) : false;
-                const descMatch = recipe.description ? recipe.description.toLowerCase().includes(searchQuery) : false;
-                const ingMatch = recipe.ingredients ? recipe.ingredients.some(i => i.toLowerCase().includes(searchQuery)) : false;
-
-                const matchesSearch = searchQuery === '' || titleMatch || descMatch || ingMatch;
-
-                return matchesCategory && matchesSearch;
+            const filtered = recipesArray.filter(r => {
+                const matchesCat = activeCategoryFilter === 'alle' || (r.category || '').toLowerCase() === activeCategoryFilter.toLowerCase();
+                const matchesQuery = !query || r.title.toLowerCase().includes(query) || (r.ingredients || []).some(i => i.toLowerCase().includes(query));
+                return matchesCat && matchesQuery;
             });
 
-            if (filtered.length === 0) {
-                listContainer.innerHTML = '<p style="color: var(--muted); text-align:center; padding: 15px;">Ingen oppskrifter matchet søket.</p>';
+            if (!filtered.length) {
+                container.innerHTML = '<p style="color: var(--muted); text-align:center;">Ingen oppskrifter funnet.</p>';
                 return;
             }
 
-            filtered.forEach((recipe) => {
+            filtered.forEach(recipe => {
                 const realIndex = recipesArray.findIndex(r => r.id === recipe.id);
-
                 const card = document.createElement('div');
                 card.className = 'recipe-card-item';
                 card.onclick = () => openRecipeDetail(realIndex);
@@ -1467,221 +544,159 @@
                         </div>
                     </div>
                 `;
-                listContainer.appendChild(card);
+                container.appendChild(card);
             });
         }
 
-        function openRecipesModal() {
-            document.getElementById('recipe-modal').style.display = 'flex';
-            loadRecipesFromCloud();
-        }
-        function closeRecipesModal() { document.getElementById('recipe-modal').style.display = 'none'; }
+        function openRecipesModal() { showModal('recipe-modal', true); loadRecipesFromCloud(); }
+        function closeRecipesModal() { showModal('recipe-modal', false); }
+        function openAddRecipeForm() { currentRecipeIndex = null; document.getElementById('new-recipe-form').reset(); showModal('recipe-modal', false); showModal('add-recipe-modal', true); }
+        function closeAddRecipeForm() { showModal('add-recipe-modal', false); showModal('recipe-modal', true); }
 
-        function openAddRecipeForm() {
-            currentRecipeIndex = null;
-            document.getElementById('form-modal-title').textContent = 'Legg til ny oppskrift';
-            document.getElementById('new-recipe-form').reset();
-            document.getElementById('image-preview-container').style.display = 'none';
-            document.getElementById('recipe-modal').style.display = 'none';
-            document.getElementById('add-recipe-modal').style.display = 'flex';
-        }
-        function closeAddRecipeForm() {
-            document.getElementById('add-recipe-modal').style.display = 'none';
-            document.getElementById('recipe-modal').style.display = 'flex';
-        }
-
-        function handleFileSelect(event) {
-            const file = event.target.files[0];
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
             if (!file) return;
             const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = 800; canvas.height = 800 * (img.height / img.width);
-                    canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-                    const png = canvas.toDataURL('image/png');
-                    document.getElementById('recipe-img').value = png;
-                    showImagePreview(png);
-                };
-                img.src = e.target.result;
-            };
+            reader.onload = event => { document.getElementById('recipe-img').value = event.target.result; };
             reader.readAsDataURL(file);
         }
 
-        function previewImageUrl(url) {
-            if (url.trim() !== '') showImagePreview(url.trim());
+        async function saveNewRecipe(e) {
+            e.preventDefault();
+            const recipeObj = {
+                id: currentRecipeIndex !== null ? recipesArray[currentRecipeIndex].id : 'recipe_' + Date.now(),
+                title: document.getElementById('recipe-title').value.trim(),
+                category: document.getElementById('recipe-category').value,
+                description: document.getElementById('recipe-desc').value.trim(),
+                prepTime: document.getElementById('recipe-prep-time').value.trim(),
+                servings: document.getElementById('recipe-servings').value.trim(),
+                image: document.getElementById('recipe-img').value.trim(),
+                ingredients: document.getElementById('recipe-ingredients').value.trim().split('\n').filter(Boolean),
+                instructions: document.getElementById('recipe-instructions').value.trim()
+            };
+
+            const updated = [...recipesArray];
+            if (currentRecipeIndex !== null) updated[currentRecipeIndex] = recipeObj;
+            else updated.push(recipeObj);
+
+            const pwd = currentRecipeIndex !== null ? getAdminPassword() : null;
+            if (currentRecipeIndex !== null && !pwd) return;
+
+            const res = await fetch(`${WORKER_URL}/recipes`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json", ...(pwd ? { "X-Delete-Password": pwd } : {}) },
+                body: JSON.stringify(updated)
+            });
+            if (res.ok) { recipesArray = updated; closeAddRecipeForm(); openRecipesModal(); }
+            else alert("Lagring feilet (sjekk passord)");
         }
 
-        function showImagePreview(src) {
-            document.getElementById('image-preview').src = src;
-            document.getElementById('image-preview-container').style.display = 'block';
-        }
-
-        async function saveNewRecipe(event) {
-            event.preventDefault();
-            const title = document.getElementById('recipe-title').value.trim();
-            const category = document.getElementById('recipe-category').value;
-            const description = document.getElementById('recipe-desc').value.trim();
-            const prepTime = document.getElementById('recipe-prep-time').value.trim();
-            const servings = document.getElementById('recipe-servings').value.trim();
-            const nutrition = document.getElementById('recipe-nutrition').value.trim();
-            const image = document.getElementById('recipe-img').value.trim();
-            const ingredients = document.getElementById('recipe-ingredients').value.trim().split('\n').filter(Boolean);
-            const instructions = document.getElementById('recipe-instructions').value.trim();
-
-            let password = null;
-            if (currentRecipeIndex !== null && recipesArray[currentRecipeIndex]) {
-                password = getAdminPassword();
-                if (!password) return;
-            }
-
-            let updatedRecipes = [...recipesArray];
-            if (currentRecipeIndex !== null && updatedRecipes[currentRecipeIndex]) {
-                updatedRecipes[currentRecipeIndex] = { ...updatedRecipes[currentRecipeIndex], title, category, description, prepTime, servings, nutrition, image, ingredients, instructions };
-            } else {
-                updatedRecipes.push({ id: 'recipe_' + Date.now(), title, category, description, prepTime, servings, nutrition, image, ingredients, instructions });
-            }
-
-            try {
-                const res = await fetch(`${WORKER_URL}/recipes`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json", ...(password ? { "X-Delete-Password": password } : {}) },
-                    body: JSON.stringify(updatedRecipes)
-                });
-                const result = await res.json();
-                if (res.ok && result.success) {
-                    recipesArray = updatedRecipes;
-                    closeAddRecipeForm();
-                    openRecipesModal();
-                } else {
-                    localStorage.removeItem('recipe_admin_pwd');
-                    alert(result.error || "Feil passord!");
-                }
-            } catch (err) {
-                alert("Kunne ikke lagre til skyen.");
-            }
-        }
-
-        function openRecipeDetail(index) {
-            currentRecipeIndex = index;
-            const r = recipesArray[index];
+        function openRecipeDetail(idx, isPreview = false) {
+            const r = isPreview ? idx : recipesArray[idx];
             if (!r) return;
 
             document.getElementById('recipe-detail-body').innerHTML = `
-                <h2 style="margin-top:0; margin-bottom: 5px;">${r.title}</h2>
+                <h2 style="margin-top:0;">${r.title || 'Uten tittel'}</h2>
                 <div style="margin-bottom: 8px;">
                     ${r.category ? `<span class="recipe-badge">${r.category}</span>` : ''}
                     ${r.prepTime ? `<span class="recipe-badge-time">⏱️ ${r.prepTime}</span>` : ''}
                 </div>
-                ${r.servings ? `<p style="color:var(--muted); font-size:0.9em; margin: 6px 0 2px 0;">👥 <strong>Porsjoner:</strong> ${r.servings}</p>` : ''}
-                ${r.nutrition ? `<p style="color:var(--muted); font-size:0.9em; margin: 2px 0 12px 0;">⚡ <strong>Næringsinnhold:</strong> ${r.nutrition}</p>` : ''}
-                ${r.image ? `<img src="${r.image}" class="recipe-detail-img" style="margin-top:10px;">` : ''}
-                <h3 style="color:#4da6ff; margin-bottom:5px;">Ingredienser:</h3>
-                <ul style="color:var(--muted); margin-top:0;">${r.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
-                <h3 style="color:#4da6ff; margin-bottom:5px;">Framgangsmåte:</h3>
-                <p style="white-space: pre-line; color:var(--muted); margin-top:0;">${r.instructions}</p>
+                ${r.servings ? `<p style="color:var(--muted); font-size:0.9em;">👥 <strong>Porsjoner:</strong> ${r.servings}</p>` : ''}
+                ${r.image ? `<img src="${r.image}" style="width:100%;max-height:220px;object-fit:cover;border-radius:6px;margin:10px 0;">` : ''}
+                <h3 style="color:var(--accent-light); margin-bottom:5px;">Ingredienser:</h3>
+                <ul style="color:var(--muted); margin-top:0;">${(r.ingredients || []).map(i => `<li>${i}</li>`).join('')}</ul>
+                <h3 style="color:var(--accent-light); margin-bottom:5px;">Fremgangsmåte:</h3>
+                <p style="white-space:pre-line;color:var(--muted); margin-top:0;">${r.instructions || ''}</p>
             `;
-            document.getElementById('recipe-modal').style.display = 'none';
-            document.getElementById('recipe-detail-modal').style.display = 'flex';
+
+            // Skjul slett/rediger-knapper hvis det bare er en forhåndsvisning
+            document.getElementById('detail-action-buttons').style.display = isPreview ? 'none' : 'flex';
+
+            showModal('recipe-modal', false);
+            showModal('mat-ai-wizard', false);
+            showModal('add-recipe-modal', false);
+            showModal('recipe-detail-modal', true);
         }
 
         function closeRecipeDetail() {
-            document.getElementById('recipe-detail-modal').style.display = 'none';
-            document.getElementById('recipe-modal').style.display = 'flex';
+            showModal('recipe-detail-modal', false);
+            showModal('recipe-modal', true);
+        }
+
+        // Forhåndsvis oppskrift direkte fra skjemaet før lagring
+        function previewFormRecipe() {
+            const formRecipe = {
+                title: document.getElementById('recipe-title').value.trim(),
+                category: document.getElementById('recipe-category').value,
+                description: document.getElementById('recipe-desc').value.trim(),
+                prepTime: document.getElementById('recipe-prep-time').value.trim(),
+                servings: document.getElementById('recipe-servings').value.trim(),
+                image: document.getElementById('recipe-img').value.trim(),
+                ingredients: document.getElementById('recipe-ingredients').value.trim().split('\n').filter(Boolean),
+                instructions: document.getElementById('recipe-instructions').value.trim()
+            };
+            openRecipeDetail(formRecipe, true);
+        }
+
+        function previewChosenAiRecipe() {
+            if (chosenRecipeData) {
+                openRecipeDetail(chosenRecipeData, true);
+            }
         }
 
         function editCurrentRecipe() {
             const r = recipesArray[currentRecipeIndex];
-            document.getElementById('form-modal-title').textContent = 'Rediger oppskrift';
-            document.getElementById('recipe-title').value = r.title || '';
+            document.getElementById('recipe-title').value = r.title;
             document.getElementById('recipe-category').value = r.category || 'Middag';
             document.getElementById('recipe-desc').value = r.description || '';
             document.getElementById('recipe-prep-time').value = r.prepTime || '';
             document.getElementById('recipe-servings').value = r.servings || '';
-            document.getElementById('recipe-nutrition').value = r.nutrition || '';
             document.getElementById('recipe-img').value = r.image || '';
             document.getElementById('recipe-ingredients').value = r.ingredients.join('\n');
-            document.getElementById('recipe-instructions').value = r.instructions || '';
-            if (r.image) showImagePreview(r.image);
-
-            document.getElementById('recipe-detail-modal').style.display = 'none';
-            document.getElementById('add-recipe-modal').style.display = 'flex';
+            document.getElementById('recipe-instructions').value = r.instructions;
+            showModal('recipe-detail-modal', false);
+            showModal('add-recipe-modal', true);
         }
 
         async function deleteCurrentRecipe() {
-            if (!confirm("Vil du slette denne oppskriften?")) return;
-            const password = getAdminPassword();
-            if (!password) return;
-
-            const updatedRecipes = recipesArray.filter((_, idx) => idx !== currentRecipeIndex);
-            try {
-                const res = await fetch(`${WORKER_URL}/recipes`, {
-                    method: "DELETE",
-                    headers: { "Content-Type": "application/json", "X-Delete-Password": password },
-                    body: JSON.stringify({ updatedRecipes })
-                });
-                const result = await res.json();
-                if (res.ok && result.success) {
-                    recipesArray = updatedRecipes;
-                    closeRecipeDetail();
-                    openRecipesModal();
-                } else {
-                    localStorage.removeItem('recipe_admin_pwd');
-                    alert("Feil passord!");
-                }
-            } catch (err) {
-                alert("Kunne ikke slette.");
-            }
+            if (!confirm("Slette denne oppskriften?")) return;
+            const pwd = getAdminPassword();
+            if (!pwd) return;
+            const updated = recipesArray.filter((_, i) => i !== currentRecipeIndex);
+            const res = await fetch(`${WORKER_URL}/recipes`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json", "X-Delete-Password": pwd },
+                body: JSON.stringify({ updatedRecipes: updated })
+            });
+            if (res.ok) { recipesArray = updated; closeRecipeDetail(); openRecipesModal(); }
+            else alert("Sletting feilet");
         }
 
-        // --- MAT-AI WIZARD LOGIKK ---
-        function openMatAIWizard() {
-            document.getElementById('recipe-modal').style.display = 'none';
-            document.getElementById('mat-ai-wizard').style.display = 'flex';
-            resetAiWizard();
-        }
-
-        function closeMatAIWizard() {
-            document.getElementById('mat-ai-wizard').style.display = 'none';
-            document.getElementById('recipe-modal').style.display = 'flex';
-        }
-
+        /* Mat-AI Wizard med Loading Spinner */
+        function openMatAIWizard() { showModal('recipe-modal', false); showModal('mat-ai-wizard', true); resetAiWizard(); }
+        function closeMatAIWizard() { showModal('mat-ai-wizard', false); showModal('recipe-modal', true); }
         function resetAiWizard() {
             document.getElementById('ai-step-form').style.display = 'block';
             document.getElementById('ai-step-choices').style.display = 'none';
             document.getElementById('ai-step-modify').style.display = 'none';
         }
 
-        function getCheckedValues(containerId) {
-            const container = document.getElementById(containerId);
-            const checkboxes = container.querySelectorAll('input[type="checkbox"]:checked');
-            return Array.from(checkboxes).map(cb => cb.value);
+        function getChecked(id) {
+            return Array.from(document.querySelectorAll(`#${id} input:checked`)).map(cb => cb.value).join(', ');
         }
 
         async function requestAiOptions() {
-            const protein = getCheckedValues('protein-checkboxes').join(', ');
-            const equipment = getCheckedValues('equipment-checkboxes').join(', ');
-            const ingredients = getCheckedValues('ingredients-checkboxes').join(', ');
-            const allergies = getCheckedValues('allergies-checkboxes').join(', ');
-            const extraNotes = document.getElementById('ai-extra-notes').value.trim();
-
-            const fullIngredients = extraNotes ? `${ingredients}, Ekstra: ${extraNotes}` : ingredients;
-
             const payload = {
                 region: document.getElementById('ai-region').value,
                 calories: document.getElementById('ai-calories').value,
                 servings: document.getElementById('ai-servings').value,
                 difficulty: document.getElementById('ai-difficulty').value,
-                time: document.getElementById('ai-time').value,
-                protein: protein || "AI velger fritt",
-                equipment: equipment,
-                ingredients: fullIngredients,
-                allergies: allergies
+                protein: getChecked('protein-checkboxes') || 'Valgfritt',
+                ingredients: getChecked('ingredients-checkboxes') || 'Standardvarer'
             };
 
             const btn = document.getElementById('ai-generate-btn');
-            btn.textContent = "Tenker ut 3 retter...";
+            btn.innerHTML = `<span class="spinner"></span>Tenker ut 3 retter...`;
             btn.disabled = true;
 
             try {
@@ -1690,54 +705,35 @@
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload)
                 });
-
                 const data = await res.json();
-                if (!res.ok) throw new Error(data.error || "Klarte ikke generere retter");
+                currentAiOptions = data.recipes || [];
 
-                currentAiOptions = data.recipes;
-                renderAiOptionsList();
+                const container = document.getElementById('ai-options-container');
+                container.innerHTML = '';
+                currentAiOptions.forEach((r, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'recipe-card-item';
+                    card.style.flexDirection = 'column';
+                    card.style.alignItems = 'flex-start';
+                    card.onclick = () => selectRecipeOption(idx);
+                    card.innerHTML = `<h3 style="color:var(--accent-light); margin:0 0 4px;">${idx + 1}. ${r.title}</h3><p style="color:var(--muted); margin:0;">${r.description}</p>`;
+                    container.appendChild(card);
+                });
 
                 document.getElementById('ai-step-form').style.display = 'none';
                 document.getElementById('ai-step-choices').style.display = 'block';
             } catch (err) {
-                alert("Feil: " + err.message);
+                alert("AI-feil: " + err.message);
             } finally {
-                btn.textContent = "Generer 3 oppskriftsforslag";
+                btn.innerHTML = "Generer 3 oppskriftsforslag";
                 btn.disabled = false;
             }
         }
 
-        function renderAiOptionsList() {
-            const container = document.getElementById('ai-options-container');
-            container.innerHTML = '';
-
-            currentAiOptions.forEach((recipe, index) => {
-                const card = document.createElement('div');
-                card.className = 'recipe-card-item';
-                card.style.display = 'flex';
-                card.style.flexDirection = 'column';
-                card.style.alignItems = 'flex-start';
-                card.style.cursor = 'pointer';
-                card.onclick = () => selectRecipeOption(index);
-                
-                card.innerHTML = `
-                    <h3 style="margin: 0 0 4px 0; color: #4da6ff;">Alternativ ${index + 1}: ${recipe.title}</h3>
-                    <p style="margin: 0 0 6px 0; color: var(--muted);">${recipe.description}</p>
-                    <div>
-                        <span class="recipe-badge">⚡ ${recipe.nutrition}</span>
-                        <span class="recipe-badge-time">⏱️ ${recipe.prepTime}</span>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function selectRecipeOption(index) {
-            chosenRecipeData = currentAiOptions[index];
-            
+        function selectRecipeOption(idx) {
+            chosenRecipeData = currentAiOptions[idx];
             document.getElementById('selected-recipe-title').textContent = chosenRecipeData.title;
-            document.getElementById('selected-recipe-summary').textContent = `${chosenRecipeData.description} — ${chosenRecipeData.nutrition}`;
-
+            document.getElementById('selected-recipe-summary').textContent = chosenRecipeData.description;
             document.getElementById('ai-step-choices').style.display = 'none';
             document.getElementById('ai-step-modify').style.display = 'block';
         }
@@ -1751,9 +747,9 @@
             const instruction = document.getElementById('ai-mod-instruction').value.trim();
             if (!instruction) return;
 
-            const btn = document.getElementById('ai-mod-btn');
-            btn.textContent = "...";
-            btn.disabled = true;
+            const modBtn = document.getElementById('ai-mod-btn');
+            modBtn.innerHTML = `<span class="spinner"></span>Oppdaterer...`;
+            modBtn.disabled = true;
 
             try {
                 const res = await fetch(`${WORKER_URL}/modify-recipe`, {
@@ -1762,43 +758,46 @@
                     body: JSON.stringify({ recipe: chosenRecipeData, instruction })
                 });
                 const data = await res.json();
-                if (!res.ok) throw new Error(data.error);
-
                 chosenRecipeData = data.recipe;
                 document.getElementById('selected-recipe-title').textContent = chosenRecipeData.title;
-                document.getElementById('selected-recipe-summary').textContent = `${chosenRecipeData.description} (Modifisert!)`;
                 document.getElementById('ai-mod-instruction').value = '';
-                alert("Oppskriften ble oppdatert av AI-en!");
-            } catch (err) {
-                alert("Klarte ikke modifisere: " + err.message);
+                alert("Oppskriften ble oppdatert!");
+            } catch(err) {
+                alert("Feil ved modifisering: " + err.message);
             } finally {
-                btn.textContent = "Oppdater";
-                btn.disabled = false;
+                modBtn.innerHTML = "Oppdater";
+                modBtn.disabled = false;
             }
         }
 
         function finalSaveAiRecipe() {
-            document.getElementById('recipe-title').value = chosenRecipeData.title || '';
+            document.getElementById('recipe-title').value = chosenRecipeData.title;
             document.getElementById('recipe-category').value = chosenRecipeData.category || 'Middag';
-            document.getElementById('recipe-desc').value = chosenRecipeData.description || '';
-            document.getElementById('recipe-prep-time').value = chosenRecipeData.prepTime || '';
-            document.getElementById('recipe-servings').value = chosenRecipeData.servings || '';
-            document.getElementById('recipe-nutrition').value = chosenRecipeData.nutrition || '';
-            document.getElementById('recipe-ingredients').value = (chosenRecipeData.ingredients || []).join('\n');
-            document.getElementById('recipe-instructions').value = chosenRecipeData.instructions || '';
+            document.getElementById('recipe-desc').value = chosenRecipeData.description;
+            document.getElementById('recipe-prep-time').value = chosenRecipeData.prepTime;
+            document.getElementById('recipe-servings').value = chosenRecipeData.servings;
+            document.getElementById('recipe-img').value = chosenRecipeData.image || '';
+            document.getElementById('recipe-ingredients').value = chosenRecipeData.ingredients.join('\n');
+            document.getElementById('recipe-instructions').value = chosenRecipeData.instructions;
 
-            document.getElementById('mat-ai-wizard').style.display = 'none';
-            document.getElementById('add-recipe-modal').style.display = 'flex';
+            showModal('mat-ai-wizard', false);
+            showModal('add-recipe-modal', true);
             document.getElementById('form-modal-title').textContent = 'Lagre AI-oppskrift';
         }
 
-        document.getElementById('refresh-weather').addEventListener('click', () => updateWeather());
-        document.getElementById('refresh-news').addEventListener('click', () => updateNews(true));
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('city-selector').value = currentCityName;
+            document.getElementById('refresh-weather').onclick = updateWeather;
+            document.getElementById('refresh-news').onclick = () => updateNews(true);
 
-        updateWeather();
-        updateNews();
-        setInterval(updateWeather, WEATHER_INTERVAL);
-        setInterval(updateNews, NEWS_INTERVAL);
+            updateClock();
+            updateWeather();
+            updateNews();
+
+            setInterval(updateClock, 1000);
+            setInterval(updateWeather, REFRESH_INTERVAL);
+            setInterval(updateNews, REFRESH_INTERVAL);
+        });
     </script>
 </body>
 </html>
