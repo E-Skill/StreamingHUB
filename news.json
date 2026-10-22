@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-10-22T10:37:48.222636+00:00",
+  "updatedAt": "2026-10-22T15:38:37.448235+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Macron varsler omfattende demonstrasjonsforbud",
-      "link": "https://www.nrk.no/nyheter/macron-varsler-omfattende-demonstrasjonsforbud-1.18061794",
-      "pubDate": "2026-10-22T10:33:24+00:00"
+      "title": "Tomme verft og permitteringer: Frp tror løsningen ligger i Arktis",
+      "link": "https://www.nrk.no/rogaland/frp-krever-wisting-garanti-fra-regjeringen-_-vil-gi-skipsverftene-mer-arbeid-1.18036439",
+      "pubDate": "2026-10-22T14:58:53+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e5a5d67bbbf93d8e5338131d145c3c44e1f85f01.jpg"
     },
     {
-      "title": "Forsking avslører stor karakter-ulempe: No opnar ministeren for endring",
-      "link": "https://www.nrk.no/rogaland/kunnskapsminister-kari-nessa-nordtun-opnar-for-fleire-tilleggspoeng-i-realfag-1.18058264",
-      "pubDate": "2026-10-22T10:25:43+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7db3e04c56a94565223dd2e2a8091aa05adae73e.jpg"
+      "title": "Foxtrot-topp sikta for granatkasting på Strømmen",
+      "link": "https://www.nrk.no/stor-oslo/foxtrot-topp-sikta-for-granatkasting-pa-strommen-1.18062094",
+      "pubDate": "2026-10-22T14:42:18+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/4d0bb99be1935813e1a9fa07608ee01a2b786a4e.jpg"
     },
     {
-      "title": "Vil ha full stans for datasenter: – Vi kan ikkje legge opp til eit stort sluk",
-      "link": "https://www.nrk.no/mr/krf-vil-ha-stans-for-nye-datasenter-som-pa-sjoholt-i-alesund-til-strengare-reguleringar-kjem-1.18056322",
-      "pubDate": "2026-10-22T10:25:56+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7493489c64971336c71e5da6b479b2ead330793a.jpg"
+      "title": "Nora (26) fikk lærerjobb ute i havgapet – men på Finn var det ingen boliger",
+      "link": "https://www.nrk.no/nordland/boligmangel-i-distriktet-_-traena-kommune-matte-ta-grep-1.18038515",
+      "pubDate": "2026-10-22T13:27:52+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/29567579b7a224233936ea2bf752e9d8e75d1bce.jpg"
     }
   ]
 }
