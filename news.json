@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-10-22T05:33:49.950460+00:00",
+  "updatedAt": "2026-10-22T10:37:48.222636+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Vannbrudd i Sør-Varanger: Sykehus uten vann og er i rød beredskap",
-      "link": "https://www.nrk.no/tromsogfinnmark/enormt-vannbrudd-i-sor-varanger-1.18061410",
-      "pubDate": "2026-10-22T05:08:26+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f5d76fef3b8de6ae33e1fc82f223360f024227c6.jpg"
+      "title": "Macron varsler omfattende demonstrasjonsforbud",
+      "link": "https://www.nrk.no/nyheter/macron-varsler-omfattende-demonstrasjonsforbud-1.18061794",
+      "pubDate": "2026-10-22T10:33:24+00:00"
     },
     {
-      "title": "Viking-sjefen stusset over dette: – Ikke opplevd før",
-      "link": "https://www.nrk.no/sport/viking-sjefen-stusset-over-dette_-_-ikke-opplevd-for-1.18060990",
-      "pubDate": "2026-10-22T04:45:46+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/3445de12ea84e1828ec04b9f8462490b00925a6a.jpg"
+      "title": "Forsking avslører stor karakter-ulempe: No opnar ministeren for endring",
+      "link": "https://www.nrk.no/rogaland/kunnskapsminister-kari-nessa-nordtun-opnar-for-fleire-tilleggspoeng-i-realfag-1.18058264",
+      "pubDate": "2026-10-22T10:25:43+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7db3e04c56a94565223dd2e2a8091aa05adae73e.jpg"
     },
     {
-      "title": "15 såret i missilangrep mot Kyiv",
-      "link": "https://www.nrk.no/nyheter/15-saret-i-missilangrep-mot-kyiv-1.18061314",
-      "pubDate": "2026-10-21T23:51:16+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/fbe1d3e6ff48d8260133ae9a1d055ba3d4283518.jpg"
+      "title": "Vil ha full stans for datasenter: – Vi kan ikkje legge opp til eit stort sluk",
+      "link": "https://www.nrk.no/mr/krf-vil-ha-stans-for-nye-datasenter-som-pa-sjoholt-i-alesund-til-strengare-reguleringar-kjem-1.18056322",
+      "pubDate": "2026-10-22T10:25:56+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7493489c64971336c71e5da6b479b2ead330793a.jpg"
     }
   ]
 }
