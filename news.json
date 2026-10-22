@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-10-22T00:53:03.193355+00:00",
+  "updatedAt": "2026-10-22T05:33:49.950460+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Rød beredskap ved Kirkenes sykehus etter vannlekkasje",
-      "link": "https://www.nrk.no/nyheter/rod-beredskap-ved-kirkenes-sykehus-etter-vannlekkasje-1.18061316",
-      "pubDate": "2026-10-22T00:03:38+00:00"
+      "title": "Vannbrudd i Sør-Varanger: Sykehus uten vann og er i rød beredskap",
+      "link": "https://www.nrk.no/tromsogfinnmark/enormt-vannbrudd-i-sor-varanger-1.18061410",
+      "pubDate": "2026-10-22T05:08:26+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f5d76fef3b8de6ae33e1fc82f223360f024227c6.jpg"
     },
     {
-      "title": "Mann til sykehus etter knivstikking i Stavanger",
-      "link": "https://www.nrk.no/nyheter/mann-til-sykehus-etter-knivstikking-i-stavanger-1.18061302",
-      "pubDate": "2026-10-21T22:31:21+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/41e54bcafdfda68fb9c4ef7d8ed525937d291fe5.jpg"
+      "title": "Viking-sjefen stusset over dette: – Ikke opplevd før",
+      "link": "https://www.nrk.no/sport/viking-sjefen-stusset-over-dette_-_-ikke-opplevd-for-1.18060990",
+      "pubDate": "2026-10-22T04:45:46+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/3445de12ea84e1828ec04b9f8462490b00925a6a.jpg"
     },
     {
-      "title": "Tripic med krass kritikk mot eget lag: – Kaster bort kampen",
-      "link": "https://www.nrk.no/sport/mesterligaen_-aston-villa-_-viking_-tripic-blemme-og-praktmal-i-viking-nedtur_-_-brutal-laering-1.18061158",
-      "pubDate": "2026-10-21T19:50:28+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/29caeaf13b92243fa2cdb32ec90a6ce8e5555b00.jpg"
+      "title": "15 såret i missilangrep mot Kyiv",
+      "link": "https://www.nrk.no/nyheter/15-saret-i-missilangrep-mot-kyiv-1.18061314",
+      "pubDate": "2026-10-21T23:51:16+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/fbe1d3e6ff48d8260133ae9a1d055ba3d4283518.jpg"
     }
   ]
 }
