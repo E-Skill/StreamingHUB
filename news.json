@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-10-22T19:28:38.563313+00:00",
+  "updatedAt": "2026-10-22T22:36:41.927449+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "WSJ: Trump skal ha ringt Musk og bedt ham oppheve Starlink-begrensning",
-      "link": "https://www.nrk.no/nyheter/wsj_-trump-skal-ha-ringt-musk-og-bedt-ham-oppheve-starlink-begrensning--1.18062240",
-      "pubDate": "2026-10-22T18:12:17+00:00"
+      "title": "Forbannet Ødegaard etter ydmykelse: – Må passe meg",
+      "link": "https://www.nrk.no/sport/marerittkveld-for-lsk_-_-skuffet_-forbannet_-frustrert-1.18062214",
+      "pubDate": "2026-10-22T20:47:53+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/55da2a8f448e34bd5a4143902806ea378f4642c7.jpg"
     },
     {
-      "title": "Lengst ventetid i landet: No tar UNN grep",
-      "link": "https://www.nrk.no/tromsogfinnmark/lengst-ventetid-i-landet_-no-tar-unn-grep-1.18061967",
-      "pubDate": "2026-10-22T14:02:18+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a64169436c1b997bf23c368a7816f56c8c217694.jpg"
+      "title": "Kraftig børsfall i USA – Nasdaq ned 2,6 prosent",
+      "link": "https://www.nrk.no/nyheter/kraftig-borsfall-i-usa-_-nasdaq-ned-2_6-prosent-1.18062326",
+      "pubDate": "2026-10-22T20:08:14+00:00"
     },
     {
-      "title": "Julie og Norah følger omstridt oppskrift – forsker advarer",
-      "link": "https://www.nrk.no/sport/julie-og-norah-sand-hanssen-folger-omstridt-oppskrift-for-a-bli-best-_-forsker-advarer-1.18045523",
-      "pubDate": "2026-10-22T15:48:59+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/3b4f43d0860b9016729fe1cb00b39fce58be9add.jpg"
+      "title": "Øver på å forsvare Svalbard: – Vi må vise at vi er her",
+      "link": "https://www.nrk.no/tromsogfinnmark/pa-fregatt-tokt-til-svalbard-for-a-hevde-norsk-suverenitet-1.18052283",
+      "pubDate": "2026-10-22T19:37:23+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/693cf9471bb7c94fe737e2aa1f578fc14b02df82.jpg"
     }
   ]
 }
