@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="no">
 
 <head>
@@ -1207,6 +1207,9 @@
         let currentAiOptions = [];
         let chosenRecipeData = null;
 
+        // Husker hvilken modal detaljvisningen/forhåndsvisningen ble åpnet fra
+        let detailOriginModal = 'recipe-modal';
+
         function changeCity(cityName) {
             if (CITIES[cityName]) {
                 currentCityName = cityName;
@@ -1312,7 +1315,6 @@
 
             try {
                 const cacheBuster = `&t=${Date.now()}`;
-                // Open-Meteo med eksplisitt wind_speed_unit=ms og precipitation
                 const url = 'https://api.open-meteo.com/v1/forecast' +
                     `?latitude=${cityData.lat}&longitude=${cityData.lon}` +
                     '&hourly=temperature_2m,apparent_temperature,weathercode,relative_humidity_2m' +
@@ -1354,7 +1356,6 @@
                     if (idx >= 0) apparentVal = data.hourly.apparent_temperature[idx];
                 }
 
-                // Vind, vindretning og vindkast
                 const rawWind = current.wind_speed_10m ?? current.windspeed;
                 const rawGusts = current.wind_gusts_10m;
                 const windDirDeg = current.wind_direction_10m ?? current.winddirection;
@@ -1369,7 +1370,6 @@
                     windDirectionHtml = `<span class="wind-direction-arrow" style="transform: rotate(${arrowRotation}deg);" title="${windDirDeg}°">↑</span> ${compassDir} `;
                 }
 
-                // Nedbør (mm)
                 const rawPrecip = current.precipitation;
                 let precipStr = Number.isFinite(rawPrecip) ? `${(Math.round(rawPrecip * 10) / 10).toFixed(1)} mm` : '0.0 mm';
 
@@ -1537,7 +1537,10 @@
 
                 const card = document.createElement('div');
                 card.className = 'recipe-card-item';
-                card.onclick = () => openRecipeDetail(realIndex);
+                card.onclick = () => {
+                    detailOriginModal = 'recipe-modal';
+                    openRecipeDetail(realIndex);
+                };
                 card.innerHTML = `
                     ${recipe.image ? `<img src="${recipe.image}" class="recipe-thumb">` : '<div class="recipe-thumb" style="display:flex;align-items:center;justify-content:center;">🍳</div>'}
                     <div class="recipe-info">
@@ -1673,12 +1676,19 @@
             document.getElementById('recipe-detail-modal').style.display = 'flex';
         }
 
+        // Lukker detaljvisningen og åpner nøyaktig den modalen du kom fra
         function closeRecipeDetail() {
             document.getElementById('recipe-detail-modal').style.display = 'none';
-            document.getElementById('recipe-modal').style.display = 'flex';
+            const target = document.getElementById(detailOriginModal);
+            if (target) {
+                target.style.display = 'flex';
+            } else {
+                document.getElementById('recipe-modal').style.display = 'flex';
+            }
         }
 
         function previewFormRecipe() {
+            detailOriginModal = 'add-recipe-modal';
             const formRecipe = {
                 title: document.getElementById('recipe-title').value.trim(),
                 category: document.getElementById('recipe-category').value,
@@ -1694,7 +1704,10 @@
         }
 
         function previewChosenAiRecipe() {
-            if (chosenRecipeData) openRecipeDetail(chosenRecipeData, true);
+            if (chosenRecipeData) {
+                detailOriginModal = 'mat-ai-wizard';
+                openRecipeDetail(chosenRecipeData, true);
+            }
         }
 
         function editCurrentRecipe() {
