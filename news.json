@@ -1,7 +1,12 @@
 {
-  "updatedAt": "2026-10-22T22:36:41.927449+00:00",
+  "updatedAt": "2026-10-23T00:55:55.731724+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Evakuerer beboere fra brann i Haugesund",
+      "link": "https://www.nrk.no/nyheter/evakuerer-beboere-fra-brann-i-haugesund-1.18062394",
+      "pubDate": "2026-10-23T00:13:18+00:00"
+    },
     {
       "title": "Forbannet Ødegaard etter ydmykelse: – Må passe meg",
       "link": "https://www.nrk.no/sport/marerittkveld-for-lsk_-_-skuffet_-forbannet_-frustrert-1.18062214",
@@ -12,12 +17,6 @@
       "title": "Kraftig børsfall i USA – Nasdaq ned 2,6 prosent",
       "link": "https://www.nrk.no/nyheter/kraftig-borsfall-i-usa-_-nasdaq-ned-2_6-prosent-1.18062326",
       "pubDate": "2026-10-22T20:08:14+00:00"
-    },
-    {
-      "title": "Øver på å forsvare Svalbard: – Vi må vise at vi er her",
-      "link": "https://www.nrk.no/tromsogfinnmark/pa-fregatt-tokt-til-svalbard-for-a-hevde-norsk-suverenitet-1.18052283",
-      "pubDate": "2026-10-22T19:37:23+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/693cf9471bb7c94fe737e2aa1f578fc14b02df82.jpg"
     }
   ]
 }
