@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-10-23T10:29:46.694999+00:00",
+  "updatedAt": "2026-10-23T15:22:15.579098+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Det blir streik for kabinansatte i SAS",
-      "link": "https://www.nrk.no/nyheter/-det-blir-streik-for-kabinansatte-i-sas-1.18062862",
-      "pubDate": "2026-10-23T10:15:00+00:00"
+      "title": "Avdekket hasjplantasje i nedlagt fengsel – åtte personer pågrepet",
+      "link": "https://www.nrk.no/innlandet/atte-personer-er-pagrepet-etter-aksjonen-pa-tidligere-fengsel-i-nord-odal-1.18062619",
+      "pubDate": "2026-10-23T14:13:01+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/84bc7d6840e291cc53be363d4b8f37ed742feb3f.jpg"
     },
     {
-      "title": "Espen Høiby saksøkt av studenter etter flyskolekonkurs",
-      "link": "https://www.nrk.no/vestfoldogtelemark/espen-hoiby-saksokt-av-studenter-etter-flyskolekonkurs-1.18058311",
-      "pubDate": "2026-10-23T10:05:20+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a80e5f6c684ca253fd8d82e73e4f7555e6407020.jpg"
+      "title": "Oppjustert flaumvarsel for delar av Austlandet",
+      "link": "https://www.nrk.no/nyheter/oppjustert-flaumvarsel-for-delar-av-austlandet-1.18063225",
+      "pubDate": "2026-10-23T14:11:17+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/996371c3d3160808f7d21195618233a16ad8619f.jpg"
     },
     {
-      "title": "Har Noregs billigaste buss – likevel køyrer «alle» bil",
-      "link": "https://www.nrk.no/ostfold/har-noregs-billigaste-buss-_-likevel-koyrer-_alle_-bil-1.18027875",
-      "pubDate": "2026-10-23T09:56:29+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/cc37710a9e066b136fd57aff01b4c5ba0d0add86.jpg"
+      "title": "Mann tiltalt for drapet i Alver i fjor",
+      "link": "https://www.nrk.no/vestland/mann-tiltalt-for-drapet-i-alver-i-fjor-1.18063104",
+      "pubDate": "2026-10-23T13:47:52+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1261292d5b5ec00e938b885417971547be534fa4.jpg"
     }
   ]
 }
