@@ -920,7 +920,7 @@
     <!-- MAT-AI WIZARD MODAL -->
     <div id="mat-ai-wizard" class="modal-overlay" style="display: none;">
         <div class="modal-content">
-            <!-- Sentrert topplinje med kun én ren lukkeknapp -->
+            <!-- Sentrert tittel med en ren lukkeknapp -->
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px;">
                 <button class="close-btn" onclick="closeMatAIWizard()">Lukk</button>
                 <h2 style="margin: 0; color: #28a745; text-align: center; flex: 1;">Mat-AI</h2>
@@ -1063,18 +1063,18 @@
                 <button class="ai-btn" onclick="requestAiOptions()" id="ai-generate-btn">Generer 3 oppskriftsforslag</button>
             </div>
 
-            <!-- STEG 2: 3 FORSLAG MED DIREKTE FORHÅNDSVISNING VED KLIKK -->
+            <!-- STEG 2: 3 FORSLAG -->
             <div id="ai-step-choices" style="display: none;">
                 <p style="color: var(--muted); font-size: 0.9rem; margin-top: 0;">Trykk på en rett for full forhåndsvisning og valg:</p>
                 <div id="ai-options-container" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;"></div>
                 
                 <div style="display: flex; gap: 10px;">
                     <button class="close-btn" onclick="resetAiWizard()" style="flex: 1;">Tilbake til skjema</button>
-                    <button class="ai-btn" onclick="requestAiOptions()" style="flex: 1; background: #17a2b8;">Nye alternativer</button>
+                    <button class="ai-btn" onclick="requestAiOptions()" id="ai-refresh-btn" style="flex: 1; background: #17a2b8;">Nye alternativer</button>
                 </div>
             </div>
 
-            <!-- STEG 3: FULL FORHÅNDSVISNING MED ENDRINGSMULIGHET -->
+            <!-- STEG 3: FULL FORHÅNDSVISNING -->
             <div id="ai-step-modify" style="display: none;">
                 <div id="selected-recipe-full-view"></div>
 
@@ -1792,9 +1792,23 @@
                 allergies: allergies
             };
 
-            const btn = document.getElementById('ai-generate-btn');
-            btn.innerHTML = `<span class="spinner"></span>Tenker ut 3 retter...`;
-            btn.disabled = true;
+            const generateBtn = document.getElementById('ai-generate-btn');
+            const refreshBtn = document.getElementById('ai-refresh-btn');
+
+            if (generateBtn) {
+                generateBtn.innerHTML = `<span class="spinner"></span>Tenker ut 3 retter...`;
+                generateBtn.disabled = true;
+            }
+            if (refreshBtn) {
+                refreshBtn.innerHTML = `<span class="spinner"></span>Henter nye...`;
+                refreshBtn.disabled = true;
+            }
+
+            // Tømmer listen midlertidig og viser spinner mens det lastes inn nye
+            const container = document.getElementById('ai-options-container');
+            if (container) {
+                container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--muted);"><span class="spinner"></span>Lager nye oppskriftsforslag...</div>`;
+            }
 
             try {
                 const res = await fetch(`${WORKER_URL}/generate-three-recipes`, {
@@ -1813,9 +1827,16 @@
                 document.getElementById('ai-step-choices').style.display = 'block';
             } catch (err) {
                 alert("Feil: " + err.message);
+                if (container) container.innerHTML = '';
             } finally {
-                btn.innerHTML = "Generer 3 oppskriftsforslag";
-                btn.disabled = false;
+                if (generateBtn) {
+                    generateBtn.innerHTML = "Generer 3 oppskriftsforslag";
+                    generateBtn.disabled = false;
+                }
+                if (refreshBtn) {
+                    refreshBtn.innerHTML = "Nye alternativer";
+                    refreshBtn.disabled = false;
+                }
             }
         }
 
@@ -1844,7 +1865,6 @@
             });
         }
 
-        // Åpner full forhåndsvisning direkte i Steg 3 ved klikk på et alternativ
         function selectRecipeOption(index) {
             chosenRecipeData = currentAiOptions[index];
             renderSelectedRecipeFullView();
