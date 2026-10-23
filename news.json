@@ -1,22 +1,24 @@
 {
-  "updatedAt": "2026-10-23T00:55:55.731724+00:00",
+  "updatedAt": "2026-10-23T05:35:04.917843+00:00",
   "logo": null,
   "articles": [
     {
+      "title": "En omkom i brann i flermannsbolig i Haugesund",
+      "link": "https://www.nrk.no/norge/en-omkom-i-boligbrann-i-haugesund-1.18062396",
+      "pubDate": "2026-10-23T01:05:48+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a6b2ddb7b318ae75a7f5b8dbf76a87d7a2bde712.jpg"
+    },
+    {
       "title": "Evakuerer beboere fra brann i Haugesund",
       "link": "https://www.nrk.no/nyheter/evakuerer-beboere-fra-brann-i-haugesund-1.18062394",
-      "pubDate": "2026-10-23T00:13:18+00:00"
+      "pubDate": "2026-10-23T00:13:18+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a6b2ddb7b318ae75a7f5b8dbf76a87d7a2bde712.jpg"
     },
     {
       "title": "Forbannet Ødegaard etter ydmykelse: – Må passe meg",
       "link": "https://www.nrk.no/sport/marerittkveld-for-lsk_-_-skuffet_-forbannet_-frustrert-1.18062214",
       "pubDate": "2026-10-22T20:47:53+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/55da2a8f448e34bd5a4143902806ea378f4642c7.jpg"
-    },
-    {
-      "title": "Kraftig børsfall i USA – Nasdaq ned 2,6 prosent",
-      "link": "https://www.nrk.no/nyheter/kraftig-borsfall-i-usa-_-nasdaq-ned-2_6-prosent-1.18062326",
-      "pubDate": "2026-10-22T20:08:14+00:00"
     }
   ]
 }
