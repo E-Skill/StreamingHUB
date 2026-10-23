@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-10-23T05:35:04.917843+00:00",
+  "updatedAt": "2026-10-23T10:29:46.694999+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "En omkom i brann i flermannsbolig i Haugesund",
-      "link": "https://www.nrk.no/norge/en-omkom-i-boligbrann-i-haugesund-1.18062396",
-      "pubDate": "2026-10-23T01:05:48+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a6b2ddb7b318ae75a7f5b8dbf76a87d7a2bde712.jpg"
+      "title": "Det blir streik for kabinansatte i SAS",
+      "link": "https://www.nrk.no/nyheter/-det-blir-streik-for-kabinansatte-i-sas-1.18062862",
+      "pubDate": "2026-10-23T10:15:00+00:00"
     },
     {
-      "title": "Evakuerer beboere fra brann i Haugesund",
-      "link": "https://www.nrk.no/nyheter/evakuerer-beboere-fra-brann-i-haugesund-1.18062394",
-      "pubDate": "2026-10-23T00:13:18+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a6b2ddb7b318ae75a7f5b8dbf76a87d7a2bde712.jpg"
+      "title": "Espen Høiby saksøkt av studenter etter flyskolekonkurs",
+      "link": "https://www.nrk.no/vestfoldogtelemark/espen-hoiby-saksokt-av-studenter-etter-flyskolekonkurs-1.18058311",
+      "pubDate": "2026-10-23T10:05:20+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a80e5f6c684ca253fd8d82e73e4f7555e6407020.jpg"
     },
     {
-      "title": "Forbannet Ødegaard etter ydmykelse: – Må passe meg",
-      "link": "https://www.nrk.no/sport/marerittkveld-for-lsk_-_-skuffet_-forbannet_-frustrert-1.18062214",
-      "pubDate": "2026-10-22T20:47:53+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/55da2a8f448e34bd5a4143902806ea378f4642c7.jpg"
+      "title": "Har Noregs billigaste buss – likevel køyrer «alle» bil",
+      "link": "https://www.nrk.no/ostfold/har-noregs-billigaste-buss-_-likevel-koyrer-_alle_-bil-1.18027875",
+      "pubDate": "2026-10-23T09:56:29+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/cc37710a9e066b136fd57aff01b4c5ba0d0add86.jpg"
     }
   ]
 }
