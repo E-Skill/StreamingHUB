@@ -479,11 +479,13 @@
             background: #222;
             color: #fff;
             border: 1px solid #444;
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 6px;
             cursor: pointer;
+            font-weight: 600;
         }
         .close-btn:hover { background: #333; }
+        
         .modal-header-actions {
             display: flex;
             justify-content: space-between;
@@ -897,7 +899,7 @@
             </div>
 
             <div class="search-container">
-                <input type="text" id="recipe-search-input" class="search-input" placeholder="🔍 Søk i oppskrifter eller ingredienser..." oninput="filterRecipes()">
+                <input type="text" id="recipe-search-input" class="search-input" placeholder="Søk i oppskrifter eller ingredienser..." oninput="filterRecipes()">
             </div>
             <div class="category-bar">
                 <button class="cat-chip active" onclick="setCategoryFilter('alle', this)">Alle</button>
@@ -910,7 +912,7 @@
 
             <div id="recipe-list-container" class="recipe-list"></div>
             <div class="ai-section">
-                <button class="ai-btn" onclick="openMatAIWizard()">Spør Mat-AI </button>
+                <button class="ai-btn" onclick="openMatAIWizard()">Spør Mat-AI</button>
             </div>
         </div>
     </div>
@@ -918,13 +920,14 @@
     <!-- MAT-AI WIZARD MODAL -->
     <div id="mat-ai-wizard" class="modal-overlay" style="display: none;">
         <div class="modal-content">
+            <!-- Sentrert topplinje med kun én ren lukkeknapp -->
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px;">
-                <button class="close-btn" onclick="closeMatAIWizard()">Tilbake</button>
-                <h2 style="margin:0; color: #28a745;">Mat-AI</h2>
-                <div></div>
+                <button class="close-btn" onclick="closeMatAIWizard()">Lukk</button>
+                <h2 style="margin: 0; color: #28a745; text-align: center; flex: 1;">Mat-AI</h2>
+                <div style="width: 65px;"></div>
             </div>
             
-            <!-- STEG 1: SKJEMA MED RENE, INDIVIDUELLE RÅVARER -->
+            <!-- STEG 1: SKJEMA -->
             <div id="ai-step-form">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
                     <div class="form-group" style="margin-bottom:0;">
@@ -934,7 +937,7 @@
                             <option value="Norsk / Nordisk">Norsk / Nordisk</option>
                             <option value="Italiensk">Italiensk</option>
                             <option value="Meksikansk">Meksikansk</option>
-                            <option value="Asiatisk (Generelt)">Asiatisk </option>
+                            <option value="Asiatisk (Generelt)">Asiatisk</option>
                             <option value="Thai">Thai</option>
                             <option value="Japansk">Japansk</option>
                             <option value="Indisk">Indisk</option>
@@ -1020,7 +1023,7 @@
                     </div>
                 </div>
 
-                <!-- BASISVARER: Rene råvarer med lime og sitron -->
+                <!-- BASISVARER -->
                 <div class="form-group">
                     <label>Vanlige basisvarer hjemme:</label>
                     <div class="checkbox-grid" id="ingredients-checkboxes">
@@ -1060,23 +1063,22 @@
                 <button class="ai-btn" onclick="requestAiOptions()" id="ai-generate-btn">Generer 3 oppskriftsforslag</button>
             </div>
 
-            <!-- STEG 2: VISNING AV DE 3 ALTERNATIVENE -->
+            <!-- STEG 2: 3 FORSLAG MED DIREKTE FORHÅNDSVISNING VED KLIKK -->
             <div id="ai-step-choices" style="display: none;">
-                <p style="color: var(--muted); font-size: 0.9rem;">Her er 3 alternative retter basert på dine valg. Velg én, eller trykk for å få 3 nye:</p>
+                <p style="color: var(--muted); font-size: 0.9rem; margin-top: 0;">Trykk på en rett for full forhåndsvisning og valg:</p>
                 <div id="ai-options-container" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;"></div>
                 
                 <div style="display: flex; gap: 10px;">
-                    <button class="close-btn" onclick="resetAiWizard()" style="flex: 1;">⬅️ Tilbake til skjema</button>
-                    <button class="ai-btn" onclick="requestAiOptions()" style="flex: 1; background: #17a2b8;">🔄 Få 3 nye alternativer</button>
+                    <button class="close-btn" onclick="resetAiWizard()" style="flex: 1;">Tilbake til skjema</button>
+                    <button class="ai-btn" onclick="requestAiOptions()" style="flex: 1; background: #17a2b8;">Nye alternativer</button>
                 </div>
             </div>
 
-            <!-- STEG 3: MODIFISERING, FORHÅNDSVISNING OG LAGRING -->
+            <!-- STEG 3: FULL FORHÅNDSVISNING MED ENDRINGSMULIGHET -->
             <div id="ai-step-modify" style="display: none;">
-                <h4 id="selected-recipe-title" style="color: #4da6ff; margin-bottom: 5px;"></h4>
-                <div id="selected-recipe-summary" style="color: var(--muted); font-size: 0.9rem; margin-bottom: 15px;"></div>
+                <div id="selected-recipe-full-view"></div>
 
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--line); padding-top: 15px;">
                     <label>Vil du endre på noe? Gi beskjed til AI-en:</label>
                     <div style="display: flex; gap: 8px;">
                         <input type="text" id="ai-mod-instruction" placeholder="F.eks. Gjør den sterkere, bytt ut ris med pasta...">
@@ -1085,15 +1087,14 @@
                 </div>
 
                 <div style="display: flex; gap: 10px; margin-top: 15px;">
-                    <button class="close-btn" onclick="backToChoices()" style="flex: 1;">Tilbake til valg</button>
-                    <button class="close-btn" onclick="previewChosenAiRecipe()" style="flex: 1; background: #17a2b8; border: none; font-weight: bold;">Forhåndsvis</button>
-                    <button class="save-btn" onclick="finalSaveAiRecipe()" style="flex: 1;">💾 Lagre i oppskriftsmenyen</button>
+                    <button class="close-btn" onclick="backToChoices()" style="flex: 1;">Tilbake til forslag</button>
+                    <button class="save-btn" onclick="finalSaveAiRecipe()" style="flex: 1;">Velg og lagre</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 2: SKJEMA FOR NY/REDIGER OPPSKRIFT -->
+    <!-- MODAL 2: MANUELL NY/REDIGER OPPSKRIFT -->
     <div id="add-recipe-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <button class="close-btn" onclick="closeAddRecipeForm()" style="position: absolute; top: 15px; right: 15px;">Avbryt</button>
@@ -1207,7 +1208,6 @@
         let currentAiOptions = [];
         let chosenRecipeData = null;
 
-        // Husker hvilken modal detaljvisningen/forhåndsvisningen ble åpnet fra
         let detailOriginModal = 'recipe-modal';
 
         function changeCity(cityName) {
@@ -1465,7 +1465,7 @@
                     text.className = 'news-text';
                     text.innerHTML = `
                         <div class="news-title">${article.title || ''}</div>
-                        <div class="news-time">Dato:${timeDisplay}</div>
+                        <div class="news-time">Dato: ${timeDisplay}</div>
                     `;
                     link.appendChild(text);
                     container.appendChild(link);
@@ -1542,13 +1542,13 @@
                     openRecipeDetail(realIndex);
                 };
                 card.innerHTML = `
-                    ${recipe.image ? `<img src="${recipe.image}" class="recipe-thumb">` : '<div class="recipe-thumb" style="display:flex;align-items:center;justify-content:center;">🍳</div>'}
+                    ${recipe.image ? `<img src="${recipe.image}" class="recipe-thumb">` : '<div class="recipe-thumb" style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--muted);">Mat</div>'}
                     <div class="recipe-info">
                         <h3>${recipe.title}</h3>
                         <p>${recipe.description || ''}</p>
                         <div>
                             ${recipe.category ? `<span class="recipe-badge">${recipe.category}</span>` : ''}
-                            ${recipe.prepTime ? `<span class="recipe-badge-time">⏱️ ${recipe.prepTime}</span>` : ''}
+                            ${recipe.prepTime ? `<span class="recipe-badge-time">${recipe.prepTime}</span>` : ''}
                         </div>
                     </div>
                 `;
@@ -1657,10 +1657,10 @@
                 <h2 style="margin-top:0; margin-bottom: 5px;">${r.title || 'Uten tittel'}</h2>
                 <div style="margin-bottom: 8px;">
                     ${r.category ? `<span class="recipe-badge">${r.category}</span>` : ''}
-                    ${r.prepTime ? `<span class="recipe-badge-time">⏱️ ${r.prepTime}</span>` : ''}
+                    ${r.prepTime ? `<span class="recipe-badge-time">${r.prepTime}</span>` : ''}
                 </div>
-                ${r.servings ? `<p style="color:var(--muted); font-size:0.9em; margin: 6px 0 2px 0;">👥 <strong>Porsjoner:</strong> ${r.servings}</p>` : ''}
-                ${r.nutrition ? `<p style="color:var(--muted); font-size:0.9em; margin: 2px 0 12px 0;">⚡ <strong>Næringsinnhold:</strong> ${r.nutrition}</p>` : ''}
+                ${r.servings ? `<p style="color:var(--muted); font-size:0.9em; margin: 6px 0 2px 0;"><strong>Porsjoner:</strong> ${r.servings}</p>` : ''}
+                ${r.nutrition ? `<p style="color:var(--muted); font-size:0.9em; margin: 2px 0 12px 0;"><strong>Næringsinnhold:</strong> ${r.nutrition}</p>` : ''}
                 ${r.image ? `<img src="${r.image}" class="recipe-detail-img" style="margin-top:10px;">` : ''}
                 <h3 style="color:#4da6ff; margin-bottom:5px;">Ingredienser:</h3>
                 <ul style="color:var(--muted); margin-top:0;">${(r.ingredients || []).map(i => `<li>${i}</li>`).join('')}</ul>
@@ -1676,7 +1676,6 @@
             document.getElementById('recipe-detail-modal').style.display = 'flex';
         }
 
-        // Lukker detaljvisningen og åpner nøyaktig den modalen du kom fra
         function closeRecipeDetail() {
             document.getElementById('recipe-detail-modal').style.display = 'none';
             const target = document.getElementById(detailOriginModal);
@@ -1701,13 +1700,6 @@
                 instructions: document.getElementById('recipe-instructions').value.trim()
             };
             openRecipeDetail(formRecipe, true);
-        }
-
-        function previewChosenAiRecipe() {
-            if (chosenRecipeData) {
-                detailOriginModal = 'mat-ai-wizard';
-                openRecipeDetail(chosenRecipeData, true);
-            }
         }
 
         function editCurrentRecipe() {
@@ -1844,22 +1836,39 @@
                     <h3 style="margin: 0 0 4px 0; color: #4da6ff;">Alternativ ${index + 1}: ${recipe.title}</h3>
                     <p style="margin: 0 0 6px 0; color: var(--muted);">${recipe.description}</p>
                     <div>
-                        <span class="recipe-badge">⚡ ${recipe.nutrition}</span>
-                        <span class="recipe-badge-time">⏱️ ${recipe.prepTime}</span>
+                        <span class="recipe-badge">${recipe.nutrition}</span>
+                        <span class="recipe-badge-time">${recipe.prepTime}</span>
                     </div>
                 `;
                 container.appendChild(card);
             });
         }
 
+        // Åpner full forhåndsvisning direkte i Steg 3 ved klikk på et alternativ
         function selectRecipeOption(index) {
             chosenRecipeData = currentAiOptions[index];
-            
-            document.getElementById('selected-recipe-title').textContent = chosenRecipeData.title;
-            document.getElementById('selected-recipe-summary').textContent = `${chosenRecipeData.description} — ${chosenRecipeData.nutrition}`;
+            renderSelectedRecipeFullView();
 
             document.getElementById('ai-step-choices').style.display = 'none';
             document.getElementById('ai-step-modify').style.display = 'block';
+        }
+
+        function renderSelectedRecipeFullView() {
+            const container = document.getElementById('selected-recipe-full-view');
+            container.innerHTML = `
+                <h2 style="margin-top:0; margin-bottom: 5px; color: #4da6ff;">${chosenRecipeData.title || 'Uten tittel'}</h2>
+                <div style="margin-bottom: 8px;">
+                    ${chosenRecipeData.category ? `<span class="recipe-badge">${chosenRecipeData.category}</span>` : ''}
+                    ${chosenRecipeData.prepTime ? `<span class="recipe-badge-time">${chosenRecipeData.prepTime}</span>` : ''}
+                </div>
+                <p style="color:var(--muted); font-size: 0.95rem; margin: 4px 0 10px 0;">${chosenRecipeData.description || ''}</p>
+                ${chosenRecipeData.servings ? `<p style="color:var(--muted); font-size:0.9em; margin: 4px 0;"><strong>Porsjoner:</strong> ${chosenRecipeData.servings}</p>` : ''}
+                ${chosenRecipeData.nutrition ? `<p style="color:var(--muted); font-size:0.9em; margin: 4px 0 12px 0;"><strong>Næringsinnhold:</strong> ${chosenRecipeData.nutrition}</p>` : ''}
+                <h3 style="color:#4da6ff; margin-bottom:5px;">Ingredienser:</h3>
+                <ul style="color:var(--muted); margin-top:0;">${(chosenRecipeData.ingredients || []).map(i => `<li>${i}</li>`).join('')}</ul>
+                <h3 style="color:#4da6ff; margin-bottom:5px;">Framgangsmåte:</h3>
+                <p style="white-space: pre-line; color:var(--muted); margin-top:0;">${chosenRecipeData.instructions || ''}</p>
+            `;
         }
 
         function backToChoices() {
@@ -1885,10 +1894,8 @@
                 if (!res.ok) throw new Error(data.error);
 
                 chosenRecipeData = data.recipe;
-                document.getElementById('selected-recipe-title').textContent = chosenRecipeData.title;
-                document.getElementById('selected-recipe-summary').textContent = `${chosenRecipeData.description} (Modifisert!)`;
+                renderSelectedRecipeFullView();
                 document.getElementById('ai-mod-instruction').value = '';
-                alert("Oppskriften ble oppdatert av AI-en!");
             } catch (err) {
                 alert("Klarte ikke modifisere: " + err.message);
             } finally {
