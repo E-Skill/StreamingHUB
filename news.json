@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-10-23T19:22:24.356836+00:00",
+  "updatedAt": "2026-10-23T22:24:50.362137+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Minst 35 gjester ble syke: Oppkast og diaré etter besøk på stjernerestaurant",
+      "link": "https://www.nrk.no/rogaland/minst-35-gjester-ble-syke-etter-restaurantbesok-pa-re-naa-i-stavanger-1.18043712",
+      "pubDate": "2026-10-23T20:18:34+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/dbd86959c19ecac949e39f25e27c5a46b4f88816.jpg"
+    },
     {
       "title": "Historisk Mesternes mester-vinnar: – Ei lykke å dele det med nokon",
       "link": "https://www.nrk.no/sport/mesternes-mester-team_-solveig-gulbrandsen-og-marco-elsafadi-vann-den-forste-utgava-av-programmet-1.18056588",
@@ -13,12 +19,6 @@
       "link": "https://www.nrk.no/vestland/no-startar-eksporten-av-brunost-til-kina-1.18062974",
       "pubDate": "2026-10-23T18:17:14+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a94f9e16c5ef89faf0d01568a978a0656d87aa41.jpg"
-    },
-    {
-      "title": "Trafikkaos etter togstans",
-      "link": "https://www.nrk.no/stor-oslo/stans-i-togtrafikken-gjennom-oslo-1.18063424",
-      "pubDate": "2026-10-23T17:34:37+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1930bc3958f1b81e433aa7f85949961b695f4656.jpg"
     }
   ]
 }
