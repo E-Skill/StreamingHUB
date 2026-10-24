@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-10-24T13:29:14.160304+00:00",
+  "updatedAt": "2026-10-24T16:48:24.570311+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Én knivstukket – leter etter gjerningsperson",
-      "link": "https://www.nrk.no/stor-oslo/alvorlig-voldshendelse-i-oslo-_-leter-etter-gjerningsperson-1.18063733",
-      "pubDate": "2026-10-24T12:29:07+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9ab6a7f7e191c9db393c0fe9c12fa533d6266451.jpg"
+      "title": "Demonstranter har tatt seg inn i Colosseum",
+      "link": "https://www.nrk.no/nyheter/demonstranter-har-tatt-seg-inn-i-colosseum-1.18063885",
+      "pubDate": "2026-10-24T16:31:39+00:00"
     },
     {
-      "title": "Alvorlig voldshendelse i Oslo – leter etter gjerningsperson",
-      "link": "https://www.nrk.no/stor-oslo/alvorlig-voldshendelse-i-oslo-_-leter-etter-gjerningsperson-1.18063711",
-      "pubDate": "2026-10-24T12:21:47+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9ab6a7f7e191c9db393c0fe9c12fa533d6266451.jpg"
+      "title": "Nådeløs Knutsen etter Glimt-smell: – Kunne spilt til Kveldsnytt uten å få ballen i mål",
+      "link": "https://www.nrk.no/sport/eliteserien_-valerenga-sjokkerte-bodo_glimt-1.18063860",
+      "pubDate": "2026-10-24T15:57:36+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/194160ab9ed41e1bc8382eddeeb1cda88f6edf29.jpg"
     },
     {
-      "title": "Freser mot eigen klubb etter Europa-mareritt: – Øydela heile kampopplevinga",
-      "link": "https://www.nrk.no/sport/lsk-supporter-si-verste-oppleving-pa-arasen-1.18063360",
-      "pubDate": "2026-10-24T09:25:13+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/06f253ebcf7edd51c04dabd741ed2fdf3e8c8ee5.jpg"
+      "title": "Alvorlig ulykke i Nordland: tre personer fraktes til sykehus i redningshelikopter",
+      "link": "https://www.nrk.no/nordland/alvorlig-ulykke-i-nordland_-tre-personer-fraktes-til-sykehus-i-redningshelikopter-1.18063794",
+      "pubDate": "2026-10-24T14:10:21+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e708468dec1df1ba8bbe15b020060adec9a06f7a.jpg"
     }
   ]
 }
