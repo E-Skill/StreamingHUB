@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-10-24T16:48:24.570311+00:00",
+  "updatedAt": "2026-10-24T19:07:43.255608+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "– Tipper halvparten i klassen snuser",
+      "link": "https://www.nrk.no/norge/vanlig-med-nikotin-i-generasjonen-som-skulle-bli-nikotinfri-1.18059843",
+      "pubDate": "2026-10-24T18:37:40+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a76b03b5bd14984546c2673edc3cf32ab7113c43.jpg"
+    },
     {
       "title": "Demonstranter har tatt seg inn i Colosseum",
       "link": "https://www.nrk.no/nyheter/demonstranter-har-tatt-seg-inn-i-colosseum-1.18063885",
       "pubDate": "2026-10-24T16:31:39+00:00"
     },
     {
-      "title": "Nådeløs Knutsen etter Glimt-smell: – Kunne spilt til Kveldsnytt uten å få ballen i mål",
+      "title": "Stygg smell for Sæter: – Bekymra når det er så mye blod",
       "link": "https://www.nrk.no/sport/eliteserien_-valerenga-sjokkerte-bodo_glimt-1.18063860",
       "pubDate": "2026-10-24T15:57:36+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/194160ab9ed41e1bc8382eddeeb1cda88f6edf29.jpg"
-    },
-    {
-      "title": "Alvorlig ulykke i Nordland: tre personer fraktes til sykehus i redningshelikopter",
-      "link": "https://www.nrk.no/nordland/alvorlig-ulykke-i-nordland_-tre-personer-fraktes-til-sykehus-i-redningshelikopter-1.18063794",
-      "pubDate": "2026-10-24T14:10:21+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e708468dec1df1ba8bbe15b020060adec9a06f7a.jpg"
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/71d48b30cbdeb03ad9ff974b121a52e702e878ed.jpg"
     }
   ]
 }
