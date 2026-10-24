@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-10-24T09:29:58.384844+00:00",
+  "updatedAt": "2026-10-24T13:29:14.160304+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Ukraina: Stabil tilkobling til Starlink – hastigheten øker",
-      "link": "https://www.nrk.no/norge/ukraina_-stabil-tilkobling-til-starlink-_-hastigheten-oker-1.18063632",
-      "pubDate": "2026-10-24T08:45:30+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c22782ec14398391d153b2c35d83c12e04da6d96.jpg"
+      "title": "Én knivstukket – leter etter gjerningsperson",
+      "link": "https://www.nrk.no/stor-oslo/alvorlig-voldshendelse-i-oslo-_-leter-etter-gjerningsperson-1.18063733",
+      "pubDate": "2026-10-24T12:29:07+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9ab6a7f7e191c9db393c0fe9c12fa533d6266451.jpg"
     },
     {
-      "title": "Ukraina: Stabil tilkobling til Starlink – hastigheten øker",
-      "link": "https://www.nrk.no/nyheter/ukraina_-stabil-tilkobling-til-starlink-_-hastigheten-oker-1.18063596",
-      "pubDate": "2026-10-24T08:19:18+00:00"
+      "title": "Alvorlig voldshendelse i Oslo – leter etter gjerningsperson",
+      "link": "https://www.nrk.no/stor-oslo/alvorlig-voldshendelse-i-oslo-_-leter-etter-gjerningsperson-1.18063711",
+      "pubDate": "2026-10-24T12:21:47+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9ab6a7f7e191c9db393c0fe9c12fa533d6266451.jpg"
     },
     {
-      "title": "Avslører heftige kranglar: «No smell det her»",
-      "link": "https://www.nrk.no/sport/stale-og-ida-solbakken-opnar-opp-om-heftige-kranglar_-_-da-gar-dei-andre-1.18039872",
-      "pubDate": "2026-10-24T06:05:44+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a1b8d0ae19e48406dae2a62a416c95ad1a43e8d3.jpg"
+      "title": "Freser mot eigen klubb etter Europa-mareritt: – Øydela heile kampopplevinga",
+      "link": "https://www.nrk.no/sport/lsk-supporter-si-verste-oppleving-pa-arasen-1.18063360",
+      "pubDate": "2026-10-24T09:25:13+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/06f253ebcf7edd51c04dabd741ed2fdf3e8c8ee5.jpg"
     }
   ]
 }
