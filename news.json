@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-10-24T21:35:13.348705+00:00",
+  "updatedAt": "2026-10-25T06:49:23.686564+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Stormen på Østlandet: Flere tusen uten strøm",
+      "link": "https://www.nrk.no/vestfoldogtelemark/stormen-pa-ostlandet_-flere-tusen-uten-strom-1.18064040",
+      "pubDate": "2026-10-25T06:34:51+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7a9dda749046b3fadeb32cd9e837d2099a8f62c3.jpg"
+    },
     {
       "title": "Satte vill verdensrekord i kjellerstua: – Føles ganske mørkt",
       "link": "https://www.nrk.no/sport/magnus-kulset-knuste-egen-rekord-i-everesting.-na-setter-25-aringen-seg-nye_-harete-mal-1.18063902",
@@ -13,12 +19,6 @@
       "link": "https://www.nrk.no/tromsogfinnmark/nye-flybilder-viser-store-endringer-i-grunnforholdene-pa-svalbard-1.18055453",
       "pubDate": "2026-10-24T20:00:15+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ed2dcec0870c52db1a5af3a879c66ddfd4638eed.jpg"
-    },
-    {
-      "title": "– Tipper halvparten i klassen snuser",
-      "link": "https://www.nrk.no/norge/vanlig-med-nikotin-i-generasjonen-som-skulle-bli-nikotinfri-1.18059843",
-      "pubDate": "2026-10-24T18:37:40+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a76b03b5bd14984546c2673edc3cf32ab7113c43.jpg"
     }
   ]
 }
