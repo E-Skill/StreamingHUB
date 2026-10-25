@@ -1,24 +1,24 @@
 {
-  "updatedAt": "2026-10-25T06:49:23.686564+00:00",
+  "updatedAt": "2026-10-25T12:10:57.732036+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Stormen på Østlandet: Flere tusen uten strøm",
-      "link": "https://www.nrk.no/vestfoldogtelemark/stormen-pa-ostlandet_-flere-tusen-uten-strom-1.18064040",
-      "pubDate": "2026-10-25T06:34:51+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7a9dda749046b3fadeb32cd9e837d2099a8f62c3.jpg"
+      "title": "Braathen utklasset de norske – vindtrøbbel for McGrath",
+      "link": "https://www.nrk.no/sport/lucas-pinheiro-braathen-i-ledelsen-_-utklasset-de-norske-stjernene-i-solden-1.18064094",
+      "pubDate": "2026-10-25T09:51:09+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a58ae1b3835242005ee65d05127abc8064020660.jpg"
     },
     {
-      "title": "Satte vill verdensrekord i kjellerstua: – Føles ganske mørkt",
-      "link": "https://www.nrk.no/sport/magnus-kulset-knuste-egen-rekord-i-everesting.-na-setter-25-aringen-seg-nye_-harete-mal-1.18063902",
-      "pubDate": "2026-10-24T20:14:19+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/04277af2a40be7e38f430a3403758702f74f1f96.jpg"
+      "title": "Knivstikkingen i Bjørvika: Mann etterlyst internasjonalt",
+      "link": "https://www.nrk.no/stor-oslo/knivstikkingen-i-oslo_-mann-etterlyst-internasjonalt-1.18064118",
+      "pubDate": "2026-10-25T08:56:53+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1c75d982d6c9a7aca3ab9690db696c1390c6cf95.jpg"
     },
     {
-      "title": "Ferske bilder av fjellside på Svalbard: – Dramatiske endringer",
-      "link": "https://www.nrk.no/tromsogfinnmark/nye-flybilder-viser-store-endringer-i-grunnforholdene-pa-svalbard-1.18055453",
-      "pubDate": "2026-10-24T20:00:15+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ed2dcec0870c52db1a5af3a879c66ddfd4638eed.jpg"
+      "title": "Knivstikkingen i Bjørvika: Mann etterlyst internasjonalt",
+      "link": "https://www.nrk.no/stor-oslo/knivstikkingen-i-bjorvika_-mann-etterlyst-internasjonalt-1.18064107",
+      "pubDate": "2026-10-25T08:52:35+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1c75d982d6c9a7aca3ab9690db696c1390c6cf95.jpg"
     }
   ]
 }
