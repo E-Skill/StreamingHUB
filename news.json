@@ -1,24 +1,22 @@
 {
-  "updatedAt": "2026-10-25T16:09:50.136939+00:00",
+  "updatedAt": "2026-10-25T18:59:22.146402+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "E6 stengt mellom Lillehammer og Biri",
+      "link": "https://www.nrk.no/innlandet/e6-stengt-mellom-lillehammer-og-biri-1.18064357",
+      "pubDate": "2026-10-25T18:14:09+00:00"
+    },
+    {
+      "title": "E6 stengt mellom Lillehammer og Biri",
+      "link": "https://www.nrk.no/nyheter/e6-stengt-mellom-lillehammer-og-biri-1.18064402",
+      "pubDate": "2026-10-25T17:41:42+00:00"
+    },
     {
       "title": "Venezuelas opposisjonsleder er tilbake i landet",
       "link": "https://www.nrk.no/nyheter/venezuelas-opposisjonsleder-er-tilbake-i-landet-1.18064279",
       "pubDate": "2026-10-25T15:46:00+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0c8a0a54ffd44d477f02fa270c91e935bb004b9f.jpg"
-    },
-    {
-      "title": "Slår alarm etter nytt tap: – Ekstremt giftig",
-      "link": "https://www.nrk.no/sport/manchester-united-audmjuka-mot-bournemouth-1.18064282",
-      "pubDate": "2026-10-25T15:39:19+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/58d86e6f2ee093a530867eacd3fcf855967b0736.jpg"
-    },
-    {
-      "title": "Viking-profil beklaget etter kynisk takling: Sendte motspiller til sykehus",
-      "link": "https://www.nrk.no/sport/viking-tromso_-tromso-komet-til-sykehus-etter-voldsom-takling-1.18064269",
-      "pubDate": "2026-10-25T15:01:44+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ae7e276cdc38966b1efbaf05564727f612428250.jpg"
     }
   ]
 }
