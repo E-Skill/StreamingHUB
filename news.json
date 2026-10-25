@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-10-25T21:28:29.538163+00:00",
+  "updatedAt": "2026-10-25T23:26:01.957530+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Skulle berre ein snartur på butikken: Vart låst inne",
+      "link": "https://www.nrk.no/nordland/blei-last-inne-pa-matbutikk-i-vesteralen-1.18064348",
+      "pubDate": "2026-10-25T19:47:45+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/5ebc24b8b5c0c52530b1814ee7e52a1cf5da2652.jpg"
+    },
     {
       "title": "E6 stengt mellom Lillehammer og Biri",
       "link": "https://www.nrk.no/innlandet/e6-stengt-mellom-lillehammer-og-biri-1.18064498",
@@ -13,12 +19,6 @@
       "link": "https://www.nrk.no/sport/nrk-ekspert-pal-golberg-enda-i-badekar-etter-fantomlop-under-frankfurt-maraton-1.18064192",
       "pubDate": "2026-10-25T19:43:28+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/29cd33e2497e26e6b21da6d55e3347743ded2e2e.jpg"
-    },
-    {
-      "title": "Brann i togbremser – Lillestrøm stasjon stengt",
-      "link": "https://www.nrk.no/buskerud/brann-i-togbremser-_-lillestrom-stasjon-stengt-1.18064461",
-      "pubDate": "2026-10-25T18:52:55+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c9c86eb8323b36860c5899d4c730815127d6c463.jpg"
     }
   ]
 }
