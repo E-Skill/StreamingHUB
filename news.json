@@ -1,22 +1,24 @@
 {
-  "updatedAt": "2026-10-25T18:59:22.146402+00:00",
+  "updatedAt": "2026-10-25T21:28:29.538163+00:00",
   "logo": null,
   "articles": [
     {
       "title": "E6 stengt mellom Lillehammer og Biri",
-      "link": "https://www.nrk.no/innlandet/e6-stengt-mellom-lillehammer-og-biri-1.18064357",
-      "pubDate": "2026-10-25T18:14:09+00:00"
+      "link": "https://www.nrk.no/innlandet/e6-stengt-mellom-lillehammer-og-biri-1.18064498",
+      "pubDate": "2026-10-25T19:52:57+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1d82da2a4086a5139fbf6214536bde826e5cb163.jpg"
     },
     {
-      "title": "E6 stengt mellom Lillehammer og Biri",
-      "link": "https://www.nrk.no/nyheter/e6-stengt-mellom-lillehammer-og-biri-1.18064402",
-      "pubDate": "2026-10-25T17:41:42+00:00"
+      "title": "NRK-profilen enda i badekar etter fantomløp",
+      "link": "https://www.nrk.no/sport/nrk-ekspert-pal-golberg-enda-i-badekar-etter-fantomlop-under-frankfurt-maraton-1.18064192",
+      "pubDate": "2026-10-25T19:43:28+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/29cd33e2497e26e6b21da6d55e3347743ded2e2e.jpg"
     },
     {
-      "title": "Venezuelas opposisjonsleder er tilbake i landet",
-      "link": "https://www.nrk.no/nyheter/venezuelas-opposisjonsleder-er-tilbake-i-landet-1.18064279",
-      "pubDate": "2026-10-25T15:46:00+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0c8a0a54ffd44d477f02fa270c91e935bb004b9f.jpg"
+      "title": "Brann i togbremser – Lillestrøm stasjon stengt",
+      "link": "https://www.nrk.no/buskerud/brann-i-togbremser-_-lillestrom-stasjon-stengt-1.18064461",
+      "pubDate": "2026-10-25T18:52:55+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c9c86eb8323b36860c5899d4c730815127d6c463.jpg"
     }
   ]
 }
