@@ -1,7 +1,12 @@
 {
-  "updatedAt": "2026-10-25T23:26:01.957530+00:00",
+  "updatedAt": "2026-10-26T01:26:03.661995+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Nytt vannbrudd i Sør-Varanger",
+      "link": "https://www.nrk.no/nyheter/nytt-vannbrudd-i-sor-varanger-1.18064546",
+      "pubDate": "2026-10-25T23:49:47+00:00"
+    },
     {
       "title": "Skulle berre ein snartur på butikken: Vart låst inne",
       "link": "https://www.nrk.no/nordland/blei-last-inne-pa-matbutikk-i-vesteralen-1.18064348",
@@ -13,12 +18,6 @@
       "link": "https://www.nrk.no/innlandet/e6-stengt-mellom-lillehammer-og-biri-1.18064498",
       "pubDate": "2026-10-25T19:52:57+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1d82da2a4086a5139fbf6214536bde826e5cb163.jpg"
-    },
-    {
-      "title": "NRK-profilen enda i badekar etter fantomløp",
-      "link": "https://www.nrk.no/sport/nrk-ekspert-pal-golberg-enda-i-badekar-etter-fantomlop-under-frankfurt-maraton-1.18064192",
-      "pubDate": "2026-10-25T19:43:28+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/29cd33e2497e26e6b21da6d55e3347743ded2e2e.jpg"
     }
   ]
 }
