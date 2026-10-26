@@ -1,24 +1,24 @@
 {
-  "updatedAt": "2026-10-26T19:32:54.810560+00:00",
+  "updatedAt": "2026-10-26T23:19:12.644523+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Glimt kan bli historiske: – De fortjener det",
-      "link": "https://www.nrk.no/sport/mener-bodo_glimt-bor-vinne-prestisjepris-1.18065180",
+      "title": "Hvem skal styre Kina etter Xi Jinping?",
+      "link": "https://www.nrk.no/urix/hvem-skal-styre-kina-etter-xi-jinping___-1.18062575",
+      "pubDate": "2026-10-26T22:53:32+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/601b319451371f6b6b0e7c86247c006b98b6132e.jpg"
+    },
+    {
+      "title": "Arne var 12 år da han ble fanget av nazistene",
+      "link": "https://www.nrk.no/sorlandet/har-funnet-5000-glemte-krigsfanger-etter-andre-verdenskrig-1.18062013",
+      "pubDate": "2026-10-26T20:45:18+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/66a93307de81d1ddbafec717c6540b3d47246cf3.jpg"
+    },
+    {
+      "title": "Ingen prestisjepris til Bodø/Glimt - PSG ble årets klubb",
+      "link": "https://www.nrk.no/sport/bodo_glimt-gikk-glipp-av-historisk-utmerkelse-_-paris-saint-germain-karet-til-arets-klubb-i-verden-1.18065180",
       "pubDate": "2026-10-26T19:00:07+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/4142c9810c1427c5816e8662fa1817b5150c8d4d.jpg"
-    },
-    {
-      "title": "Gullballen-forvirring: Avslørte dei topp tre?",
-      "link": "https://www.nrk.no/sport/gullballen-forvirring_-avslorte-dei-topp-tre_-1.18065356",
-      "pubDate": "2026-10-26T18:40:11+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/fca97dcecc0ee79618ab6e4b4a233e8da3e5fa6d.jpg"
-    },
-    {
-      "title": "Den skjulte kampen om Gullballen",
-      "link": "https://www.nrk.no/sport/xl/thore-haugstad_-den-skjulte-kampen-om-gullballen-1.18063968",
-      "pubDate": "2026-10-26T17:23:37+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/3e8cd8cd960ef331c4bb6483fa78e2ada61f6c16.jpg"
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/5688b17a432a0b14c2485e990d4c5602057e4455.jpg"
     }
   ]
 }
