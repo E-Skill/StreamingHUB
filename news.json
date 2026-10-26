@@ -1,22 +1,24 @@
 {
-  "updatedAt": "2026-10-26T13:31:47.108625+00:00",
+  "updatedAt": "2026-10-26T19:32:54.810560+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Flere hundre evakuert i Oslo sentrum  – frykter krankollaps",
-      "link": "https://www.nrk.no/stor-oslo/flere-hundre-evakuert-i-oslo-sentrum--_-frykter-krankollaps-1.18064857",
-      "pubDate": "2026-10-26T11:26:54+00:00"
+      "title": "Glimt kan bli historiske: – De fortjener det",
+      "link": "https://www.nrk.no/sport/mener-bodo_glimt-bor-vinne-prestisjepris-1.18065180",
+      "pubDate": "2026-10-26T19:00:07+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/4142c9810c1427c5816e8662fa1817b5150c8d4d.jpg"
     },
     {
-      "title": "Sparta skylder 21 millioner: Rapport sendt til politiet",
-      "link": "https://www.nrk.no/ostfold/sparta-skylder-21-millioner_-rapport-sendt-til-politiet_-1.18064834",
-      "pubDate": "2026-10-26T11:19:42+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/988edd7a290a327b954683a18a4369b6ba04663e.jpg"
+      "title": "Gullballen-forvirring: Avslørte dei topp tre?",
+      "link": "https://www.nrk.no/sport/gullballen-forvirring_-avslorte-dei-topp-tre_-1.18065356",
+      "pubDate": "2026-10-26T18:40:11+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/fca97dcecc0ee79618ab6e4b4a233e8da3e5fa6d.jpg"
     },
     {
-      "title": "Frykter krankollaps i Oslo sentrum: – Fikk ned kranføreren umiddelbart",
-      "link": "https://www.nrk.no/stor-oslo/sperrer-av-omrade-i-oslo-sentrum-_-frykter-krankollaps-1.18064975",
-      "pubDate": "2026-10-26T11:35:41+00:00"
+      "title": "Den skjulte kampen om Gullballen",
+      "link": "https://www.nrk.no/sport/xl/thore-haugstad_-den-skjulte-kampen-om-gullballen-1.18063968",
+      "pubDate": "2026-10-26T17:23:37+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/3e8cd8cd960ef331c4bb6483fa78e2ada61f6c16.jpg"
     }
   ]
 }
