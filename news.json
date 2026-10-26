@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-10-26T01:26:03.661995+00:00",
+  "updatedAt": "2026-10-26T06:35:10.683978+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Nytt vannbrudd i Sør-Varanger",
-      "link": "https://www.nrk.no/nyheter/nytt-vannbrudd-i-sor-varanger-1.18064546",
-      "pubDate": "2026-10-25T23:49:47+00:00"
+      "title": "Mistenker drap – én pågrepet på Ringerike",
+      "link": "https://www.nrk.no/buskerud/mistenker-drap-_-en-pagrepet-pa-ringerike-1.18064633",
+      "pubDate": "2026-10-26T06:01:01+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/2d29fd1b4366839e4d25781c1cffc7ed59c8ec87.jpg"
     },
     {
-      "title": "Skulle berre ein snartur på butikken: Vart låst inne",
-      "link": "https://www.nrk.no/nordland/blei-last-inne-pa-matbutikk-i-vesteralen-1.18064348",
-      "pubDate": "2026-10-25T19:47:45+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/5ebc24b8b5c0c52530b1814ee7e52a1cf5da2652.jpg"
+      "title": "Én pågrepet etter mistenkt drap på Ringerike",
+      "link": "https://www.nrk.no/nyheter/en-pagrepet-etter-mistenkt-drap-pa-ringerike-1.18064611",
+      "pubDate": "2026-10-26T05:11:47+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/2d29fd1b4366839e4d25781c1cffc7ed59c8ec87.jpg"
     },
     {
-      "title": "E6 stengt mellom Lillehammer og Biri",
-      "link": "https://www.nrk.no/innlandet/e6-stengt-mellom-lillehammer-og-biri-1.18064498",
-      "pubDate": "2026-10-25T19:52:57+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1d82da2a4086a5139fbf6214536bde826e5cb163.jpg"
+      "title": "Haaland kjempar om å bli verdas beste: – Som målskårar så er det ingen som kan måle seg",
+      "link": "https://www.nrk.no/sport/erling-braut-haaland-kan-vinne-gullballen-1.18063965",
+      "pubDate": "2026-10-26T05:00:47+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ddf0c635720d6658604a35d5e1559a873f2e1e11.jpg"
     }
   ]
 }
