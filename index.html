@@ -727,14 +727,12 @@
 <body>
     <div class="page">
         <div class="layout">
-            <aside class="weather-area">
+ <aside class="weather-area" style="cursor: pointer;" onclick="openYrCityLink()" title="Trykk for å åpne Yr">
                 <div class="weather-head">
-                  <span>Været</span>
-                    <a class="weather-head" href="https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-72837/Norge/Oslo/Oslo/Oslo" target="_blank">
-                        </a>
+                    <span>Været (Trykk for Yr)</span>
                 </div>
 
-                <select id="city-selector" class="city-select" onchange="changeCity(this.value)">
+                <select id="city-selector" class="city-select" onchange="event.stopPropagation(); changeCity(this.value)">
                     <option value="Athen">Athen</option>
                     <option value="Bergen">Bergen</option>
                     <option value="Berlin">Berlin</option>
@@ -787,7 +785,7 @@
                         <div id="hourly-forecast" class="hourly-forecast" aria-hidden="false"></div>
                     </div>
 
-                    <div class="weather-updated">
+                    <div class="weather-updated" onclick="event.stopPropagation()">
                         <div style="display:flex;flex-direction:column;align-items:flex-start">
                             <span id="weather-updated">Oppdaterer...</span>
                         </div>
@@ -1212,6 +1210,29 @@
 
         let detailOriginModal = 'recipe-modal';
 
+
+
+// Yr-lenker for byene
+        const YR_LINKS = {
+            'Athen': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-264371/Hellas/Attica/Athens',
+            'Bergen': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-92416/Norge/Vestland/Bergen/Bergen',
+            'Berlin': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-2950159/Tyskland/Berlin/Berlin',
+            'London': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-2643743/Storbritannia/England/Greater%20London/London',
+            'Madrid': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-3117735/Spania/Madrid/Madrid',
+            'Oslo': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-72837/Norge/Oslo/Oslo/Oslo',
+            'Paris': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-2968815/Frankrike/Ile-de-France/Paris',
+            'Tokyo': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-1850147/Japan/Tokyo/Tokyo',
+            'Trondheim': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-150582/Norge/Tr%C3%B8ndelag/Trondheim/Trondheim',
+            'Tromsø': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-305409/Norge/Troms/Troms%C3%B8/Troms%C3%B8',
+            'Washington': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-4140963/USA/District%20of%20Columbia/Washington'
+        };
+
+        function openYrCityLink() {
+            const yrUrl = YR_LINKS[currentCityName] || 'https://www.yr.no';
+            window.open(yrUrl, '_blank');
+        }
+
+        
         function changeCity(cityName) {
             if (CITIES[cityName]) {
                 currentCityName = cityName;
