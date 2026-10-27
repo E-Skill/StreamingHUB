@@ -1,24 +1,24 @@
 {
-  "updatedAt": "2026-10-27T18:58:50.214931+00:00",
+  "updatedAt": "2026-10-27T22:51:47.436050+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "19-åring sendte ut Arsenal: – Opp i hjørnet, deretter løp jeg bare",
+      "link": "https://www.nrk.no/sport/kjempesmell-for-arsenal-_-sensasjonelt-cuptap-mot-niva-fire-lag-1.18066599",
+      "pubDate": "2026-10-27T20:52:48+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f335edb0ff61b25e67c46b27b19281025e5c8974.jpg"
+    },
+    {
+      "title": "Vannet tilbake i Kirkenes",
+      "link": "https://www.nrk.no/tromsogfinnmark/vannet-tilbake-i-kirkenes-1.18066561",
+      "pubDate": "2026-10-27T19:34:51+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9c597944a93413c31e991f3fdc7676e277a82208.jpg"
+    },
     {
       "title": "Denne kjempegjedda gikk på kroken",
       "link": "https://www.nrk.no/sorlandet/fikk-kjempegjedde-pa-16_8-kilo-1.18066238",
       "pubDate": "2026-10-27T17:22:38+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/cd6ddf9ee50fa29ca3449c86ae7e05c090c82115.jpg"
-    },
-    {
-      "title": "Harde sanksjonar etter Åråsen-bråket: Supporterar utestengde i opptil 50 kampar",
-      "link": "https://www.nrk.no/sport/harde-sanksjonar-fra-valerenga-etter-arasen-braket_-supporterar-utestengde-i-opptil-50-kampar-1.18064167",
-      "pubDate": "2026-10-27T17:48:11+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/6bdf5ba9a655f818b3dd4196f0c2125a44382312.jpg"
-    },
-    {
-      "title": "Full brann i bolig i Horten – uavklart om noen er inne",
-      "link": "https://www.nrk.no/vestfoldogtelemark/full-bygningsbrann-i-horten-1.18066463",
-      "pubDate": "2026-10-27T16:59:00+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/729855472cf3ce401867b2a0b128adb7b3c53f01.jpg"
     }
   ]
 }
