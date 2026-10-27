@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-10-26T23:19:12.644523+00:00",
+  "updatedAt": "2026-10-27T07:48:09.689339+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Byter programleiar i Mesternes mester – her er dei nye deltakarane",
+      "link": "https://www.nrk.no/sport/tete-lidbom-blir-ny-programleiar-for-mesternes-mester-1.18056825",
+      "pubDate": "2026-10-27T05:21:00+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9c58af9e8e0abc2a1fd7172d00e83d8bc1f92f34.jpg"
+    },
+    {
+      "title": "Brann i enebolig på Nesodden",
+      "link": "https://www.nrk.no/nyheter/brann-i-enebolig-pa-nesodden-1.18065590",
+      "pubDate": "2026-10-27T02:31:32+00:00"
+    },
     {
       "title": "Hvem skal styre Kina etter Xi Jinping?",
       "link": "https://www.nrk.no/urix/hvem-skal-styre-kina-etter-xi-jinping___-1.18062575",
       "pubDate": "2026-10-26T22:53:32+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/601b319451371f6b6b0e7c86247c006b98b6132e.jpg"
-    },
-    {
-      "title": "Arne var 12 år da han ble fanget av nazistene",
-      "link": "https://www.nrk.no/sorlandet/har-funnet-5000-glemte-krigsfanger-etter-andre-verdenskrig-1.18062013",
-      "pubDate": "2026-10-26T20:45:18+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/66a93307de81d1ddbafec717c6540b3d47246cf3.jpg"
-    },
-    {
-      "title": "Ingen prestisjepris til Bodø/Glimt - PSG ble årets klubb",
-      "link": "https://www.nrk.no/sport/bodo_glimt-gikk-glipp-av-historisk-utmerkelse-_-paris-saint-germain-karet-til-arets-klubb-i-verden-1.18065180",
-      "pubDate": "2026-10-26T19:00:07+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/5688b17a432a0b14c2485e990d4c5602057e4455.jpg"
     }
   ]
 }
