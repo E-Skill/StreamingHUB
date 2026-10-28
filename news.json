@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-10-28T19:46:01.594576+00:00",
+  "updatedAt": "2026-10-28T23:41:39.514653+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Russland får VM: – Krystallklar på at vi ikkje sender utøvarar",
+      "link": "https://www.nrk.no/sport/det-internasjonale-vektloftarforbundet-gir-vm-til-russland-_-noreg-reagerer-1.18065823",
+      "pubDate": "2026-10-28T19:57:35+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/4ec6514e8dc826cb195cd935cf89b9a63259124c.jpg"
+    },
     {
       "title": "– Pappa er ikkje redd meg",
       "link": "https://www.nrk.no/dokumentar/xl/_-pappa-er-ikkje-redd-meg-1.18043426",
@@ -13,12 +19,6 @@
       "link": "https://www.nrk.no/nyheter/melding-om-mulig-skyting-i-drammen-1.18067450",
       "pubDate": "2026-10-28T18:06:58+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/b166bc7d3e678cf551c6ba6e38dd44b9b2986ac6.jpg"
-    },
-    {
-      "title": "Midlertidig stans av omstridte Meta-endringer for norske mediehus",
-      "link": "https://www.nrk.no/nyheter/midlertidig-stans-av-omstridte-meta-endringer-for-norske-mediehus-1.18067443",
-      "pubDate": "2026-10-28T16:57:46+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/69f090282ded94618d85130622e5b4985a5a6874.jpg"
     }
   ]
 }
