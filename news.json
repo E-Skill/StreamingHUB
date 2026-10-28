@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-10-28T07:39:48.811439+00:00",
+  "updatedAt": "2026-10-28T14:29:34.368647+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "SAS-streik i gang",
-      "link": "https://www.nrk.no/nyheter/sas-streik-i-gang-1.18066664",
-      "pubDate": "2026-10-28T05:12:08+00:00"
+      "title": "Første audiens alene som kronprinsesse – i nytt kontor på Slottet",
+      "link": "https://www.nrk.no/norge/her-holder-kronprinsesse-ingrid-alexandra-sin-forste-audiens-alene-som-kronprinsesse-1.18061833",
+      "pubDate": "2026-10-28T14:05:07+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1fa462c36aa006e523b3c5514611159908fe1f7b.jpg"
     },
     {
-      "title": "Slik gjør oljegigantens milliardsuksess lånet ditt dyrere",
-      "link": "https://www.nrk.no/rogaland/slik-pavirker-equinors-kvartalsresultat-deg_-oker-lonna_-men-utsetter-rentekuttet-pa-boliglanet-1.18064839",
-      "pubDate": "2026-10-28T05:46:15+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/567a87a98a2577f7afd881354670bba6e432a423.jpg"
+      "title": "Flavio Bolsonaro skal ha landet i Miami",
+      "link": "https://www.nrk.no/nyheter/flavio-bolsonaro-skal-ha-landet-i-miami-1.18067228",
+      "pubDate": "2026-10-28T13:33:11+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/25d379e8ca5835ee929fd0f4b68384111ee9bc83.jpg"
     },
     {
-      "title": "Fryktar elgen kan bli raudlista: – Heilt tomt",
-      "link": "https://www.nrk.no/vestfoldogtelemark/fryktar-elgen-kan-bli-raudlista-i-noreg-1.18062603",
-      "pubDate": "2026-10-28T04:12:59+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/b1f67b9b00d2cb46c0423ccd395b6c288e41faf4.jpg"
+      "title": "Første av sitt slag: Nekter å betale bot etter ulovlig TV-bruk",
+      "link": "https://www.nrk.no/buskerud/forste-av-sitt-slag_-nekter-a-betale-bot-etter-ulovlig-tv-bruk-1.18062654",
+      "pubDate": "2026-10-28T13:16:58+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/3e5db36eb9a0ccc2b1e3822cefeb254093f609d0.jpg"
     }
   ]
 }
