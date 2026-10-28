@@ -1,24 +1,24 @@
 {
-  "updatedAt": "2026-10-28T14:29:34.368647+00:00",
+  "updatedAt": "2026-10-28T19:46:01.594576+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Første audiens alene som kronprinsesse – i nytt kontor på Slottet",
-      "link": "https://www.nrk.no/norge/her-holder-kronprinsesse-ingrid-alexandra-sin-forste-audiens-alene-som-kronprinsesse-1.18061833",
-      "pubDate": "2026-10-28T14:05:07+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1fa462c36aa006e523b3c5514611159908fe1f7b.jpg"
+      "title": "– Pappa er ikkje redd meg",
+      "link": "https://www.nrk.no/dokumentar/xl/_-pappa-er-ikkje-redd-meg-1.18043426",
+      "pubDate": "2026-10-28T18:56:43+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/bd2a1e3dafccdcbf47ed50ebdf3f197cd65a4210.jpg"
     },
     {
-      "title": "Flavio Bolsonaro skal ha landet i Miami",
-      "link": "https://www.nrk.no/nyheter/flavio-bolsonaro-skal-ha-landet-i-miami-1.18067228",
-      "pubDate": "2026-10-28T13:33:11+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/25d379e8ca5835ee929fd0f4b68384111ee9bc83.jpg"
+      "title": "Melding om mulig skyting i Drammen",
+      "link": "https://www.nrk.no/nyheter/melding-om-mulig-skyting-i-drammen-1.18067450",
+      "pubDate": "2026-10-28T18:06:58+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/b166bc7d3e678cf551c6ba6e38dd44b9b2986ac6.jpg"
     },
     {
-      "title": "Første av sitt slag: Nekter å betale bot etter ulovlig TV-bruk",
-      "link": "https://www.nrk.no/buskerud/forste-av-sitt-slag_-nekter-a-betale-bot-etter-ulovlig-tv-bruk-1.18062654",
-      "pubDate": "2026-10-28T13:16:58+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/3e5db36eb9a0ccc2b1e3822cefeb254093f609d0.jpg"
+      "title": "Midlertidig stans av omstridte Meta-endringer for norske mediehus",
+      "link": "https://www.nrk.no/nyheter/midlertidig-stans-av-omstridte-meta-endringer-for-norske-mediehus-1.18067443",
+      "pubDate": "2026-10-28T16:57:46+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/69f090282ded94618d85130622e5b4985a5a6874.jpg"
     }
   ]
 }
