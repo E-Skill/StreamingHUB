@@ -1229,6 +1229,7 @@
 
         let currentAiOptions = [];
         let chosenRecipeData = null;
+        let seenAiRecipes = []; // Husker alle forslag som er vist i denne økten
 
         let detailOriginModal = 'recipe-modal';
 
@@ -1787,6 +1788,7 @@
         }
 
         function resetAiWizard() {
+            seenAiRecipes = []; // Nullstiller historikken når brukeren går tilbake til skjemaet
             document.getElementById('ai-step-form').style.display = 'block';
             document.getElementById('ai-step-choices').style.display = 'none';
             document.getElementById('ai-step-modify').style.display = 'none';
@@ -1816,7 +1818,8 @@
                 protein: protein || "AI velger fritt",
                 equipment: equipment,
                 ingredients: fullIngredients,
-                allergies: allergies
+                allergies: allergies,
+                previousRecipes: seenAiRecipes // Sender med listen over tidligere viste forslag
             };
 
             const generateBtn = document.getElementById('ai-generate-btn');
@@ -1827,7 +1830,7 @@
                 generateBtn.disabled = true;
             }
             if (refreshBtn) {
-                refreshBtn.innerHTML = `<span class="spinner"></span>Henter nye...`;
+                refreshBtn.innerHTML = `<span class="spinner"></span>Finner helt nye retter...`;
                 refreshBtn.disabled = true;
             }
 
@@ -1847,6 +1850,19 @@
                 if (!res.ok) throw new Error(data.error || "Klarte ikke generere retter");
 
                 currentAiOptions = data.recipes;
+
+                // Lagrer de nye forslagene i minnet slik at neste trykk på "Nye alternativer" unngår dem
+                if (Array.isArray(currentAiOptions)) {
+                    currentAiOptions.forEach(r => {
+                        if (r.title) {
+                            const entry = `${r.title} (${r.description || ''})`;
+                            if (!seenAiRecipes.includes(entry)) {
+                                seenAiRecipes.push(entry);
+                            }
+                        }
+                    });
+                }
+
                 renderAiOptionsList();
 
                 document.getElementById('ai-step-form').style.display = 'none';
