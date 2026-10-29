@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-10-29T02:51:39.275376+00:00",
+  "updatedAt": "2026-10-29T09:03:07.696830+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Bevæpnet politiaksjon i Vesterålen",
-      "link": "https://www.nrk.no/nyheter/bevaepnet-politiaksjon-i-vesteralen-1.18067655",
-      "pubDate": "2026-10-29T02:18:15+00:00"
+      "title": "Festmiddag i Spania avlyst etter togulykke",
+      "link": "https://www.nrk.no/nyheter/festmiddag-i-spania-avlyst-etter-togulykke-1.18067817",
+      "pubDate": "2026-10-29T08:41:19+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/611540af7c71f956df0e724fd12e4e225b80363a.jpg"
     },
     {
-      "title": "Russland får VM: – Krystallklar på at vi ikkje sender utøvarar",
-      "link": "https://www.nrk.no/sport/det-internasjonale-vektloftarforbundet-gir-vm-til-russland-_-noreg-reagerer-1.18065823",
-      "pubDate": "2026-10-28T19:57:35+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/4ec6514e8dc826cb195cd935cf89b9a63259124c.jpg"
+      "title": "67.000 ukrainere kan få nei til opphold i Norge: – Mange er bekymret",
+      "link": "https://www.nrk.no/trondelag/67.000-ukrainere-kan-fa-nei-til-opphold-i-norge_-_-mange-er-bekymret-1.18058626",
+      "pubDate": "2026-10-29T04:12:52+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a6cb99c985e3cdeb5d2e8debea1d3cf8c4425953.jpg"
     },
     {
-      "title": "– Pappa er ikkje redd meg",
-      "link": "https://www.nrk.no/dokumentar/xl/_-pappa-er-ikkje-redd-meg-1.18043426",
-      "pubDate": "2026-10-28T18:56:43+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/bd2a1e3dafccdcbf47ed50ebdf3f197cd65a4210.jpg"
+      "title": "Sammenstøt i Madrid etter togulykke",
+      "link": "https://www.nrk.no/nyheter/sammenstot-i-madrid-etter-togulykke-1.18067658",
+      "pubDate": "2026-10-29T03:10:51+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e78514d4278962ca71614d935c413f9468a9b6ee.jpg"
     }
   ]
 }
