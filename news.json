@@ -1,7 +1,12 @@
 {
-  "updatedAt": "2026-10-28T23:41:39.514653+00:00",
+  "updatedAt": "2026-10-29T02:51:39.275376+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Bevæpnet politiaksjon i Vesterålen",
+      "link": "https://www.nrk.no/nyheter/bevaepnet-politiaksjon-i-vesteralen-1.18067655",
+      "pubDate": "2026-10-29T02:18:15+00:00"
+    },
     {
       "title": "Russland får VM: – Krystallklar på at vi ikkje sender utøvarar",
       "link": "https://www.nrk.no/sport/det-internasjonale-vektloftarforbundet-gir-vm-til-russland-_-noreg-reagerer-1.18065823",
@@ -13,12 +18,6 @@
       "link": "https://www.nrk.no/dokumentar/xl/_-pappa-er-ikkje-redd-meg-1.18043426",
       "pubDate": "2026-10-28T18:56:43+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/bd2a1e3dafccdcbf47ed50ebdf3f197cd65a4210.jpg"
-    },
-    {
-      "title": "Melding om mulig skyting i Drammen",
-      "link": "https://www.nrk.no/nyheter/melding-om-mulig-skyting-i-drammen-1.18067450",
-      "pubDate": "2026-10-28T18:06:58+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/b166bc7d3e678cf551c6ba6e38dd44b9b2986ac6.jpg"
     }
   ]
 }
