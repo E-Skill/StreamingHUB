@@ -1,22 +1,23 @@
 {
-  "updatedAt": "2026-10-30T18:50:03.367242+00:00",
+  "updatedAt": "2026-10-30T22:42:21.073382+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Mann fraktet til sykehus med alvorlig skuddskade",
-      "link": "https://www.nrk.no/innlandet/mann-fraktet-til-sykehus-med-alvorlig-skuddskade-1.18069813",
-      "pubDate": "2026-10-30T18:28:35+00:00"
+      "title": "– Kan ikke noen bare si noe fint om meg?",
+      "link": "https://www.nrk.no/sport/zlatko-tripic-slar-tilbake-etter-kritikken-1.18069878",
+      "pubDate": "2026-10-30T21:38:07+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/37fb2fca9a021da28260253cb6e0e5885e43734c.jpg"
     },
     {
-      "title": "Mann fraktet til sykehus med skuddskade",
-      "link": "https://www.nrk.no/innlandet/mann-fraktet-til-sykehus-med-skuddskade-1.18069804",
-      "pubDate": "2026-10-30T18:24:55+00:00"
+      "title": "Nye Oslo-sykehus blir stadig dyrere - kan koste nesten 70 milliarder",
+      "link": "https://www.nrk.no/stor-oslo/nye-oslo-sykehus-blir-stadig-dyrere---kan-koste-nesten-70-milliarder-1.17653404",
+      "pubDate": "2026-10-30T21:24:13+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/328d8402815981eb6e8efd508992950ee4fcb7ed.jpg"
     },
     {
-      "title": "Enorm kort-forskjell mellom Glimt og Viking: – Absurde tall",
-      "link": "https://www.nrk.no/nordland/enorm-forskjell-mellom-glimt-og-viking_-_-absurde-tall-1.18069165",
-      "pubDate": "2026-10-30T14:08:09+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/d102d02207247cc34409dd33fd2108b1c963ea86.jpg"
+      "title": "Blodrød dag på Wall Street",
+      "link": "https://www.nrk.no/nyheter/blodrod-dag-pa-wall-street-1.18069874",
+      "pubDate": "2026-10-30T20:51:37+00:00"
     }
   ]
 }
