@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-10-29T21:04:01.970676+00:00",
+  "updatedAt": "2026-10-30T00:54:34.110119+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Mann omkom under militærøvelse",
+      "link": "https://www.nrk.no/trondelag/ulykke-pa-militaert-omrade-i-stjordal-1.18068913",
+      "pubDate": "2026-10-29T21:14:50+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a5d5efd83fba13d57d9cbaffa4a39860b6bb0144.jpg"
+    },
     {
       "title": "Fiskeri-redaktør om Økokrims storaksjon: – Jeg er sjokkert",
       "link": "https://www.nrk.no/nordland/fiskeri-redaktor-om-storaksjonen_-_-jeg-er-sjokkert-1.18068548",
@@ -13,12 +19,6 @@
       "link": "https://www.nrk.no/nyheter/skuespiller-patrick-stewart-er-dod_-86-ar-gammel-1.18068863",
       "pubDate": "2026-10-29T19:52:25+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/281a55734a7955f57dd390423d3bb6f33ac1fc1a.jpg"
-    },
-    {
-      "title": "Dronning Sonja kondolerte Spania: – Vil uttrykke mi djupaste medkjensle",
-      "link": "https://www.nrk.no/norge/dronning-sonja-kondolerte-offera-i-spania_-_-vil-uttrykke-mi-djupaste-medkjensle-1.18067903",
-      "pubDate": "2026-10-29T19:51:40+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ac0eb943c3af21d092e458e52f557d6851a020dc.jpg"
     }
   ]
 }
