@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-10-31T07:39:47.320330+00:00",
+  "updatedAt": "2026-10-31T13:52:53.821417+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Tilbake på start",
-      "link": "https://www.nrk.no/sport/xl/idretten-holdt-pa-a-ta-livet-av-mia-rusthen-_-na-haper-hun-a-inspirere-i-hvert-fall-en-person-1.18040395",
-      "pubDate": "2026-10-31T07:20:39+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/db302dcd6716e2919a12142a25e4ee71eccddfa1.jpg"
+      "title": "Sviende nederlag for Bodø/Glimt-styret: Omstridt navneforslag ble nedstemt",
+      "link": "https://www.nrk.no/nordland/sviende-nederlag-for-bodo_glimt-styret_-omstridt-navneforslag-ble-nedstemt-1.18070000",
+      "pubDate": "2026-10-31T11:55:40+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c2bc561ee768d4b50a1149011439d22cebde5ad8.jpg"
     },
     {
-      "title": "Avis: Angrep mot ukrainsk energianlegg",
-      "link": "https://www.nrk.no/nyheter/avis_-angrep-mot-ukrainsk-energianlegg-1.18069900",
-      "pubDate": "2026-10-30T23:33:35+00:00"
+      "title": "Søndag blir månedskortet billigere nok en gang – enkeltbilletten er like dyr",
+      "link": "https://www.nrk.no/stor-oslo/sondag-blir-manedskortet-enda-billigere-_-enkeltbilletten-er-like-dyr-1.18067233",
+      "pubDate": "2026-10-31T11:05:37+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/260f1bd6861ac3c041352e01e87fa80f81cf8971.jpg"
     },
     {
-      "title": "– Kan ikke noen bare si noe fint om meg?",
-      "link": "https://www.nrk.no/sport/zlatko-tripic-slar-tilbake-etter-kritikken-1.18069878",
-      "pubDate": "2026-10-30T21:38:07+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/37fb2fca9a021da28260253cb6e0e5885e43734c.jpg"
+      "title": "Kjærestepar overlevde dødsulykke: Måtte knuse seg ut av brennende nattbuss",
+      "link": "https://www.nrk.no/sapmi/norsk-kjaerestepar-overlevde-dodsulykke_-matte-knuse-seg-ut-av-brennende-nattbuss-1.18069454",
+      "pubDate": "2026-10-31T10:09:18+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/21b5c131d9209c65ef6eff93877c4d17f8a3fd20.jpg"
     }
   ]
 }
