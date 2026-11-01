@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-01T06:29:29.759488+00:00",
+  "updatedAt": "2026-11-01T13:41:25.343193+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Trump: – Bolsonaro kan bli så lenge han vil",
-      "link": "https://www.nrk.no/nyheter/trump_-_-bolsonaro-kan-bli-sa-lenge-han-vil-1.18070361",
-      "pubDate": "2026-11-01T03:44:40+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/19f8e0f73ba0b6549da3228777b679cbf0e0de60.jpg"
+      "title": "Magnus (30) er narkodealer på si",
+      "link": "https://www.nrk.no/innlandet/xl/_magnus_-har-solgt-narkotika-i-15-ar-_-mener-det-er-vanskelig-for-politiet-a-ha-kontroll-1.17212721",
+      "pubDate": "2026-11-01T13:28:55+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f426ceae7ea9b94885df48eab645f67ed9d80b13.jpg"
     },
     {
-      "title": "Tenåring påkjørt av elsparkesyklist – sendt til sykehus",
-      "link": "https://www.nrk.no/nyheter/tenaring-pakjort-av-elsparkesyklist-_-sendt-til-sykehus-1.18070349",
-      "pubDate": "2026-11-01T00:18:21+00:00"
+      "title": "Vart seriemeister etter maktdemonstrasjon - no ventar gullfeiring i Bergen",
+      "link": "https://www.nrk.no/vestland/brann-sk-kvinner-er-seriemeistrar-i-toppserien-1.18070055",
+      "pubDate": "2026-11-01T12:49:56+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0cb8236ff8168af708adeab24774981c0f5414f7.jpg"
     },
     {
-      "title": "En gjenglemt herrebokser ble starten på Annikens nye liv",
-      "link": "https://www.nrk.no/sorlandet/en-gjenglemt-herrebokser-ble-starten-pa-annikens-nye-liv-1.18056976",
-      "pubDate": "2026-10-31T21:45:14+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/3b6192f5779300ff777ed1d8eca94d136df723b8.jpg"
+      "title": "Jørn-Bjørn har brukt samme bukse i et år",
+      "link": "https://www.nrk.no/sorlandet/jorn-bjorn-er-verdensmester-i-jeans_-har-brukt-samme-bukse-i-et-ar-1.18066831",
+      "pubDate": "2026-11-01T09:38:08+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/4cdb604b2eb443d1682e2153b35308a220b123b1.jpg"
     }
   ]
 }
