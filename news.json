@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-10-31T21:28:01.403235+00:00",
+  "updatedAt": "2026-11-01T00:16:09.364144+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "En gjenglemt herrebokser ble starten på Annikens nye liv",
+      "link": "https://www.nrk.no/sorlandet/en-gjenglemt-herrebokser-ble-starten-pa-annikens-nye-liv-1.18056976",
+      "pubDate": "2026-10-31T21:45:14+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/3b6192f5779300ff777ed1d8eca94d136df723b8.jpg"
+    },
     {
       "title": "Nytt system skal redde minst fem flere liv i året",
       "link": "https://www.nrk.no/rogaland/systemet-_samvirke-forst_-hos-hovedredningssentralen-skal-redde-fem-flere-liv-i-aret-1.18065337",
@@ -13,12 +19,6 @@
       "link": "https://www.nrk.no/sport/ufornuft-og-folelser-1.18070276",
       "pubDate": "2026-10-31T21:03:27+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/53c2504509d20b46d9248f915000f6ab73b0c411.jpg"
-    },
-    {
-      "title": "Etterforsker navnekrøll i Alaska før mellomvalget",
-      "link": "https://www.nrk.no/urix/trump-vil-utestenge-demokratisk-kandidat-i-alaska-i-navnekrangel-sak-1.18069928",
-      "pubDate": "2026-10-31T20:26:29+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/83c65afb3bc3c671b3b33ff02066356b3064b6e8.jpg"
     }
   ]
 }
