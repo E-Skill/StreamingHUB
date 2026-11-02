@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-11-01T22:24:49.067810+00:00",
+  "updatedAt": "2026-11-02T01:37:55.739274+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Tidenes yngste i tårer over VM-gull – men for «feil» team",
+      "link": "https://www.nrk.no/sport/andrea-kimi-antonelli-blir-verdensmester-i-formel-1-1.18070787",
+      "pubDate": "2026-11-01T22:24:26+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/26a691e755e231b4e64b72fb57149148125f1fe5.jpg"
+    },
     {
       "title": "Dette kvier jeg meg for å fortelle fra Midtøsten",
       "link": "https://www.nrk.no/urix/dette-kvier-jeg-meg-for-a-fortelle-fra-midtosten-1.18068309",
@@ -13,12 +19,6 @@
       "link": "https://www.nrk.no/sport/kilder-til-nrk_-fis-har-fatt-et-uventet-bolsjunov-dilemma-1.18070456",
       "pubDate": "2026-11-01T20:34:42+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0f59a338748b77bfff44774f2bd2fe2be9012516.jpg"
-    },
-    {
-      "title": "Ansatt ved NTNU omkom i Rindal",
-      "link": "https://www.nrk.no/trondelag/ansatt-ved-ntnu-omkom-i-rindal-1.18070581",
-      "pubDate": "2026-11-01T19:32:14+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ed630b08960357da93e59055d5b4bb9babd5ba6e.jpg"
     }
   ]
 }
