@@ -1,7 +1,12 @@
 {
-  "updatedAt": "2026-11-02T01:37:55.739274+00:00",
+  "updatedAt": "2026-11-02T08:15:36.728879+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Minst 12 utlendinger døde i togulykken i Spania",
+      "link": "https://www.nrk.no/nyheter/minst-12-utlendinger-dode-i-togulykken-i-spania-1.18070859",
+      "pubDate": "2026-11-02T03:49:26+00:00"
+    },
     {
       "title": "Tidenes yngste i tårer over VM-gull – men for «feil» team",
       "link": "https://www.nrk.no/sport/andrea-kimi-antonelli-blir-verdensmester-i-formel-1-1.18070787",
@@ -13,12 +18,6 @@
       "link": "https://www.nrk.no/urix/dette-kvier-jeg-meg-for-a-fortelle-fra-midtosten-1.18068309",
       "pubDate": "2026-11-01T21:22:28+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a26ebfc8fcb1c3d3f1e9963bd7af9d5aa115b39b.jpg"
-    },
-    {
-      "title": "Kilder til NRK: FIS frykter Russland-blemme – kan føre til Bolsjunov-retur",
-      "link": "https://www.nrk.no/sport/kilder-til-nrk_-fis-har-fatt-et-uventet-bolsjunov-dilemma-1.18070456",
-      "pubDate": "2026-11-01T20:34:42+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0f59a338748b77bfff44774f2bd2fe2be9012516.jpg"
     }
   ]
 }
