@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-11-02T08:15:36.728879+00:00",
+  "updatedAt": "2026-11-02T18:36:11.530001+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Minst 12 utlendinger døde i togulykken i Spania",
-      "link": "https://www.nrk.no/nyheter/minst-12-utlendinger-dode-i-togulykken-i-spania-1.18070859",
-      "pubDate": "2026-11-02T03:49:26+00:00"
+      "title": "Pasient døde: Innrømmer dårlig vurdering",
+      "link": "https://www.nrk.no/tromsogfinnmark/varsel_-pasienten-klarte-ikke-a-ga-til-ambulansen-_-ble-utskrevet-likevel-_-dode-fa-dager-senere-1.18036340",
+      "pubDate": "2026-11-02T18:22:12+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/8508af2400e9a4db19079339201ed48d35dc3f60.jpg"
     },
     {
-      "title": "Tidenes yngste i tårer over VM-gull – men for «feil» team",
-      "link": "https://www.nrk.no/sport/andrea-kimi-antonelli-blir-verdensmester-i-formel-1-1.18070787",
-      "pubDate": "2026-11-01T22:24:26+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/26a691e755e231b4e64b72fb57149148125f1fe5.jpg"
+      "title": "Minst 24 drept i russiske angrep mot ukrainsk landsby",
+      "link": "https://www.nrk.no/nyheter/minst-24-drept-i-russiske-angrep-mot-ukrainsk-landsby-1.18071637",
+      "pubDate": "2026-11-02T17:19:22+00:00"
     },
     {
-      "title": "Dette kvier jeg meg for å fortelle fra Midtøsten",
-      "link": "https://www.nrk.no/urix/dette-kvier-jeg-meg-for-a-fortelle-fra-midtosten-1.18068309",
-      "pubDate": "2026-11-01T21:22:28+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a26ebfc8fcb1c3d3f1e9963bd7af9d5aa115b39b.jpg"
+      "title": "Øvrebø ut i bok – Røkke slår tilbake: – Ukultur",
+      "link": "https://www.nrk.no/sport/tore-ovrebo-ut-mot-rokke-i-ny-bok-1.18069733",
+      "pubDate": "2026-11-02T17:08:05+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/21902d57c6ff3fe4811e4153efa42b7694b8d432.jpg"
     }
   ]
 }
