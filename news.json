@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-03T01:13:58.945167+00:00",
+  "updatedAt": "2026-11-03T07:54:41.423808+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Full jubel: FK Haugesund klare for Eliteserien",
-      "link": "https://www.nrk.no/rogaland/full-jubel_-fk-haugesund-klare-for-eliteserien-1.18071730",
-      "pubDate": "2026-11-02T20:52:20+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/5e31199e4a5c1339565fa308f9141d57bc72743b.jpg"
+      "title": "Fagforbundet varsler politisk streik for Posten",
+      "link": "https://www.nrk.no/nyheter/fagforbundet-varsler-politisk-streik-for-posten-1.18071828",
+      "pubDate": "2026-11-03T06:39:43+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0309ceb92969e609c3bcf0e0de4666d87c1ddfef.jpg"
     },
     {
-      "title": "Langar ut etter kontroversiell avtale for «moteidrett»: – Noko drit",
-      "link": "https://www.nrk.no/sport/hyrox-inngar-samarbeidsavtale-med-det-internasjonale-triatlonforbundet-1.18069428",
-      "pubDate": "2026-11-02T20:05:43+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/492764f60528181b3c04cacdccc6766bcfd00646.jpg"
+      "title": "NRK-kartlegging: To av tre barn i fengsel er født i Norge",
+      "link": "https://www.nrk.no/ostfold/nrk-kartlegging_-to-av-tre-barn-i-fengsel-er-fodt-i-norge-1.18065016",
+      "pubDate": "2026-11-03T06:00:01+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/efc9c5f496bef3f80ef17b1e2fc8b68906c7e04b.jpg"
     },
     {
-      "title": "Fikk monstergjedde – så beit det på nytt",
-      "link": "https://www.nrk.no/sorlandet/fikk-monstergjedde-_-sa-beit-det-pa-nytt-1.18071601",
-      "pubDate": "2026-11-02T20:00:15+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a6945369b5b85331de801feb27aee4b46c79f70b.jpg"
+      "title": "Amerikanske medier: Nytt angrep mot Iran",
+      "link": "https://www.nrk.no/nyheter/amerikanske-medier_-nytt-angrep-mot-iran-1.18071791",
+      "pubDate": "2026-11-03T01:56:35+00:00"
     }
   ]
 }
