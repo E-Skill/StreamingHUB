@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-03T21:14:59.049708+00:00",
+  "updatedAt": "2026-11-04T01:22:38.372720+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Slakter Manchester United etter grusom start: – Utrolig hvor langt de har falt",
-      "link": "https://www.nrk.no/sport/manchester-united-i-fritt-fall-_-shearer-slar-alarm-1.18072849",
+      "title": "Brann i firemannsbolig i Hamar",
+      "link": "https://www.nrk.no/nyheter/brann-i-firemannsbolig-i-hamar-1.18072929",
+      "pubDate": "2026-11-04T00:57:10+00:00"
+    },
+    {
+      "title": "Tafatt Bodø/Glimt: – De får ikke til noen ting",
+      "link": "https://www.nrk.no/sport/mesterligaen_-tafatt-bodo_glimt-tok-ett-poeng-mot-lille-1.18072822",
+      "pubDate": "2026-11-03T21:48:48+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/d622895199a8e1403d669ccc5cffaa86819633de.jpg"
+    },
+    {
+      "title": "Carrick hyllet fansen etter Mesterliga-drama: – De er desperate",
+      "link": "https://www.nrk.no/sport/mirakel-comeback-for-carricks-manchester-united_-_-fansen-bar-oss_gjennom-kampen-1.18072849",
       "pubDate": "2026-11-03T20:49:21+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/574ce6c7adf89ceba4e324ab8d8962a7502cf161.jpg"
-    },
-    {
-      "title": "7500 høner avlivet etter smitteutbrudd på Jæren: Innfører portforbud i stort område",
-      "link": "https://www.nrk.no/rogaland/7500-honer-avlivet-etter-smitteutbrudd-pa-jaeren_-innforer-portforbud-i-stort-omrade-1.18072752",
-      "pubDate": "2026-11-03T19:45:21+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/dd284d4aaf7602b4a95fe617062aedd7a6b965e2.jpg"
-    },
-    {
-      "title": "Menneskehandelssak må gjennomføres på nytt etter at forsvarer ble pågrepet",
-      "link": "https://www.nrk.no/vestfoldogtelemark/menneskehandelssak-ma-gjennomfores-pa-nytt-etter-at-forsvarer-ble-pagrepet-1.18071708",
-      "pubDate": "2026-11-03T17:21:15+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f237af290582756173bdc25deefc17d646c45aae.jpg"
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/6336f37969a5b99dcccc71ce44ccebb1304f3288.jpg"
     }
   ]
 }
