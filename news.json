@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-04T07:38:40.962521+00:00",
+  "updatedAt": "2026-11-04T15:44:48.688060+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Abdul El-Sayed vinner i Michigan",
-      "link": "https://www.nrk.no/nyheter/abdul-el-sayed-vinner-i-michigan-1.18073068",
-      "pubDate": "2026-11-04T07:28:57+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/14cb050c1e04fa19941e53e2f47eb95bfe9985d9.jpg"
+      "title": "Denne løsningen er uaktuell for Solbakken: – Krever at du legger vekk egoet",
+      "link": "https://www.nrk.no/sport/bjarte-lunde-aarsheim-og-mortens-jensens-losning-er-uaktuell-for-solbakken_-_-alt-ma-diskuteres-1.18072528",
+      "pubDate": "2026-11-04T15:40:55+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/38421ce974733813ad82286f82c22efd949e788f.jpg"
     },
     {
-      "title": "Forsinkelser på alle T-baner",
-      "link": "https://www.nrk.no/stor-oslo/forsinkelser-pa-alle-t-baner-1.18073057",
-      "pubDate": "2026-11-04T06:30:19+00:00"
+      "title": "Paragliderulykke i Rogaland – person alvorlig skadet",
+      "link": "https://www.nrk.no/rogaland/paragliderulykke-i-rogaland-_-en-person-alvorlig-skadet-1.18073770",
+      "pubDate": "2026-11-04T15:01:42+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/28a688959445867ca0ae1382266020f8fa563513.jpg"
     },
     {
-      "title": "Advarer om svindel-kappløp: Den nye målskiva er bedriftsledere",
-      "link": "https://www.nrk.no/rogaland/sparebank-1-sor-norge-advarer-om-svindel-mot-bedriftsledere-1.18065705",
-      "pubDate": "2026-11-04T06:04:06+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0c39bcd67e7508a4617648307ad87abf31b772fc.jpg"
+      "title": "Høiby blir fortsatt varetektsfengslet",
+      "link": "https://www.nrk.no/nyheter/hoiby-blir-fortsatt-varetektsfengslet--1.18073687",
+      "pubDate": "2026-11-04T14:13:11+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ed818bbcf3408dfd131e12a529d8495c779cd36e.jpg"
     }
   ]
 }
