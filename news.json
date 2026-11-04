@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-11-04T01:22:38.372720+00:00",
+  "updatedAt": "2026-11-04T07:38:40.962521+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Brann i firemannsbolig i Hamar",
-      "link": "https://www.nrk.no/nyheter/brann-i-firemannsbolig-i-hamar-1.18072929",
-      "pubDate": "2026-11-04T00:57:10+00:00"
+      "title": "Abdul El-Sayed vinner i Michigan",
+      "link": "https://www.nrk.no/nyheter/abdul-el-sayed-vinner-i-michigan-1.18073068",
+      "pubDate": "2026-11-04T07:28:57+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/14cb050c1e04fa19941e53e2f47eb95bfe9985d9.jpg"
     },
     {
-      "title": "Tafatt Bodø/Glimt: – De får ikke til noen ting",
-      "link": "https://www.nrk.no/sport/mesterligaen_-tafatt-bodo_glimt-tok-ett-poeng-mot-lille-1.18072822",
-      "pubDate": "2026-11-03T21:48:48+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/d622895199a8e1403d669ccc5cffaa86819633de.jpg"
+      "title": "Forsinkelser på alle T-baner",
+      "link": "https://www.nrk.no/stor-oslo/forsinkelser-pa-alle-t-baner-1.18073057",
+      "pubDate": "2026-11-04T06:30:19+00:00"
     },
     {
-      "title": "Carrick hyllet fansen etter Mesterliga-drama: – De er desperate",
-      "link": "https://www.nrk.no/sport/mirakel-comeback-for-carricks-manchester-united_-_-fansen-bar-oss_gjennom-kampen-1.18072849",
-      "pubDate": "2026-11-03T20:49:21+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/6336f37969a5b99dcccc71ce44ccebb1304f3288.jpg"
+      "title": "Advarer om svindel-kappløp: Den nye målskiva er bedriftsledere",
+      "link": "https://www.nrk.no/rogaland/sparebank-1-sor-norge-advarer-om-svindel-mot-bedriftsledere-1.18065705",
+      "pubDate": "2026-11-04T06:04:06+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0c39bcd67e7508a4617648307ad87abf31b772fc.jpg"
     }
   ]
 }
