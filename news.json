@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-04T15:44:48.688060+00:00",
+  "updatedAt": "2026-11-04T21:30:46.112476+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Denne løsningen er uaktuell for Solbakken: – Krever at du legger vekk egoet",
-      "link": "https://www.nrk.no/sport/bjarte-lunde-aarsheim-og-mortens-jensens-losning-er-uaktuell-for-solbakken_-_-alt-ma-diskuteres-1.18072528",
-      "pubDate": "2026-11-04T15:40:55+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/38421ce974733813ad82286f82c22efd949e788f.jpg"
+      "title": "VG: Oslo kutter antall elsparkesykler og hever aldersgrensen",
+      "link": "https://www.nrk.no/nyheter/vg_-oslo-kutter-antall-elsparkesykler-og-hever-aldersgrensen-1.18074020",
+      "pubDate": "2026-11-04T20:58:18+00:00"
     },
     {
-      "title": "Paragliderulykke i Rogaland – person alvorlig skadet",
-      "link": "https://www.nrk.no/rogaland/paragliderulykke-i-rogaland-_-en-person-alvorlig-skadet-1.18073770",
-      "pubDate": "2026-11-04T15:01:42+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/28a688959445867ca0ae1382266020f8fa563513.jpg"
+      "title": "Aleksander (22) om den nye jobben: – Det gir livet mening",
+      "link": "https://www.nrk.no/sorlandet/aleksander-_22_-fikk-jobb-gjennom-ungdomsprogrammet-1.18052385",
+      "pubDate": "2026-11-04T19:36:41+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a81a17ed8b9ae4800a3facef98fb0df8864718d0.jpg"
     },
     {
-      "title": "Høiby blir fortsatt varetektsfengslet",
-      "link": "https://www.nrk.no/nyheter/hoiby-blir-fortsatt-varetektsfengslet--1.18073687",
-      "pubDate": "2026-11-04T14:13:11+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ed818bbcf3408dfd131e12a529d8495c779cd36e.jpg"
+      "title": "16-åring planla å sende terrorangrep mot barnehagar direkte på nett",
+      "link": "https://www.nrk.no/vestfoldogtelemark/16-aring-fra-vestfold-sikta-for-terrorplan-mot-barnehage-i-oslo-1.18067954",
+      "pubDate": "2026-11-04T16:34:05+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/bd5c0ec8e975289881efc6d369ce680ed8dd7f90.jpg"
     }
   ]
 }
