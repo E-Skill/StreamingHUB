@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-04T21:30:46.112476+00:00",
+  "updatedAt": "2026-11-05T01:47:07.100109+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "VG: Oslo kutter antall elsparkesykler og hever aldersgrensen",
-      "link": "https://www.nrk.no/nyheter/vg_-oslo-kutter-antall-elsparkesykler-og-hever-aldersgrensen-1.18074020",
-      "pubDate": "2026-11-04T20:58:18+00:00"
+      "title": "Ukjent drama: Norge-hjelper tatt av politiet – måtte møte i retten under VM",
+      "link": "https://www.nrk.no/sport/ukjent-drama_-norge-hjelper-tatt-av-politiet-_-matte-mote-i-retten-midt-i-vm-1.18070065",
+      "pubDate": "2026-11-04T23:01:02+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/21f73603066d892aedabb19dc679767b00cae6a0.jpg"
     },
     {
-      "title": "Aleksander (22) om den nye jobben: – Det gir livet mening",
-      "link": "https://www.nrk.no/sorlandet/aleksander-_22_-fikk-jobb-gjennom-ungdomsprogrammet-1.18052385",
-      "pubDate": "2026-11-04T19:36:41+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a81a17ed8b9ae4800a3facef98fb0df8864718d0.jpg"
+      "title": "Nusa herjet mot City, men Haaland ble matchvinner",
+      "link": "https://www.nrk.no/sport/rb-leipzig-manchester-city-med-mal-av-bade-nusa-og-haaland-1.18074017",
+      "pubDate": "2026-11-04T21:54:44+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c66f138e77d64a4ce8a1be4c5c2d20bc2734409a.jpg"
     },
     {
-      "title": "16-åring planla å sende terrorangrep mot barnehagar direkte på nett",
-      "link": "https://www.nrk.no/vestfoldogtelemark/16-aring-fra-vestfold-sikta-for-terrorplan-mot-barnehage-i-oslo-1.18067954",
-      "pubDate": "2026-11-04T16:34:05+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/bd5c0ec8e975289881efc6d369ce680ed8dd7f90.jpg"
+      "title": "Raste i historisk seier: – Ikke sånn spillet skal være",
+      "link": "https://www.nrk.no/rogaland/historisk-viking-seier-i-mesterligaen-_-slo-sabah-fc-4_1-1.18072343",
+      "pubDate": "2026-11-04T21:54:17+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/246cdaeef18c24a04e90d4d4031475c00ff51d66.jpg"
     }
   ]
 }
