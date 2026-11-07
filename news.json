@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-07T07:36:46.425049+00:00",
+  "updatedAt": "2026-11-07T14:20:35.929133+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Får og framsteg",
-      "link": "https://www.nrk.no/norge/xl/den-nye-fpu-leiaren-hadde-forlate-ungdomspartiet-_-sa-matte-nokon-ta-styringa.-1.18065962",
-      "pubDate": "2026-11-07T06:47:57+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a8b2f3b2277c6bb449826e337cdfff470d195c39.jpg"
+      "title": "Alvorlig trafikkulykke på E6 i Lillehammer",
+      "link": "https://www.nrk.no/innlandet/alvorlig-trafikkulykke-pa-e6-i-lillehammer-1.18076433",
+      "pubDate": "2026-11-07T13:51:53+00:00"
     },
     {
-      "title": "Måpar av «Helt Ramme sporter»-bragd: – Køddar du?",
-      "link": "https://www.nrk.no/sport/helt-ramme-sporter_-tonje-frigstad-imponerer-nicolay-ramm_-birk-ruud-og-fridykkarmiljoet-1.18048856",
-      "pubDate": "2026-11-07T06:37:33+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f8aff7748deeea0f37bf95e8995256db24a88c65.jpg"
+      "title": "Kinesarane sperrar opp auga når dei ser Ragnar (25): – Eg blir tatt bilde av",
+      "link": "https://www.nrk.no/sport/vektlofter-ragnar-holme-blir-stoppa-pa-gata-i-kina-for-vm_-_-vi-blir-sett-rart-pa-1.18072451",
+      "pubDate": "2026-11-07T11:48:53+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/2b9f4c1084d381f593459c3cbb99f023013d4271.jpg"
     },
     {
-      "title": "Paraguays president avsatt og pågrepet",
-      "link": "https://www.nrk.no/nyheter/paraguays-president-avsatt-og-pagrepet-1.18076275",
-      "pubDate": "2026-11-06T23:27:30+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a5d80726fa68e1c4b71578ccf9dd2b08dd1f6401.jpg"
+      "title": "Macklemore: USA-arenaer sa nei til Fri Palestina-turné",
+      "link": "https://www.nrk.no/nyheter/macklemore_-usa-arenaer-sa-nei-til-fri-palestina-turne-1.18076286",
+      "pubDate": "2026-11-07T09:22:39+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0099269512b408a3d1a5cb8e52cccc84f4ab91bf.jpg"
     }
   ]
 }
