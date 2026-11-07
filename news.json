@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-07T18:56:13.377850+00:00",
+  "updatedAt": "2026-11-07T22:26:34.054023+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Trump tilbyr Dana White jobben som pressetalsperson",
-      "link": "https://www.nrk.no/nyheter/trump-tilbyr-dana-white-jobben-som-pressetalsperson-1.18076605",
-      "pubDate": "2026-11-07T18:46:46+00:00",
+      "title": "Dana White takker nei til å bli Trumps pressesekretær",
+      "link": "https://www.nrk.no/nyheter/dana-white-takker-nei-til-a-bli-trumps-pressesekretaer-1.18076663",
+      "pubDate": "2026-11-07T21:42:17+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ab7c0caff12e97fff295838452836a70bcea6f0b.jpg"
     },
     {
-      "title": "I år får vi ei ekstra veke: – Blir fort konflikt av det",
-      "link": "https://www.nrk.no/nordland/veke-53-gjer-planlegging-vanskeleg-for-foreldre-med-delt-omsorg-1.18061571",
-      "pubDate": "2026-11-07T18:42:52+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f43dd1a1965289d8428e08cfad4bf4615d04c68d.jpg"
+      "title": "Tannlegestudentene kaster nesten bare plast: – Vi snakker om et overforbruk",
+      "link": "https://www.nrk.no/tromsogfinnmark/ny-studie-fra-tromso-og-bergen_-98-prosent-av-avfallet-hos-tannlegestudentene-er-plast-1.18076514",
+      "pubDate": "2026-11-07T20:45:20+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/8bc4b82392cc402244bb6505e4a2a5afed47cc03.jpg"
     },
     {
-      "title": "Søreide møtt med kraftig diesel-kritikk i nord: – Folk melder seg ut i protest",
-      "link": "https://www.nrk.no/nordland/hoyre-leder-ine-eriksen-soreide-fikk-kraftig-diesel-kritkk-fra-nordland-nordland-1.18076470",
-      "pubDate": "2026-11-07T17:20:10+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/8ce6d4fe00af8568ee3d34da6675f37248bbd14d.jpg"
+      "title": "Eisenkot får i oppdrag å danne regjering i Israel",
+      "link": "https://www.nrk.no/nyheter/eisenkot-far-i-oppdrag-a-danne-regjering-i-israel-1.18076617",
+      "pubDate": "2026-11-07T20:03:24+00:00"
     }
   ]
 }
