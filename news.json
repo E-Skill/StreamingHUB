@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-07T14:20:35.929133+00:00",
+  "updatedAt": "2026-11-07T18:56:13.377850+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Alvorlig trafikkulykke på E6 i Lillehammer",
-      "link": "https://www.nrk.no/innlandet/alvorlig-trafikkulykke-pa-e6-i-lillehammer-1.18076433",
-      "pubDate": "2026-11-07T13:51:53+00:00"
+      "title": "Trump tilbyr Dana White jobben som pressetalsperson",
+      "link": "https://www.nrk.no/nyheter/trump-tilbyr-dana-white-jobben-som-pressetalsperson-1.18076605",
+      "pubDate": "2026-11-07T18:46:46+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ab7c0caff12e97fff295838452836a70bcea6f0b.jpg"
     },
     {
-      "title": "Kinesarane sperrar opp auga når dei ser Ragnar (25): – Eg blir tatt bilde av",
-      "link": "https://www.nrk.no/sport/vektlofter-ragnar-holme-blir-stoppa-pa-gata-i-kina-for-vm_-_-vi-blir-sett-rart-pa-1.18072451",
-      "pubDate": "2026-11-07T11:48:53+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/2b9f4c1084d381f593459c3cbb99f023013d4271.jpg"
+      "title": "I år får vi ei ekstra veke: – Blir fort konflikt av det",
+      "link": "https://www.nrk.no/nordland/veke-53-gjer-planlegging-vanskeleg-for-foreldre-med-delt-omsorg-1.18061571",
+      "pubDate": "2026-11-07T18:42:52+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f43dd1a1965289d8428e08cfad4bf4615d04c68d.jpg"
     },
     {
-      "title": "Macklemore: USA-arenaer sa nei til Fri Palestina-turné",
-      "link": "https://www.nrk.no/nyheter/macklemore_-usa-arenaer-sa-nei-til-fri-palestina-turne-1.18076286",
-      "pubDate": "2026-11-07T09:22:39+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0099269512b408a3d1a5cb8e52cccc84f4ab91bf.jpg"
+      "title": "Søreide møtt med kraftig diesel-kritikk i nord: – Folk melder seg ut i protest",
+      "link": "https://www.nrk.no/nordland/hoyre-leder-ine-eriksen-soreide-fikk-kraftig-diesel-kritkk-fra-nordland-nordland-1.18076470",
+      "pubDate": "2026-11-07T17:20:10+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/8ce6d4fe00af8568ee3d34da6675f37248bbd14d.jpg"
     }
   ]
 }
