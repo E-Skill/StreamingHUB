@@ -728,142 +728,252 @@
             h1.title { font-size: 2.1rem; }
         }
 
-        /* MOBILOPTIMALISERING (Låser ikke PC-oppsettet, kun skjermer <= 768px) */
+        /* =========================================================
+           MOBIL-APP LAYOUT (Kun skjermer <= 768px, PC er urørt)
+           ========================================================= */
         @media (max-width: 768px) {
             body {
-                padding: 12px 14px 28px;
+                padding: 10px 12px 24px;
             }
 
             .layout {
                 grid-template-columns: 1fr;
-                gap: 28px;
+                gap: 18px;
             }
 
-            /* Rekkefølge på mobil: 1. Klokke & Strømmetjenester, 2. Været, 3. Nyheter */
+            /* Rekkefølge: 1. Klokke + Tjenester, 2. Kompakt Værkort, 3. Nyheter */
             .main {
                 order: 1;
                 min-height: auto;
-                padding-top: 4px;
+                padding-top: 2px;
             }
 
             .weather-area {
                 order: 2;
                 min-height: auto;
-                padding-top: 18px;
-                border-top: 1px solid var(--line);
+                padding: 14px;
+                background: rgba(18, 31, 45, 0.55);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 14px;
             }
 
             .news-area {
                 order: 3;
                 min-height: auto;
-                padding-top: 18px;
-                border-top: 1px solid var(--line);
+                padding: 14px;
+                background: rgba(18, 31, 45, 0.55);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 14px;
             }
 
             .news-panel {
                 min-height: auto;
             }
 
+            /* Kompakt klokke øverst */
             h1.title {
-                font-size: 2.2rem;
-                margin-bottom: 4px;
+                font-size: 1.85rem;
+                margin: 2px 0 0;
+                letter-spacing: -0.02em;
             }
 
             .services-block {
                 padding-right: 0;
-                margin-top: 14px;
+                margin-top: 10px;
             }
 
             .section-header-row {
-                margin-bottom: 14px;
+                margin-bottom: 10px;
                 padding: 0 2px;
             }
 
-            .section-header,
-            .recipe-nav-btn {
-                font-size: 1.05rem;
+            .section-header {
+                font-size: 0.95rem;
             }
 
-            /* 2 kolonner som fyller skjermbredden pent på alle telefoner */
+            /* Tydelig knapp for Oppskrifter på mobil */
+            .recipe-nav-btn {
+                background: rgba(0, 123, 255, 0.18);
+                color: #66b2ff;
+                border: 1px solid rgba(77, 166, 255, 0.35);
+                padding: 5px 12px;
+                border-radius: 20px;
+                font-size: 0.85rem;
+            }
+
+            /* 3 i bredden (3x4 rutenett) så alle 12 tjenester får plass på én skjerm! */
             .service-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 12px;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 8px;
             }
 
             .service-card {
                 width: 100%;
-                min-height: 115px;
-                padding: 14px 10px 10px;
+                min-height: 86px;
+                padding: 10px 6px 8px;
+                border-radius: 12px;
             }
 
             .service-logo {
-                width: 56px;
-                height: 56px;
-                margin-bottom: 8px;
+                width: 40px;
+                height: 40px;
+                margin-bottom: 6px;
             }
 
             .service-label {
-                font-size: 0.9rem;
+                font-size: 0.78rem;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%;
             }
 
-            /* Været bruker hele bredden på mobil + horisontal sveiping på timevarsel */
+            /* Vær-seksjonen komprimert og ryddig */
+            .weather-head {
+                margin-bottom: 10px;
+                font-size: 1rem;
+            }
+
+            .city-select {
+                padding: 8px 10px;
+                font-size: 0.95rem;
+                margin-bottom: 10px;
+                border-radius: 8px;
+            }
+
             .weather-box,
             .weather-updated {
                 max-width: 100%;
             }
 
-            .city-select {
-                padding: 10px 12px;
-                font-size: 1rem;
+            /* Temperatur + "Føles som" på samme linje for å spare plass i høyden */
+            .weather-top {
+                display: flex;
+                flex-direction: column;
             }
 
+            .weather-temp-row {
+                align-items: center;
+                margin-bottom: 2px;
+            }
+
+            #weather-icon {
+                font-size: 2.8rem !important;
+            }
+
+            .weather-temp {
+                font-size: 2.5rem;
+            }
+
+            .weather-feels {
+                margin-top: 0;
+                margin-bottom: 4px;
+                font-size: 0.88rem;
+            }
+
+            /* 2x2 rutenett for Vind, Vindkast, Nedbør og Fuktighet */
+            .weather-meta {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 6px 10px;
+                margin-top: 8px;
+            }
+
+            .weather-meta-row {
+                background: rgba(255, 255, 255, 0.03);
+                padding: 6px 8px;
+                border-radius: 6px;
+                font-size: 0.8rem;
+            }
+
+            .weather-meta strong {
+                font-size: 0.78rem;
+                color: var(--muted);
+            }
+
+            /* Horisontal sveipbar rekke for timevarsel */
             .hourly-forecast {
                 flex-direction: row;
                 overflow-x: auto;
-                gap: 10px;
-                padding-bottom: 8px;
-                margin-top: 14px;
+                gap: 8px;
+                padding-bottom: 4px;
+                margin-top: 10px;
             }
 
             .hour-card {
-                min-width: 96px;
+                min-width: 74px;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 6px;
-                padding: 10px 8px;
+                gap: 4px;
+                padding: 8px 6px;
                 text-align: center;
                 flex-shrink: 0;
+                font-size: 0.82rem;
             }
 
             .hour-left {
                 flex-direction: column;
-                gap: 4px;
+                gap: 2px;
             }
 
-            /* Modaler / Popups tilpasset mobilskjerm */
+            .hour-icon {
+                font-size: 1.1rem;
+            }
+
+            .hour-temp {
+                font-size: 0.9rem;
+            }
+
+            /* Kompakt nyhetsliste */
+            .news-item {
+                min-height: 68px;
+                gap: 10px;
+            }
+
+            .news-thumb {
+                width: 78px;
+                height: 58px;
+            }
+
+            .news-title {
+                font-size: 0.88rem;
+            }
+
+            /* Bottom-sheet stil på modaler på mobil */
+            .modal-overlay {
+                align-items: flex-end;
+            }
+
             .modal-content {
-                width: 95%;
-                padding: 18px 16px;
-                max-height: 90vh;
+                width: 100%;
+                max-width: 100%;
+                max-height: 92vh;
+                padding: 18px 15px 24px;
+                border-radius: 18px 18px 0 0;
+                border-bottom: none;
             }
 
             .ai-form-grid-row {
-                grid-template-columns: 1fr;
-                gap: 12px;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+                margin-bottom: 10px;
             }
 
             .checkbox-grid {
                 grid-template-columns: repeat(2, 1fr);
-                max-height: 190px;
+                max-height: 150px;
+                padding: 10px;
+                gap: 8px;
             }
 
-            /* Hindrer automatisk innzooming på iOS når man trykker i tekstfelt */
             .form-group input,
             .form-group textarea,
             .form-group select,
             .search-input {
                 font-size: 16px;
+                padding: 8px 10px;
             }
         }
     </style>
@@ -1319,7 +1429,7 @@
             'Berlin': { lat: 52.5200, lon: 13.4050, tz: 'Europe/Berlin' },
             'London': { lat: 51.5074, lon: -0.1278, tz: 'Europe/London' },
             'Madrid': { lat: 40.4168, lon: -3.7038, tz: 'Europe/Madrid' },
-            'Molde': { lat:  62.7375, lon: 7.1591, tz: 'Europe/Oslo' },
+            'Molde': { lat: 62.7375, lon: 7.1591, tz: 'Europe/Oslo' },
             'Oslo': { lat: 59.9139, lon: 10.7522, tz: 'Europe/Oslo' },
             'Paris': { lat: 48.8566, lon: 2.3522, tz: 'Europe/Paris' },
             'Tokyo': { lat: 35.6762, lon: 139.6503, tz: 'Asia/Tokyo' },
