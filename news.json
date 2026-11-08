@@ -1,24 +1,24 @@
 {
-  "updatedAt": "2026-11-08T19:09:06.044557+00:00",
+  "updatedAt": "2026-11-08T22:51:02.600943+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Ellevill dramatikk på overtid – United unngikk ny smell",
-      "link": "https://www.nrk.no/sport/manchester-united-nest-nederst-i-premier-league-etter-smell-mot-aston-villa-1.18076937",
+      "title": "NFF ba om gjennomgang: Tromsø kontrollerte tribunen dager før kollaps",
+      "link": "https://www.nrk.no/sport/nff-ba-om-gjennomgang_-tromso-kontrollerte-tribunen-dager-for-kollaps-1.18077071",
+      "pubDate": "2026-11-08T21:39:26+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/417cd23312b0d363895885b5446a5b6497f611f7.jpg"
+    },
+    {
+      "title": "Aursnes melder forfall til landslagssamlingen",
+      "link": "https://www.nrk.no/sport/aursnes-melder-forfall-til-landslagssamlingen-1.18077034",
+      "pubDate": "2026-11-08T20:02:25+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/6a99b2eef6d8cf4f3ec176641468d9b25cf4e9d4.jpg"
+    },
+    {
+      "title": "Fikk nedrykksspørsmål: – Jeg liker ikke situasjonen",
+      "link": "https://www.nrk.no/sport/manchester-united-reddet-poeng-mot-aston-villa_-men-ekspertene-lar-seg-ikke-imponere-1.18076937",
       "pubDate": "2026-11-08T18:30:21+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7fb5aef636da6a5ad8986ae5a50abacccd2be39d.jpg"
-    },
-    {
-      "title": "Anne har fluktruten klar i tilfelle sønnen kommer hjem",
-      "link": "https://www.nrk.no/dokumentar/xl/hun-frykter-sitt-eget-barn-1.18057081",
-      "pubDate": "2026-11-08T18:21:25+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/5832f4adeaf49b64aede45f5630fda5bf5f4d6e3.jpg"
-    },
-    {
-      "title": "Datt gjennom tribunen: – Heldigvis bare ribbeinsbrudd",
-      "link": "https://www.nrk.no/tromsogfinnmark/sigurd-brakk-ribbeinet-etter-at-han-datt-gjennom-tribunen-pa-romssa-arena-i-tromso-1.18076953",
-      "pubDate": "2026-11-08T17:20:08+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/96796f15298260514be8898a4e38e370a39e2d38.jpg"
     }
   ]
 }
