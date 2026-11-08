@@ -514,6 +514,13 @@
         }
         .add-btn:hover { background: #0056b3; }
 
+        .ai-form-grid-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
         .checkbox-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -708,6 +715,7 @@
             vertical-align: middle; margin-right: 6px;
         }
 
+        /* NETTBRETT / MINDRE SKJERMER */
         @media (max-width: 1100px) {
             .layout {
                 grid-template-columns: 200px 1fr 280px;
@@ -720,15 +728,143 @@
             h1.title { font-size: 2.1rem; }
         }
 
+        /* MOBILOPTIMALISERING (Låser ikke PC-oppsettet, kun skjermer <= 768px) */
         @media (max-width: 768px) {
-            body { padding: 14px; }
+            body {
+                padding: 12px 14px 28px;
+            }
+
             .layout {
                 grid-template-columns: 1fr;
+                gap: 28px;
             }
-            .weather-area,
-            .news-area { min-height: auto; }
-            .service-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
-            h1.title { font-size: 1.8rem; }
+
+            /* Rekkefølge på mobil: 1. Klokke & Strømmetjenester, 2. Været, 3. Nyheter */
+            .main {
+                order: 1;
+                min-height: auto;
+                padding-top: 4px;
+            }
+
+            .weather-area {
+                order: 2;
+                min-height: auto;
+                padding-top: 18px;
+                border-top: 1px solid var(--line);
+            }
+
+            .news-area {
+                order: 3;
+                min-height: auto;
+                padding-top: 18px;
+                border-top: 1px solid var(--line);
+            }
+
+            .news-panel {
+                min-height: auto;
+            }
+
+            h1.title {
+                font-size: 2.2rem;
+                margin-bottom: 4px;
+            }
+
+            .services-block {
+                padding-right: 0;
+                margin-top: 14px;
+            }
+
+            .section-header-row {
+                margin-bottom: 14px;
+                padding: 0 2px;
+            }
+
+            .section-header,
+            .recipe-nav-btn {
+                font-size: 1.05rem;
+            }
+
+            /* 2 kolonner som fyller skjermbredden pent på alle telefoner */
+            .service-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .service-card {
+                width: 100%;
+                min-height: 115px;
+                padding: 14px 10px 10px;
+            }
+
+            .service-logo {
+                width: 56px;
+                height: 56px;
+                margin-bottom: 8px;
+            }
+
+            .service-label {
+                font-size: 0.9rem;
+            }
+
+            /* Været bruker hele bredden på mobil + horisontal sveiping på timevarsel */
+            .weather-box,
+            .weather-updated {
+                max-width: 100%;
+            }
+
+            .city-select {
+                padding: 10px 12px;
+                font-size: 1rem;
+            }
+
+            .hourly-forecast {
+                flex-direction: row;
+                overflow-x: auto;
+                gap: 10px;
+                padding-bottom: 8px;
+                margin-top: 14px;
+            }
+
+            .hour-card {
+                min-width: 96px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                padding: 10px 8px;
+                text-align: center;
+                flex-shrink: 0;
+            }
+
+            .hour-left {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            /* Modaler / Popups tilpasset mobilskjerm */
+            .modal-content {
+                width: 95%;
+                padding: 18px 16px;
+                max-height: 90vh;
+            }
+
+            .ai-form-grid-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .checkbox-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-height: 190px;
+            }
+
+            /* Hindrer automatisk innzooming på iOS når man trykker i tekstfelt */
+            .form-group input,
+            .form-group textarea,
+            .form-group select,
+            .search-input {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -747,7 +883,6 @@
                     <option value="Berlin">Berlin</option>
                     <option value="London">London</option>
                     <option value="Madrid">Madrid</option>
-                    <option value="Molde">Molde</option>    
                     <option value="Oslo">Oslo</option>
                     <option value="Paris">Paris</option>
                     <option value="Tokyo">Tokyo</option>
@@ -904,8 +1039,8 @@
         <div class="modal-content">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px;">
                 <button class="close-btn" onclick="closeRecipesModal()">Lukk</button>
-                <h2 style="margin:0;">Mine Oppskrifter</h2>
-                <button class="add-btn" onclick="openAddRecipeForm()">+ Ny oppskrift</button>
+                <h2 style="margin:0; font-size: 1.25rem;">Mine Oppskrifter</h2>
+                <button class="add-btn" onclick="openAddRecipeForm()">+ Ny</button>
             </div>
 
             <div class="search-container">
@@ -938,7 +1073,7 @@
             
             <!-- STEG 1: SKJEMA -->
             <div id="ai-step-form">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                <div class="ai-form-grid-row">
                     <div class="form-group" style="margin-bottom:0;">
                         <label>Matkultur / Region</label>
                         <select id="ai-region">
@@ -972,7 +1107,7 @@
                     </div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                <div class="ai-form-grid-row">
                     <div class="form-group" style="margin-bottom:0;">
                         <label>Antall porsjoner</label>
                         <input type="text" id="ai-servings" value="2 porsjoner">
@@ -987,7 +1122,7 @@
                     </div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                <div class="ai-form-grid-row">
                     <div class="form-group" style="margin-bottom:0;">
                         <label>Tidsbruk</label>
                         <input type="text" id="ai-time" value="Under 30 min">
@@ -1183,7 +1318,6 @@
             'Berlin': { lat: 52.5200, lon: 13.4050, tz: 'Europe/Berlin' },
             'London': { lat: 51.5074, lon: -0.1278, tz: 'Europe/London' },
             'Madrid': { lat: 40.4168, lon: -3.7038, tz: 'Europe/Madrid' },
-            'Molde' : { lat: 62.7375, lon: 7.1589, tz: 'Europe/Oslo'},
             'Oslo': { lat: 59.9139, lon: 10.7522, tz: 'Europe/Oslo' },
             'Paris': { lat: 48.8566, lon: 2.3522, tz: 'Europe/Paris' },
             'Tokyo': { lat: 35.6762, lon: 139.6503, tz: 'Asia/Tokyo' },
@@ -1198,7 +1332,6 @@
             'Berlin': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-2950159/Tyskland/Berlin/Berlin',
             'London': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-2643743/Storbritannia/England/Greater%20London/London',
             'Madrid': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-3117735/Spania/Madrid/Madrid',
-            'Molde' : 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-189277/Norge/M%C3%B8re%20og%20Romsdal/Molde/Molde',
             'Oslo': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-72837/Norge/Oslo/Oslo/Oslo',
             'Paris': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-2968815/Frankrike/Ile-de-France/Paris',
             'Tokyo': 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/2-1850147/Japan/Tokyo/Tokyo',
@@ -1232,7 +1365,7 @@
 
         let currentAiOptions = [];
         let chosenRecipeData = null;
-        let seenAiRecipes = []; // Husker alle forslag som er vist i denne økten
+        let seenAiRecipes = [];
 
         let detailOriginModal = 'recipe-modal';
 
@@ -1791,7 +1924,7 @@
         }
 
         function resetAiWizard() {
-            seenAiRecipes = []; // Nullstiller historikken når brukeren går tilbake til skjemaet
+            seenAiRecipes = [];
             document.getElementById('ai-step-form').style.display = 'block';
             document.getElementById('ai-step-choices').style.display = 'none';
             document.getElementById('ai-step-modify').style.display = 'none';
@@ -1822,7 +1955,7 @@
                 equipment: equipment,
                 ingredients: fullIngredients,
                 allergies: allergies,
-                previousRecipes: seenAiRecipes // Sender med listen over tidligere viste forslag
+                previousRecipes: seenAiRecipes
             };
 
             const generateBtn = document.getElementById('ai-generate-btn');
@@ -1854,7 +1987,6 @@
 
                 currentAiOptions = data.recipes;
 
-                // Lagrer de nye forslagene i minnet slik at neste trykk på "Nye alternativer" unngår dem
                 if (Array.isArray(currentAiOptions)) {
                     currentAiOptions.forEach(r => {
                         if (r.title) {
