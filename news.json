@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-08T14:42:00.233862+00:00",
+  "updatedAt": "2026-11-08T19:09:06.044557+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Politiet oppretter straffesak mot mann som trengte seg inn hos Høiby",
-      "link": "https://www.nrk.no/nyheter/politiet-oppretter-straffesak-mot-mann-som-trengte-seg-inn-hos-hoiby-1.18076838",
-      "pubDate": "2026-11-08T14:33:37+00:00"
+      "title": "Ellevill dramatikk på overtid – United unngikk ny smell",
+      "link": "https://www.nrk.no/sport/manchester-united-nest-nederst-i-premier-league-etter-smell-mot-aston-villa-1.18076937",
+      "pubDate": "2026-11-08T18:30:21+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7fb5aef636da6a5ad8986ae5a50abacccd2be39d.jpg"
     },
     {
-      "title": "Marerittet fortsetter: Sogndal må ut i kvalifiseringsrunde",
-      "link": "https://www.nrk.no/vestland/marerittet-fortsetter_-sogndal-ma-ut-i-kvalifiseringsrunde-1.18076767",
-      "pubDate": "2026-11-08T13:55:42+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/16af6ea93be971b8ac8e2aa6ac9fe68569880846.jpg"
+      "title": "Anne har fluktruten klar i tilfelle sønnen kommer hjem",
+      "link": "https://www.nrk.no/dokumentar/xl/hun-frykter-sitt-eget-barn-1.18057081",
+      "pubDate": "2026-11-08T18:21:25+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/5832f4adeaf49b64aede45f5630fda5bf5f4d6e3.jpg"
     },
     {
-      "title": "Kamp stoppet etter dramatikk på tribunen – spillerne sendt i garderoben",
-      "link": "https://www.nrk.no/sport/tromso-bodo_glimt-stoppet-1.18076852",
-      "pubDate": "2026-11-08T14:21:30+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/86fd4b0ec83e95050f8810f8d3787043c81c60c2.jpg"
+      "title": "Datt gjennom tribunen: – Heldigvis bare ribbeinsbrudd",
+      "link": "https://www.nrk.no/tromsogfinnmark/sigurd-brakk-ribbeinet-etter-at-han-datt-gjennom-tribunen-pa-romssa-arena-i-tromso-1.18076953",
+      "pubDate": "2026-11-08T17:20:08+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/96796f15298260514be8898a4e38e370a39e2d38.jpg"
     }
   ]
 }
