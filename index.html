@@ -715,6 +715,11 @@
             vertical-align: middle; margin-right: 6px;
         }
 
+        /* Fast bunnmeny (skjules på PC, vises på mobil) */
+        .mobile-nav-bar {
+            display: none;
+        }
+
         /* NETTBRETT / MINDRE SKJERMER */
         @media (max-width: 1100px) {
             .layout {
@@ -729,188 +734,129 @@
         }
 
         /* =========================================================
-           MOBIL-APP LAYOUT (Kun skjermer <= 768px, PC er urørt)
+           MOBIL-APP MED FANE-NAVIGASJON (Kun skjermer <= 768px)
            ========================================================= */
         @media (max-width: 768px) {
             body {
-                padding: 10px 12px 24px;
+                padding: 10px 12px 80px; /* Ekstra bunn-padding så innhold ikke skjules bak menyen */
             }
 
             .layout {
-                grid-template-columns: 1fr;
-                gap: 18px;
+                display: block; /* Lar oss skjule/vise enkeltelementer via faner */
             }
 
-            /* Rekkefølge: 1. Klokke + Tjenester, 2. Kompakt Værkort, 3. Nyheter */
-            .main {
-                order: 1;
-                min-height: auto;
-                padding-top: 2px;
-            }
-
-            .weather-area {
-                order: 2;
-                min-height: auto;
-                padding: 14px;
-                background: rgba(18, 31, 45, 0.55);
-                border: 1px solid rgba(255, 255, 255, 0.06);
-                border-radius: 14px;
-            }
-
+            /* Standard tilstand: skjul seksjoner med mindre de har klassen .active-tab */
+            .weather-area,
+            .main,
             .news-area {
-                order: 3;
-                min-height: auto;
-                padding: 14px;
-                background: rgba(18, 31, 45, 0.55);
-                border: 1px solid rgba(255, 255, 255, 0.06);
-                border-radius: 14px;
+                display: none;
+                width: 100%;
+                padding-top: 4px;
             }
 
-            .news-panel {
-                min-height: auto;
+            .weather-area.active-tab,
+            .main.active-tab,
+            .news-area.active-tab {
+                display: flex;
+                flex-direction: column;
             }
 
-            /* Kompakt klokke øverst */
             h1.title {
-                font-size: 1.85rem;
-                margin: 2px 0 0;
-                letter-spacing: -0.02em;
+                font-size: 2rem;
+                margin: 4px 0 12px;
             }
 
             .services-block {
                 padding-right: 0;
-                margin-top: 10px;
+                margin-top: 0;
             }
 
             .section-header-row {
-                margin-bottom: 10px;
-                padding: 0 2px;
+                margin-bottom: 12px;
             }
 
-            .section-header {
-                font-size: 0.95rem;
-            }
-
-            /* Tydelig knapp for Oppskrifter på mobil */
-            .recipe-nav-btn {
-                background: rgba(0, 123, 255, 0.18);
-                color: #66b2ff;
-                border: 1px solid rgba(77, 166, 255, 0.35);
-                padding: 5px 12px;
-                border-radius: 20px;
-                font-size: 0.85rem;
-            }
-
-            /* 3 i bredden (3x4 rutenett) så alle 12 tjenester får plass på én skjerm! */
+            /* 3 i bredden for strømmetjenester */
             .service-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 8px;
+                gap: 10px;
             }
 
             .service-card {
                 width: 100%;
-                min-height: 86px;
-                padding: 10px 6px 8px;
+                min-height: 96px;
+                padding: 12px 6px 8px;
                 border-radius: 12px;
             }
 
             .service-logo {
-                width: 40px;
-                height: 40px;
+                width: 44px;
+                height: 44px;
                 margin-bottom: 6px;
             }
 
             .service-label {
-                font-size: 0.78rem;
+                font-size: 0.8rem;
                 text-align: center;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                max-width: 100%;
             }
 
-            /* Vær-seksjonen komprimert og ryddig */
-            .weather-head {
-                margin-bottom: 10px;
-                font-size: 1rem;
-            }
-
-            .city-select {
-                padding: 8px 10px;
-                font-size: 0.95rem;
-                margin-bottom: 10px;
-                border-radius: 8px;
-            }
-
+            /* Vær-fanen tilpasset mobil */
             .weather-box,
             .weather-updated {
                 max-width: 100%;
             }
 
-            /* Temperatur + "Føles som" på samme linje for å spare plass i høyden */
-            .weather-top {
-                display: flex;
-                flex-direction: column;
+            .city-select {
+                padding: 10px 12px;
+                font-size: 1rem;
+                margin-bottom: 14px;
             }
 
             .weather-temp-row {
                 align-items: center;
-                margin-bottom: 2px;
             }
 
             #weather-icon {
-                font-size: 2.8rem !important;
+                font-size: 3.2rem !important;
             }
 
             .weather-temp {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
-            .weather-feels {
-                margin-top: 0;
-                margin-bottom: 4px;
-                font-size: 0.88rem;
-            }
-
-            /* 2x2 rutenett for Vind, Vindkast, Nedbør og Fuktighet */
             .weather-meta {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 6px 10px;
-                margin-top: 8px;
+                gap: 8px;
+                margin-top: 12px;
             }
 
             .weather-meta-row {
-                background: rgba(255, 255, 255, 0.03);
-                padding: 6px 8px;
-                border-radius: 6px;
-                font-size: 0.8rem;
+                background: rgba(255, 255, 255, 0.04);
+                padding: 8px 10px;
+                border-radius: 8px;
+                font-size: 0.85rem;
             }
 
-            .weather-meta strong {
-                font-size: 0.78rem;
-                color: var(--muted);
-            }
-
-            /* Horisontal sveipbar rekke for timevarsel */
             .hourly-forecast {
                 flex-direction: row;
                 overflow-x: auto;
-                gap: 8px;
-                padding-bottom: 4px;
-                margin-top: 10px;
+                gap: 10px;
+                padding-bottom: 6px;
+                margin-top: 14px;
             }
 
             .hour-card {
-                min-width: 74px;
+                min-width: 82px;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 gap: 4px;
-                padding: 8px 6px;
+                padding: 10px 6px;
                 text-align: center;
                 flex-shrink: 0;
-                font-size: 0.82rem;
             }
 
             .hour-left {
@@ -918,54 +864,67 @@
                 gap: 2px;
             }
 
-            .hour-icon {
-                font-size: 1.1rem;
+            /* Fast bunnmeny */
+            .mobile-nav-bar {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 65px;
+                background: rgba(8, 24, 33, 0.95);
+                backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                z-index: 900;
+                padding-bottom: env(safe-area-inset-bottom);
             }
 
-            .hour-temp {
-                font-size: 0.9rem;
+            .mobile-nav-btn {
+                background: none;
+                border: none;
+                color: var(--muted);
+                font-size: 0.75rem;
+                font-family: inherit;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+                cursor: pointer;
+                flex: 1;
+                padding: 6px 0;
+                transition: color 0.2s;
             }
 
-            /* Kompakt nyhetsliste */
-            .news-item {
-                min-height: 68px;
-                gap: 10px;
+            .mobile-nav-btn span.nav-icon {
+                font-size: 1.3rem;
+                line-height: 1;
             }
 
-            .news-thumb {
-                width: 78px;
-                height: 58px;
+            .mobile-nav-btn.active {
+                color: #4da6ff;
+                font-weight: 600;
             }
 
-            .news-title {
-                font-size: 0.88rem;
-            }
-
-            /* Bottom-sheet stil på modaler på mobil */
-            .modal-overlay {
-                align-items: flex-end;
-            }
-
+            /* Fullskjerms-modale vinduer på mobil */
             .modal-content {
                 width: 100%;
                 max-width: 100%;
-                max-height: 92vh;
-                padding: 18px 15px 24px;
-                border-radius: 18px 18px 0 0;
-                border-bottom: none;
+                height: 100%;
+                max-height: 100vh;
+                border-radius: 0;
+                padding: 20px 16px;
             }
 
             .ai-form-grid-row {
                 grid-template-columns: 1fr 1fr;
                 gap: 8px;
-                margin-bottom: 10px;
             }
 
             .checkbox-grid {
                 grid-template-columns: repeat(2, 1fr);
-                max-height: 150px;
-                padding: 10px;
-                gap: 8px;
+                max-height: 180px;
             }
 
             .form-group input,
@@ -973,7 +932,6 @@
             .form-group select,
             .search-input {
                 font-size: 16px;
-                padding: 8px 10px;
             }
         }
     </style>
@@ -982,7 +940,8 @@
 <body>
     <div class="page">
         <div class="layout">
-            <aside class="weather-area">
+            <!-- VÆR-PANEL -->
+            <aside id="weather-section" class="weather-area">
                 <div class="weather-head">
                     <span id="weather-title" onclick="openYrCityLink()" title="Klikk for å åpne Yr for valgt by">Været</span>
                 </div>
@@ -993,8 +952,8 @@
                     <option value="Berlin">Berlin</option>
                     <option value="London">London</option>
                     <option value="Madrid">Madrid</option>
-                    <option value="Oslo">Oslo</option>
                     <option value="Molde">Molde</option>
+                    <option value="Oslo">Oslo</option>
                     <option value="Paris">Paris</option>
                     <option value="Tokyo">Tokyo</option>
                     <option value="Trondheim">Trondheim</option>
@@ -1025,7 +984,7 @@
                                 <span id="precipitation">-- mm</span>
                             </div>
                             <div class="weather-meta-row">
-                                <strong>Luftfuktighet:</strong> 
+                                <strong>Fukt:</strong> 
                                 <span id="humidity">-- %</span>
                             </div>
                         </div>
@@ -1051,7 +1010,8 @@
                 </div>
             </aside>
 
-            <main class="main">
+            <!-- HOVEDPANEL (STRØMMETJENESTER & OPPSKRIFTER) -->
+            <main id="hub-section" class="main active-tab">
                 <h1 class="title" id="main-clock">--:--:--</h1>
 
                 <div class="services-block">
@@ -1125,7 +1085,8 @@
                 </div>
             </main>
 
-            <aside class="news-area">
+            <!-- NYHETS-PANEL -->
+            <aside id="news-section" class="news-area">
                 <div class="news-panel">
                     <div class="news-header">
                         <a href="https://www.nrk.no/nyheter/" target="_blank">
@@ -1144,6 +1105,26 @@
             </aside>
         </div>
     </div>
+
+    <!-- FAST MOBIL-BUNNMENY -->
+    <nav class="mobile-nav-bar">
+        <button class="mobile-nav-btn active" onclick="switchMobileTab('hub', this)">
+            <span class="nav-icon">📺</span>
+            <span>Hub</span>
+        </button>
+        <button class="mobile-nav-btn" onclick="switchMobileTab('weather', this)">
+            <span class="nav-icon">⛅</span>
+            <span>Vær</span>
+        </button>
+        <button class="mobile-nav-btn" onclick="switchMobileTab('news', this)">
+            <span class="nav-icon">📰</span>
+            <span>Nyheter</span>
+        </button>
+        <button class="mobile-nav-btn" onclick="openRecipesModal()">
+            <span class="nav-icon">🍳</span>
+            <span>Oppskrift</span>
+        </button>
+    </nav>
 
     <!-- MODAL 1: OPPSKRIFTSLISTE MED SØK OG FILTER -->
     <div id="recipe-modal" class="modal-overlay" style="display: none;">
@@ -1464,6 +1445,24 @@
                 citySelector.value = currentCityName;
             }
         });
+
+        // Bytte fane på mobil
+        function switchMobileTab(tabName, btnElement) {
+            document.querySelectorAll('.weather-area, .main, .news-area').forEach(el => el.classList.remove('active-tab'));
+            document.querySelectorAll('.mobile-nav-btn').forEach(btn => btn.classList.remove('active'));
+
+            if (tabName === 'hub') {
+                document.getElementById('hub-section').classList.add('active-tab');
+            } else if (tabName === 'weather') {
+                document.getElementById('weather-section').classList.add('active-tab');
+            } else if (tabName === 'news') {
+                document.getElementById('news-section').classList.add('active-tab');
+            }
+
+            if (btnElement) {
+                btnElement.classList.add('active');
+            }
+        }
 
         const WEATHER_INTERVAL = 15 * 60 * 1000;
         const NEWS_API_URL = 'https://streaminghub-news.eskil-sundby.workers.dev/news';
