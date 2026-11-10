@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-09T20:07:58.816100+00:00",
+  "updatedAt": "2026-11-10T02:42:05.521403+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Republikaner fremmer riksrettsforslag mot forsvarsminister Pete Hegseth",
-      "link": "https://www.nrk.no/nyheter/republikaner-fremmer-riksrettsforslag-mot-forsvarsminister-pete-hegseth-1.18077871",
-      "pubDate": "2026-11-09T19:34:03+00:00"
+      "title": "Mangel på fisk i Vest-Afrika - blir mat for norsk laks",
+      "link": "https://www.nrk.no/urix/xl/mangel-pa-fisk-i-vest-afrika-_-blir-mat-for-norsk-laks-1.18024114",
+      "pubDate": "2026-11-09T21:06:07+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/061e5255d097b6dc97e74988170e742f38a51c38.jpg"
     },
     {
-      "title": "Vil ha forbud i norsk fotball etter tribunekollaps: – En stor skandale",
-      "link": "https://www.nrk.no/sport/supportere-reagerer_-ole-kristian-sandvik-mener-norske-stadioner-ikke-tar-sikkerheten-pa-alvor-1.18077066",
-      "pubDate": "2026-11-09T19:32:34+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/48cc28562031c13d04e2d6d1f7e242b5c1459e2f.jpg"
+      "title": "Ble nabolagets helt: Eliah (19) reddet både hund og hus fra brann",
+      "link": "https://www.nrk.no/ostfold/eliah-_19_-reddet-bade-hund-og-hus-fra-brann-i-orje-1.18077725",
+      "pubDate": "2026-11-09T20:39:16+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/18208c1a210f2bd338680082d5d20e5255c06cc0.jpg"
     },
     {
-      "title": "Sa han gjorde Russland-exit i 2013 – ble intervjuet i Moskva tre år etter",
-      "link": "https://www.nrk.no/tromsogfinnmark/russisk-nussir-eier-ga-feil-informasjon-om-moskva-exit-1.18077614",
-      "pubDate": "2026-11-09T16:59:49+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/d70aaf5c96261f5d66f5676f8372969530165758.jpg"
+      "title": "Moesgaard med tirade etter Vålerenga-tap: – Sjokkerende lite beskyttende overfor spillerne",
+      "link": "https://www.nrk.no/sport/eliteserien_-valerenga-trener-johannes-moesgaard-med-tirade-etter-tapet-mot-kristiansund-1.18077889",
+      "pubDate": "2026-11-09T20:13:32+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/265fca1c60811535cba9be24320dcc88d6124721.jpg"
     }
   ]
 }
