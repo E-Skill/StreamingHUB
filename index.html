@@ -15,17 +15,17 @@
         :root {
             --bg-color: #030d17;
             --bg-image: none;
-            --bg-overlay: rgba(3, 13, 23, 0.4);
-            --panel: rgba(17, 24, 39, 0.25);
-            --panel-soft: rgba(17, 24, 39, 0.35);
-            --tile: rgba(18, 31, 45, 0.45);
-            --tile-alt: rgba(14, 20, 31, 0.4);
+            --bg-overlay: transparent;
+            --panel: rgba(17, 24, 39, 0.65);
+            --panel-soft: rgba(17, 24, 39, 0.85);
+            --tile: rgba(18, 31, 45, 0.75);
+            --tile-alt: rgba(14, 20, 31, 0.7);
             --text: #eef5ff;
             --muted: rgba(255,255,255,0.75);
             --muted-2: rgba(255,255,255,0.5);
-            --line: rgba(255,255,255,0.15);
+            --line: rgba(255,255,255,0.1);
             --accent: #007bff;
-            --blur: blur(16px);
+            --blur: blur(12px);
         }
 
         /* Light Mode */
@@ -33,99 +33,105 @@
             --bg-color: #f0f4f8;
             --bg-image: none;
             --bg-overlay: transparent;
-            --panel: rgba(255, 255, 255, 0.5);
-            --panel-soft: rgba(240, 244, 248, 0.6);
-            --tile: rgba(255, 255, 255, 0.65);
-            --tile-alt: rgba(230, 238, 245, 0.6);
+            --panel: rgba(255, 255, 255, 0.85);
+            --panel-soft: rgba(240, 244, 248, 0.95);
+            --tile: rgba(255, 255, 255, 0.9);
+            --tile-alt: rgba(230, 238, 245, 0.85);
             --text: #1a2530;
-            --muted: rgba(0,0,0,0.7);
-            --muted-2: rgba(0,0,0,0.5);
-            --line: rgba(0,0,0,0.15);
+            --muted: rgba(0,0,0,0.6);
+            --muted-2: rgba(0,0,0,0.4);
+            --line: rgba(0,0,0,0.1);
             --accent: #0066cc;
         }
 
         /* Vår Mode (Spring) */
         body.theme-spring {
-            --bg-color: #0b1a0b;
+            --bg-color: #000;
             --bg-image: url('Images/vår.png');
-            --bg-overlay: rgba(11, 26, 11, 0.25);
-            --panel: rgba(18, 41, 18, 0.3);
-            --panel-soft: rgba(14, 31, 14, 0.4);
-            --tile: rgba(18, 41, 18, 0.45);
-            --text: #eefce8;
-            --muted: rgba(214, 245, 201, 0.85);
-            --line: rgba(76, 175, 80, 0.3);
+            --bg-overlay: rgba(0, 0, 0, 0.1); /* Nesten usynlig overlay for å la bildet poppe */
+            --panel: rgba(0, 0, 0, 0.25);
+            --panel-soft: rgba(0, 0, 0, 0.35); /* Rent mørkt glass */
+            --tile: rgba(0, 0, 0, 0.3);
+            --text: #ffffff;
+            --muted: rgba(255, 255, 255, 0.85);
+            --line: rgba(255, 255, 255, 0.15);
             --accent: #4caf50;
+            --blur: blur(8px); /* Nok blur til å lese tekst, lite nok til å se bildet */
         }
 
         /* Summer Mode */
         body.theme-summer {
-            --bg-color: #0c2340;
+            --bg-color: #000;
             --bg-image: url('Images/summer.png');
-            --bg-overlay: rgba(12, 35, 64, 0.25);
-            --panel: rgba(19, 49, 92, 0.3);
-            --panel-soft: rgba(12, 35, 64, 0.4);
-            --tile: rgba(19, 49, 92, 0.45);
-            --text: #fffbeb;
-            --muted: rgba(254, 243, 199, 0.85);
-            --line: rgba(251, 191, 36, 0.3);
+            --bg-overlay: rgba(0, 0, 0, 0.1);
+            --panel: rgba(0, 0, 0, 0.25);
+            --panel-soft: rgba(0, 0, 0, 0.35);
+            --tile: rgba(0, 0, 0, 0.3);
+            --text: #ffffff;
+            --muted: rgba(255, 255, 255, 0.85);
+            --line: rgba(255, 255, 255, 0.15);
             --accent: #f59e0b;
+            --blur: blur(8px);
         }
 
         /* Autumn Mode */
         body.theme-autumn {
-            --bg-color: #1a0f00;
+            --bg-color: #000;
             --bg-image: url('Images/høst.png');
-            --bg-overlay: rgba(26, 15, 0, 0.35);
-            --panel: rgba(51, 25, 0, 0.3);
-            --panel-soft: rgba(38, 18, 0, 0.4);
-            --tile: rgba(51, 25, 0, 0.45);
-            --text: #fff6e5;
-            --muted: rgba(255, 230, 204, 0.85);
-            --line: rgba(230, 115, 0, 0.3);
+            --bg-overlay: rgba(0, 0, 0, 0.1);
+            --panel: rgba(0, 0, 0, 0.25);
+            --panel-soft: rgba(0, 0, 0, 0.35);
+            --tile: rgba(0, 0, 0, 0.3);
+            --text: #ffffff;
+            --muted: rgba(255, 255, 255, 0.85);
+            --line: rgba(255, 255, 255, 0.15);
             --accent: #e67300;
+            --blur: blur(8px);
         }
 
         /* Winter Mode (Nordlys/Kald) */
         body.theme-winter {
-            --bg-color: #001f3f;
+            --bg-color: #000;
             --bg-image: url('Images/vinter.png');
-            --bg-overlay: rgba(0, 31, 63, 0.3);
-            --panel: rgba(0, 64, 128, 0.3);
-            --panel-soft: rgba(0, 48, 96, 0.4);
-            --tile: rgba(0, 64, 128, 0.45);
-            --text: #e6f2ff;
-            --muted: rgba(179, 217, 255, 0.85);
-            --line: rgba(51, 153, 255, 0.3);
+            --bg-overlay: rgba(0, 0, 0, 0.1);
+            --panel: rgba(0, 0, 0, 0.25);
+            --panel-soft: rgba(0, 0, 0, 0.35);
+            --tile: rgba(0, 0, 0, 0.3);
+            --text: #ffffff;
+            --muted: rgba(255, 255, 255, 0.85);
+            --line: rgba(255, 255, 255, 0.15);
             --accent: #3399ff;
+            --blur: blur(8px);
         }
 
         /* Christmas Mode */
         body.theme-christmas {
-            --bg-color: #1a0505;
+            --bg-color: #000;
             --bg-image: url('Images/jul.png');
-            --bg-overlay: rgba(26, 5, 5, 0.35);
-            --panel: rgba(58, 14, 14, 0.3);
-            --panel-soft: rgba(40, 8, 8, 0.4);
-            --tile: rgba(58, 14, 14, 0.45);
-            --text: #fef2f2;
-            --muted: rgba(254, 202, 202, 0.85);
-            --line: rgba(239, 68, 68, 0.35);
+            --bg-overlay: rgba(0, 0, 0, 0.15);
+            --panel: rgba(0, 0, 0, 0.3);
+            --panel-soft: rgba(0, 0, 0, 0.45);
+            --tile: rgba(0, 0, 0, 0.35);
+            --text: #ffffff;
+            --muted: rgba(255, 255, 255, 0.85);
+            --line: rgba(255, 255, 255, 0.2);
             --accent: #ef4444;
+            --blur: blur(8px);
         }
 
         /* Easter Mode */
         body.theme-easter {
-            --bg-color: #1a1602;
+            --bg-color: #000;
             --bg-image: url('Images/påske.png');
-            --bg-overlay: rgba(26, 22, 2, 0.35);
-            --panel: rgba(56, 47, 8, 0.3);
-            --panel-soft: rgba(38, 31, 4, 0.4);
-            --tile: rgba(56, 47, 8, 0.45);
-            --text: #fefce8;
-            --muted: rgba(254, 240, 138, 0.85);
-            --line: rgba(234, 179, 8, 0.35);
+            --bg-overlay: rgba(0, 0, 0, 0.1);
+            --panel: rgba(0, 0, 0, 0.25);
+            --panel-soft: rgba(0, 0, 0, 0.35);
+            --tile: rgba(0, 0, 0, 0.3);
+            --text: #ffffff;
+            --muted: rgba(255, 255, 255, 0.85);
+            --line: rgba(255, 255, 255, 0.15);
             --accent: #eab308;
+            --blur: blur(8px);
         }
 
         /* Pride Mode */
@@ -133,12 +139,12 @@
             --bg-color: #09090b;
             --bg-image: none;
             --bg-overlay: transparent;
-            --panel: rgba(24, 24, 27, 0.65);
-            --panel-soft: rgba(9, 9, 11, 0.85);
-            --tile: rgba(24, 24, 27, 0.75);
+            --panel: rgba(24, 24, 27, 0.85);
+            --panel-soft: rgba(9, 9, 11, 0.95);
+            --tile: rgba(24, 24, 27, 0.92);
             --text: #fafafa;
-            --muted: rgba(250, 250, 250, 0.75);
-            --line: rgba(236, 72, 153, 0.3);
+            --muted: rgba(250, 250, 250, 0.7);
+            --line: rgba(236, 72, 153, 0.25);
             --accent: #ec4899;
         }
         body.theme-pride::after {
@@ -185,7 +191,7 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Mørkt overlegg (overlay) for å gjøre teksten over bildet lesbar */
+        /* Overlegg for å gjøre lys tekst lesbar uten å drepe bildet */
         body::before {
             content: '';
             position: fixed;
@@ -199,16 +205,8 @@
             transition: background-color 0.4s ease;
         }
 
-        ::-webkit-scrollbar {
-            display: none;
-            width: 0px;
-            background: transparent;
-        }
-
-        * {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        ::-webkit-scrollbar { display: none; width: 0px; }
+        * { scrollbar-width: none; }
 
         body {
             display: flex;
@@ -221,7 +219,7 @@
             width: 100%;
             max-width: 1460px;
             min-height: calc(100vh - 30px);
-            position: relative; /* Plasserer innholdet foran overlayet */
+            position: relative; 
             z-index: 1;
         }
 
@@ -232,32 +230,30 @@
             align-items: start;
         }
 
-        /* Hovedpaneler med Glassmorfisme-effekt (blur) */
-        .weather-area, .main, .news-area {
+        /* Sidepaneler med Glassmorfisme */
+        .weather-area, .news-area {
             backdrop-filter: var(--blur);
             -webkit-backdrop-filter: var(--blur);
             background-color: var(--panel-soft);
             border-radius: 16px;
             padding: 20px;
             border: 1px solid var(--line);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             min-height: calc(100vh - 36px);
             display: flex;
             flex-direction: column;
         }
 
-        .weather-area {
-            justify-content: flex-start;
-        }
-
+        /* HOVEDKOLONNEN ER NÅ GJENNOMSIKTIG SÅ BILDET SYNES! */
         .main {
+            display: flex;
+            flex-direction: column;
             align-items: center;
             padding-top: 8px;
         }
 
-        .news-area {
-            padding: 20px 10px 20px 20px;
-        }
+        .weather-area { justify-content: flex-start; }
+        .news-area { padding: 20px 10px 20px 20px; }
 
         .weather-head {
             margin: 0 0 14px;
@@ -280,7 +276,7 @@
 
         .city-select {
             width: 100%;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.2);
             color: var(--text);
             border: 1px solid var(--line);
             border-radius: 8px;
@@ -290,14 +286,8 @@
             margin-bottom: 12px;
             cursor: pointer;
         }
-        .city-select:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-        .city-select option {
-            background: #081821;
-            color: #fff;
-        }
+        .city-select:focus { border-color: var(--accent); outline: none; }
+        .city-select option { background: var(--bg-2); color: var(--text); }
 
         .weather-box {
             width: 100%;
@@ -335,11 +325,7 @@
             margin-left: 2px;
         }
 
-        .weather-feels {
-            color: var(--muted);
-            font-size: 1.0rem;
-            margin-top: 8px;
-        }
+        .weather-feels { color: var(--muted); font-size: 1.0rem; margin-top: 8px; }
 
         .weather-meta {
             margin-top: 12px;
@@ -355,12 +341,7 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .weather-meta strong {
-            color: var(--text);
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
+        .weather-meta strong { color: var(--text); font-size: 0.9rem; font-weight: 600; }
 
         .wind-direction-arrow {
             display: inline-block;
@@ -383,7 +364,7 @@
 
         .weather-updated button,
         .news-footer button {
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.2);
             color: var(--text);
             border: 1px solid var(--line);
             border-radius: 8px;
@@ -393,11 +374,7 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-
-        .weather-updated button:hover,
-        .news-footer button:hover {
-            background: var(--line);
-        }
+        .weather-updated button:hover, .news-footer button:hover { background: var(--line); }
 
         .hourly-forecast {
             display: flex;
@@ -410,7 +387,7 @@
 
         .hour-card {
             width: 100%;
-            background: rgba(0,0,0,0.25);
+            background: rgba(0,0,0,0.15);
             border-radius: 10px;
             padding: 10px 12px;
             text-align: left;
@@ -419,7 +396,6 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border: 1px solid var(--line);
         }
 
         .hour-left { display:flex; align-items:center; gap:10px; }
@@ -491,6 +467,7 @@
             justify-items: center;
         }
 
+        /* App-fliser som flyter på bakgrunnen */
         .service-card {
             display: flex;
             flex-direction: column;
@@ -503,7 +480,7 @@
             border: 1px solid var(--line);
             text-decoration: none;
             color: var(--text);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
             padding: 14px 12px 12px;
             transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
             backdrop-filter: var(--blur);
@@ -513,7 +490,7 @@
         .service-card:hover {
             transform: translateY(-4px);
             filter: brightness(1.15);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.3);
             border-color: var(--accent);
         }
 
@@ -599,7 +576,7 @@
             object-fit: cover;
             background: rgba(0,0,0,0.3);
             flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .news-text {
@@ -654,7 +631,7 @@
             justify-content: center;
             cursor: pointer;
             z-index: 1500;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
             backdrop-filter: var(--blur);
             -webkit-backdrop-filter: var(--blur);
             transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
@@ -731,10 +708,7 @@
             border: 1px solid var(--line);
             box-shadow: 0 15px 45px rgba(0,0,0,0.7);
         }
-        .modal-content::-webkit-scrollbar {
-            display: none;
-            width: 0;
-        }
+        .modal-content::-webkit-scrollbar { display: none; width: 0; }
         .close-btn {
             background: rgba(0,0,0,0.4);
             color: var(--text);
@@ -766,12 +740,7 @@
         }
         .add-btn:hover { opacity: 0.9; }
 
-        .ai-form-grid-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
+        .ai-form-grid-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
 
         .checkbox-grid {
             display: grid;
@@ -784,34 +753,14 @@
             max-height: 160px;
             overflow-y: auto;
             scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        .checkbox-grid::-webkit-scrollbar {
-            display: none;
-            width: 0;
         }
 
         .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.88rem;
-            color: var(--text);
-            cursor: pointer;
-            user-select: none;
+            display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--text); cursor: pointer; user-select: none;
         }
+        .checkbox-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; margin: 0; }
 
-        .checkbox-item input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            accent-color: var(--accent);
-            cursor: pointer;
-            margin: 0;
-        }
-
-        .search-container {
-            margin-bottom: 12px;
-        }
+        .search-container { margin-bottom: 12px; }
         .search-input {
             width: 100%;
             padding: 10px 14px;
@@ -822,19 +771,9 @@
             font-size: 0.95rem;
             font-family: inherit;
         }
-        .search-input:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-        .category-bar {
-            display: flex;
-            gap: 6px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            margin-bottom: 12px;
-            scrollbar-width: none;
-        }
-        .category-bar::-webkit-scrollbar { display: none; }
+        .search-input:focus { outline: none; border-color: var(--accent); }
+        
+        .category-bar { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 12px; scrollbar-width: none; }
         .cat-chip {
             background: rgba(0,0,0,0.4);
             color: var(--text);
@@ -846,33 +785,13 @@
             white-space: nowrap;
             transition: all 0.2s ease;
         }
-        .cat-chip.active, .cat-chip:hover {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-        }
+        .cat-chip.active, .cat-chip:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+        
         .recipe-badge {
-            display: inline-block;
-            background: rgba(0, 123, 255, 0.2);
-            color: #66b2ff;
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-top: 4px;
-            margin-right: 6px;
-            border: 1px solid rgba(77, 166, 255, 0.3);
+            display: inline-block; background: rgba(0, 123, 255, 0.2); color: #66b2ff; font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-top: 4px; margin-right: 6px; border: 1px solid rgba(77, 166, 255, 0.3);
         }
         .recipe-badge-time {
-            display: inline-block;
-            background: rgba(40, 167, 69, 0.2);
-            color: #5cdb95;
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-top: 4px;
-            border: 1px solid rgba(92, 219, 149, 0.3);
+            display: inline-block; background: rgba(40, 167, 69, 0.2); color: #5cdb95; font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-top: 4px; border: 1px solid rgba(92, 219, 149, 0.3);
         }
 
         .recipe-list { display: flex; flex-direction: column; gap: 10px; }
@@ -888,276 +807,79 @@
             transition: background 0.2s;
         }
         .recipe-card-item:hover { background: rgba(0,0,0,0.4); }
-        .recipe-thumb {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 8px;
-            flex-shrink: 0;
-            background: rgba(0,0,0,0.5);
-        }
+        .recipe-thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; flex-shrink: 0; background: rgba(0,0,0,0.5); }
         .recipe-info h3 { margin: 0 0 3px 0; color: var(--accent); font-size: 1.1em; }
         .recipe-info p { margin: 0; color: var(--muted); font-size: 0.85em; }
         
-        .ai-section {
-            margin-top: 25px;
-            text-align: center;
-            border-top: 1px solid var(--line);
-            padding-top: 20px;
-        }
-        .ai-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 10px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-        }
+        .ai-section { margin-top: 25px; text-align: center; border-top: 1px solid var(--line); padding-top: 20px; }
+        .ai-btn { background: #28a745; color: white; border: none; padding: 12px 20px; border-radius: 10px; font-size: 1em; font-weight: bold; cursor: pointer; width: 100%; }
         .ai-btn:hover { background: #218838; }
 
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 5px; color: var(--muted); font-size: 0.9em; }
         .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 10px;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--line);
-            color: var(--text);
-            border-radius: 8px;
-            font-family: inherit;
+            width: 100%; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--line); color: var(--text); border-radius: 8px; font-family: inherit;
         }
-        #recipe-file-input {
-            color: var(--text);
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 6px;
-            width: 100%;
-        }
-        #recipe-file-input::file-selector-button {
-            background: var(--accent);
-            color: #ffffff;
-            border: none;
-            border-radius: 6px;
-            padding: 8px 12px;
-            margin-right: 12px;
-            font: inherit;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
+        #recipe-file-input { color: var(--text); background: rgba(0,0,0,0.3); border: 1px solid var(--line); border-radius: 8px; padding: 6px; width: 100%; }
+        #recipe-file-input::file-selector-button { background: var(--accent); color: #ffffff; border: none; border-radius: 6px; padding: 8px 12px; margin-right: 12px; font: inherit; font-weight: 600; cursor: pointer; transition: background 0.2s ease; }
         .form-actions { display: flex; gap: 10px; margin-top: 20px; }
         .save-btn { background: #28a745; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: bold; cursor: pointer; flex: 1; }
         .save-btn:hover { background: #218838; }
         .recipe-detail-img { width: 100%; max-height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
 
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .spinner {
-            display: inline-block; width: 15px; height: 15px;
-            border: 2px solid rgba(255,255,255,0.3); border-radius: 50%;
-            border-top-color: #fff; animation: spin 0.8s linear infinite;
-            vertical-align: middle; margin-right: 6px;
-        }
+        .spinner { display: inline-block; width: 15px; height: 15px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: #fff; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 6px; }
 
         .mobile-nav-bar { display: none; }
 
         /* NETTBRETT / MINDRE SKJERMER */
         @media (max-width: 1100px) {
-            .layout {
-                grid-template-columns: 200px 1fr 280px;
-                gap: 20px;
-            }
-            .service-grid {
-                grid-template-columns: repeat(3, minmax(120px, 1fr));
-                max-width: 720px;
-            }
+            .layout { grid-template-columns: 200px 1fr 280px; gap: 20px; }
+            .service-grid { grid-template-columns: repeat(3, minmax(120px, 1fr)); max-width: 720px; }
             h1.title { font-size: 2.1rem; }
         }
 
         /* MOBIL-APP MED FANE-NAVIGASJON (Kun skjermer <= 768px) */
         @media (max-width: 768px) {
-            body {
-                padding: 10px 12px 80px;
-                background-attachment: scroll; 
-            }
-
+            body { padding: 10px 12px 80px; background-attachment: scroll; }
             .layout { display: block; }
-
             .weather-area, .main, .news-area {
-                display: none;
-                width: 100%;
-                padding-top: 4px;
-                border: none;
-                box-shadow: none;
-                background: transparent;
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
+                display: none; width: 100%; padding-top: 4px; border: none; box-shadow: none; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none;
             }
-
-            .weather-area.active-tab,
-            .main.active-tab,
-            .news-area.active-tab {
-                display: flex;
-                flex-direction: column;
-            }
-
-            h1.title {
-                font-size: 2rem;
-                margin: 4px 0 12px;
-            }
-
+            .weather-area.active-tab, .main.active-tab, .news-area.active-tab { display: flex; flex-direction: column; }
+            h1.title { font-size: 2rem; margin: 4px 0 12px; }
             .services-block { padding-right: 0; margin-top: 0; }
             .section-header-row { margin-bottom: 12px; }
 
-            .service-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 10px;
-            }
-
-            .service-card {
-                width: 100%;
-                min-height: 96px;
-                padding: 12px 6px 8px;
-                border-radius: 12px;
-                background: var(--panel-soft);
-                backdrop-filter: var(--blur);
-                -webkit-backdrop-filter: var(--blur);
-            }
-
+            .service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+            .service-card { width: 100%; min-height: 96px; padding: 12px 6px 8px; border-radius: 12px; background: var(--panel-soft); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur); }
             .service-logo { width: 44px; height: 44px; margin-bottom: 6px; }
             .service-label { font-size: 0.8rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
             .weather-box, .weather-updated { max-width: 100%; }
-            .weather-head {
-                background: var(--panel-soft);
-                padding: 14px;
-                border-radius: 12px;
-                backdrop-filter: var(--blur);
-                margin-bottom: 10px;
-            }
-
+            .weather-head { background: var(--panel-soft); padding: 14px; border-radius: 12px; backdrop-filter: var(--blur); margin-bottom: 10px; }
             .city-select { padding: 10px 12px; font-size: 1rem; margin-bottom: 14px; }
-            .weather-temp-row {
-                align-items: center;
-                background: var(--panel-soft);
-                padding: 14px;
-                border-radius: 12px;
-                backdrop-filter: var(--blur);
-            }
-
+            .weather-temp-row { align-items: center; background: var(--panel-soft); padding: 14px; border-radius: 12px; backdrop-filter: var(--blur); }
             #weather-icon { font-size: 3.2rem !important; }
             .weather-temp { font-size: 2.8rem; }
+            .weather-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+            .weather-meta-row { background: var(--panel-soft); backdrop-filter: var(--blur); padding: 10px; border-radius: 8px; font-size: 0.85rem; border: 1px solid var(--line); }
 
-            .weather-meta {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-                margin-top: 12px;
-            }
-
-            .weather-meta-row {
-                background: var(--panel-soft);
-                backdrop-filter: var(--blur);
-                padding: 10px;
-                border-radius: 8px;
-                font-size: 0.85rem;
-                border: 1px solid var(--line);
-            }
-
-            .hourly-forecast {
-                flex-direction: row;
-                overflow-x: auto;
-                gap: 10px;
-                padding-bottom: 6px;
-                margin-top: 14px;
-            }
-
-            .hour-card {
-                min-width: 82px;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 4px;
-                padding: 10px 6px;
-                text-align: center;
-                flex-shrink: 0;
-                background: var(--panel-soft);
-                backdrop-filter: var(--blur);
-                border: 1px solid var(--line);
-            }
-
+            .hourly-forecast { flex-direction: row; overflow-x: auto; gap: 10px; padding-bottom: 6px; margin-top: 14px; }
+            .hour-card { min-width: 82px; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 10px 6px; text-align: center; flex-shrink: 0; background: var(--panel-soft); backdrop-filter: var(--blur); border: 1px solid var(--line); }
             .hour-left { flex-direction: column; gap: 2px; }
 
-            .news-header {
-                background: var(--panel-soft);
-                padding: 14px;
-                border-radius: 12px;
-                backdrop-filter: var(--blur);
-                margin-bottom: 10px;
-            }
+            .news-header { background: var(--panel-soft); padding: 14px; border-radius: 12px; backdrop-filter: var(--blur); margin-bottom: 10px; }
+            .news-item { background: var(--panel-soft); backdrop-filter: var(--blur); border-radius: 12px; padding: 10px; margin-bottom: 10px; border: 1px solid var(--line); }
 
-            .news-item {
-                background: var(--panel-soft);
-                backdrop-filter: var(--blur);
-                border-radius: 12px;
-                padding: 10px;
-                margin-bottom: 10px;
-                border: 1px solid var(--line);
-            }
-
-            /* Fast bunnmeny */
             .mobile-nav-bar {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 65px;
-                background: var(--panel-soft);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border-top: 1px solid var(--line);
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                z-index: 900;
-                padding-bottom: env(safe-area-inset-bottom);
+                position: fixed; bottom: 0; left: 0; width: 100%; height: 65px; background: var(--panel-soft); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--line); display: flex; justify-content: space-around; align-items: center; z-index: 900; padding-bottom: env(safe-area-inset-bottom);
             }
-
-            .mobile-nav-btn {
-                background: none;
-                border: none;
-                color: var(--text);
-                opacity: 0.6;
-                font-size: 0.75rem;
-                font-family: inherit;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 4px;
-                cursor: pointer;
-                flex: 1;
-                padding: 6px 0;
-                transition: opacity 0.2s, color 0.2s;
-            }
-
+            .mobile-nav-btn { background: none; border: none; color: var(--text); opacity: 0.6; font-size: 0.75rem; font-family: inherit; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; flex: 1; padding: 6px 0; transition: opacity 0.2s, color 0.2s; }
             .mobile-nav-btn span.nav-icon { font-size: 1.3rem; line-height: 1; }
             .mobile-nav-btn.active { color: var(--accent); opacity: 1; font-weight: 600; }
 
-            .modal-content {
-                width: 100%;
-                max-width: 100%;
-                height: 100%;
-                max-height: 100vh;
-                border-radius: 0;
-                padding: 20px 16px;
-                background: var(--panel-soft);
-                backdrop-filter: var(--blur);
-                -webkit-backdrop-filter: var(--blur);
-            }
-
+            .modal-content { width: 100%; max-width: 100%; height: 100%; max-height: 100vh; border-radius: 0; padding: 20px 16px; background: var(--panel-soft); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur); }
             .ai-form-grid-row { grid-template-columns: 1fr 1fr; gap: 8px; }
             .checkbox-grid { grid-template-columns: repeat(2, 1fr); max-height: 180px; }
             .form-group input, .form-group textarea, .form-group select, .search-input { font-size: 16px; }
