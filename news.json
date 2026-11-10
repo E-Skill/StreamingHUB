@@ -1,24 +1,21 @@
 {
-  "updatedAt": "2026-11-10T02:42:05.521403+00:00",
+  "updatedAt": "2026-11-10T10:25:39.341343+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Mangel på fisk i Vest-Afrika - blir mat for norsk laks",
-      "link": "https://www.nrk.no/urix/xl/mangel-pa-fisk-i-vest-afrika-_-blir-mat-for-norsk-laks-1.18024114",
-      "pubDate": "2026-11-09T21:06:07+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/061e5255d097b6dc97e74988170e742f38a51c38.jpg"
+      "title": "Prisene steg med 3,6 prosent i oktober",
+      "link": "https://www.nrk.no/nyheter/prisene-steg-med-3_6-prosent-i-oktober-1.18078012",
+      "pubDate": "2026-11-10T07:00:33+00:00"
     },
     {
-      "title": "Ble nabolagets helt: Eliah (19) reddet både hund og hus fra brann",
-      "link": "https://www.nrk.no/ostfold/eliah-_19_-reddet-bade-hund-og-hus-fra-brann-i-orje-1.18077725",
-      "pubDate": "2026-11-09T20:39:16+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/18208c1a210f2bd338680082d5d20e5255c06cc0.jpg"
+      "title": "Flere offentlige nettsider sliter med innlogging",
+      "link": "https://www.nrk.no/nyheter/flere-offentlige-nettsider-sliter-med-innlogging-1.18077993",
+      "pubDate": "2026-11-10T06:16:46+00:00"
     },
     {
-      "title": "Moesgaard med tirade etter Vålerenga-tap: – Sjokkerende lite beskyttende overfor spillerne",
-      "link": "https://www.nrk.no/sport/eliteserien_-valerenga-trener-johannes-moesgaard-med-tirade-etter-tapet-mot-kristiansund-1.18077889",
-      "pubDate": "2026-11-09T20:13:32+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/265fca1c60811535cba9be24320dcc88d6124721.jpg"
+      "title": "Trump: Nvidia-sjefen etterforskes av FBI",
+      "link": "https://www.nrk.no/nyheter/trump_-nvidia-sjefen-etterforskes-av-fbi-1.18077931",
+      "pubDate": "2026-11-10T01:18:07+00:00"
     }
   ]
 }
