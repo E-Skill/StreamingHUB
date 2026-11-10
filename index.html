@@ -11,7 +11,7 @@
     <meta name="description" content="Streaming HUB med strømmetjenester, vær og siste nyheter fra NRK.">
 
     <style>
-        /* --- TEMA-Farger og Variabler --- */
+        /* --- STANDARD MØRKMODUS (Standard) --- */
         :root {
             --bg: #030d17;
             --bg-2: #081821;
@@ -24,7 +24,7 @@
             --muted-2: rgba(255,255,255,0.38);
             --line: rgba(255,255,255,0.05);
             --accent: #007bff;
-            --theme-icon: '🌙';
+            --theme-symbol: '';
         }
 
         /* Light Mode */
@@ -40,85 +40,55 @@
             --muted-2: rgba(0,0,0,0.4);
             --line: rgba(0,0,0,0.08);
             --accent: #0066cc;
-            --theme-icon: '☀️';
+            --theme-symbol: '☀️';
         }
 
         /* Summer Mode */
         body.theme-summer {
-            --bg: #0f172a;
-            --bg-2: #1e293b;
-            --panel: rgba(30, 41, 59, 0.85);
-            --panel-soft: rgba(15, 23, 42, 0.95);
-            --tile: rgba(30, 41, 59, 0.92);
-            --tile-alt: rgba(15, 23, 42, 0.9);
+            --bg: #0c2340;
+            --bg-2: #13315c;
+            --panel: rgba(19, 49, 92, 0.85);
+            --panel-soft: rgba(12, 35, 64, 0.95);
+            --tile: rgba(19, 49, 92, 0.92);
+            --tile-alt: rgba(12, 35, 64, 0.9);
             --text: #fffbeb;
             --muted: rgba(254, 243, 199, 0.75);
             --muted-2: rgba(254, 243, 199, 0.4);
-            --line: rgba(251, 191, 36, 0.15);
-            --accent: #f59e0b; /* Solgul */
-            --theme-icon: '🌴';
-        }
-        body.theme-summer::before {
-            content: "🌴";
-            position: fixed;
-            bottom: 15px;
-            right: 20px;
-            font-size: 3rem;
-            opacity: 0.12;
-            pointer-events: none;
-            z-index: 0;
+            --line: rgba(251, 191, 36, 0.2);
+            --accent: #f59e0b;
+            --theme-symbol: '🌴 ☀️ 🌊';
         }
 
         /* Christmas Mode */
         body.theme-christmas {
-            --bg: #110505;
-            --bg-2: #1f0a0a;
-            --panel: rgba(45, 12, 12, 0.85);
-            --panel-soft: rgba(30, 8, 8, 0.95);
-            --tile: rgba(45, 12, 12, 0.92);
-            --tile-alt: rgba(30, 8, 8, 0.9);
+            --bg: #1a0505;
+            --bg-2: #2b0808;
+            --panel: rgba(58, 14, 14, 0.85);
+            --panel-soft: rgba(40, 8, 8, 0.95);
+            --tile: rgba(58, 14, 14, 0.92);
+            --tile-alt: rgba(40, 8, 8, 0.9);
             --text: #fef2f2;
             --muted: rgba(254, 202, 202, 0.7);
             --muted-2: rgba(254, 202, 202, 0.4);
-            --line: rgba(239, 68, 68, 0.15);
-            --accent: #ef4444; /* Julerød */
-            --theme-icon: '🎄';
-        }
-        body.theme-christmas::before {
-            content: "🎄";
-            position: fixed;
-            bottom: 15px;
-            right: 20px;
-            font-size: 3rem;
-            opacity: 0.12;
-            pointer-events: none;
-            z-index: 0;
+            --line: rgba(239, 68, 68, 0.25);
+            --accent: #ef4444;
+            --theme-symbol: '🎄 🎅 ❄️';
         }
 
         /* Easter Mode */
         body.theme-easter {
-            --bg: #1a1505;
-            --bg-2: #2b2208;
-            --panel: rgba(54, 43, 10, 0.85);
-            --panel-soft: rgba(35, 28, 6, 0.95);
-            --tile: rgba(54, 43, 10, 0.92);
-            --tile-alt: rgba(35, 28, 6, 0.9);
+            --bg: #1a1602;
+            --bg-2: #2b2404;
+            --panel: rgba(56, 47, 8, 0.85);
+            --panel-soft: rgba(38, 31, 4, 0.95);
+            --tile: rgba(56, 47, 8, 0.92);
+            --tile-alt: rgba(38, 31, 4, 0.9);
             --text: #fefce8;
             --muted: rgba(254, 240, 138, 0.75);
             --muted-2: rgba(254, 240, 138, 0.4);
-            --line: rgba(234, 179, 8, 0.15);
-            --accent: #eab308; /* Påskegul */
-            --theme-icon: '🐣';
-        }
-        body.theme-easter::before {
-            content: "🐣";
-            position: fixed;
-            bottom: 15px;
-            right: 20px;
-            font-size: 3rem;
-            opacity: 0.12;
-            pointer-events: none;
-            z-index: 0;
+            --line: rgba(234, 179, 8, 0.25);
+            --accent: #eab308;
+            --theme-symbol: '🐣 🐥 🌼';
         }
 
         /* Pride Mode */
@@ -132,9 +102,9 @@
             --text: #fafafa;
             --muted: rgba(250, 250, 250, 0.7);
             --muted-2: rgba(250, 250, 250, 0.4);
-            --line: rgba(236, 72, 153, 0.2);
+            --line: rgba(236, 72, 153, 0.25);
             --accent: #ec4899;
-            --theme-icon: '🏳️‍🌈';
+            --theme-symbol: '🏳️‍🌈 ✨';
         }
         body.theme-pride::after {
             content: "";
@@ -142,12 +112,12 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(to right, #e74c3c, #e67e22, #f1c40f, #2ecc71, #3498db, #9b59b6);
             z-index: 2000;
         }
 
-        /* Standby / Nattmodus */
+        /* Standby Mode */
         body.theme-standby {
             --bg: #000000;
             --bg-2: #050505;
@@ -155,12 +125,12 @@
             --panel-soft: rgba(5, 5, 5, 0.95);
             --tile: rgba(10, 10, 10, 0.95);
             --tile-alt: rgba(5, 5, 5, 0.9);
-            --text: #888888;
-            --muted: rgba(136, 136, 136, 0.6);
-            --muted-2: rgba(136, 136, 136, 0.3);
+            --text: #666666;
+            --muted: rgba(102, 102, 102, 0.6);
+            --muted-2: rgba(102, 102, 102, 0.3);
             --line: rgba(255,255,255,0.02);
-            --accent: #444444;
-            --theme-icon: '💤';
+            --accent: #333333;
+            --theme-symbol: '💤 🌙';
         }
 
         * { box-sizing: border-box; }
@@ -175,7 +145,21 @@
             overflow-y: auto;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        /* STOORE BAKGRUNNS-SYMBOLS FOR FØLELSE */
+        body::before {
+            content: var(--theme-symbol);
+            position: fixed;
+            bottom: 20px;
+            right: 25px;
+            font-size: 5rem;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+            letter-spacing: 15px;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
         }
 
         ::-webkit-scrollbar {
@@ -200,6 +184,8 @@
             width: 100%;
             max-width: 1460px;
             min-height: calc(100vh - 30px);
+            position: relative;
+            z-index: 1;
         }
 
         .layout {
@@ -242,12 +228,13 @@
             background: var(--bg-2);
             color: var(--text);
             border: 1px solid var(--line);
-            border-radius: 6px;
-            padding: 6px 10px;
-            font-size: 0.85rem;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
             font-family: inherit;
             margin-bottom: 12px;
             cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         }
         .city-select:focus {
             outline: none;
@@ -392,12 +379,13 @@
 
         h1.title {
             margin: 6px 0 0;
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             line-height: 1.05;
             letter-spacing: -0.03em;
             font-weight: 800;
             color: var(--text);
             text-align: center;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .services-block {
@@ -419,24 +407,27 @@
 
         .section-header {
             margin: 0;
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--muted);
             font-weight: 700;
         }
 
         .recipe-nav-btn {
-            background: none;
-            border: none;
-            color: var(--muted);
-            font-size: 1rem;
+            background: var(--line);
+            border: 1px solid var(--line);
+            color: var(--text);
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
-            padding: 0;
+            padding: 6px 14px;
+            border-radius: 20px;
             font-family: inherit;
-            transition: color 0.2s;
+            transition: all 0.2s;
         }
         .recipe-nav-btn:hover {
-            color: var(--text);
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
         }
 
         .service-grid {
@@ -457,19 +448,21 @@
             justify-content: center;
             width: 160px;
             min-height: 140px;
-            border-radius: 10px;
+            border-radius: 14px;
             background: var(--tile);
             border: 1px solid var(--line);
             text-decoration: none;
             color: var(--text);
-            box-shadow: inset 0 0 0 1px var(--line);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
             padding: 14px 12px 12px;
-            transition: transform 0.12s ease, filter 0.12s ease;
+            transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-1px);
-            filter: brightness(1.06);
+            transform: translateY(-3px);
+            filter: brightness(1.08);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+            border-color: var(--accent);
         }
 
         .service-logo {
@@ -478,6 +471,7 @@
             object-fit: contain;
             display: block;
             margin-bottom: 12px;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
         }
 
         .service-label {
@@ -508,7 +502,7 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            gap: 8px;
+            gap: 10px;
             margin-bottom: 12px;
             padding-right: 6px;
         }
@@ -523,7 +517,7 @@
 
         .news-header h2 {
             margin: 0;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 700;
         }
 
@@ -554,10 +548,11 @@
         .news-thumb {
             width: 96px;
             height: 72px;
-            border-radius: 8px;
+            border-radius: 10px;
             object-fit: cover;
             background: var(--line);
             flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .news-text {
@@ -598,54 +593,56 @@
             position: fixed;
             top: 15px;
             right: 20px;
-            background: var(--panel-soft);
+            background: var(--bg-2);
             color: var(--text);
-            border: 1px solid var(--line);
+            border: 2px solid var(--accent);
             border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            font-size: 1.3rem;
+            width: 48px;
+            height: 48px;
+            font-size: 1.4rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             z-index: 1500;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
             transition: transform 0.2s ease, background 0.2s ease;
         }
         .theme-toggle-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.12);
         }
 
-        /* Theme Selector Modal */
+        /* Theme Selector Menu */
         .theme-menu {
             position: fixed;
-            top: 70px;
+            top: 75px;
             right: 20px;
             background: var(--bg-2);
             border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border-radius: 14px;
+            padding: 10px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.6);
             display: none;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
             z-index: 1500;
-            min-width: 170px;
+            min-width: 190px;
         }
         .theme-menu button {
             background: transparent;
             color: var(--text);
             border: none;
-            padding: 8px 12px;
+            padding: 10px 14px;
             text-align: left;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.2s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
         }
         .theme-menu button:hover {
-            background: var(--line);
+            background: var(--accent);
+            color: #fff;
         }
 
         .modal-overlay {
@@ -664,7 +661,7 @@
             background: var(--bg-2);
             color: var(--text);
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 16px;
             width: 90%;
             max-width: 650px;
             max-height: 85vh;
@@ -673,7 +670,7 @@
             -ms-overflow-style: none;
             position: relative;
             border: 1px solid var(--line);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
         .modal-content::-webkit-scrollbar {
             display: none;
@@ -683,8 +680,8 @@
             background: var(--line);
             color: var(--text);
             border: 1px solid var(--line);
-            padding: 6px 14px;
-            border-radius: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
         }
@@ -702,8 +699,8 @@
             background: var(--accent);
             color: white;
             border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
         }
@@ -722,7 +719,7 @@
             gap: 10px 12px;
             background: var(--bg);
             padding: 12px 14px;
-            border-radius: 8px;
+            border-radius: 10px;
             border: 1px solid var(--line);
             max-height: 160px;
             overflow-y: auto;
@@ -787,8 +784,8 @@
             color: var(--muted);
             border: 1px solid var(--line);
             border-radius: 20px;
-            padding: 5px 12px;
-            font-size: 0.8rem;
+            padding: 6px 14px;
+            font-size: 0.85rem;
             cursor: pointer;
             white-space: nowrap;
             transition: all 0.2s ease;
@@ -826,7 +823,7 @@
         .recipe-card-item {
             background: var(--line);
             padding: 12px;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -839,7 +836,7 @@
             width: 70px;
             height: 70px;
             object-fit: cover;
-            border-radius: 6px;
+            border-radius: 8px;
             flex-shrink: 0;
             background: #222;
         }
@@ -856,7 +853,7 @@
             color: white;
             border: none;
             padding: 12px 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1em;
             font-weight: bold;
             cursor: pointer;
@@ -871,14 +868,14 @@
             background: var(--bg);
             border: 1px solid var(--line);
             color: var(--text);
-            border-radius: 6px;
+            border-radius: 8px;
             font-family: inherit;
         }
         #recipe-file-input {
             color: var(--text);
             background: var(--bg);
             border: 1px solid var(--line);
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 6px;
             width: 100%;
         }
@@ -886,7 +883,7 @@
             background: var(--accent);
             color: #ffffff;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             padding: 8px 12px;
             margin-right: 12px;
             font: inherit;
@@ -895,9 +892,9 @@
             transition: background 0.2s ease;
         }
         .form-actions { display: flex; gap: 10px; margin-top: 20px; }
-        .save-btn { background: #28a745; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; flex: 1; }
+        .save-btn { background: #28a745; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: bold; cursor: pointer; flex: 1; }
         .save-btn:hover { background: #218838; }
-        .recipe-detail-img { width: 100%; max-height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
+        .recipe-detail-img { width: 100%; max-height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
 
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .spinner {
@@ -907,7 +904,6 @@
             vertical-align: middle; margin-right: 6px;
         }
 
-        /* Fast bunnmeny (skjules på PC, vises på mobil) */
         .mobile-nav-bar {
             display: none;
         }
@@ -1130,13 +1126,13 @@
         <span id="current-theme-icon">🎨</span>
     </button>
     <div id="theme-menu" class="theme-menu">
-        <button onclick="setTheme('auto')">🔄 Automatisk (Sesong)</button>
-        <button onclick="setTheme('dark')">🌙 Dark Mode</button>
+        <button onclick="setTheme('auto')">🔄 Automatisk (Sesong/Natt)</button>
+        <button onclick="setTheme('dark')">🌙 Mørkmodus (Standard)</button>
         <button onclick="setTheme('light')">☀️ Light Mode</button>
-        <button onclick="setTheme('summer')">🌴 Sommer</button>
-        <button onclick="setTheme('christmas')">🎄 Jul</button>
-        <button onclick="setTheme('easter')">🐣 Påske</button>
-        <button onclick="setTheme('pride')">🏳️‍🌈 Pride</button>
+        <button onclick="setTheme('summer')">🌴 Sommer-modus</button>
+        <button onclick="setTheme('christmas')">🎄 Jule-modus</button>
+        <button onclick="setTheme('easter')">🐣 Påske-modus</button>
+        <button onclick="setTheme('pride')">🏳️‍🌈 Pride-modus</button>
         <button onclick="setTheme('standby')">💤 Standby (Natt)</button>
     </div>
 
@@ -1191,7 +1187,7 @@
                             </div>
                         </div>
 
-                        <div style="margin-top: 10px; font-size: 0.82rem; color: var(--muted); background: var(--line); padding: 8px; border-radius: 6px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="margin-top: 10px; font-size: 0.82rem; color: var(--muted); background: var(--line); padding: 8px; border-radius: 8px; display: flex; flex-direction: column; gap: 4px;">
                             <div style="text-align: center; font-weight: 600; color: var(--text);" id="city-local-time">🕒 Klokken: --:--</div>
                             <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 4px;">
                                 <span id="sun-rise">🌅 --:--</span>
@@ -1612,7 +1608,6 @@
             menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        // Lukk menyen hvis man klikker utenfor
         window.addEventListener('click', (e) => {
             if (!e.target.closest('.theme-toggle-btn') && !e.target.closest('.theme-menu')) {
                 document.getElementById('theme-menu').style.display = 'none';
@@ -1628,10 +1623,10 @@
         function getAutomaticSeason() {
             const now = new Date();
             const hour = now.getHours();
-            const month = now.getMonth() + 1; // 1-12
+            const month = now.getMonth() + 1;
             const day = now.getDate();
 
-            // Standby / Nattmodus mellom kl 23:00 og 06:00
+            // Standby / nattmodus mellom kl 23:00 og 06:00
             if (hour >= 23 || hour < 6) {
                 return 'standby';
             }
@@ -1641,7 +1636,7 @@
                 return 'christmas';
             }
 
-            // Påske (forenklet tidsrom rundt mars/april, f.eks. uken før/etter 1. april eller basert på måned)
+            // Påske: Starten av april
             if (month === 4 && day <= 10) {
                 return 'easter';
             }
@@ -1651,13 +1646,13 @@
                 return 'summer';
             }
 
-            // Standard mørk (eller vår/høst)
+            // Standard mørkmodus
             return 'dark';
         }
 
         function applyTheme(themeKey) {
             const body = document.body;
-            body.className = ''; // Tøm klasser
+            body.className = '';
 
             let activeTheme = themeKey;
             if (!activeTheme || activeTheme === 'auto') {
@@ -1670,9 +1665,8 @@
             else if (activeTheme === 'easter') body.classList.add('theme-easter');
             else if (activeTheme === 'pride') body.classList.add('theme-pride');
             else if (activeTheme === 'standby') body.classList.add('theme-standby');
-            // Standard 'dark' trenger ingen egen klasse
+            // Standard 'dark'
 
-            // Oppdater ikon på knappen
             const icons = {
                 'auto': '🔄',
                 'dark': '🌙',
@@ -1686,13 +1680,12 @@
             document.getElementById('current-theme-icon').textContent = icons[activeTheme] || '🎨';
         }
 
-        // Kjør tema ved lasting
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('streaminghub_theme') || 'auto';
             applyTheme(savedTheme);
         });
 
-        // --- BYGNING OG VÆR ---
+        // --- BY OG VÆR ---
         const CITIES = {
             'Athen': { lat: 37.9838, lon: 23.7275, tz: 'Europe/Athens' },
             'Bergen': { lat: 60.3913, lon: 5.3221, tz: 'Europe/Oslo' },
