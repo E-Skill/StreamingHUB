@@ -1,21 +1,24 @@
 {
-  "updatedAt": "2026-11-10T10:25:39.341343+00:00",
+  "updatedAt": "2026-11-10T18:01:47.528141+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Prisene steg med 3,6 prosent i oktober",
-      "link": "https://www.nrk.no/nyheter/prisene-steg-med-3_6-prosent-i-oktober-1.18078012",
-      "pubDate": "2026-11-10T07:00:33+00:00"
+      "title": "Strømsmell på årets dyreste dag: – Det er spinnvilt. Det er koko",
+      "link": "https://www.nrk.no/vestfoldogtelemark/stromsmell-pa-arets-dyreste-dag_-_-det-er-spinnvilt.-det-er-koko-1.18078480",
+      "pubDate": "2026-11-10T16:39:51+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e2e6c95339cb950ca2f2e12955e6202a8475d9a3.jpg"
     },
     {
-      "title": "Flere offentlige nettsider sliter med innlogging",
-      "link": "https://www.nrk.no/nyheter/flere-offentlige-nettsider-sliter-med-innlogging-1.18077993",
-      "pubDate": "2026-11-10T06:16:46+00:00"
+      "title": "Komiker David Walliams anklaget for grooming",
+      "link": "https://www.nrk.no/nyheter/komiker-david-walliams-anklaget-for-grooming-1.18078634",
+      "pubDate": "2026-11-10T15:40:05+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/fd933e59fd5f4b179d0e944eccb58f6110c932ae.jpg"
     },
     {
-      "title": "Trump: Nvidia-sjefen etterforskes av FBI",
-      "link": "https://www.nrk.no/nyheter/trump_-nvidia-sjefen-etterforskes-av-fbi-1.18077931",
-      "pubDate": "2026-11-10T01:18:07+00:00"
+      "title": "Tok ordet foran Infantino: «Solbakken forsto kjapt at han hadde dummet seg ut»",
+      "link": "https://www.nrk.no/sport/tok-ordet-foran-fifa-sjef-gianni-infantino_-_solbakken-forsto-kjapt-at-han-hadde-dummet-seg-ut__-1.18078617",
+      "pubDate": "2026-11-10T15:17:46+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7c14fa6e08c88c1bdd09776f0f636c63fb93612f.jpg"
     }
   ]
 }
