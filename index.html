@@ -11,6 +11,7 @@
     <meta name="description" content="Streaming HUB med strømmetjenester, vær og siste nyheter fra NRK.">
 
     <style>
+        /* --- TEMA-Farger og Variabler --- */
         :root {
             --bg: #030d17;
             --bg-2: #081821;
@@ -22,6 +23,144 @@
             --muted: rgba(255,255,255,0.65);
             --muted-2: rgba(255,255,255,0.38);
             --line: rgba(255,255,255,0.05);
+            --accent: #007bff;
+            --theme-icon: '🌙';
+        }
+
+        /* Light Mode */
+        body.theme-light {
+            --bg: #f0f4f8;
+            --bg-2: #ffffff;
+            --panel: rgba(255, 255, 255, 0.9);
+            --panel-soft: rgba(240, 244, 248, 0.95);
+            --tile: rgba(255, 255, 255, 0.95);
+            --tile-alt: rgba(230, 238, 245, 0.9);
+            --text: #1a2530;
+            --muted: rgba(0,0,0,0.6);
+            --muted-2: rgba(0,0,0,0.4);
+            --line: rgba(0,0,0,0.08);
+            --accent: #0066cc;
+            --theme-icon: '☀️';
+        }
+
+        /* Summer Mode */
+        body.theme-summer {
+            --bg: #0f172a;
+            --bg-2: #1e293b;
+            --panel: rgba(30, 41, 59, 0.85);
+            --panel-soft: rgba(15, 23, 42, 0.95);
+            --tile: rgba(30, 41, 59, 0.92);
+            --tile-alt: rgba(15, 23, 42, 0.9);
+            --text: #fffbeb;
+            --muted: rgba(254, 243, 199, 0.75);
+            --muted-2: rgba(254, 243, 199, 0.4);
+            --line: rgba(251, 191, 36, 0.15);
+            --accent: #f59e0b; /* Solgul */
+            --theme-icon: '🌴';
+        }
+        body.theme-summer::before {
+            content: "🌴";
+            position: fixed;
+            bottom: 15px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Christmas Mode */
+        body.theme-christmas {
+            --bg: #110505;
+            --bg-2: #1f0a0a;
+            --panel: rgba(45, 12, 12, 0.85);
+            --panel-soft: rgba(30, 8, 8, 0.95);
+            --tile: rgba(45, 12, 12, 0.92);
+            --tile-alt: rgba(30, 8, 8, 0.9);
+            --text: #fef2f2;
+            --muted: rgba(254, 202, 202, 0.7);
+            --muted-2: rgba(254, 202, 202, 0.4);
+            --line: rgba(239, 68, 68, 0.15);
+            --accent: #ef4444; /* Julerød */
+            --theme-icon: '🎄';
+        }
+        body.theme-christmas::before {
+            content: "🎄";
+            position: fixed;
+            bottom: 15px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Easter Mode */
+        body.theme-easter {
+            --bg: #1a1505;
+            --bg-2: #2b2208;
+            --panel: rgba(54, 43, 10, 0.85);
+            --panel-soft: rgba(35, 28, 6, 0.95);
+            --tile: rgba(54, 43, 10, 0.92);
+            --tile-alt: rgba(35, 28, 6, 0.9);
+            --text: #fefce8;
+            --muted: rgba(254, 240, 138, 0.75);
+            --muted-2: rgba(254, 240, 138, 0.4);
+            --line: rgba(234, 179, 8, 0.15);
+            --accent: #eab308; /* Påskegul */
+            --theme-icon: '🐣';
+        }
+        body.theme-easter::before {
+            content: "🐣";
+            position: fixed;
+            bottom: 15px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Pride Mode */
+        body.theme-pride {
+            --bg: #09090b;
+            --bg-2: #18181b;
+            --panel: rgba(24, 24, 27, 0.85);
+            --panel-soft: rgba(9, 9, 11, 0.95);
+            --tile: rgba(24, 24, 27, 0.92);
+            --tile-alt: rgba(9, 9, 11, 0.9);
+            --text: #fafafa;
+            --muted: rgba(250, 250, 250, 0.7);
+            --muted-2: rgba(250, 250, 250, 0.4);
+            --line: rgba(236, 72, 153, 0.2);
+            --accent: #ec4899;
+            --theme-icon: '🏳️‍🌈';
+        }
+        body.theme-pride::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #e74c3c, #e67e22, #f1c40f, #2ecc71, #3498db, #9b59b6);
+            z-index: 2000;
+        }
+
+        /* Standby / Nattmodus */
+        body.theme-standby {
+            --bg: #000000;
+            --bg-2: #050505;
+            --panel: rgba(10, 10, 10, 0.9);
+            --panel-soft: rgba(5, 5, 5, 0.95);
+            --tile: rgba(10, 10, 10, 0.95);
+            --tile-alt: rgba(5, 5, 5, 0.9);
+            --text: #888888;
+            --muted: rgba(136, 136, 136, 0.6);
+            --muted-2: rgba(136, 136, 136, 0.3);
+            --line: rgba(255,255,255,0.02);
+            --accent: #444444;
+            --theme-icon: '💤';
         }
 
         * { box-sizing: border-box; }
@@ -36,6 +175,7 @@
             overflow-y: auto;
             scrollbar-width: none;
             -ms-overflow-style: none;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         ::-webkit-scrollbar {
@@ -93,15 +233,15 @@
             transition: color 0.2s;
         }
         .weather-head span#weather-title:hover {
-            color: #4da6ff;
+            color: var(--accent);
             text-decoration: underline;
         }
 
         .city-select {
             width: 100%;
-            background: #081821;
+            background: var(--bg-2);
             color: var(--text);
-            border: 1px solid rgba(255,255,255,0.15);
+            border: 1px solid var(--line);
             border-radius: 6px;
             padding: 6px 10px;
             font-size: 0.85rem;
@@ -111,7 +251,7 @@
         }
         .city-select:focus {
             outline: none;
-            border-color: #007bff;
+            border-color: var(--accent);
         }
 
         .weather-box {
@@ -199,9 +339,9 @@
 
         .weather-updated button,
         .news-footer button {
-            background: rgba(255,255,255,0.02);
-            color: #dfeeff;
-            border: 1px solid rgba(255,255,255,0.06);
+            background: var(--line);
+            color: var(--text);
+            border: 1px solid var(--line);
             border-radius: 8px;
             padding: 6px 10px;
             font: inherit;
@@ -212,7 +352,7 @@
 
         .weather-updated button:hover,
         .news-footer button:hover {
-            background: rgba(255,255,255,0.08);
+            opacity: 0.8;
         }
 
         .hourly-forecast {
@@ -227,7 +367,7 @@
         .hour-card {
             width: 100%;
             max-width: 100%;
-            background: rgba(255,255,255,0.02);
+            background: var(--line);
             border-radius: 10px;
             padding: 10px 12px;
             text-align: left;
@@ -318,11 +458,11 @@
             width: 160px;
             min-height: 140px;
             border-radius: 10px;
-            background: rgba(18, 31, 45, 0.92);
-            border: 1px solid rgba(255,255,255,0.04);
+            background: var(--tile);
+            border: 1px solid var(--line);
             text-decoration: none;
             color: var(--text);
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.01);
+            box-shadow: inset 0 0 0 1px var(--line);
             padding: 14px 12px 12px;
             transition: transform 0.12s ease, filter 0.12s ease;
         }
@@ -343,7 +483,7 @@
         .service-label {
             font-size: 0.95rem;
             font-weight: 600;
-            color: #f0f5ff;
+            color: var(--text);
         }
 
         .news-area {
@@ -416,7 +556,7 @@
             height: 72px;
             border-radius: 8px;
             object-fit: cover;
-            background: rgba(255,255,255,0.06);
+            background: var(--line);
             flex-shrink: 0;
         }
 
@@ -453,6 +593,61 @@
             border-top: 1px solid var(--line);
         }
 
+        /* --- SETTINGS / THEME BUTTON --- */
+        .theme-toggle-btn {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            background: var(--panel-soft);
+            color: var(--text);
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .theme-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Theme Selector Modal */
+        .theme-menu {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: var(--bg-2);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1500;
+            min-width: 170px;
+        }
+        .theme-menu button {
+            background: transparent;
+            color: var(--text);
+            border: none;
+            padding: 8px 12px;
+            text-align: left;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .theme-menu button:hover {
+            background: var(--line);
+        }
+
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -466,8 +661,8 @@
             z-index: 1000;
         }
         .modal-content {
-            background: #111827;
-            color: #ffffff;
+            background: var(--bg-2);
+            color: var(--text);
             padding: 30px;
             border-radius: 12px;
             width: 90%;
@@ -477,7 +672,7 @@
             scrollbar-width: none;
             -ms-overflow-style: none;
             position: relative;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid var(--line);
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
         .modal-content::-webkit-scrollbar {
@@ -485,15 +680,15 @@
             width: 0;
         }
         .close-btn {
-            background: #222;
-            color: #fff;
-            border: 1px solid #444;
+            background: var(--line);
+            color: var(--text);
+            border: 1px solid var(--line);
             padding: 6px 14px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
         }
-        .close-btn:hover { background: #333; }
+        .close-btn:hover { opacity: 0.8; }
         
         .modal-header-actions {
             display: flex;
@@ -504,7 +699,7 @@
             margin-bottom: 15px;
         }
         .add-btn {
-            background: #007bff;
+            background: var(--accent);
             color: white;
             border: none;
             padding: 8px 14px;
@@ -512,7 +707,7 @@
             font-weight: bold;
             cursor: pointer;
         }
-        .add-btn:hover { background: #0056b3; }
+        .add-btn:hover { opacity: 0.9; }
 
         .ai-form-grid-row {
             display: grid;
@@ -525,10 +720,10 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
             gap: 10px 12px;
-            background: #081821;
+            background: var(--bg);
             padding: 12px 14px;
             border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--line);
             max-height: 160px;
             overflow-y: auto;
             scrollbar-width: none;
@@ -552,7 +747,7 @@
         .checkbox-item input[type="checkbox"] {
             width: 16px;
             height: 16px;
-            accent-color: #007bff;
+            accent-color: var(--accent);
             cursor: pointer;
             margin: 0;
         }
@@ -567,16 +762,16 @@
         .search-input {
             width: 100%;
             padding: 10px 14px;
-            background: #081821;
-            border: 1px solid rgba(255,255,255,0.15);
+            background: var(--bg);
+            border: 1px solid var(--line);
             border-radius: 8px;
-            color: #fff;
+            color: var(--text);
             font-size: 0.95rem;
             font-family: inherit;
         }
         .search-input:focus {
             outline: none;
-            border-color: #007bff;
+            border-color: var(--accent);
         }
         .category-bar {
             display: flex;
@@ -588,9 +783,9 @@
         }
         .category-bar::-webkit-scrollbar { display: none; }
         .cat-chip {
-            background: rgba(255,255,255,0.06);
+            background: var(--line);
             color: var(--muted);
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid var(--line);
             border-radius: 20px;
             padding: 5px 12px;
             font-size: 0.8rem;
@@ -599,21 +794,21 @@
             transition: all 0.2s ease;
         }
         .cat-chip.active, .cat-chip:hover {
-            background: #007bff;
+            background: var(--accent);
             color: #fff;
-            border-color: #007bff;
+            border-color: var(--accent);
         }
         .recipe-badge {
             display: inline-block;
             background: rgba(0, 123, 255, 0.2);
-            color: #4da6ff;
+            color: var(--accent);
             font-size: 0.72rem;
             font-weight: 600;
             padding: 2px 8px;
             border-radius: 4px;
             margin-top: 4px;
             margin-right: 6px;
-            border: 1px solid rgba(77, 166, 255, 0.3);
+            border: 1px solid var(--line);
         }
         .recipe-badge-time {
             display: inline-block;
@@ -624,22 +819,22 @@
             padding: 2px 8px;
             border-radius: 4px;
             margin-top: 4px;
-            border: 1px solid rgba(92, 219, 149, 0.3);
+            border: 1px solid var(--line);
         }
 
         .recipe-list { display: flex; flex-direction: column; gap: 10px; }
         .recipe-card-item {
-            background: rgba(255,255,255,0.03);
+            background: var(--line);
             padding: 12px;
             border-radius: 8px;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 15px;
-            border: 1px solid rgba(255,255,255,0.04);
+            border: 1px solid var(--line);
             transition: background 0.2s;
         }
-        .recipe-card-item:hover { background: rgba(255,255,255,0.07); }
+        .recipe-card-item:hover { opacity: 0.85; }
         .recipe-thumb {
             width: 70px;
             height: 70px;
@@ -648,7 +843,7 @@
             flex-shrink: 0;
             background: #222;
         }
-        .recipe-info h3 { margin: 0 0 3px 0; color: #4da6ff; font-size: 1.1em; }
+        .recipe-info h3 { margin: 0 0 3px 0; color: var(--accent); font-size: 1.1em; }
         .recipe-info p { margin: 0; color: var(--muted); font-size: 0.85em; }
         .ai-section {
             margin-top: 25px;
@@ -673,22 +868,22 @@
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 10px;
-            background: #081821;
-            border: 1px solid #333;
-            color: #fff;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            color: var(--text);
             border-radius: 6px;
             font-family: inherit;
         }
         #recipe-file-input {
             color: var(--text);
-            background: #081821;
-            border: 1px solid rgba(255,255,255,0.12);
+            background: var(--bg);
+            border: 1px solid var(--line);
             border-radius: 6px;
             padding: 6px;
             width: 100%;
         }
         #recipe-file-input::file-selector-button {
-            background: #2b7cd3;
+            background: var(--accent);
             color: #ffffff;
             border: none;
             border-radius: 5px;
@@ -698,9 +893,6 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s ease;
-        }
-        #recipe-file-input::file-selector-button:hover {
-            background: #2460a1;
         }
         .form-actions { display: flex; gap: 10px; margin-top: 20px; }
         .save-btn { background: #28a745; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; flex: 1; }
@@ -738,14 +930,13 @@
            ========================================================= */
         @media (max-width: 768px) {
             body {
-                padding: 10px 12px 80px; /* Ekstra bunn-padding så innhold ikke skjules bak menyen */
+                padding: 10px 12px 80px;
             }
 
             .layout {
-                display: block; /* Lar oss skjule/vise enkeltelementer via faner */
+                display: block;
             }
 
-            /* Standard tilstand: skjul seksjoner med mindre de har klassen .active-tab */
             .weather-area,
             .main,
             .news-area {
@@ -775,7 +966,6 @@
                 margin-bottom: 12px;
             }
 
-            /* 3 i bredden for strømmetjenester */
             .service-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
                 gap: 10px;
@@ -802,7 +992,6 @@
                 text-overflow: ellipsis;
             }
 
-            /* Vær-fanen tilpasset mobil */
             .weather-box,
             .weather-updated {
                 max-width: 100%;
@@ -834,7 +1023,7 @@
             }
 
             .weather-meta-row {
-                background: rgba(255, 255, 255, 0.04);
+                background: var(--line);
                 padding: 8px 10px;
                 border-radius: 8px;
                 font-size: 0.85rem;
@@ -864,16 +1053,15 @@
                 gap: 2px;
             }
 
-            /* Fast bunnmeny */
             .mobile-nav-bar {
                 position: fixed;
                 bottom: 0;
                 left: 0;
                 width: 100%;
                 height: 65px;
-                background: rgba(8, 24, 33, 0.95);
+                background: var(--bg-2);
                 backdrop-filter: blur(10px);
-                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                border-top: 1px solid var(--line);
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
@@ -903,11 +1091,10 @@
             }
 
             .mobile-nav-btn.active {
-                color: #4da6ff;
+                color: var(--accent);
                 font-weight: 600;
             }
 
-            /* Fullskjerms-modale vinduer på mobil */
             .modal-content {
                 width: 100%;
                 max-width: 100%;
@@ -938,6 +1125,21 @@
 </head>
 
 <body>
+    <!-- SETTINGS / THEME TOGGLE KNAPP -->
+    <button class="theme-toggle-btn" onclick="toggleThemeMenu()" title="Velg tema">
+        <span id="current-theme-icon">🎨</span>
+    </button>
+    <div id="theme-menu" class="theme-menu">
+        <button onclick="setTheme('auto')">🔄 Automatisk (Sesong)</button>
+        <button onclick="setTheme('dark')">🌙 Dark Mode</button>
+        <button onclick="setTheme('light')">☀️ Light Mode</button>
+        <button onclick="setTheme('summer')">🌴 Sommer</button>
+        <button onclick="setTheme('christmas')">🎄 Jul</button>
+        <button onclick="setTheme('easter')">🐣 Påske</button>
+        <button onclick="setTheme('pride')">🏳️‍🌈 Pride</button>
+        <button onclick="setTheme('standby')">💤 Standby (Natt)</button>
+    </div>
+
     <div class="page">
         <div class="layout">
             <!-- VÆR-PANEL -->
@@ -989,9 +1191,9 @@
                             </div>
                         </div>
 
-                        <div style="margin-top: 10px; font-size: 0.82rem; color: var(--muted); background: rgba(255,255,255,0.03); padding: 8px; border-radius: 6px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="margin-top: 10px; font-size: 0.82rem; color: var(--muted); background: var(--line); padding: 8px; border-radius: 6px; display: flex; flex-direction: column; gap: 4px;">
                             <div style="text-align: center; font-weight: 600; color: var(--text);" id="city-local-time">🕒 Klokken: --:--</div>
-                            <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 4px;">
+                            <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 4px;">
                                 <span id="sun-rise">🌅 --:--</span>
                                 <span id="sun-set">🌇 --:--</span>
                             </div>
@@ -1404,6 +1606,93 @@
     </div>
 
     <script>
+        // --- TEMA- OG SESONG-LOGIKK ---
+        function toggleThemeMenu() {
+            const menu = document.getElementById('theme-menu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Lukk menyen hvis man klikker utenfor
+        window.addEventListener('click', (e) => {
+            if (!e.target.closest('.theme-toggle-btn') && !e.target.closest('.theme-menu')) {
+                document.getElementById('theme-menu').style.display = 'none';
+            }
+        });
+
+        function setTheme(themeKey) {
+            localStorage.setItem('streaminghub_theme', themeKey);
+            applyTheme(themeKey);
+            document.getElementById('theme-menu').style.display = 'none';
+        }
+
+        function getAutomaticSeason() {
+            const now = new Date();
+            const hour = now.getHours();
+            const month = now.getMonth() + 1; // 1-12
+            const day = now.getDate();
+
+            // Standby / Nattmodus mellom kl 23:00 og 06:00
+            if (hour >= 23 || hour < 6) {
+                return 'standby';
+            }
+
+            // Jul: 1. des - 26. des
+            if (month === 12 && day <= 26) {
+                return 'christmas';
+            }
+
+            // Påske (forenklet tidsrom rundt mars/april, f.eks. uken før/etter 1. april eller basert på måned)
+            if (month === 4 && day <= 10) {
+                return 'easter';
+            }
+
+            // Sommer: Juni, Juli, August
+            if (month >= 6 && month <= 8) {
+                return 'summer';
+            }
+
+            // Standard mørk (eller vår/høst)
+            return 'dark';
+        }
+
+        function applyTheme(themeKey) {
+            const body = document.body;
+            body.className = ''; // Tøm klasser
+
+            let activeTheme = themeKey;
+            if (!activeTheme || activeTheme === 'auto') {
+                activeTheme = getAutomaticSeason();
+            }
+
+            if (activeTheme === 'light') body.classList.add('theme-light');
+            else if (activeTheme === 'summer') body.classList.add('theme-summer');
+            else if (activeTheme === 'christmas') body.classList.add('theme-christmas');
+            else if (activeTheme === 'easter') body.classList.add('theme-easter');
+            else if (activeTheme === 'pride') body.classList.add('theme-pride');
+            else if (activeTheme === 'standby') body.classList.add('theme-standby');
+            // Standard 'dark' trenger ingen egen klasse
+
+            // Oppdater ikon på knappen
+            const icons = {
+                'auto': '🔄',
+                'dark': '🌙',
+                'light': '☀️',
+                'summer': '🌴',
+                'christmas': '🎄',
+                'easter': '🐣',
+                'pride': '🏳️‍🌈',
+                'standby': '💤'
+            };
+            document.getElementById('current-theme-icon').textContent = icons[activeTheme] || '🎨';
+        }
+
+        // Kjør tema ved lasting
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('streaminghub_theme') || 'auto';
+            applyTheme(savedTheme);
+        });
+
+        // --- BYGNING OG VÆR ---
         const CITIES = {
             'Athen': { lat: 37.9838, lon: 23.7275, tz: 'Europe/Athens' },
             'Bergen': { lat: 60.3913, lon: 5.3221, tz: 'Europe/Oslo' },
@@ -1938,9 +2227,9 @@
                 ${r.servings ? `<p style="color:var(--muted); font-size:0.9em; margin: 6px 0 2px 0;"><strong>Porsjoner:</strong> ${r.servings}</p>` : ''}
                 ${r.nutrition ? `<p style="color:var(--muted); font-size:0.9em; margin: 2px 0 12px 0;"><strong>Næringsinnhold:</strong> ${r.nutrition}</p>` : ''}
                 ${r.image ? `<img src="${r.image}" class="recipe-detail-img" style="margin-top:10px;">` : ''}
-                <h3 style="color:#4da6ff; margin-bottom:5px;">Ingredienser:</h3>
+                <h3 style="color:var(--accent); margin-bottom:5px;">Ingredienser:</h3>
                 <ul style="color:var(--muted); margin-top:0;">${(r.ingredients || []).map(i => `<li>${i}</li>`).join('')}</ul>
-                <h3 style="color:#4da6ff; margin-bottom:5px;">Framgangsmåte:</h3>
+                <h3 style="color:var(--accent); margin-bottom:5px;">Framgangsmåte:</h3>
                 <p style="white-space: pre-line; color:var(--muted); margin-top:0;">${r.instructions || ''}</p>
             `;
 
@@ -2143,7 +2432,7 @@
                 card.onclick = () => selectRecipeOption(index);
                 
                 card.innerHTML = `
-                    <h3 style="margin: 0 0 4px 0; color: #4da6ff;">Alternativ ${index + 1}: ${recipe.title}</h3>
+                    <h3 style="margin: 0 0 4px 0; color: var(--accent);">Alternativ ${index + 1}: ${recipe.title}</h3>
                     <p style="margin: 0 0 6px 0; color: var(--muted);">${recipe.description}</p>
                     <div>
                         <span class="recipe-badge">${recipe.nutrition}</span>
@@ -2165,7 +2454,7 @@
         function renderSelectedRecipeFullView() {
             const container = document.getElementById('selected-recipe-full-view');
             container.innerHTML = `
-                <h2 style="margin-top:0; margin-bottom: 5px; color: #4da6ff;">${chosenRecipeData.title || 'Uten tittel'}</h2>
+                <h2 style="margin-top:0; margin-bottom: 5px; color: var(--accent);">${chosenRecipeData.title || 'Uten tittel'}</h2>
                 <div style="margin-bottom: 8px;">
                     ${chosenRecipeData.category ? `<span class="recipe-badge">${chosenRecipeData.category}</span>` : ''}
                     ${chosenRecipeData.prepTime ? `<span class="recipe-badge-time">${chosenRecipeData.prepTime}</span>` : ''}
@@ -2173,9 +2462,9 @@
                 <p style="color:var(--muted); font-size: 0.95rem; margin: 4px 0 10px 0;">${chosenRecipeData.description || ''}</p>
                 ${chosenRecipeData.servings ? `<p style="color:var(--muted); font-size:0.9em; margin: 4px 0;"><strong>Porsjoner:</strong> ${chosenRecipeData.servings}</p>` : ''}
                 ${chosenRecipeData.nutrition ? `<p style="color:var(--muted); font-size:0.9em; margin: 4px 0 12px 0;"><strong>Næringsinnhold:</strong> ${chosenRecipeData.nutrition}</p>` : ''}
-                <h3 style="color:#4da6ff; margin-bottom:5px;">Ingredienser:</h3>
+                <h3 style="color:var(--accent); margin-bottom:5px;">Ingredienser:</h3>
                 <ul style="color:var(--muted); margin-top:0;">${(chosenRecipeData.ingredients || []).map(i => `<li>${i}</li>`).join('')}</ul>
-                <h3 style="color:#4da6ff; margin-bottom:5px;">Framgangsmåte:</h3>
+                <h3 style="color:var(--accent); margin-bottom:5px;">Framgangsmåte:</h3>
                 <p style="white-space: pre-line; color:var(--muted); margin-top:0;">${chosenRecipeData.instructions || ''}</p>
             `;
         }
