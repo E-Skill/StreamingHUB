@@ -13,124 +13,133 @@
     <style>
         /* --- STANDARD MØRKMODUS (Standard) --- */
         :root {
-            --bg: #030d17;
-            --bg-2: #081821;
-            --panel: rgba(17, 24, 39, 0.7);
-            --panel-soft: rgba(17, 24, 39, 0.9);
-            --tile: rgba(18, 31, 45, 0.92);
-            --tile-alt: rgba(14, 20, 31, 0.8);
+            --bg-color: #030d17;
+            --bg-image: none;
+            --bg-overlay: rgba(3, 13, 23, 0.85);
+            --panel: rgba(17, 24, 39, 0.65);
+            --panel-soft: rgba(17, 24, 39, 0.85);
+            --tile: rgba(18, 31, 45, 0.75);
+            --tile-alt: rgba(14, 20, 31, 0.7);
             --text: #eef5ff;
-            --muted: rgba(255,255,255,0.65);
-            --muted-2: rgba(255,255,255,0.38);
-            --line: rgba(255,255,255,0.05);
+            --muted: rgba(255,255,255,0.75);
+            --muted-2: rgba(255,255,255,0.5);
+            --line: rgba(255,255,255,0.1);
             --accent: #007bff;
-            --theme-symbol: '';
+            --blur: blur(12px);
         }
 
         /* Light Mode */
         body.theme-light {
-            --bg: #f0f4f8;
-            --bg-2: #ffffff;
-            --panel: rgba(255, 255, 255, 0.9);
+            --bg-color: #f0f4f8;
+            --bg-image: none;
+            --bg-overlay: transparent;
+            --panel: rgba(255, 255, 255, 0.85);
             --panel-soft: rgba(240, 244, 248, 0.95);
-            --tile: rgba(255, 255, 255, 0.95);
-            --tile-alt: rgba(230, 238, 245, 0.9);
+            --tile: rgba(255, 255, 255, 0.9);
+            --tile-alt: rgba(230, 238, 245, 0.85);
             --text: #1a2530;
             --muted: rgba(0,0,0,0.6);
             --muted-2: rgba(0,0,0,0.4);
-            --line: rgba(0,0,0,0.08);
+            --line: rgba(0,0,0,0.1);
             --accent: #0066cc;
-            --theme-symbol: '☀️';
+        }
+
+        /* Vår Mode (Spring) */
+        body.theme-spring {
+            --bg-color: #0b1a0b;
+            --bg-image: url('Images/vår.png');
+            --bg-overlay: rgba(11, 26, 11, 0.5);
+            --panel: rgba(18, 41, 18, 0.65);
+            --panel-soft: rgba(14, 31, 14, 0.85);
+            --tile: rgba(18, 41, 18, 0.75);
+            --text: #eefce8;
+            --muted: rgba(214, 245, 201, 0.8);
+            --line: rgba(76, 175, 80, 0.25);
+            --accent: #4caf50;
         }
 
         /* Summer Mode */
         body.theme-summer {
-            --bg: #0c2340;
-            --bg-2: #13315c;
-            --panel: rgba(19, 49, 92, 0.85);
-            --panel-soft: rgba(12, 35, 64, 0.95);
-            --tile: rgba(19, 49, 92, 0.92);
-            --tile-alt: rgba(12, 35, 64, 0.9);
+            --bg-color: #0c2340;
+            --bg-image: url('Images/summer.png');
+            --bg-overlay: rgba(12, 35, 64, 0.5);
+            --panel: rgba(19, 49, 92, 0.65);
+            --panel-soft: rgba(12, 35, 64, 0.85);
+            --tile: rgba(19, 49, 92, 0.75);
             --text: #fffbeb;
-            --muted: rgba(254, 243, 199, 0.75);
-            --muted-2: rgba(254, 243, 199, 0.4);
+            --muted: rgba(254, 243, 199, 0.8);
             --line: rgba(251, 191, 36, 0.2);
             --accent: #f59e0b;
-            --theme-symbol: '🌴 ☀️ 🌊';
+        }
+
+        /* Autumn Mode */
+        body.theme-autumn {
+            --bg-color: #1a0f00;
+            --bg-image: url('Images/høst.png');
+            --bg-overlay: rgba(26, 15, 0, 0.6);
+            --panel: rgba(51, 25, 0, 0.65);
+            --panel-soft: rgba(38, 18, 0, 0.85);
+            --tile: rgba(51, 25, 0, 0.75);
+            --text: #fff6e5;
+            --muted: rgba(255, 230, 204, 0.75);
+            --line: rgba(230, 115, 0, 0.2);
+            --accent: #e67300;
+        }
+
+        /* Winter Mode (Nordlys/Kald) */
+        body.theme-winter {
+            --bg-color: #001f3f;
+            --bg-image: url('Images/vinter.png');
+            --bg-overlay: rgba(0, 31, 63, 0.5);
+            --panel: rgba(0, 64, 128, 0.65);
+            --panel-soft: rgba(0, 48, 96, 0.85);
+            --tile: rgba(0, 64, 128, 0.75);
+            --text: #e6f2ff;
+            --muted: rgba(179, 217, 255, 0.8);
+            --line: rgba(51, 153, 255, 0.2);
+            --accent: #3399ff;
         }
 
         /* Christmas Mode */
         body.theme-christmas {
-            --bg: #1a0505;
-            --bg-2: #2b0808;
-            --panel: rgba(58, 14, 14, 0.85);
-            --panel-soft: rgba(40, 8, 8, 0.95);
-            --tile: rgba(58, 14, 14, 0.92);
-            --tile-alt: rgba(40, 8, 8, 0.9);
+            --bg-color: #1a0505;
+            --bg-image: url('Images/jul.png');
+            --bg-overlay: rgba(26, 5, 5, 0.6);
+            --panel: rgba(58, 14, 14, 0.65);
+            --panel-soft: rgba(40, 8, 8, 0.85);
+            --tile: rgba(58, 14, 14, 0.75);
             --text: #fef2f2;
-            --muted: rgba(254, 202, 202, 0.7);
-            --muted-2: rgba(254, 202, 202, 0.4);
+            --muted: rgba(254, 202, 202, 0.8);
             --line: rgba(239, 68, 68, 0.25);
             --accent: #ef4444;
-            --theme-symbol: '🎄 🎅 ❄️';
         }
 
         /* Easter Mode */
         body.theme-easter {
-            --bg: #1a1602;
-            --bg-2: #2b2404;
-            --panel: rgba(56, 47, 8, 0.85);
-            --panel-soft: rgba(38, 31, 4, 0.95);
-            --tile: rgba(56, 47, 8, 0.92);
-            --tile-alt: rgba(38, 31, 4, 0.9);
+            --bg-color: #1a1602;
+            --bg-image: url('Images/påske.png');
+            --bg-overlay: rgba(26, 22, 2, 0.6);
+            --panel: rgba(56, 47, 8, 0.75);
+            --panel-soft: rgba(38, 31, 4, 0.9);
+            --tile: rgba(56, 47, 8, 0.85);
             --text: #fefce8;
-            --muted: rgba(254, 240, 138, 0.75);
-            --muted-2: rgba(254, 240, 138, 0.4);
+            --muted: rgba(254, 240, 138, 0.8);
             --line: rgba(234, 179, 8, 0.25);
             --accent: #eab308;
-            --theme-symbol: '🐣 🐥 🌼';
-        }
-
-        /* Pride Mode */
-        body.theme-pride {
-            --bg: #09090b;
-            --bg-2: #18181b;
-            --panel: rgba(24, 24, 27, 0.85);
-            --panel-soft: rgba(9, 9, 11, 0.95);
-            --tile: rgba(24, 24, 27, 0.92);
-            --tile-alt: rgba(9, 9, 11, 0.9);
-            --text: #fafafa;
-            --muted: rgba(250, 250, 250, 0.7);
-            --muted-2: rgba(250, 250, 250, 0.4);
-            --line: rgba(236, 72, 153, 0.25);
-            --accent: #ec4899;
-            --theme-symbol: '🏳️‍🌈 ✨';
-        }
-        body.theme-pride::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #e74c3c, #e67e22, #f1c40f, #2ecc71, #3498db, #9b59b6);
-            z-index: 2000;
         }
 
         /* Standby Mode */
         body.theme-standby {
-            --bg: #000000;
-            --bg-2: #050505;
+            --bg-color: #000000;
+            --bg-image: none;
+            --bg-overlay: transparent;
             --panel: rgba(10, 10, 10, 0.9);
             --panel-soft: rgba(5, 5, 5, 0.95);
             --tile: rgba(10, 10, 10, 0.95);
-            --tile-alt: rgba(5, 5, 5, 0.9);
             --text: #666666;
             --muted: rgba(102, 102, 102, 0.6);
-            --muted-2: rgba(102, 102, 102, 0.3);
             --line: rgba(255,255,255,0.02);
             --accent: #333333;
-            --theme-symbol: '💤 🌙';
         }
 
         * { box-sizing: border-box; }
@@ -138,28 +147,32 @@
         html, body {
             height: 100%;
             margin: 0;
-            background: var(--bg);
+            background-color: var(--bg-color);
+            background-image: var(--bg-image);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
             overflow-y: auto;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            transition: background 0.4s ease, color 0.4s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* STOORE BAKGRUNNS-SYMBOLS FOR FØLELSE */
+        /* Mørkt overlegg (overlay) for å gjøre teksten over bildet lesbar */
         body::before {
-            content: var(--theme-symbol);
+            content: '';
             position: fixed;
-            bottom: 20px;
-            right: 25px;
-            font-size: 5rem;
-            opacity: 0.15;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-overlay);
             pointer-events: none;
             z-index: 0;
-            letter-spacing: 15px;
-            filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+            transition: background-color 0.4s ease;
         }
 
         ::-webkit-scrollbar {
@@ -184,7 +197,7 @@
             width: 100%;
             max-width: 1460px;
             min-height: calc(100vh - 30px);
-            position: relative;
+            position: relative; /* Plasserer innholdet foran overlayet */
             z-index: 1;
         }
 
@@ -195,13 +208,31 @@
             align-items: start;
         }
 
-        /* Weather column */
-        .weather-area {
-            padding-top: 16px;
+        /* Hovedpaneler med Glassmorfisme-effekt (blur) */
+        .weather-area, .main, .news-area {
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            background-color: var(--panel-soft);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid var(--line);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             min-height: calc(100vh - 36px);
             display: flex;
             flex-direction: column;
+        }
+
+        .weather-area {
             justify-content: flex-start;
+        }
+
+        .main {
+            align-items: center;
+            padding-top: 8px;
+        }
+
+        .news-area {
+            padding: 20px 10px 20px 20px;
         }
 
         .weather-head {
@@ -225,7 +256,7 @@
 
         .city-select {
             width: 100%;
-            background: var(--bg-2);
+            background: rgba(0,0,0,0.2);
             color: var(--text);
             border: 1px solid var(--line);
             border-radius: 8px;
@@ -234,11 +265,14 @@
             font-family: inherit;
             margin-bottom: 12px;
             cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         }
         .city-select:focus {
             outline: none;
             border-color: var(--accent);
+        }
+        .city-select option {
+            background: var(--bg-2);
+            color: var(--text);
         }
 
         .weather-box {
@@ -321,12 +355,11 @@
             justify-content: space-between;
             gap: 8px;
             width: 100%;
-            max-width: 220px;
         }
 
         .weather-updated button,
         .news-footer button {
-            background: var(--line);
+            background: rgba(0,0,0,0.2);
             color: var(--text);
             border: 1px solid var(--line);
             border-radius: 8px;
@@ -339,7 +372,7 @@
 
         .weather-updated button:hover,
         .news-footer button:hover {
-            opacity: 0.8;
+            background: var(--line);
         }
 
         .hourly-forecast {
@@ -353,8 +386,7 @@
 
         .hour-card {
             width: 100%;
-            max-width: 100%;
-            background: var(--line);
+            background: rgba(0,0,0,0.15);
             border-radius: 10px;
             padding: 10px 12px;
             text-align: left;
@@ -369,14 +401,6 @@
         .hour-icon { font-size: 1.2rem; }
         .hour-temp { font-weight: 700; font-size: 1rem; }
 
-        .main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 8px;
-            min-height: calc(100vh - 36px);
-        }
-
         h1.title {
             margin: 6px 0 0;
             font-size: 2.6rem;
@@ -385,7 +409,7 @@
             font-weight: 800;
             color: var(--text);
             text-align: center;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .services-block {
@@ -413,7 +437,7 @@
         }
 
         .recipe-nav-btn {
-            background: var(--line);
+            background: rgba(0,0,0,0.2);
             border: 1px solid var(--line);
             color: var(--text);
             font-size: 0.95rem;
@@ -453,15 +477,17 @@
             border: 1px solid var(--line);
             text-decoration: none;
             color: var(--text);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
             padding: 14px 12px 12px;
             transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
         }
 
         .service-card:hover {
             transform: translateY(-3px);
-            filter: brightness(1.08);
-            box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+            filter: brightness(1.1);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.3);
             border-color: var(--accent);
         }
 
@@ -480,16 +506,8 @@
             color: var(--text);
         }
 
-        .news-area {
-            padding-top: 10px;
-            min-height: calc(100vh - 36px);
-            display:flex;
-            flex-direction:column;
-        }
-
         .news-panel {
             width: 100%;
-            min-height: calc(100vh - 36px);
             background: transparent;
             border: none;
             color: var(--text);
@@ -526,7 +544,7 @@
             flex-direction: column;
             gap: 12px;
             overflow: visible;
-            padding-right: 6px;
+            padding-right: 14px;
             flex: 1 1 auto;
         }
 
@@ -550,7 +568,7 @@
             height: 72px;
             border-radius: 10px;
             object-fit: cover;
-            background: var(--line);
+            background: rgba(0,0,0,0.2);
             flex-shrink: 0;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
@@ -586,6 +604,7 @@
             font-size: 0.8rem;
             padding-top: 8px;
             border-top: 1px solid var(--line);
+            padding-right: 14px;
         }
 
         /* --- SETTINGS / THEME BUTTON --- */
@@ -593,9 +612,9 @@
             position: fixed;
             top: 15px;
             right: 20px;
-            background: var(--bg-2);
+            background: var(--panel-soft);
             color: var(--text);
-            border: 2px solid var(--accent);
+            border: 2px solid var(--line);
             border-radius: 50%;
             width: 48px;
             height: 48px;
@@ -605,11 +624,14 @@
             justify-content: center;
             cursor: pointer;
             z-index: 1500;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-            transition: transform 0.2s ease, background 0.2s ease;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
         .theme-toggle-btn:hover {
             transform: scale(1.12);
+            border-color: var(--accent);
         }
 
         /* Theme Selector Menu */
@@ -617,7 +639,9 @@
             position: fixed;
             top: 75px;
             right: 20px;
-            background: var(--bg-2);
+            background: var(--panel-soft);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
             border: 1px solid var(--line);
             border-radius: 14px;
             padding: 10px;
@@ -645,20 +669,22 @@
             color: #fff;
         }
 
+        /* MODALER */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: var(--blur);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
         .modal-content {
-            background: var(--bg-2);
+            background: var(--panel-soft);
             color: var(--text);
             padding: 30px;
             border-radius: 16px;
@@ -670,22 +696,23 @@
             -ms-overflow-style: none;
             position: relative;
             border: 1px solid var(--line);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
         .modal-content::-webkit-scrollbar {
             display: none;
             width: 0;
         }
         .close-btn {
-            background: var(--line);
+            background: rgba(0,0,0,0.3);
             color: var(--text);
             border: 1px solid var(--line);
             padding: 8px 16px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
+            transition: background 0.2s;
         }
-        .close-btn:hover { opacity: 0.8; }
+        .close-btn:hover { background: rgba(0,0,0,0.5); }
         
         .modal-header-actions {
             display: flex;
@@ -717,7 +744,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
             gap: 10px 12px;
-            background: var(--bg);
+            background: rgba(0,0,0,0.2);
             padding: 12px 14px;
             border-radius: 10px;
             border: 1px solid var(--line);
@@ -749,17 +776,13 @@
             margin: 0;
         }
 
-        .checkbox-item span {
-            line-height: 1.2;
-        }
-
         .search-container {
             margin-bottom: 12px;
         }
         .search-input {
             width: 100%;
             padding: 10px 14px;
-            background: var(--bg);
+            background: rgba(0,0,0,0.2);
             border: 1px solid var(--line);
             border-radius: 8px;
             color: var(--text);
@@ -780,8 +803,8 @@
         }
         .category-bar::-webkit-scrollbar { display: none; }
         .cat-chip {
-            background: var(--line);
-            color: var(--muted);
+            background: rgba(0,0,0,0.3);
+            color: var(--text);
             border: 1px solid var(--line);
             border-radius: 20px;
             padding: 6px 14px;
@@ -798,14 +821,14 @@
         .recipe-badge {
             display: inline-block;
             background: rgba(0, 123, 255, 0.2);
-            color: var(--accent);
+            color: #66b2ff;
             font-size: 0.72rem;
             font-weight: 600;
             padding: 2px 8px;
             border-radius: 4px;
             margin-top: 4px;
             margin-right: 6px;
-            border: 1px solid var(--line);
+            border: 1px solid rgba(77, 166, 255, 0.3);
         }
         .recipe-badge-time {
             display: inline-block;
@@ -816,12 +839,12 @@
             padding: 2px 8px;
             border-radius: 4px;
             margin-top: 4px;
-            border: 1px solid var(--line);
+            border: 1px solid rgba(92, 219, 149, 0.3);
         }
 
         .recipe-list { display: flex; flex-direction: column; gap: 10px; }
         .recipe-card-item {
-            background: var(--line);
+            background: rgba(0,0,0,0.15);
             padding: 12px;
             border-radius: 10px;
             cursor: pointer;
@@ -831,17 +854,18 @@
             border: 1px solid var(--line);
             transition: background 0.2s;
         }
-        .recipe-card-item:hover { opacity: 0.85; }
+        .recipe-card-item:hover { background: rgba(0,0,0,0.3); }
         .recipe-thumb {
             width: 70px;
             height: 70px;
             object-fit: cover;
             border-radius: 8px;
             flex-shrink: 0;
-            background: #222;
+            background: rgba(0,0,0,0.5);
         }
         .recipe-info h3 { margin: 0 0 3px 0; color: var(--accent); font-size: 1.1em; }
         .recipe-info p { margin: 0; color: var(--muted); font-size: 0.85em; }
+        
         .ai-section {
             margin-top: 25px;
             text-align: center;
@@ -860,12 +884,13 @@
             width: 100%;
         }
         .ai-btn:hover { background: #218838; }
+
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 5px; color: var(--muted); font-size: 0.9em; }
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 10px;
-            background: var(--bg);
+            background: rgba(0,0,0,0.2);
             border: 1px solid var(--line);
             color: var(--text);
             border-radius: 8px;
@@ -873,7 +898,7 @@
         }
         #recipe-file-input {
             color: var(--text);
-            background: var(--bg);
+            background: rgba(0,0,0,0.2);
             border: 1px solid var(--line);
             border-radius: 8px;
             padding: 6px;
@@ -904,9 +929,7 @@
             vertical-align: middle; margin-right: 6px;
         }
 
-        .mobile-nav-bar {
-            display: none;
-        }
+        .mobile-nav-bar { display: none; }
 
         /* NETTBRETT / MINDRE SKJERMER */
         @media (max-width: 1100px) {
@@ -921,24 +944,24 @@
             h1.title { font-size: 2.1rem; }
         }
 
-        /* =========================================================
-           MOBIL-APP MED FANE-NAVIGASJON (Kun skjermer <= 768px)
-           ========================================================= */
+        /* MOBIL-APP MED FANE-NAVIGASJON (Kun skjermer <= 768px) */
         @media (max-width: 768px) {
             body {
                 padding: 10px 12px 80px;
+                background-attachment: scroll; 
             }
 
-            .layout {
-                display: block;
-            }
+            .layout { display: block; }
 
-            .weather-area,
-            .main,
-            .news-area {
+            .weather-area, .main, .news-area {
                 display: none;
                 width: 100%;
                 padding-top: 4px;
+                border: none;
+                box-shadow: none;
+                background: transparent;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
             }
 
             .weather-area.active-tab,
@@ -953,14 +976,8 @@
                 margin: 4px 0 12px;
             }
 
-            .services-block {
-                padding-right: 0;
-                margin-top: 0;
-            }
-
-            .section-header-row {
-                margin-bottom: 12px;
-            }
+            .services-block { padding-right: 0; margin-top: 0; }
+            .section-header-row { margin-bottom: 12px; }
 
             .service-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -972,44 +989,34 @@
                 min-height: 96px;
                 padding: 12px 6px 8px;
                 border-radius: 12px;
+                background: var(--panel-soft);
+                backdrop-filter: var(--blur);
+                -webkit-backdrop-filter: var(--blur);
             }
 
-            .service-logo {
-                width: 44px;
-                height: 44px;
-                margin-bottom: 6px;
+            .service-logo { width: 44px; height: 44px; margin-bottom: 6px; }
+            .service-label { font-size: 0.8rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+            .weather-box, .weather-updated { max-width: 100%; }
+            .weather-head {
+                background: var(--panel-soft);
+                padding: 14px;
+                border-radius: 12px;
+                backdrop-filter: var(--blur);
+                margin-bottom: 10px;
             }
 
-            .service-label {
-                font-size: 0.8rem;
-                text-align: center;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            .weather-box,
-            .weather-updated {
-                max-width: 100%;
-            }
-
-            .city-select {
-                padding: 10px 12px;
-                font-size: 1rem;
-                margin-bottom: 14px;
-            }
-
+            .city-select { padding: 10px 12px; font-size: 1rem; margin-bottom: 14px; }
             .weather-temp-row {
                 align-items: center;
+                background: var(--panel-soft);
+                padding: 14px;
+                border-radius: 12px;
+                backdrop-filter: var(--blur);
             }
 
-            #weather-icon {
-                font-size: 3.2rem !important;
-            }
-
-            .weather-temp {
-                font-size: 2.8rem;
-            }
+            #weather-icon { font-size: 3.2rem !important; }
+            .weather-temp { font-size: 2.8rem; }
 
             .weather-meta {
                 display: grid;
@@ -1019,8 +1026,9 @@
             }
 
             .weather-meta-row {
-                background: var(--line);
-                padding: 8px 10px;
+                background: var(--panel-soft);
+                backdrop-filter: var(--blur);
+                padding: 10px;
                 border-radius: 8px;
                 font-size: 0.85rem;
             }
@@ -1042,21 +1050,39 @@
                 padding: 10px 6px;
                 text-align: center;
                 flex-shrink: 0;
+                background: var(--panel-soft);
+                backdrop-filter: var(--blur);
             }
 
-            .hour-left {
-                flex-direction: column;
-                gap: 2px;
+            .hour-left { flex-direction: column; gap: 2px; }
+
+            .news-header {
+                background: var(--panel-soft);
+                padding: 14px;
+                border-radius: 12px;
+                backdrop-filter: var(--blur);
+                margin-bottom: 10px;
             }
 
+            .news-item {
+                background: var(--panel-soft);
+                backdrop-filter: var(--blur);
+                border-radius: 12px;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid var(--line);
+            }
+
+            /* Fast bunnmeny */
             .mobile-nav-bar {
                 position: fixed;
                 bottom: 0;
                 left: 0;
                 width: 100%;
                 height: 65px;
-                background: var(--bg-2);
-                backdrop-filter: blur(10px);
+                background: var(--panel-soft);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
                 border-top: 1px solid var(--line);
                 display: flex;
                 justify-content: space-around;
@@ -1068,7 +1094,8 @@
             .mobile-nav-btn {
                 background: none;
                 border: none;
-                color: var(--muted);
+                color: var(--text);
+                opacity: 0.6;
                 font-size: 0.75rem;
                 font-family: inherit;
                 display: flex;
@@ -1078,18 +1105,11 @@
                 cursor: pointer;
                 flex: 1;
                 padding: 6px 0;
-                transition: color 0.2s;
+                transition: opacity 0.2s, color 0.2s;
             }
 
-            .mobile-nav-btn span.nav-icon {
-                font-size: 1.3rem;
-                line-height: 1;
-            }
-
-            .mobile-nav-btn.active {
-                color: var(--accent);
-                font-weight: 600;
-            }
+            .mobile-nav-btn span.nav-icon { font-size: 1.3rem; line-height: 1; }
+            .mobile-nav-btn.active { color: var(--accent); opacity: 1; font-weight: 600; }
 
             .modal-content {
                 width: 100%;
@@ -1098,24 +1118,12 @@
                 max-height: 100vh;
                 border-radius: 0;
                 padding: 20px 16px;
+                background: var(--bg-2);
             }
 
-            .ai-form-grid-row {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-
-            .checkbox-grid {
-                grid-template-columns: repeat(2, 1fr);
-                max-height: 180px;
-            }
-
-            .form-group input,
-            .form-group textarea,
-            .form-group select,
-            .search-input {
-                font-size: 16px;
-            }
+            .ai-form-grid-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .checkbox-grid { grid-template-columns: repeat(2, 1fr); max-height: 180px; }
+            .form-group input, .form-group textarea, .form-group select, .search-input { font-size: 16px; }
         }
     </style>
 </head>
@@ -1128,11 +1136,13 @@
     <div id="theme-menu" class="theme-menu">
         <button onclick="setTheme('auto')">🔄 Automatisk (Sesong/Natt)</button>
         <button onclick="setTheme('dark')">🌙 Mørkmodus (Standard)</button>
-        <button onclick="setTheme('light')">☀️ Light Mode</button>
-        <button onclick="setTheme('summer')">🌴 Sommer-modus</button>
-        <button onclick="setTheme('christmas')">🎄 Jule-modus</button>
-        <button onclick="setTheme('easter')">🐣 Påske-modus</button>
-        <button onclick="setTheme('pride')">🏳️‍🌈 Pride-modus</button>
+        <button onclick="setTheme('light')">☀️ Lys modus</button>
+        <button onclick="setTheme('spring')">🌱 Vår</button>
+        <button onclick="setTheme('summer')">🌴 Sommer</button>
+        <button onclick="setTheme('autumn')">🍂 Høst</button>
+        <button onclick="setTheme('winter')">🌌 Vinter</button>
+        <button onclick="setTheme('christmas')">🎄 Jul</button>
+        <button onclick="setTheme('easter')">🐣 Påske</button>
         <button onclick="setTheme('standby')">💤 Standby (Natt)</button>
     </div>
 
@@ -1187,8 +1197,8 @@
                             </div>
                         </div>
 
-                        <div style="margin-top: 10px; font-size: 0.82rem; color: var(--muted); background: var(--line); padding: 8px; border-radius: 8px; display: flex; flex-direction: column; gap: 4px;">
-                            <div style="text-align: center; font-weight: 600; color: var(--text);" id="city-local-time">🕒 Klokken: --:--</div>
+                        <div style="margin-top: 10px; font-size: 0.82rem; color: var(--text); background: rgba(0,0,0,0.15); padding: 8px; border-radius: 8px; display: flex; flex-direction: column; gap: 4px;">
+                            <div style="text-align: center; font-weight: 600;" id="city-local-time">🕒 Klokken: --:--</div>
                             <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 4px;">
                                 <span id="sun-rise">🌅 --:--</span>
                                 <span id="sun-set">🌇 --:--</span>
@@ -1357,7 +1367,7 @@
         <div class="modal-content">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 15px;">
                 <button class="close-btn" onclick="closeMatAIWizard()">Lukk</button>
-                <h2 style="margin: 0; color: #28a745; text-align: center; flex: 1;">Mat-AI</h2>
+                <h2 style="margin: 0; color: var(--accent); text-align: center; flex: 1;">Mat-AI</h2>
                 <div style="width: 65px;"></div>
             </div>
             
@@ -1570,7 +1580,7 @@
                     <div style="text-align: center; color: var(--muted); font-size: 0.8em; margin: 4px 0;">— eller lim inn bilde-URL —</div>
                     <input type="text" id="recipe-img" placeholder="https://..." oninput="previewImageUrl(this.value)">
                     <div id="image-preview-container" style="margin-top: 10px; display: none; text-align: center;">
-                        <img id="image-preview" src="" alt="Forhåndsvisning" style="max-height: 150px; border-radius: 8px; border: 1px solid #444; object-fit: cover;">
+                        <img id="image-preview" src="" alt="Forhåndsvisning" style="max-height: 150px; border-radius: 8px; border: 1px solid var(--line); object-fit: cover;">
                     </div>
                 </div>
                 <div class="form-group">
@@ -1582,7 +1592,7 @@
                     <textarea id="recipe-instructions" rows="5" required placeholder="1. Skjær entrecôte i biter...&#10;2. Mariner kjøttet..."></textarea>
                 </div>
                 <div class="form-actions">
-                    <button type="button" class="close-btn" onclick="previewFormRecipe()" style="background: #17a2b8; border: none; font-weight: bold; padding: 10px 18px;">Forhåndsvis</button>
+                    <button type="button" class="close-btn" onclick="previewFormRecipe()" style="background: #17a2b8; border: none; color: white; font-weight: bold; padding: 10px 18px;">Forhåndsvis</button>
                     <button type="submit" class="save-btn">Lagre oppskrift</button>
                 </div>
             </form>
@@ -1623,7 +1633,7 @@
         function getAutomaticSeason() {
             const now = new Date();
             const hour = now.getHours();
-            const month = now.getMonth() + 1;
+            const month = now.getMonth() + 1; // 1-12
             const day = now.getDate();
 
             // Standby / nattmodus mellom kl 23:00 og 06:00
@@ -1636,9 +1646,19 @@
                 return 'christmas';
             }
 
-            // Påske: Starten av april
+            // Vinter (Mørketid/Nordlys): Des, Jan, Feb
+            if (month === 12 || month === 1 || month === 2) {
+                return 'winter';
+            }
+            
+            // Påske: Starten av april (ofte uken før/etter 1. april)
             if (month === 4 && day <= 10) {
                 return 'easter';
+            }
+            
+            // Vår: Mars, April, Mai
+            if (month >= 3 && month <= 5) {
+                return 'spring';
             }
 
             // Sommer: Juni, Juli, August
@@ -1646,8 +1666,12 @@
                 return 'summer';
             }
 
-            // Standard mørkmodus
-            return 'dark';
+            // Høst: Sep, Okt, Nov
+            if (month >= 9 && month <= 11) {
+                return 'autumn';
+            }
+
+            return 'dark'; // Fallback
         }
 
         function applyTheme(themeKey) {
@@ -1660,18 +1684,23 @@
             }
 
             if (activeTheme === 'light') body.classList.add('theme-light');
+            else if (activeTheme === 'spring') body.classList.add('theme-spring');
             else if (activeTheme === 'summer') body.classList.add('theme-summer');
+            else if (activeTheme === 'autumn') body.classList.add('theme-autumn');
+            else if (activeTheme === 'winter') body.classList.add('theme-winter');
             else if (activeTheme === 'christmas') body.classList.add('theme-christmas');
             else if (activeTheme === 'easter') body.classList.add('theme-easter');
             else if (activeTheme === 'pride') body.classList.add('theme-pride');
             else if (activeTheme === 'standby') body.classList.add('theme-standby');
-            // Standard 'dark'
 
             const icons = {
                 'auto': '🔄',
                 'dark': '🌙',
                 'light': '☀️',
+                'spring': '🌱',
                 'summer': '🌴',
+                'autumn': '🍂',
+                'winter': '🌌',
                 'christmas': '🎄',
                 'easter': '🐣',
                 'pride': '🏳️‍🌈',
@@ -2212,7 +2241,7 @@
             currentRecipeIndex = isPreview ? null : index;
 
             document.getElementById('recipe-detail-body').innerHTML = `
-                <h2 style="margin-top:0; margin-bottom: 5px;">${r.title || 'Uten tittel'}</h2>
+                <h2 style="margin-top:0; margin-bottom: 5px; color: var(--accent);">${r.title || 'Uten tittel'}</h2>
                 <div style="margin-bottom: 8px;">
                     ${r.category ? `<span class="recipe-badge">${r.category}</span>` : ''}
                     ${r.prepTime ? `<span class="recipe-badge-time">${r.prepTime}</span>` : ''}
