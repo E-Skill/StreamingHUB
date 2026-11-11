@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-10T23:14:17.607264+00:00",
+  "updatedAt": "2026-11-11T09:57:36.008516+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Latvias hær: Ber folk søke tilfluktsrom etter luftromstrussel",
-      "link": "https://www.nrk.no/nyheter/latvias-haer_-ber-folk-soke-tilfluktsrom-etter-luftromstrussel-1.18078847",
-      "pubDate": "2026-11-10T22:05:14+00:00"
+      "title": "Overgrepssiktet lokalpolitiker løslatt etter 42 uker",
+      "link": "https://www.nrk.no/stor-oslo/lokalpolitiker-fra-follo-omradet-loslatt-etter-42-uker-i-varetekt_-siktet-for-a-ha-utnyttet-49-barn-1.18078504",
+      "pubDate": "2026-11-11T09:10:32+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/2499c6f9d222e73e4c1f773ff25a700e75cb81d8.jpg"
     },
     {
-      "title": "Fortviler over støy fra basskasser: – Føles som hjertet stopper",
-      "link": "https://www.nrk.no/vestfoldogtelemark/fortviler-over-stoy-i-ranerbygda-bo-_-na-ber-kommunen-om-hjelp-1.18065917",
-      "pubDate": "2026-11-10T21:00:00+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/dce035ffc28a3ac37a267b6ced3956051bcfeb84.jpg"
+      "title": "Sykehus må kutte: Punger ut så topp­­sjefene kan pendle til jobb",
+      "link": "https://www.nrk.no/tromsogfinnmark/finnmarkssykehuset-kutter-i-pasienttilbud-_-betalte-over-1_5-millioner-for-toppledernes-pendling-1.18033459",
+      "pubDate": "2026-11-11T04:18:25+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9037f4c4439c6663178d7381256b1bd3833f387c.jpg"
     },
     {
-      "title": "Bodø/Glimt truer egne supportere med advokat",
-      "link": "https://www.nrk.no/nordland/bodo_glimt-truer-podkasten-glimtforumpodden-med-advokat-1.18077275",
-      "pubDate": "2026-11-10T20:29:24+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/d91b6552ca1bae987e50f8eda7789f81cb68611b.jpg"
+      "title": "Held seg unna kommentarfelt under realitydeltakinga",
+      "link": "https://www.nrk.no/sport/ingrid-landmark-tandrevold-kjempar-om-siger-i-_71-grader-nord_-1.18068709",
+      "pubDate": "2026-11-11T04:21:31+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/47558cb9db849ab2f98f1a0d30dcfb8716df3877.jpg"
     }
   ]
 }
