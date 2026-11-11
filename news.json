@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-11T17:39:06.328068+00:00",
+  "updatedAt": "2026-11-11T23:42:15.750236+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Profilen samler inn penger: – Å kjenne noen som har kreft er helt forferdelig",
-      "link": "https://www.nrk.no/sport/jorgen-strand-larsen-mistet-bestefaren-til-kreft-_-na-samler-han-inn-en-million-kroner-1.18078960",
-      "pubDate": "2026-11-11T17:22:52+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c359af2eeef373a0ba273fc894bfca317db1e9ba.jpg"
+      "title": "CNN: Demokratene vinner historisk senatsvalg i Mississippi",
+      "link": "https://www.nrk.no/nyheter/cnn_-demokratene-vinner-historisk-senatsvalg-i-mississippi-1.18079865",
+      "pubDate": "2026-11-11T22:46:27+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/139f01fcb3bff0935868ad321481257853374064.jpg"
     },
     {
-      "title": "Listhaug: – Alle varselklokker bør ringe",
-      "link": "https://www.nrk.no/tromsogfinnmark/listhaug-om-nussir-kjop_-_-alle-varselklokker-bor-ringe-1.18078826",
-      "pubDate": "2026-11-10T21:00:58+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/2c1774327b08ff206ed1d716176ce71954b188c7.jpg"
+      "title": "Sykdomsutbrudd på villaks: – En internasjonal katastrofe",
+      "link": "https://www.nrk.no/trondelag/forsker-kaller-sykdomsutbrudd-pa-villaks-i-tronderske-elver-en-internasjonal-katastrofe-1.18078639",
+      "pubDate": "2026-11-11T22:45:12+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/35e66474b3969531e3e8ee0bad68cdaba577fcb1.jpg"
     },
     {
-      "title": "Trumps eks-utenriksminister forsvarer gruvekjøp: – Vil styrke Norge og EU",
-      "link": "https://www.nrk.no/tromsogfinnmark/trumps-eks-utenriksminister-om-nussir-kjop_-_-vil-styrke-norge-og-eu-1.18078943",
-      "pubDate": "2026-11-11T15:58:38+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/066e4c296bb6498db98f85186896b067b91d2a2b.jpg"
+      "title": "MDG: Vil fremme hasteforslag for å pause gruvesalg",
+      "link": "https://www.nrk.no/nyheter/mdg_-vil-fremme-hasteforslag-for-a-pause-gruvesalg-1.18079838",
+      "pubDate": "2026-11-11T21:12:44+00:00"
     }
   ]
 }
