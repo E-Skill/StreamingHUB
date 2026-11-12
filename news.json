@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-11T23:42:15.750236+00:00",
+  "updatedAt": "2026-11-12T12:43:40.333859+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "CNN: Demokratene vinner historisk senatsvalg i Mississippi",
-      "link": "https://www.nrk.no/nyheter/cnn_-demokratene-vinner-historisk-senatsvalg-i-mississippi-1.18079865",
-      "pubDate": "2026-11-11T22:46:27+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/139f01fcb3bff0935868ad321481257853374064.jpg"
+      "title": "Norsk ektepar reddet liv i Krakow: – Jeg lå med knærne i en blodpøl",
+      "link": "https://www.nrk.no/buskerud/norsk-ektepar-reddet-liv-i-krakow_-_-jeg-la-med-knaerne-i-en-blodpol-1.18079645",
+      "pubDate": "2026-11-12T08:33:22+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ec66cac655f791bdab8bb96dc4125f4d88a7fb0a.jpg"
     },
     {
-      "title": "Sykdomsutbrudd på villaks: – En internasjonal katastrofe",
-      "link": "https://www.nrk.no/trondelag/forsker-kaller-sykdomsutbrudd-pa-villaks-i-tronderske-elver-en-internasjonal-katastrofe-1.18078639",
-      "pubDate": "2026-11-11T22:45:12+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/35e66474b3969531e3e8ee0bad68cdaba577fcb1.jpg"
+      "title": "Åge Aleksandersen blir kommandør av St. Olavs Orden",
+      "link": "https://www.nrk.no/trondelag/age-aleksandersen-utnemnd-til-kommandor-av-den-kongelige-norske-st.-olavs-orden-1.18080296",
+      "pubDate": "2026-11-12T11:40:23+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/b141b9cca968d84f745c1b89e1326a8b7b2eb19c.jpg"
     },
     {
-      "title": "MDG: Vil fremme hasteforslag for å pause gruvesalg",
-      "link": "https://www.nrk.no/nyheter/mdg_-vil-fremme-hasteforslag-for-a-pause-gruvesalg-1.18079838",
-      "pubDate": "2026-11-11T21:12:44+00:00"
+      "title": "Bekreftet: Michael Carrick er ferdig i Manchester United: – Det har blitt totalt katastrofe",
+      "link": "https://www.nrk.no/sport/michael-carrick-er-ferdig-i-manchester-united_-_-det-har-blitt-totalt-katastrofe-1.18077980",
+      "pubDate": "2026-11-12T10:22:38+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1b3a515517cdbec2a4f27ce0637eeddf1efd9888.jpg"
     }
   ]
 }
