@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-12T12:43:40.333859+00:00",
+  "updatedAt": "2026-11-12T20:27:44.477774+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Norsk ektepar reddet liv i Krakow: – Jeg lå med knærne i en blodpøl",
-      "link": "https://www.nrk.no/buskerud/norsk-ektepar-reddet-liv-i-krakow_-_-jeg-la-med-knaerne-i-en-blodpol-1.18079645",
-      "pubDate": "2026-11-12T08:33:22+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ec66cac655f791bdab8bb96dc4125f4d88a7fb0a.jpg"
+      "title": "Alvorlig syke rammes av SAS-kutt: – En ekstrabelastning de absolutt ikke trenger",
+      "link": "https://www.nrk.no/nordland/helse-nord-og-kreftforeningen-er-svaert-bekymret-nar-sas-kutter-direkteruta-mellom-bodo-og-tromso-1.18080290",
+      "pubDate": "2026-11-12T18:45:28+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/6de1f5a435636d6dc130cbe544f686774d9efdf1.jpg"
     },
     {
-      "title": "Åge Aleksandersen blir kommandør av St. Olavs Orden",
-      "link": "https://www.nrk.no/trondelag/age-aleksandersen-utnemnd-til-kommandor-av-den-kongelige-norske-st.-olavs-orden-1.18080296",
-      "pubDate": "2026-11-12T11:40:23+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/b141b9cca968d84f745c1b89e1326a8b7b2eb19c.jpg"
+      "title": "Over 144.000 Norwegian og Widerøe-passasjerer rammet av datainnbrudd",
+      "link": "https://www.nrk.no/nyheter/over-144.000-norwegian-og-wideroe-passasjerer-rammet-av-datainnbrudd-1.18080740",
+      "pubDate": "2026-11-12T18:19:28+00:00"
     },
     {
-      "title": "Bekreftet: Michael Carrick er ferdig i Manchester United: – Det har blitt totalt katastrofe",
-      "link": "https://www.nrk.no/sport/michael-carrick-er-ferdig-i-manchester-united_-_-det-har-blitt-totalt-katastrofe-1.18077980",
-      "pubDate": "2026-11-12T10:22:38+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1b3a515517cdbec2a4f27ce0637eeddf1efd9888.jpg"
+      "title": "NRK-eksperter kritisk etter Ullevaal-trøbbel: – Finnes det ingen tiltak?",
+      "link": "https://www.nrk.no/sport/nrks-fotballeksperter-reagerer-pa-avlyst-trening-for-fotballandslaget-1.18080638",
+      "pubDate": "2026-11-12T17:27:05+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/cee18172fa10178340fe634387d472cef096a5a4.jpg"
     }
   ]
 }
