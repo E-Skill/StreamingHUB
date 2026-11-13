@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-11-12T20:27:44.477774+00:00",
+  "updatedAt": "2026-11-13T01:19:14.557815+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Tog sporet av ved Oslo S",
+      "link": "https://www.nrk.no/nyheter/tog-sporet-av-ved-oslo-s-1.18080865",
+      "pubDate": "2026-11-12T22:19:00+00:00"
+    },
+    {
+      "title": "United klarte ikke engang å sparke treneren skikkelig",
+      "link": "https://www.nrk.no/sport/thore-haugstad_-united-klarte-ikke-engang-a-sparke-treneren-skikkelig-1.18080553",
+      "pubDate": "2026-11-12T20:36:42+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/57087942e1dcc435c23e61922f51eecf8b3c6125.jpg"
+    },
     {
       "title": "Alvorlig syke rammes av SAS-kutt: – En ekstrabelastning de absolutt ikke trenger",
       "link": "https://www.nrk.no/nordland/helse-nord-og-kreftforeningen-er-svaert-bekymret-nar-sas-kutter-direkteruta-mellom-bodo-og-tromso-1.18080290",
       "pubDate": "2026-11-12T18:45:28+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/6de1f5a435636d6dc130cbe544f686774d9efdf1.jpg"
-    },
-    {
-      "title": "Over 144.000 Norwegian og Widerøe-passasjerer rammet av datainnbrudd",
-      "link": "https://www.nrk.no/nyheter/over-144.000-norwegian-og-wideroe-passasjerer-rammet-av-datainnbrudd-1.18080740",
-      "pubDate": "2026-11-12T18:19:28+00:00"
-    },
-    {
-      "title": "NRK-eksperter kritisk etter Ullevaal-trøbbel: – Finnes det ingen tiltak?",
-      "link": "https://www.nrk.no/sport/nrks-fotballeksperter-reagerer-pa-avlyst-trening-for-fotballandslaget-1.18080638",
-      "pubDate": "2026-11-12T17:27:05+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/cee18172fa10178340fe634387d472cef096a5a4.jpg"
     }
   ]
 }
