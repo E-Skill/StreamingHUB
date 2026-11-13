@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-13T01:19:14.557815+00:00",
+  "updatedAt": "2026-11-13T08:14:57.045039+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Tog sporet av ved Oslo S",
-      "link": "https://www.nrk.no/nyheter/tog-sporet-av-ved-oslo-s-1.18080865",
-      "pubDate": "2026-11-12T22:19:00+00:00"
+      "title": "Simon har 18 mann i arbeid og frykter stans i gruva",
+      "link": "https://www.nrk.no/tromsogfinnmark/lokalbefolkning-i-kvalsund-frykter-forsinkelser-med-nussir-1.18058306",
+      "pubDate": "2026-11-13T06:22:06+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/8fdfa940bf2ce6d05d1df9c5aa35aca50803c798.jpg"
     },
     {
-      "title": "United klarte ikke engang å sparke treneren skikkelig",
-      "link": "https://www.nrk.no/sport/thore-haugstad_-united-klarte-ikke-engang-a-sparke-treneren-skikkelig-1.18080553",
-      "pubDate": "2026-11-12T20:36:42+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/57087942e1dcc435c23e61922f51eecf8b3c6125.jpg"
+      "title": "Noreg-profil har fått nok av TV-grep: – Det er tullete",
+      "link": "https://www.nrk.no/sport/ryerson-har-fatt-nok-av-_refcam__-_-det-er-tullete-1.18079436",
+      "pubDate": "2026-11-13T04:35:16+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/99a67d5d9cc6544fbe33b844fb6d622afa35282a.jpg"
     },
     {
-      "title": "Alvorlig syke rammes av SAS-kutt: – En ekstrabelastning de absolutt ikke trenger",
-      "link": "https://www.nrk.no/nordland/helse-nord-og-kreftforeningen-er-svaert-bekymret-nar-sas-kutter-direkteruta-mellom-bodo-og-tromso-1.18080290",
-      "pubDate": "2026-11-12T18:45:28+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/6de1f5a435636d6dc130cbe544f686774d9efdf1.jpg"
+      "title": "Microsoft-trøbbel rammer tusenvis av brukere",
+      "link": "https://www.nrk.no/nyheter/microsoft-trobbel-rammer-tusenvis-av-brukere-1.18080878",
+      "pubDate": "2026-11-13T02:09:49+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/82f0297d96ddadc0136736cecb81bb49c6f264f4.jpg"
     }
   ]
 }
