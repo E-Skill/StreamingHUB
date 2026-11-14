@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-11-14T20:12:54.324988+00:00",
+  "updatedAt": "2026-11-14T23:54:05.650217+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Wales-sjefen falt pladask for Nusa – gir klar beskjed til storklubbene",
+      "link": "https://www.nrk.no/sport/wales-sjefen-falt-pladask-for-nusa-_-gir-klar-beskjed-til-storklubbene-1.18081801",
+      "pubDate": "2026-11-14T22:42:53+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a6be27fa47f6d640039a5a4cbd99e0ef6545f1c9.jpg"
+    },
     {
       "title": "Flystansen i USA: Bytting av kabel mulig årsak",
       "link": "https://www.nrk.no/nyheter/flystansen-i-usa_-bytting-av-kabel-mulig-arsak-1.18082036",
@@ -9,16 +15,10 @@
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7ca4a20c2e7b13e6cea264e18c4e11f850f2ae80.jpg"
     },
     {
-      "title": "Brøt tausheten om City-skandalen: – Skjønner du har lyst på en liten overskrift",
+      "title": "Solbakken reagerer på «urettferdig» Haaland-dekning: – Det er galimatias",
       "link": "https://www.nrk.no/sport/haaland-om-city-skandalen_-_-et-sporsmal-jeg-sliter-med-a-svare-pa-1.18082019",
       "pubDate": "2026-11-14T19:15:26+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/406709cc887ee77eadf6a16f8066c99a8ec8a5db.jpg"
-    },
-    {
-      "title": "Nusa herjet for Norge: «Driblet bort halve Wales»",
-      "link": "https://www.nrk.no/sport/spillerbors-etter-norges-kamp-mot-wales_-antonio-nusa-banens-beste-1.18082007",
-      "pubDate": "2026-11-14T18:55:30+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/7ed65a875063d1cd7b09903a5cc10628cb7d6c91.jpg"
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/aa7a40a8853c41a99513ce718020a138fdb717c0.jpg"
     }
   ]
 }
