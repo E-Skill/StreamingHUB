@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-11-15T17:54:46.786538+00:00",
+  "updatedAt": "2026-11-15T22:13:26.197799+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Nå kommer «MGP» for KI-musikk: – Ingen hører forskjell",
+      "link": "https://www.nrk.no/ostfold/arrangerer-forste-_melodi-grand-prix_-for-ki-musikk-1.18075971",
+      "pubDate": "2026-11-15T21:16:33+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ae6c1167d0f5640eda5274d2a1f20607c2d2edc3.jpg"
+    },
+    {
+      "title": "Gliste etter stikk frå kometen: – Har han ikkje alltid vore sånn då?",
+      "link": "https://www.nrk.no/sport/hedegart-og-botn-med-stikk-til-kvarandre-etter-skiskyttarstarten-1.18082302",
+      "pubDate": "2026-11-15T19:08:46+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/31c89ec5e7ddad65f087e5c1bb04f7eda2b1aa9f.jpg"
+    },
     {
       "title": "Fugleinfluensa påvist i Rogaland og Agder",
       "link": "https://www.nrk.no/nyheter/fugleinfluensa-pavist-i-rogaland-og-agder-1.18082377",
       "pubDate": "2026-11-15T17:42:55+00:00"
-    },
-    {
-      "title": "Denne russeren melder seg klar overfor NRK: – Skal gå på Beitostølen",
-      "link": "https://www.nrk.no/sport/russer-vil-delta-i-langrennsapningen-pa-beitostolen-1.18082199",
-      "pubDate": "2026-11-15T16:50:06+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0e7e2544f24cec2bf6cd4c955c2752f093c7a36c.jpg"
-    },
-    {
-      "title": "Loven hindrer Mai-Liss i å dra på tur: – En form for diskriminering",
-      "link": "https://www.nrk.no/nordland/mai-liss-ma-fore-kjorebok-nar-hun-skal-pa-tur_-snart-blir-loven-endret-1.18078507",
-      "pubDate": "2026-11-15T16:25:15+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/842f3c02463814197afebc0443771ce11cfafbea.jpg"
     }
   ]
 }
