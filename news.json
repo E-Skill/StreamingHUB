@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-16T19:50:40.720104+00:00",
+  "updatedAt": "2026-11-17T02:40:33.343451+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Her kommer bilen over i motsatt kjørefelt",
-      "link": "https://www.nrk.no/trondelag/snur-og-kjorer-i-motsatt-kjoreretning-i-110-sonen-1.18082974",
-      "pubDate": "2026-11-16T19:31:47+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/4939ee125e57c1736174632a6ea019afc9a43ec8.jpg"
+      "title": "Russisk leder: Bro til Krym angrepet",
+      "link": "https://www.nrk.no/nyheter/russisk-leder_-bro-til-krym-angrepet-1.18083128",
+      "pubDate": "2026-11-16T23:20:36+00:00"
     },
     {
-      "title": "Nå blir det sol, sol, sol: – Kom dere ut, oppfordrer professor",
-      "link": "https://www.nrk.no/ostfold/vaervarsel_-sol-i-sor-og-kulde-i-vente-_-men-pass-pa-glatta-1.18076479",
-      "pubDate": "2026-11-16T18:18:34+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/fc22a4c767edc19d9384a29bd03305eff116d4b2.jpg"
+      "title": "Gjev seg etter 20 år – fekk klar beskjed i Ødegaard-debut",
+      "link": "https://www.nrk.no/sport/morten-scott-janssen-gjev-seg-etter-20-ar_-_-litt-som-kjaerleikssorg-1.18081649",
+      "pubDate": "2026-11-16T20:35:43+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/88ec6436687f5c4ace21c8b1bea3cf8a1aecce35.jpg"
     },
     {
-      "title": "«Verden var ikke forberedt på det som kom»",
-      "link": "https://www.nrk.no/spillbrevet/spillbrevet-_007_-slik-ble-_gta_-et-monster-1.18079196",
-      "pubDate": "2026-11-16T14:08:21+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/d7a7f869cb705f84c07fbf36ec2191616447d664.jpg"
+      "title": "Russer kjøper Nussir-gruven: – Døm oss på fakta, ikke fordommer",
+      "link": "https://www.nrk.no/tromsogfinnmark/nussirs-nye-styreleder-artem-volynets-besokte-hammerfest-og-slar-tilbake-mot-russland-skepsis-1.18082972",
+      "pubDate": "2026-11-16T20:19:24+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/2f9a1ade82a9dc6fd1ea9e6dad7c7b6180adac44.jpg"
     }
   ]
 }
