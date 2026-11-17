@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-11-17T11:07:27.633070+00:00",
+  "updatedAt": "2026-11-17T19:48:16.526461+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Vil opne nye havområde for oppdrett: – Sentral milepæl",
-      "link": "https://www.nrk.no/trondelag/regjeringa-vil-opne-nye-havomrade-for-oppdrett-1.18083212",
-      "pubDate": "2026-11-17T08:38:55+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/0026e4d926ed89d62be42f086efc871916256a82.jpg"
+      "title": "Staten betaler nær 8000 kroner per billett, men ingen tør å kutte i kystruta",
+      "link": "https://www.nrk.no/nordland/kystruten-mellom-bergen-og-kirkenes-kan-bli-endret-1.18073331",
+      "pubDate": "2026-11-17T19:35:43+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/6c246ac3bdbd8ba241d7a1a5831fbe04f3b8c3c1.jpg"
     },
     {
-      "title": "Kongeparet er på besøk i Trondheim",
-      "link": "https://www.nrk.no/nyheter/kongeparet-er-pa-besok-i-trondheim-1.18083209",
-      "pubDate": "2026-11-17T07:02:21+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9301b3cc74411cf4e89747f01d8201a55c836061.jpg"
+      "title": "Pågående cyberangrep mot Equinor",
+      "link": "https://www.nrk.no/nyheter/pagaende-cyberangrep-mot-equinor-1.18083829",
+      "pubDate": "2026-11-17T18:05:21+00:00"
     },
     {
-      "title": "Ladetårn byrja brenne med ferje tilkopla",
-      "link": "https://www.nrk.no/vestland/brann-i-ladetarn-pa-ferjekai-1.18083166",
-      "pubDate": "2026-11-17T04:02:27+00:00"
+      "title": "Slik spredte fugleinfluensaen seg til flere norske gårder",
+      "link": "https://www.nrk.no/rogaland/fugleinfluensa_-mattilsynet-ga-tillatelse-som-spredte-smitten-1.18083519",
+      "pubDate": "2026-11-17T17:34:36+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e2b1447fa69a2539eacced707e93fb34fec500aa.jpg"
     }
   ]
 }
