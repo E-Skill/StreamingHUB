@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-17T19:48:16.526461+00:00",
+  "updatedAt": "2026-11-18T01:55:26.530116+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Staten betaler nær 8000 kroner per billett, men ingen tør å kutte i kystruta",
-      "link": "https://www.nrk.no/nordland/kystruten-mellom-bergen-og-kirkenes-kan-bli-endret-1.18073331",
-      "pubDate": "2026-11-17T19:35:43+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/6c246ac3bdbd8ba241d7a1a5831fbe04f3b8c3c1.jpg"
+      "title": "Slo tilbake på Snapchat i natt: – Jeg trenger egentlig ikke si dette",
+      "link": "https://www.nrk.no/sport/haaland-slo-tilbake-pa-snapchat-i-natt_-_-jeg-trenger-egentlig-ikke-si-dette-1.18083957",
+      "pubDate": "2026-11-17T23:41:23+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/d490ea0a3bd5aad79fa83149c7ccb7fd50b85328.jpg"
     },
     {
-      "title": "Pågående cyberangrep mot Equinor",
-      "link": "https://www.nrk.no/nyheter/pagaende-cyberangrep-mot-equinor-1.18083829",
-      "pubDate": "2026-11-17T18:05:21+00:00"
+      "title": "Dansk stjerne om Norge-scenene: – Det gjør vondt",
+      "link": "https://www.nrk.no/sport/dansk-stjerne-om-norge-scenene_-_-det-gjor-vondt-1.18083837",
+      "pubDate": "2026-11-17T22:36:06+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/eccddbe36e167cf9559df271a9bcc87ca9d9ce42.jpg"
     },
     {
-      "title": "Slik spredte fugleinfluensaen seg til flere norske gårder",
-      "link": "https://www.nrk.no/rogaland/fugleinfluensa_-mattilsynet-ga-tillatelse-som-spredte-smitten-1.18083519",
-      "pubDate": "2026-11-17T17:34:36+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e2b1447fa69a2539eacced707e93fb34fec500aa.jpg"
+      "title": "Norges børs mot Danmark: – Et mentalitetsmonster",
+      "link": "https://www.nrk.no/sport/norges-bors-mot-danmark-1.18083747",
+      "pubDate": "2026-11-17T21:46:27+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/4c97e13521dc5e6894c673f7c6238672e9f285cb.jpg"
     }
   ]
 }
