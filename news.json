@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-11-19T16:53:57.053293+00:00",
+  "updatedAt": "2026-11-19T23:19:22.800271+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Høgsterett forkastar anken til Frogner-kvinna",
-      "link": "https://www.nrk.no/nyheter/hogsterett-forkastar-anken-til-frogner-kvinna-1.18085307",
-      "pubDate": "2026-11-19T15:33:08+00:00"
+      "title": "Her førebur han seg på ein vinter med kjeft",
+      "link": "https://www.nrk.no/sport/xl/her-forebur-anund-lid-byggland-seg-pa-ein-vinter-med-kjeft-1.18072113",
+      "pubDate": "2026-11-19T21:32:20+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9f4c3b6d8a36aba3df49d7f0103abecda92bbcfd.jpg"
     },
     {
-      "title": "Blei oppdaga som 5-åring: – Han var ein liten galning",
-      "link": "https://www.nrk.no/sport/turner-sebastian-sponevik-blei-oppdaga-av-espen-jansen-som-5-aring-1.18074469",
-      "pubDate": "2026-11-19T15:33:10+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/b4d0f7502e8173c4356b1d64b734411c225454ff.jpg"
+      "title": "Norwegian ber 5000 kundar sperre bankkortet etter datainnbrot",
+      "link": "https://www.nrk.no/nyheter/norwegian-ber-5000-kundar-sperre-bankkortet-etter-datainnbrot-1.18085456",
+      "pubDate": "2026-11-19T19:58:32+00:00"
     },
     {
-      "title": "Politiet seier nei: Kan ikkje lenger invitere 15-åringar til festing med russen",
-      "link": "https://www.nrk.no/mr/inviterer-15-aringar-pa-russefestar-for-a-tene-pengar-_-no-set-politiet-ned-foten-1.18079096",
-      "pubDate": "2026-11-19T14:28:53+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e24aa8969eb56b291a05c5fcd197f5b8e8bfd35e.jpg"
+      "title": "Nytt drama om Carlsen: – Selvfølgelig er det kynisk",
+      "link": "https://www.nrk.no/sport/nye-kontroverser-om-magnus-carlsen-i-prove-vm-i-total-chess-1.18085393",
+      "pubDate": "2026-11-19T19:55:40+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c430d9239fd333a8c4b7d74cbca72dffa747f6a3.jpg"
     }
   ]
 }
