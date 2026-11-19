@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-19T00:34:49.631002+00:00",
+  "updatedAt": "2026-11-19T07:54:17.873652+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Militært vogntog av veien i Troms",
-      "link": "https://www.nrk.no/norge/militaert-vogntog-kjorte-av-veien-i-troms-1.18084632",
-      "pubDate": "2026-11-19T00:01:13+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/44ae1a60f975e6821930fd4e34cf878311cae146.jpg"
+      "title": "Van Gogh-maleri solgt for 1,8 milliarder kroner",
+      "link": "https://www.nrk.no/nyheter/van-gogh-maleri-solgt-for-1_8-milliarder-kroner-1.18084638",
+      "pubDate": "2026-11-19T02:11:46+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a955fc28071bd8fee62ad6385b974e01110a1800.jpg"
     },
     {
-      "title": "Medier: Anthropic-aksjen prises til 83 dollar",
-      "link": "https://www.nrk.no/nyheter/medier_-anthropic-aksjen-prises-til-83-dollar-1.18084614",
-      "pubDate": "2026-11-18T22:04:32+00:00"
+      "title": "Satt klar da GTA VI kom til Norge: – Jeg er målløs",
+      "link": "https://www.nrk.no/sorlandet/na-er-gta-vi-lansert-i-norge-1.18084061",
+      "pubDate": "2026-11-19T01:21:54+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/10bf9043602a273f141273553ef1062f40950f35.jpg"
     },
     {
-      "title": "Russisk fiskerikonsern tapte søksmålet mot den norske stat",
-      "link": "https://www.nrk.no/tromsogfinnmark/russiske-norebo-tapte-soksmalet-mot-den-norske-stat-1.18084597",
-      "pubDate": "2026-11-18T21:16:03+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f289558cea5c9bdde43815c8c16509d6bea41aed.jpg"
+      "title": "Noreg-profilen håpar han blir seld: – Kryssar fingrane",
+      "link": "https://www.nrk.no/sport/noreg-profilen-hapar-han-blir-seld_-_-kryssar-fingrane-1.18081806",
+      "pubDate": "2026-11-19T04:02:06+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c25ebe3986f2c99ae2023cc50967f0be1590a540.jpg"
     }
   ]
 }
