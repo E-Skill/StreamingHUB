@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-19T07:54:17.873652+00:00",
+  "updatedAt": "2026-11-19T16:53:57.053293+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Van Gogh-maleri solgt for 1,8 milliarder kroner",
-      "link": "https://www.nrk.no/nyheter/van-gogh-maleri-solgt-for-1_8-milliarder-kroner-1.18084638",
-      "pubDate": "2026-11-19T02:11:46+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a955fc28071bd8fee62ad6385b974e01110a1800.jpg"
+      "title": "Høgsterett forkastar anken til Frogner-kvinna",
+      "link": "https://www.nrk.no/nyheter/hogsterett-forkastar-anken-til-frogner-kvinna-1.18085307",
+      "pubDate": "2026-11-19T15:33:08+00:00"
     },
     {
-      "title": "Satt klar da GTA VI kom til Norge: – Jeg er målløs",
-      "link": "https://www.nrk.no/sorlandet/na-er-gta-vi-lansert-i-norge-1.18084061",
-      "pubDate": "2026-11-19T01:21:54+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/10bf9043602a273f141273553ef1062f40950f35.jpg"
+      "title": "Blei oppdaga som 5-åring: – Han var ein liten galning",
+      "link": "https://www.nrk.no/sport/turner-sebastian-sponevik-blei-oppdaga-av-espen-jansen-som-5-aring-1.18074469",
+      "pubDate": "2026-11-19T15:33:10+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/b4d0f7502e8173c4356b1d64b734411c225454ff.jpg"
     },
     {
-      "title": "Noreg-profilen håpar han blir seld: – Kryssar fingrane",
-      "link": "https://www.nrk.no/sport/noreg-profilen-hapar-han-blir-seld_-_-kryssar-fingrane-1.18081806",
-      "pubDate": "2026-11-19T04:02:06+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/c25ebe3986f2c99ae2023cc50967f0be1590a540.jpg"
+      "title": "Politiet seier nei: Kan ikkje lenger invitere 15-åringar til festing med russen",
+      "link": "https://www.nrk.no/mr/inviterer-15-aringar-pa-russefestar-for-a-tene-pengar-_-no-set-politiet-ned-foten-1.18079096",
+      "pubDate": "2026-11-19T14:28:53+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e24aa8969eb56b291a05c5fcd197f5b8e8bfd35e.jpg"
     }
   ]
 }
