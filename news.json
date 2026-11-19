@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-18T18:16:40.266226+00:00",
+  "updatedAt": "2026-11-19T00:34:49.631002+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Her jager ulv rein: – Fortvilende",
-      "link": "https://www.nrk.no/sapmi/flere-ulveangrep-i-reinflokkene-i-finnmark-1.18084076",
-      "pubDate": "2026-11-18T17:43:51+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/59edb0a32b1534bdc2a9dcb3a9ed6151ec105344.jpg"
+      "title": "Militært vogntog av veien i Troms",
+      "link": "https://www.nrk.no/norge/militaert-vogntog-kjorte-av-veien-i-troms-1.18084632",
+      "pubDate": "2026-11-19T00:01:13+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/44ae1a60f975e6821930fd4e34cf878311cae146.jpg"
     },
     {
-      "title": "Vrenger klærne for overgreps­utsatte barn",
-      "link": "https://www.nrk.no/sorlandet/vrenger-klaerne-for-overgrepsutsatte-barn_-_-vil-vise-at-det-er-trygt-a-snakke-om-det-1.18084044",
-      "pubDate": "2026-11-18T16:03:15+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/83caace79761681972ceec3bcc9cd64fa5c58408.jpg"
+      "title": "Medier: Anthropic-aksjen prises til 83 dollar",
+      "link": "https://www.nrk.no/nyheter/medier_-anthropic-aksjen-prises-til-83-dollar-1.18084614",
+      "pubDate": "2026-11-18T22:04:32+00:00"
     },
     {
-      "title": "Blir hylla av Jan Thomas – men ikkje Solbakken: – Du ser jo kor eg har gjort av den",
-      "link": "https://www.nrk.no/sport/blir-hylla-av-jan-thomas-_-men-ikkje-solbakken_-_-du-ser-jo-kor-eg-har-gjort-av-den-1.18083895",
-      "pubDate": "2026-11-18T15:52:16+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/3d61b161cee4b63337b27b7b8e8231accab826da.jpg"
+      "title": "Russisk fiskerikonsern tapte søksmålet mot den norske stat",
+      "link": "https://www.nrk.no/tromsogfinnmark/russiske-norebo-tapte-soksmalet-mot-den-norske-stat-1.18084597",
+      "pubDate": "2026-11-18T21:16:03+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f289558cea5c9bdde43815c8c16509d6bea41aed.jpg"
     }
   ]
 }
