@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-21T01:51:27.223099+00:00",
+  "updatedAt": "2026-11-21T08:55:58.772612+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Saudi-Arabia: Har skutt ned houthi-missiler",
-      "link": "https://www.nrk.no/nyheter/saudi-arabia_-har-skutt-ned-houthi-missiler-1.18086194",
-      "pubDate": "2026-11-20T23:54:52+00:00"
+      "title": "Exit for Udnes Weng etter fall: – Skjebnesvangert",
+      "link": "https://www.nrk.no/sport/sprint-pa-sesongapningen-pa-beitostolen-1.18086228",
+      "pubDate": "2026-11-21T08:50:22+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/70e9cd28ea19c42d3531c81769acf514adae7c7b.jpg"
     },
     {
-      "title": "AP om budsjettforhandlingene: Fortsetter utover fristen",
-      "link": "https://www.nrk.no/nyheter/ap-om-budsjettforhandlingene_-fortsetter-utover-fristen-1.18086191",
-      "pubDate": "2026-11-20T22:05:29+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ba4a023aec6ae3661e54d32293a7865985618e02.jpg"
+      "title": "Fjellrev jakter på bare to bein: – Helt, helt utrolig",
+      "link": "https://www.nrk.no/tromsogfinnmark/fjellrev-pa-bjornoya-laerte-seg-a-jakte-pa-to-bein-1.18084490",
+      "pubDate": "2026-11-21T07:22:01+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/01ac478db81b6ba03e186f44ea3d6c6eb622db9a.jpg"
     },
     {
-      "title": "Historisk «GTA 6»-lansering: Solgte for nesten 4 milliarder dollar på én dag",
-      "link": "https://www.nrk.no/nyheter/historisk-_gta-6_-lansering_-solgte-for-nesten-4-milliarder-dollar-pa-en-dag-1.18086187",
-      "pubDate": "2026-11-20T21:46:44+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ad5444a944e40cd7dc554a6693f7bd6c3bee9700.jpg"
+      "title": "Sammenlignes med tidenes største stjerner",
+      "link": "https://www.nrk.no/sport/xl/generasjonstalentet-lars-heggen-1.18074427",
+      "pubDate": "2026-11-21T06:50:39+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/d418efe101f1bd54accbe16cdb0a0f1c1bf1748a.jpg"
     }
   ]
 }
