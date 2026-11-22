@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-11-21T21:48:36.655486+00:00",
+  "updatedAt": "2026-11-22T01:44:33.442040+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Selvik reddet straffe på overtid da Brest vant igjen",
+      "link": "https://www.nrk.no/sport/selvik-reddet-straffe-pa-overtid-da-brest-vant-igjen-1.18086449",
+      "pubDate": "2026-11-21T22:42:13+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e85f82866d8c329cb0a31294e56866a9f9d8c67f.jpg"
+    },
     {
       "title": "Måtte betale 300.000 etter tabbe frå nettselskap",
       "link": "https://www.nrk.no/rogaland/nettselskapet-fagne-med-tabbe-som-ramma-70-heimar-og-bygningar-i-tysvaer-1.18083258",
@@ -13,12 +19,6 @@
       "link": "https://www.nrk.no/sport/okonomisk-krise-i-roa-fotball-elite-1.18077560",
       "pubDate": "2026-11-21T20:44:40+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ac478b6ec6e48ac995ed09b265f6649283fe2101.jpg"
-    },
-    {
-      "title": "Ødegaard-tabbe i Arsenal-smell: – Grusom feil",
-      "link": "https://www.nrk.no/sport/premier-league_-martin-odegaard-med-tabbe-i-arsenal-smell-mot-newcastle-1.18086459",
-      "pubDate": "2026-11-21T19:27:21+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ff3f82c6d56f878d327381cb8bd94a12eb3805cf.jpg"
     }
   ]
 }
