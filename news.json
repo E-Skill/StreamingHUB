@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-23T11:16:36.645487+00:00",
+  "updatedAt": "2026-11-23T22:46:22.888500+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Mathilde (22) hadde lenge planen klar – nå tør hun ikke satse på drømmen",
-      "link": "https://www.nrk.no/trondelag/mathilde-_22_-hadde-lenge-planen-klar-_-na-tor-hun-ikke-satse-1.18073658",
-      "pubDate": "2026-11-23T09:30:15+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1daa089b0e07d133017a37d1b3d8bc7f63a145b7.jpg"
+      "title": "- Han var den beste faren noen kunne ha",
+      "link": "https://www.nrk.no/urix/xl/kirurg-drept-i-israelsk-angrep-pa-sykehus-1.18086298",
+      "pubDate": "2026-11-23T22:08:21+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/dc675a05f20360d027b2c56d81e6e5bcbdead420.jpg"
     },
     {
-      "title": "Politiet har aksjonert mot ungdomsmiljø i Harstad – mange avhørt",
-      "link": "https://www.nrk.no/tromsogfinnmark/har-aksjonert-mot-ungdomsmiljo-i-harstad-1.18086985",
-      "pubDate": "2026-11-23T09:11:32+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/fa3186fb2d38720ae2bb91885ebf1a9a2176b503.jpg"
+      "title": "To siktet for drapsforsøk i Alta – pågrepet i Sverige",
+      "link": "https://www.nrk.no/tromsogfinnmark/to-siktet-for-drapsforsok-etter-voldshendelse-i-alta-_-pagrepet-i-sverige-1.18087408",
+      "pubDate": "2026-11-23T20:32:57+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/79fef5ae4d46f710a4a73e9b7b35d762a1b6a031.jpg"
     },
     {
-      "title": "Erkjenner delvis skyld for drapet på Asbjørn Lanes (80) på sykehjemmet i Lyngen",
-      "link": "https://www.nrk.no/tromsogfinnmark/erkjenner-delvis-straffskyld-for-drapet-pa-asbjorn-lanes-i-lyngen-1.18085669",
-      "pubDate": "2026-11-23T08:15:14+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ec5cdaf19ae20efd70618a1fa5488b4d447a6daa.jpg"
+      "title": "Voldshendelse i Alta: To pågrepet av svensk politi",
+      "link": "https://www.nrk.no/nyheter/voldshendelse-i-alta_-to-pagrepet-av-svensk-politi--1.18087404",
+      "pubDate": "2026-11-23T20:22:17+00:00"
     }
   ]
 }
