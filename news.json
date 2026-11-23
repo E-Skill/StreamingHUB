@@ -1,24 +1,24 @@
 {
-  "updatedAt": "2026-11-22T22:12:35.746991+00:00",
+  "updatedAt": "2026-11-23T11:16:36.645487+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Krev lovendring etter Brennpunkt-dokumentar",
-      "link": "https://www.nrk.no/dokumentar/krev-lovendring-etter-brennpunkt-dokumentar-1.18085794",
-      "pubDate": "2026-11-22T18:19:52+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/e30a019de04b5385f0236d696dea83b01ed701e1.jpg"
+      "title": "Mathilde (22) hadde lenge planen klar – nå tør hun ikke satse på drømmen",
+      "link": "https://www.nrk.no/trondelag/mathilde-_22_-hadde-lenge-planen-klar-_-na-tor-hun-ikke-satse-1.18073658",
+      "pubDate": "2026-11-23T09:30:15+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1daa089b0e07d133017a37d1b3d8bc7f63a145b7.jpg"
     },
     {
-      "title": "Kritikken hagler etter marerittdebut: – Europas verste forsvar",
-      "link": "https://www.nrk.no/sport/premier-league_-marerittdebut-for-mauricio-pochettino-i-manchester-united-1.18086743",
-      "pubDate": "2026-11-22T16:54:06+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a336342b7cc1c687ac7d4b43119298f4dabfa05b.jpg"
+      "title": "Politiet har aksjonert mot ungdomsmiljø i Harstad – mange avhørt",
+      "link": "https://www.nrk.no/tromsogfinnmark/har-aksjonert-mot-ungdomsmiljo-i-harstad-1.18086985",
+      "pubDate": "2026-11-23T09:11:32+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/fa3186fb2d38720ae2bb91885ebf1a9a2176b503.jpg"
     },
     {
-      "title": "Vegvesenet brukte over 50 millioner på reintiltak: Reineier nekter å bruke den",
-      "link": "https://www.nrk.no/nordland/vegvesenet-brukte-over-50-millioner-pa-reintiltak-pa-halogalandsveien_-reineier-nekter-a-bruke-den-1.18083809",
-      "pubDate": "2026-11-22T15:28:42+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/cf4fbbb3843644df87e03af7631d82cf43acaf10.jpg"
+      "title": "Erkjenner delvis skyld for drapet på Asbjørn Lanes (80) på sykehjemmet i Lyngen",
+      "link": "https://www.nrk.no/tromsogfinnmark/erkjenner-delvis-straffskyld-for-drapet-pa-asbjorn-lanes-i-lyngen-1.18085669",
+      "pubDate": "2026-11-23T08:15:14+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/ec5cdaf19ae20efd70618a1fa5488b4d447a6daa.jpg"
     }
   ]
 }
