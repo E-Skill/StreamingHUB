@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-25T11:41:49.033208+00:00",
+  "updatedAt": "2026-11-25T20:38:55.742525+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Martine (1) døde: Dagmamma-frifinnelsen blir stående",
-      "link": "https://www.nrk.no/buskerud/martine-_1_-dode_-dagmamma-frifinnelsen-blir-staende-1.18088370",
-      "pubDate": "2026-11-25T11:06:38+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/21379a4855dd302e364e753e029afaa1182794a8.jpg"
+      "title": "Slik lurer spillene barn til å bruke penger",
+      "link": "https://www.nrk.no/vestfoldogtelemark/slik-lurer-spillene-barn-til-a-bruke-penger-1.18084337",
+      "pubDate": "2026-11-25T20:28:13+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a7dafddd2b9c490be8b0e30eb94e7ec1b3d5898c.jpg"
     },
     {
-      "title": "Fekk ikkje mensen: – Måtte velje mellom idretten eller eiga helse",
-      "link": "https://www.nrk.no/sport/maya-cloetens-knytte-menstruasjon-til-darleg-form_-_-er-ikkje-normalt-1.18082896",
-      "pubDate": "2026-11-25T11:05:24+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/4b33c666e34890c16e7d97b2042b7b1aee64b8e8.jpg"
+      "title": "Meglere drilles i å avsløre spion-skalkeskjul",
+      "link": "https://www.nrk.no/tromsogfinnmark/eiendomsmeglere-kurses-i-a-avslore-spioner-fra-fremmede-makter-1.18082193",
+      "pubDate": "2026-11-25T18:20:38+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a127c48e043b8529b83417cafc0106e38062246b.jpg"
     },
     {
-      "title": "Jordskjelv i Midt-Troms",
-      "link": "https://www.nrk.no/tromsogfinnmark/registrerte-jordskjelv-med-styrke-pa-2_8-i-midt-troms-1.18088230",
-      "pubDate": "2026-11-25T08:42:26+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/f1ec86d532647bc0348126bfb69b3eec17bc3ae1.jpg"
+      "title": "Dronning Mette-Marit kommer på takkekonserten i Trefoldighetskirken",
+      "link": "https://www.nrk.no/nyheter/dronning-mette-marit-kommer-pa-takkekonserten-i-trefoldighetskirken-1.18088528",
+      "pubDate": "2026-11-25T16:36:50+00:00"
     }
   ]
 }
