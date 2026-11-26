@@ -1,23 +1,24 @@
 {
-  "updatedAt": "2026-11-25T20:38:55.742525+00:00",
+  "updatedAt": "2026-11-26T03:04:56.307014+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Slik lurer spillene barn til å bruke penger",
-      "link": "https://www.nrk.no/vestfoldogtelemark/slik-lurer-spillene-barn-til-a-bruke-penger-1.18084337",
-      "pubDate": "2026-11-25T20:28:13+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a7dafddd2b9c490be8b0e30eb94e7ec1b3d5898c.jpg"
+      "title": "Tre til helsesjekk etter boligbrann i Bergen",
+      "link": "https://www.nrk.no/nyheter/tre-til-helsesjekk-etter-boligbrann-i-bergen-1.18088795",
+      "pubDate": "2026-11-25T22:45:03+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9626bce336538d0649bfabcfbbfeff7696833c49.jpg"
     },
     {
-      "title": "Meglere drilles i å avsløre spion-skalkeskjul",
-      "link": "https://www.nrk.no/tromsogfinnmark/eiendomsmeglere-kurses-i-a-avslore-spioner-fra-fremmede-makter-1.18082193",
-      "pubDate": "2026-11-25T18:20:38+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/a127c48e043b8529b83417cafc0106e38062246b.jpg"
+      "title": "Ekspertene raser etter nok en United-nedtur",
+      "link": "https://www.nrk.no/sport/ekspertene-raser-etter-nok-en-united-nedtur-1.18088750",
+      "pubDate": "2026-11-25T21:55:43+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/75d612cdaf73fb698297bb8bf0b1753705793f09.jpg"
     },
     {
-      "title": "Dronning Mette-Marit kommer på takkekonserten i Trefoldighetskirken",
-      "link": "https://www.nrk.no/nyheter/dronning-mette-marit-kommer-pa-takkekonserten-i-trefoldighetskirken-1.18088528",
-      "pubDate": "2026-11-25T16:36:50+00:00"
+      "title": "Omdiskutert keepervalg av Viking: – Så ærlige må vi være",
+      "link": "https://www.nrk.no/sport/viking-sliter-mot-atletico-madrid-1.18088731",
+      "pubDate": "2026-11-25T20:47:51+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/79a1518c9b1fa9f2ec04e071a5d189912099d931.jpg"
     }
   ]
 }
