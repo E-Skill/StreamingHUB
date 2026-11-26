@@ -1,24 +1,23 @@
 {
-  "updatedAt": "2026-11-26T03:04:56.307014+00:00",
+  "updatedAt": "2026-11-26T12:18:32.693594+00:00",
   "logo": null,
   "articles": [
     {
-      "title": "Tre til helsesjekk etter boligbrann i Bergen",
-      "link": "https://www.nrk.no/nyheter/tre-til-helsesjekk-etter-boligbrann-i-bergen-1.18088795",
-      "pubDate": "2026-11-25T22:45:03+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9626bce336538d0649bfabcfbbfeff7696833c49.jpg"
+      "title": "Utbrudd av influensa: – Ta vaksinen nå",
+      "link": "https://www.nrk.no/nyheter/utbrudd-av-influensa_-_-ta-vaksinen-na-1.18089136",
+      "pubDate": "2026-11-26T12:14:16+00:00"
     },
     {
-      "title": "Ekspertene raser etter nok en United-nedtur",
-      "link": "https://www.nrk.no/sport/ekspertene-raser-etter-nok-en-united-nedtur-1.18088750",
-      "pubDate": "2026-11-25T21:55:43+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/75d612cdaf73fb698297bb8bf0b1753705793f09.jpg"
+      "title": "Kryptisk om «mystisk» skade i tommelen: – Dere får ikke noe svar",
+      "link": "https://www.nrk.no/sport/ruka_-friskmeldt-hosflot-klaebo-hemmelighetsfull-rundt-egen-skade-1.18088954",
+      "pubDate": "2026-11-26T11:43:18+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/b7f781c05c7f20dfd4eb0b1f57c325b24e1eeeab.jpg"
     },
     {
-      "title": "Omdiskutert keepervalg av Viking: – Så ærlige må vi være",
-      "link": "https://www.nrk.no/sport/viking-sliter-mot-atletico-madrid-1.18088731",
-      "pubDate": "2026-11-25T20:47:51+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/79a1518c9b1fa9f2ec04e071a5d189912099d931.jpg"
+      "title": "Slipper unna millioner for å fly inn arbeidere til Finnmark: – En giftig kombinasjon",
+      "link": "https://www.nrk.no/sapmi/slipper-unna-millioner-for-a-fly-inn-folk-til-finnmark_-_-en-giftig-kombinasjon-1.18068345",
+      "pubDate": "2026-11-26T11:37:53+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/2033a54b77df015d42ba91b34ed553b75185155f.jpg"
     }
   ]
 }
