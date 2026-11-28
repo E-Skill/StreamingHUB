@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-11-27T22:10:16.362479+00:00",
+  "updatedAt": "2026-11-28T03:52:48.280182+00:00",
   "logo": null,
   "articles": [
+    {
+      "title": "Norsk målfest i NHL – Solberg og Zuccarello med scoringer",
+      "link": "https://www.nrk.no/sport/norsk-malfest-i-nhl-_-solberg-og-zuccarello-med-scoringer-1.18090062",
+      "pubDate": "2026-11-27T22:12:46+00:00",
+      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/1378b0768c51821d5ec2b17f58cf12a31fb5e741.jpg"
+    },
     {
       "title": "Anne Britt ble nyresyk i svanger­skapet – nå frykter hun dødsfall",
       "link": "https://www.nrk.no/mr/anne-britt-danielsen-har-vaert-avhengig-av-nyrevakta-i-helse-more-og-romsdal-_-kan-bli-lagt-ned-1.18083505",
@@ -13,12 +19,6 @@
       "link": "https://www.nrk.no/rogaland/bomtaksten-i-ryfast-kan-oke-med-27.000-kroner_-ryfylke-far-igjen-landets-dyreste-bomstrekning-1.18089911",
       "pubDate": "2026-11-27T18:21:12+00:00",
       "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/9fa807bfefa3ba763b1e2c6f78120b44cbee32ae.jpg"
-    },
-    {
-      "title": "Tok grep før enorm opptur: – Skal prøve å gjøre like geniale ting fremover",
-      "link": "https://www.nrk.no/sport/skiskyting_-marthe-krakstad-johansen-tok-grep-for-enorm-opptur-i-verdenscupapningen-i-kontiolahti.-1.18089951",
-      "pubDate": "2026-11-27T18:47:32+00:00",
-      "image": "https://raw.githubusercontent.com/E-Skill/StreamingHUB/main/static/news/709e025a1715a5bfca69fe66150248b3e9427ee5.jpg"
     }
   ]
 }
